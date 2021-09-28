@@ -6,7 +6,7 @@ import { isEmpty } from "../Utils";
 const FollowHandler = (idToFollow) => {
   const userData = useSelector((state) => state.userReducer);
   const [isFollowed, setIsFollowed] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // avant de pouvoir utiliser redux
 
   const handleFollow = () => {
     dispatch(followUser(userData._id, idToFollow))
@@ -25,7 +25,7 @@ const FollowHandler = (idToFollow) => {
         setIsFollowed(true);
       } else setIsFollowed(false);
     }
-    // quand on a le userData on relance le useEffect
+    // quand on a le userData qui évolue, on relance le useEffect
   }, [userData, idToFollow]);
 
   return (
