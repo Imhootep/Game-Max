@@ -10,6 +10,7 @@ const SearchStudio = () => {
 
     const uid = useContext(UidContext)
     const userData = useSelector((state)=> state.userReducer)
+    const usersData = useSelector((state) => state.usersReducer);
     
 
     return (
@@ -22,9 +23,9 @@ const SearchStudio = () => {
                         <div>
                             {/* <img src={user2} alt="utilisateur" className="profilIcon"/> */}
                             créé le createdAt
-                            {console.log("userdata")}
+                            {console.log("userSdata")}
 
-                            {console.log(userData)}
+                            {console.log(usersData)}
                         </div>
                         <div>
                             {/* <img src={mail} alt="mail" className="profilIcon"/> */}
