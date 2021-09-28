@@ -73,3 +73,18 @@ export const followUser =(followerId, idToFollow) =>{
     .catch((err)=>console.log(err))
   }
 }
+
+//-------------------------MODIF DE LA LISTE UNFOLLOW
+export const unfollowUser =(followerId, idToFollow) =>{
+  return (dispatch) =>{
+    return axios({
+      method:"patch",
+      url: `${process.env.REACT_APP_API_URL}api/user/unfollow/` + followerId,
+      data: {idToUnfollow}
+    })
+    .then((res)=>{
+      dispatch ({type:FOLLOW_USER, payload:{idToFollow}})
+    })
+    .catch((err)=>console.log(err))
+  }
+}
