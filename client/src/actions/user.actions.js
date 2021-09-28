@@ -75,7 +75,7 @@ export const followUser =(followerId, idToFollow) =>{
 }
 
 //-------------------------MODIF DE LA LISTE UNFOLLOW
-export const unfollowUser =(followerId, idToFollow) =>{
+export const unfollowUser =(followerId, idToUnfollow) =>{
   return (dispatch) =>{
     return axios({
       method:"patch",
@@ -83,7 +83,7 @@ export const unfollowUser =(followerId, idToFollow) =>{
       data: {idToUnfollow}
     })
     .then((res)=>{
-      dispatch ({type:FOLLOW_USER, payload:{idToFollow}})
+      dispatch ({type:UNFOLLOW_USER, payload:{idToUnfollow}})
     })
     .catch((err)=>console.log(err))
   }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser } from "../../actions/user.actions";
+import { followUser, unfollowUser } from "../../actions/user.actions";
 import { isEmpty } from "../Utils";
 
 const FollowHandler = (idToFollow) => {
@@ -13,10 +13,14 @@ const FollowHandler = (idToFollow) => {
     //si on suit la personne le setIsFollowed doit être sur true
     //avec ça le bouton va changer aussi
     setIsFollowed(true)
-    
   };
 
-  const handleUnfollow = () => {};
+  const handleUnfollow = () => {
+    dispatch(unfollowUser(userData._id, idToFollow))
+    //si on suit la personne le setIsFollowed doit être sur false
+    //avec ça le bouton va changer aussi et on ne le suit plus
+    setIsFollowed(false)
+  };
 
   useEffect(() => {
     //on doit attendre que userData arrive pour lancer useEffect
