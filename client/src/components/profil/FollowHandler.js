@@ -17,7 +17,7 @@ const FollowHandler = (idToFollow) => {
 
   const handleUnfollow = () => {
     dispatch(unfollowUser(userData._id, idToFollow))
-    //si on suit la personne le setIsFollowed doit être sur false
+    //si on ne suit pas/plus la personne le setIsFollowed doit être sur false
     //avec ça le bouton va changer aussi et on ne le suit plus
     setIsFollowed(false)
   };
