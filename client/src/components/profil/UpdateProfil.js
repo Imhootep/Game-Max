@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
 import { dateParser } from "../Utils";
+import FollowHandler from "./FollowHandler";
 import UploadImg from "./UploadImg";
 
 const UpdateProfil = () => {
   const dispatch = useDispatch();
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);
+
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
 
@@ -40,7 +42,6 @@ const UpdateProfil = () => {
                 <p> Pseudo: {userData.pseudo} </p>
                 <p> Email: {userData.email} </p>
                 <p onClick={() => setUpdateForm(!updateForm)}>
-                  
                   Adresse: {userData.bio}
                 </p>
                 <div></div>
@@ -62,13 +63,9 @@ const UpdateProfil = () => {
           </div>
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           <h5 onClick={() => setFollowingPopup(true)}>
-            
-            Abonnements: {userData.following
-              ? userData.following.length
-              : ""}
+            Abonnements: {userData.following ? userData.following.length : ""}
           </h5>
           <h5 onClick={() => setFollowersPopup(true)}>
-            
             Abonnés: {userData.followers ? userData.followers.length : ""}
           </h5>
         </div>
@@ -91,11 +88,11 @@ const UpdateProfil = () => {
                         <img src={user.picture} alt="user-pic" />
                         <h4>{user.pseudo}</h4>
                         <div className="follow-handler">
-                          {/* <FollowHandler idToFollow={user._id} type={'suggestion'} /> */}
+                          <FollowHandler idToFollow={user._id} type={'suggestion'} />
                         </div>
                       </li>
                     );
-                  } 
+                  }
                 }
                 return null;
               })}
@@ -103,7 +100,7 @@ const UpdateProfil = () => {
           </div>
         </div>
       )}
-       {followersPopup && (
+      {followersPopup && (
         <div className="popup-profil-container">
           <div className="modal">
             <h3>Abonnés</h3>
@@ -121,7 +118,7 @@ const UpdateProfil = () => {
                         <img src={user.picture} alt="user-pic" />
                         <h4>{user.pseudo}</h4>
                         <div className="follow-handler">
-                          {/* <FollowHandler idToFollow={user._id} type={'suggestion'} /> */}
+                          <FollowHandler idToFollow={user._id} type={'suggestion'} />
                         </div>
                       </li>
                     );
