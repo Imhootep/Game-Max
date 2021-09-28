@@ -1,5 +1,8 @@
 .left-nav-container {
   position: relative;
+  min-width: 55px; //gui
+  order:-2; //gui
+  margin: 10px 0 0 20px; //gui
 
   .icons {
     position: fixed;
@@ -10,7 +13,7 @@
     }
 
     .icons-bis {
-      position: absolute;
+      // position: absolute; //gui
       left: 10px;
       top: 20px;
 
