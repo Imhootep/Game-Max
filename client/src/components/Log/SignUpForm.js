@@ -81,7 +81,7 @@ const SignUpForm = () => {
                         <div className="form-group">
                             <input 
                             type="text" 
-                            placeholder="Pseudo"
+                            placeholder="Nom du Studio"
                             value={pseudo} 
                             onChange={(e)=>{setPseudo(e.target.value)}}/>
 

@@ -47,7 +47,7 @@ const SignInForm = () => {
                             <label className="formLabel" htmlFor="email">E-mail</label>          
                             <input 
                                 className="inputLogin" 
-                                autoFocus placeholder="Entrez votre nom email..." 
+                                autoFocus placeholder="Entrez votre email..." 
                                 type="email" 
                                 id="email"  
                                 onChange={(e)=>setEmail(e.target.value)}

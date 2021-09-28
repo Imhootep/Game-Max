@@ -1,4 +1,4 @@
-import { GET_USER, UPLOAD_PICTURE, UPDATE_BIO } from "../actions/user.actions";
+import { GET_USER, UPLOAD_PICTURE, UPDATE_BIO, FOLLOW_USER } from "../actions/user.actions";
 
 const initialState = {};
 
@@ -16,6 +16,11 @@ export default function userReducer(state=initialState, action){
             return {
                 ...state,
                 bio:action.payload
+            }
+            case FOLLOW_USER:
+            return {
+                ...state,
+                following:[action.payload.idToFollow, ...state.following]
             }
         default:
             return state;
