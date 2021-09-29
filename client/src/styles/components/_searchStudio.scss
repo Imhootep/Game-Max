@@ -88,6 +88,12 @@
     min-width:250px;
     margin: 20px 0 0 0;
 
+    div{
+      b{
+        padding: 0 0 0 10px;
+      }
+    }
+
   }
 
   .sectionProfil:not(:first-child){
@@ -179,10 +185,26 @@
   fill: rgba(250, 249, 250, 0.5)
 }
 
+.avatarIcon{
+  width:50px;
+}
+
 .profilIcon{
   width:25px;
   margin:0 10px 0 0;
   /*mettre le fill #8c4d94 dans le fichier svg directement */
+}
+
+.goProfil{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0 0 10px 0;
+
+  div{
+    padding:10px 0 0 0;
+  }
 }
 
 

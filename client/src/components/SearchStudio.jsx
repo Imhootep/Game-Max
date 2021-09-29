@@ -39,7 +39,8 @@ const SearchStudio = () => {
                         //premier resultat
                         <div className="bigBlock">
                             <div className="sectionProfil">
-                            <div>
+                                <div>
+                                    <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                     <b>{val.pseudo}</b>
                                 </div>
                                 <div>
@@ -77,9 +78,6 @@ const SearchStudio = () => {
                                 <div>{val.website}</div>
                                 <div>{val.social}</div>
                             </div>
-                            {/* <div className="modifyProfil">
-                                Modifier
-                            </div> */}
                         </div> 
                         :
                         //deuxieme resultat 
@@ -88,6 +86,7 @@ const SearchStudio = () => {
                         <div className="bigBlock">
                             <div className="sectionProfil">
                                 <div>
+                                    <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                     <b>{val.pseudo}</b>
                                 </div>
                                 <div>
@@ -124,9 +123,6 @@ const SearchStudio = () => {
                                 <div>{val.website}</div>
                                 <div>{val.social}</div>
                             </div>
-                            {/* <div className="modifyProfil">
-                                Modifier
-                            </div> */}
                         </div>
                         
                         : 
@@ -134,8 +130,9 @@ const SearchStudio = () => {
                         <div className="littleBlock">
                             <div className="infosProfil">
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
-                                <div className="goProfil"  title="afficher le profil en grand"  onClick={() => newProfilActif(val._id)}>
-                                    <div> {val.username}</div>
+                                <div className="goProfil"  title={"afficher "+val.pseudo+" en grand"}  onClick={() => newProfilActif(val._id)}>
+                                    <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
+                                    <div><b> {val.pseudo}</b></div>
                                     <div>VOIR<img className="arrowup" src={arrowup} alt="arrow up"/></div>
                                 </div>
                                 <div>{val.email }</div>
