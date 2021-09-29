@@ -41,9 +41,9 @@ const SearchStudio = () => {
             {users.map((val)=>{
             return(
                 <>
-                    <div className={((val._id == user._id && profilActif == undefined) || val._id == profilActif) ? "firstBlock" : "profilsBlock" }>
+                    <div className={((val._id === user._id && profilActif === undefined) || val._id === profilActif) ? "firstBlock" : "profilsBlock" }>
 
-                        {(profilActif != undefined && val._id == profilActif) ? 
+                        {(profilActif !== undefined && val._id === profilActif) ? 
                         //premier resultat
                         <div className="bigBlock">
                             <div className="sectionProfil">
@@ -64,8 +64,7 @@ const SearchStudio = () => {
                                     {val.phone }</div>
                                 <div>
                                     <img src={home2} alt="home2" className="profilIcon"/>
-                                    {/* {val.street+", "+val.number+" "+val.box}
-                                    {val.cp+" "+val.city} */}
+                                    {val.adresse}
                                     
                                 </div>
                                 <div>
@@ -75,11 +74,11 @@ const SearchStudio = () => {
                             </div>
                             <div className="sectionProfil">
                                 <b>Membres</b>
-                                <div>{val.member}</div>
+                                <div>{val.membres}</div>
                             </div>
                             <div className="sectionProfil">
                                 <b>Jeux</b>
-                                <div>{val.games}</div>
+                                <div>{val.jeux}</div>
                             </div>
                             <div className="sectionProfil">
                                 <b>Réseaux</b>
@@ -89,7 +88,7 @@ const SearchStudio = () => {
                         </div> 
                         :
                         //deuxieme resultat 
-                        (val._id == user._id && profilActif == undefined) ?
+                        (val._id === user._id && profilActif === undefined) ?
                         
                         <div className="bigBlock">
                             <div className="sectionProfil">
@@ -110,7 +109,7 @@ const SearchStudio = () => {
                                     {val.phone }</div>
                                 <div>
                                     <img src={home2} alt="home2" className="profilIcon"/>
-                                    
+                                    {val.adresse}
                                     
                                 </div>
                                 <div>
@@ -120,11 +119,11 @@ const SearchStudio = () => {
                             </div>
                             <div className="sectionProfil">
                                 <b>Membres</b>
-                                <div>{val.member}</div>
+                                <div>{val.membres}</div>
                             </div>
                             <div className="sectionProfil">
                                 <b>Jeux</b>
-                                <div>{val.games}</div>
+                                <div>{val.jeux}</div>
                             </div>
                             <div className="sectionProfil">
                                 <b>Réseaux</b>
@@ -149,7 +148,7 @@ const SearchStudio = () => {
                                 </div>
                                 <div>{val.email }</div>
                                 <div>{val.phone }</div>
-                                <div>{val.street }</div>
+                                <div>{val.adresse }</div>
                                 <div><a href={"https://"+val.website}>{val.website}</a></div>
                             </div>
                             <div className="linksProfil">
