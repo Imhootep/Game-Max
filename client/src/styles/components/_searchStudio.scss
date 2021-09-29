@@ -83,6 +83,21 @@
     padding:0 20px 20px 20px;
   }
 
+  .bigBlockRole{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding:0 20px 0 0;
+  }
+
+  .Role{
+    font-weight: bold;
+  }
+
+  .RoleAdmin{
+    color:red !important;
+  }
+
   .sectionProfil{
     width:24%;
     min-width:250px;
@@ -155,6 +170,10 @@
   flex-direction: column;
    /* align-content: stretch;  */
   /*align-content: flex-end;*/
+}
+
+.adminBorder{
+  border: 2px solid red !important;
 }
 
 .infosProfil{
