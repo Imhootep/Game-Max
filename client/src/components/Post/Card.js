@@ -48,11 +48,12 @@ const Card = ({ post }) => {
                   </h3>
                   {post.posterId !== userData._id && (
                   <FollowHandler idToFollow={post.posterId} type={'card'}/>
+                  
                   )}
               </div>
                  <span>{dateParser2(post.createdAt)}</span>     
             </div>
-            {post.picture && <img src={post.picture} alt="card-pic"/>}
+            {post.picture && <img src={post.picture} alt="card-pic" className="card-pic"/>}
             <p>{post.message}</p>
           </div>
         </>
