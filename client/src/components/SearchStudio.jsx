@@ -8,7 +8,7 @@ import phone from '../img/phone.svg';
 import user2 from '../img/user2.svg';
 import description from '../img/description.svg';
 // import { isEmpty } from './Utils';
-import { dateParser } from "./Utils";
+import { dateParser, isEmpty } from "./Utils";
 
 
 
@@ -22,14 +22,22 @@ const SearchStudio = () => {
         console.log(data)
         setProfilActif(data)
     };
+
+    const clearSearch = () => {
+        setSearch("")
+        document.getElementById('searchField').placeholder = 'Rechercher...';
+    };
+
     const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
+    const [search, setSearch] = useState();
 
     return (
         <div className="profilsContainer">
             <div className="searchBar">
-                <input type="text" placeholder="Rechercher..."></input>
-                <button><span>Rechercher</span></button>
-            </div> {console.log(users)}
+                <input id="searchField" type="text" placeholder='Rechercher...' onChange={(e)=>setSearch(e.target.value)} value={search} onFocus={(e) => e.target.placeholder = ''} onBlur={(e) => e.target.placeholder = 'Rechercher...'}></input>
+                {/* <button><span>Rechercher</span></button> */}
+                <button onClick={(e)=>clearSearch()}><span>Vider</span></button>
+            </div>
             {users.map((val)=>{
             return(
                 <>
@@ -127,6 +135,10 @@ const SearchStudio = () => {
                         
                         : 
 
+                        (search === undefined || search ==='' 
+                        ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 )
+                        ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 ))
+                        ?
                         <div className="littleBlock">
                             <div className="infosProfil">
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
@@ -156,6 +168,17 @@ const SearchStudio = () => {
                             </div>
                             
                         </div>
+                        :
+
+                        ''
+                        // <div>
+                        // {console.log('debuggage')}
+                        // {console.log('pseudo')}
+                        // {console.log(val.pseudo)}
+                        // {console.log('search')}
+                        // {console.log(search)}
+                        // </div>
+
                         }
                     </div>
                     </>
