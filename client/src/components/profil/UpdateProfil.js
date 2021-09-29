@@ -107,7 +107,8 @@ const UpdateProfil = () => {
             <span className="cross" onClick={() => setFollowersPopup(false)}>
               &#10005;
             </span>
-            <ul>
+            <ul>{console.log("userdata qui marche")}
+            {console.log(usersData)}
               {usersData.map((user) => {
                 //on va chercher dans les profils
                 for (let i = 0; i < userData.followers.length; i++) {
