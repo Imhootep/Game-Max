@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { isEmpty } from './Utils';
 // import { NavLink } from 'react-router-dom';
 // import { UidContext } from './AppContext';
 // import Logout from './Log/Logout';
@@ -79,11 +78,9 @@ const SearchStudio = () => {
                 <>
                 
                     <ul>
-                    {!isEmpty(users[0]) &&
-                    users.map((user)=>{
+                    {users.map((user)=>{
                         return (
                             <>
-                       
                             {user._id} 
                             <br/>
                             {user.pseudo}
