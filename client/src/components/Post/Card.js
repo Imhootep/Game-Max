@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
+import FavoriteButton from "./FavoriteButton";
 
 const Card = ({ post }) => {
   //on appelle post en props
@@ -64,9 +65,13 @@ const Card = ({ post }) => {
             <p>{post.message}</p>
             <div className="card-footer">
               <div className="comment-icon">
-
+                <img src="./img/icons/message1.svg" alt="comment" />
+                <span>{post.comments.length}</span>
               </div>
+              <FavoriteButton post={post} />
+              <h6>gestion comments</h6>
             </div>
+            
           </div>
         </>
       )}
