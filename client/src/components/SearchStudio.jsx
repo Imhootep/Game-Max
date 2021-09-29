@@ -1,29 +1,33 @@
-import React, { useContext, useState, useDispatch } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { isEmpty } from './Utils';
 // import { NavLink } from 'react-router-dom';
-import { UidContext } from './AppContext';
+// import { UidContext } from './AppContext';
 // import Logout from './Log/Logout';
 
-import arrowup from '../img/arrowup.png';
-import home2 from '../img/home2.svg';
-import mail from '../img/mail.svg';
-import phone from '../img/phone.svg';
-import user2 from '../img/user2.svg';
-import description from '../img/description.svg';
+// import arrowup from '../img/arrowup.png';
+import { dateParser } from './Utils';
+// import home2 from '../img/home2.svg';
+// import mail from '../img/mail.svg';
+// import phone from '../img/phone.svg';
+// import user2 from '../img/user2.svg';
+// import description from '../img/description.svg';
 
 
 
 const SearchStudio = () => {
     // const dispatch = useDispatch();
-    const uid = useContext(UidContext)
+    // const uid = useContext(UidContext)
     const userData = useSelector((state)=> state.userReducer)
-    const usersData = useSelector((state) => state.usersReducer);
+    const users = useSelector((state) => state.usersReducer);
+    console.log(users)
 
-    const newProfilActif =(data) => {
-        console.log(data)
-        setProfilActif(data)
-    };
-    const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
+    // const newProfilActif =(data) => {
+    //     console.log(data)
+        
+    //     setProfilActif(data)
+    // };
+    // const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
     
 
     return (
@@ -35,10 +39,7 @@ const SearchStudio = () => {
                         </div>
                         <div>
                             {/* <img src={user2} alt="utilisateur" className="profilIcon"/> */}
-                            créé le createdAt
-                            {console.log("userSdata")}
-
-                            {console.log(usersData)}
+                            créé le : {dateParser(userData.createdAt)}
                         </div>
                         <div>
                             {/* <img src={mail} alt="mail" className="profilIcon"/> */}
@@ -75,19 +76,43 @@ const SearchStudio = () => {
                         Modifier
                     </div> */}
                 </div>
-                {usersData.map((val)=>{
-                    return(
+                <>
+                
+                    <ul>
+                    {!isEmpty(users[0]) &&
+                    users.map((user)=>{
+                        return (
+                            <>
+                       
+                            {user._id} 
+                            <br/>
+                            {user.pseudo}
+                            <br/>
+                            {user.email}
+                            <br/>
+                            {dateParser(user.createdAt)}
+                            <br/>
+                            {user.email}
+                            <br/>
+                            {user.email}
+                            <br/>
+                            <br/>
+                            </>
+                        )
+                    })}
+                </ul>
+                    {/* return(
                         <div className="littleBlock">
                             <div className="infosProfil">
-                                {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
-                                <div className="goProfil"  title="afficher le profil en grand"  onClick={() => newProfilActif(val.id)}>
-                                    <div> {val.pseudo}</div>
+                                <div onClick={setProfilActif(val.id)}>ALLER</div>
+                                <div className="goProfil"  title="afficher le profil en grand"  onClick={() => newProfilActif(user.id)}>
+                                    <div> {user.pseudo}</div>
                                     <div>VOIR<img className="arrowup" src={arrowup} alt="arrow up"/></div>
                                 </div>
-                                <div>{val.email }</div>
-                                <div>{val.phone }</div>
-                                <div>{val.street }</div>
-                                <div><a href={"https://"+val.website}>{val.website}</a></div>
+                                <div>{user.email }</div>
+                                <div>{user.phone }</div>
+                                <div>{user.street }</div>
+                                <div><a href={"https://"+user.website}>{user.website}</a></div>
                             </div>
                             <div className="linksProfil">
                                 <div className="socialProfil">
@@ -104,9 +129,10 @@ const SearchStudio = () => {
                                 </div>
                             </div>
                         </div>
-                    )
+                    ) */}
 
-                })}
+                {/* })} */}
+                </>
             </div>
     );
 };
