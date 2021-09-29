@@ -5,7 +5,7 @@ import FollowHandler from "../profil/FollowHandler";
 
 const Card = ({ post }) => {
   //on appelle post en props
-  console.log(post)
+  console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
@@ -22,38 +22,34 @@ const Card = ({ post }) => {
         <>
           <div className="card-left">
             <img
-              src={
-                usersData
-                  .map((user) => {
-                    if (user._id === post.posterId) return user.picture;
-                    else return null;
-                  })
-                  .join("")
-              }
+              src={usersData
+                .map((user) => {
+                  if (user._id === post.posterId) return user.picture;
+                  else return null;
+                })
+                .join("")}
               alt="poster-pic"
             />
           </div>
           <div className="card-right">
             <div className="card-header">
               <div className="pseudo">
-                  <h3> {
-                    usersData
-                      .map((user) => {
-                        if (user._id === post.posterId)
-                            return user.pseudo
-                        else return null;
-                      })
-                      }
-                
-                  </h3>
-                  {post.posterId !== userData._id && (
-                  <FollowHandler idToFollow={post.posterId} type={'card'}/>
-                  
-                  )}
+                <h3>
+                  {" "}
+                  {usersData.map((user) => {
+                    if (user._id === post.posterId) return user.pseudo;
+                    else return null;
+                  })}
+                </h3>
+                {post.posterId !== userData._id && (
+                  <FollowHandler idToFollow={post.posterId} type={"card"} />
+                )}
               </div>
-                 <span>{dateParser2(post.createdAt)}</span>     
+              <span>{dateParser2(post.createdAt)}</span>
             </div>
-            {post.picture && <img src={post.picture} alt="card-pic" className="card-pic"/>}
+            {post.picture && (
+              <img src={post.picture} alt="card-pic" className="card-pic" />
+            )}
             {post.video && (
               <iframe
                 width="500"
@@ -66,6 +62,11 @@ const Card = ({ post }) => {
               ></iframe>
             )}
             <p>{post.message}</p>
+            <div className="card-footer">
+              <div className="comment-icon">
+
+              </div>
+            </div>
           </div>
         </>
       )}

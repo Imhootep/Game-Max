@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
+import { updateAdresse } from "../../actions/user.actions";
+import { updateMembre } from "../../actions/user.actions";
+import { updateJeux } from "../../actions/user.actions";
+
 import LeftNav from "../LeftNav";
 import { dateParser } from "../Utils";
 import FollowHandler from "./FollowHandler";
@@ -9,6 +13,9 @@ import UploadImg from "./UploadImg";
 const UpdateProfil = () => {
   const dispatch = useDispatch();
   const [bio, setBio] = useState("");
+  const [adresse, setAdresse] = useState("")
+  const [membres, setMembres] = useState("")
+  const [jeux, setJeux] = useState("")
   const [updateForm, setUpdateForm] = useState(false);
 
   const [followingPopup, setFollowingPopup] = useState(false);
@@ -21,6 +28,9 @@ const UpdateProfil = () => {
   //fonction pour mise à jour de la bio
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, bio));
+    dispatch(updateAdresse(userData._id, adresse));
+    dispatch(updateMembre(userData._id, membres));
+    dispatch(updateJeux(userData._id, jeux));
     setUpdateForm(false);
   };
 
@@ -42,7 +52,16 @@ const UpdateProfil = () => {
                 <p> Pseudo: {userData.pseudo} </p>
                 <p> Email: {userData.email} </p>
                 <p onClick={() => setUpdateForm(!updateForm)}>
-                  Adresse: {userData.bio}
+                  Bio: {userData.bio}
+                </p>
+                <p onClick={() => setUpdateForm(!updateForm)}>
+                  Adresse: {userData.adresse}
+                </p>
+                <p onClick={() => setUpdateForm(!updateForm)}>
+                  Membres: {userData.membres}
+                </p>
+                <p onClick={() => setUpdateForm(!updateForm)}>
+                  Jeux: {userData.jeux}
                 </p>
                 <div></div>
                 <button onClick={() => setUpdateForm(!updateForm)}>
@@ -55,7 +74,26 @@ const UpdateProfil = () => {
                 <textarea
                   type="text"
                   defaultValue={userData.bio}
+                  placeholder="Bio"
                   onChange={(e) => setBio(e.target.value)}
+                ></textarea>
+                <textarea
+                  type="text"
+                  defaultValue={userData.adresse}
+                  placeholder="Adresse"
+                  onChange={(e) => setAdresse(e.target.value)}
+                ></textarea>
+                <textarea
+                  type="text"
+                  defaultValue={userData.membres}
+                  placeholder="Membres"
+                  onChange={(e) => setMembres(e.target.value)}
+                ></textarea>
+                <textarea
+                  type="text"
+                  defaultValue={userData.jeux}
+                  placeholder="Jeux"
+                  onChange={(e) => setJeux(e.target.value)}
                 ></textarea>
                 <button onClick={handleUpdate}>Valider modification </button>
               </>
