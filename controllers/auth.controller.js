@@ -2,7 +2,7 @@ const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const { signUpErrors, signInErrors } = require('../utils/errors.utils');
 
-const maxAge = 3 * 24 * 60 * 60 * 1000;
+const maxAge = 24 * 60 * 60 * 1000;
 
 const createToken = (id) => {
   return jwt.sign({id}, process.env.TOKEN_SECRET, {
@@ -12,9 +12,11 @@ const createToken = (id) => {
 
 module.exports.signUp = async (req, res) => {
   const {pseudo, email, password} = req.body
+  const isAdmin = false;
+  const role = "";
 
   try {
-    const user = await UserModel.create({pseudo, email, password });
+    const user = await UserModel.create({pseudo, email, password, role, isAdmin });
     res.status(201).json({ user: user._id});
   }
   catch(err) {
