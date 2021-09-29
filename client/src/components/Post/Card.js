@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { isEmpty } from "../Utils";
+import { dateParser2, isEmpty } from "../Utils";
 
 const Card = ({ post }) => {
   //on appelle post en props
@@ -35,22 +35,19 @@ const Card = ({ post }) => {
           </div>
           <div className="card-right">
             <div className="card-header">
-              <div className="card-header">
+              <div className="pseudo">
                   <h3> {
                     usersData
                       .map((user) => {
-                        if (user._id === post.posterId) {
-                            console.log("text")
-                            console.log(user)
+                        if (user._id === post.posterId)
                             return user.pseudo
-                        }
                         else return null;
                       })
                       }
                 
                   </h3>
               </div>
-                      
+                 <span>{dateParser2(post.createdAt)}</span>     
             </div>
           </div>
         </>
