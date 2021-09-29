@@ -17,6 +17,7 @@ module.exports.userInfo = (req, res) => {
 };
 
 module.exports.updateUser = async (req, res) => {
+  console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
