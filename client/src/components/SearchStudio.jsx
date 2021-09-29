@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 // import { NavLink } from 'react-router-dom';
-import { UidContext } from './AppContext';
+// import { UidContext } from './AppContext';
 // import Logout from './Log/Logout';
 
 import arrowup from '../img/arrowup.png';
