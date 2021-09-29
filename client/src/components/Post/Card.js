@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { isEmpty } from "../Utils";
+import { dateParser2, isEmpty } from "../Utils";
+import FollowHandler from "../profil/FollowHandler";
 
 const Card = ({ post }) => {
   //on appelle post en props
-  console.log(post)
+  console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
-//   const userData = useSelector((state) => state.userReducer);
+  const userData = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -21,36 +22,50 @@ const Card = ({ post }) => {
         <>
           <div className="card-left">
             <img
-              src={
-                usersData
-                  .map((user) => {
-                      
-                    if (user._id === post.posterId) return user.picture;
-                    else return null;
-                  })
-                  .join("")
-              }
+              src={usersData
+                .map((user) => {
+                  if (user._id === post.posterId) return user.picture;
+                  else return null;
+                })
+                .join("")}
               alt="poster-pic"
             />
           </div>
           <div className="card-right">
             <div className="card-header">
-              <div className="card-header">
-                  <h3> {
-                    usersData
-                      .map((user) => {
-                        if (user._id === post.posterId) {
-                            console.log("text")
-                            console.log(user)
-                            return user.pseudo
-                        }
-                        else return null;
-                      })
-                      }
-                
-                  </h3>
+              <div className="pseudo">
+                <h3>
+                  {" "}
+                  {usersData.map((user) => {
+                    if (user._id === post.posterId) return user.pseudo;
+                    else return null;
+                  })}
+                </h3>
+                {post.posterId !== userData._id && (
+                  <FollowHandler idToFollow={post.posterId} type={"card"} />
+                )}
               </div>
+              <span>{dateParser2(post.createdAt)}</span>
+            </div>
+            {post.picture && (
+              <img src={post.picture} alt="card-pic" className="card-pic" />
+            )}
+            {post.video && (
+              <iframe
+                width="500"
+                height="300"
+                src={post.video}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={post._id}
+              ></iframe>
+            )}
+            <p>{post.message}</p>
+            <div className="card-footer">
+              <div className="comment-icon">
 
+              </div>
             </div>
           </div>
         </>

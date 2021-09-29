@@ -54,6 +54,13 @@ const userSchema = new mongoose.Schema(
     },
     likes: {
       type: [String]
+    },
+    role: {
+      type: String,
+      max: 1024,
+    },
+    isAdmin: {
+      type: Boolean,
     }
   },
   {
