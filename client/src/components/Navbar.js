@@ -3,6 +3,10 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { UidContext } from './AppContext';
 import Logout from './Log/Logout';
+import discord from '../img/DiscordW.svg'
+import instagram from '../img/instagram.svg'
+import utube from '../img/youtube.svg'
+
 
 
 const Navbar = () => {
@@ -17,7 +21,10 @@ const Navbar = () => {
                 <div className="nav-logo">
                 <NavLink exact to ="/home">
                     <div className="nav-logo">
-                        <img className="icon-navBar" src="../img/logo-blanc.png" alt="logo" />
+                        <img className="icon-navBar" src="../img/Logo-Blanc.png" alt="logo" />
+                        <img className="icon-navBar2" src={instagram} alt="logo" />
+                        <img className="icon-navBar2" src={utube} alt="logo" />
+                        <img className="icon-navBar2" src={discord} alt="logo" />
                         <h3>GameMax App</h3>
                         
 

@@ -50,7 +50,7 @@ const Card = ({ post }) => {
                 
                   </h3>
               </div>
-
+                      
             </div>
           </div>
         </>

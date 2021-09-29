@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 import logo from '../../img/logo2.png'
-import controller from '../../img/0125.png'
+import controller from '../../img/manette.png'
 
 const Log = ( props) => {
 
