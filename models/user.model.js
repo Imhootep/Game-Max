@@ -43,8 +43,7 @@ const userSchema = new mongoose.Schema(
       max: 1024,
     },
     membres :{
-      type: String,
-      max: 1024,
+      type: [String]
     },
     followers: {
       type: [String]

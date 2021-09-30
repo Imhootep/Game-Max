@@ -104,6 +104,7 @@ const SearchStudio = () => {
                             <div className="sectionProfil">
                                 <b>Membres</b>
                                 <div>{val.membres}</div>
+                                
                             </div>
                             <div className="sectionProfil">
                                 <b>Jeux</b>
@@ -111,7 +112,7 @@ const SearchStudio = () => {
                             </div>
                             <div className="sectionProfil">
                                 <b>Réseaux</b>
-                                <div>{val.website}</div>
+                                {/* <div>{val.website}</div> */}
                                 <div>{val.social}</div>
                             </div>
                         </div> 
