@@ -47,7 +47,7 @@ export const uploadPicture = (data, id) => {
 
 //-------------------------MODIF DE LA BIO
 export const updateBio = (userId, {bio, adresse, membres, jeux}) => {
-  console.log(bio, adresse)
+  console.log(bio, adresse, membres, jeux)
   return (dispatch) => {
     return axios({
       //modif de la BIO

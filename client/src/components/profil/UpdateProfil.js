@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateBio } from "../../actions/user.actions";
-
-
+import { useSelector } from "react-redux";
+// import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
 import { dateParser } from "../Utils";
 import FollowHandler from "./FollowHandler";
+import UpdateBio from "./UpdateBio";
 import UploadImg from "./UploadImg";
 
 const UpdateProfil = () => {
@@ -14,25 +13,8 @@ const UpdateProfil = () => {
   const userData = useSelector((state) => state.userReducer);
   const usersData = useSelector((state) => state.usersReducer);
 
-
-  
-  const dispatch = useDispatch();
-  const [bio, setBio] = useState("");
-  const [adresse, setAdresse] = useState("")
-  const [membres, setMembres] = useState("")
-  const [jeux, setJeux] = useState("")
-  const [updateForm, setUpdateForm] = useState(false);
-
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
-
-
-  
-  //fonction pour mise à jour de la bio
-  const handleUpdate = () => {
-    dispatch(updateBio(userData._id, {bio, adresse, membres, jeux}));
-    setUpdateForm(false);
-  };
 
   return (
     <div className="profil-container">
@@ -45,7 +27,8 @@ const UpdateProfil = () => {
           <UploadImg />
         </div>
         <div className="right-part">
-          <div className="bio-update">
+          <UpdateBio/>
+          {/* <div className="bio-update">
             <h3> Profil </h3>
             {updateForm === false && (
               <>
@@ -115,7 +98,7 @@ const UpdateProfil = () => {
                 <button onClick={handleUpdate}>Valider modification </button>
               </>
             )}
-          </div>
+          </div> */}
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           <h5 onClick={() => setFollowingPopup(true)}>
             Abonnements: {userData.following ? userData.following.length : ""}
