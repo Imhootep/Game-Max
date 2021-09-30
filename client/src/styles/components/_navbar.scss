@@ -52,7 +52,13 @@ nav {
     .nav-logo{
       display: flex;
       justify-content: center;
+      height:50px;
       padding-left: 30px;
+
+      .socialProfil{
+        width: 100px;
+        padding: 10px 30px;
+      }
     }
     h3{
       padding: 10px 0 0 20px;
