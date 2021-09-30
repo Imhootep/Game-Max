@@ -28,77 +28,7 @@ const UpdateProfil = () => {
         </div>
         <div className="right-part">
           <UpdateBio/>
-          {/* <div className="bio-update">
-            <h3> Profil </h3>
-            {updateForm === false && (
-              <>
-                <p> Pseudo: {userData.pseudo} </p>
-                <p> Email: {userData.email} </p>
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Bio: {userData.bio}
-                </p>
-                </div> 
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Adresse: {userData.adresse}
-                </p>
-                </div>
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Membres: {userData.membres}
-                </p>
-                </div>
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Jeux: {userData.jeux}
-                </p>
-                </div>
-                <div></div>
-                <button onClick={() => setUpdateForm(!updateForm)}>
-                  Modifier profil
-                </button>
-              </>
-            )}
-            {updateForm && (
-              <>
-              <div>
-                <textarea
-                  type="text"
-                  placeholder="Bio"
-                  defaultValue={userData.bio}
-                  onChange={(e) => setBio(e.target.value)}
-                ></textarea>
-                </div>
-                <div>
-                <textarea
-                  type="text"
-                  placeholder="Adresse"
-                  defaultValue={userData.adresse}
-                  onChange={(e) => setAdresse(e.target.value)}
-                ></textarea>
-                </div>
-                <div>
-                <textarea
-                  type="text"
-                  placeholder="Membres"
-                  defaultValue={userData.membres}
-                  onChange={(e) => setMembres(e.target.value)}
-                ></textarea>
-                </div>
-                <div>
-                <textarea
-                  type="text"
-                  placeholder="Jeux"
-                  defaultValue={userData.jeux}
-                  onChange={(e) => setJeux(e.target.value)}
-                ></textarea>
-                </div>
-                
-                <button onClick={handleUpdate}>Valider modification </button>
-              </>
-            )}
-          </div> */}
+         
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           <h5 onClick={() => setFollowingPopup(true)}>
             Abonnements: {userData.following ? userData.following.length : ""}
