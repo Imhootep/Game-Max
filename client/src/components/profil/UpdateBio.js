@@ -1,112 +1,103 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateBio } from '../../actions/user.actions';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateBio } from "../../actions/user.actions";
 
 const UpdateBio = () => {
-
-  const userData = useSelector((state)=>state.userReducer);
-  
-
+  const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  const [bio, setBio] = useState("");
-  const [adresse, setAdresse] = useState("")
-  const [membres, setMembres] = useState("")
-  const [jeux, setJeux] = useState("")
-    //   if(userData.bio) setBio(userData.bio) 
-    //   if(userData.adresse) setAdresse(userData.adresse)
-    //   if(userData.membres) setMembres(userData.membres)
-    //   if(userData.jeux) setJeux(userData.jeux) 
-     
-    const [updateForm, setUpdateForm] = useState(false)
+  const [updateForm, setUpdateForm] = useState(false);
 
-   
-
-    //fonction pour mise à jour de la bio
+  //fonction pour mise à jour de la bio
   const handleUpdate = () => {
-    dispatch(updateBio(userData._id, {bio, adresse, membres, jeux}));
+    dispatch(updateBio(userData._id, { bio:userData.bio, adresse:userData.adresse, membres:userData.membres, jeux:userData.jeux }));
     setUpdateForm(false);
   };
 
-    return (
-        <div>
-            <div className="bio-update">
-            <h3> Profil </h3>
-            {updateForm === false && (
-              <>
-                <p> Pseudo: {userData.pseudo} </p>
-                <p> Email: {userData.email} </p>
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Bio: {userData.bio}
-                </p>
-                </div> 
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Adresse: {userData.adresse}
-                </p>
-                </div>
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Membres: {userData.membres}
-                </p>
-                </div>
-                <div>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Jeux: {userData.jeux}
-                </p>
-                </div>
-                <div></div>
-                <button onClick={() => setUpdateForm(!updateForm)}>
-                  Modifier profil
-                </button>
-              </>
-            )}
-            {updateForm && (
-              <>
-              <div>
-                <input
+  return (
+    <div>
+      <div className="bio-update">
+        <h2> Profil </h2>
+        {updateForm === false && (
+          <>
+            <h3>Pseudo</h3>
+            <p> {userData.pseudo} </p>
+            <h3>Email</h3>
+            <p> {userData.email} </p>
+            <div>
+            <h3>Bio</h3>
+              <p onClick={() => setUpdateForm(!updateForm)}>
+                 {userData.bio}
+              </p>
+            </div>
+            <div>
+            <h3>Adresse</h3>
+              <p onClick={() => setUpdateForm(!updateForm)}>
+                 {userData.adresse}
+              </p>
+            </div>
+            <div>
+            <h3>Membres</h3>
+              <p onClick={() => setUpdateForm(!updateForm)}>
+                {userData.membres}
+              </p>
+            </div>
+            <div>
+            <h3>Jeux</h3>
+              <p onClick={() => setUpdateForm(!updateForm)}>
+               {userData.jeux}
+              </p>
+            </div>
+            <div></div>
+            <button onClick={() => setUpdateForm(!updateForm)}>
+              Modifier profil
+            </button>
+          </>
+        )}
+        {updateForm && (
+          <>
+            <div>
+              <textarea
+                type="text"
+                className="updateForm"
+                defaultValue={userData.bio}
+                placeholder="Bio"
+                onChange={(e) => userData.bio=e.target.value}
+              ></textarea>
+            </div>
+            <div>
+              <textarea
+                type="text"
+                className="updateForm"
+                defaultValue={userData.adresse}
+                placeholder="Adresse"
+                onChange={(e) => userData.adresse=e.target.value}
+              ></textarea>
+            </div>
+            <div>
+              <textarea
+                type="text"
+                className="updateForm"
+                defaultValue={userData.membres}
+                placeholder="Membres"
+                onChange={(e) => userData.membres=e.target.value}
+              ></textarea>
+            </div>
+            <div>
+              <textarea
+                type="text"
+                className="updateForm"
+                defaultValue={userData.jeux}
+                placeholder="Jeux"
+                onChange={(e) => userData.jeux=e.target.value}
+              ></textarea>
+            </div>
 
-                  type="text"
-                  className="updateForm"
-                  defaultValue={userData.bio}
-                  placeholder="Bio"
-                  onChange={(e) => setBio(e.target.value)}
-                ></input>
-                </div>
-                <div>
-                <input
-                  type="text"
-                  className="updateForm"
-                  defaultValue={userData.adresse}
-                  placeholder="Adresse"
-                  onChange={(e) => setAdresse(e.target.value)}
-                ></input>
-                </div>
-                <div>
-                <input
-                  type="text"
-                  className="updateForm"
-                  defaultValue={userData.membres}
-                  placeholder="Membres"
-                  onChange={(e) => setMembres(e.target.value)}
-                ></input>
-                </div>
-                <div>
-                <input
-                  type="text"
-                  className="updateForm"
-                  defaultValue={userData.jeux}
-                  placeholder="Jeux"
-                  onChange={(e) => setJeux(e.target.value)}
-                ></input>
-                </div>
-                
-                <button onClick={handleUpdate}>Valider modification </button>
-              </>
-            )}
-          </div>
-        </div>
-    );
+            <button onClick={handleUpdate}>Valider modification </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default UpdateBio;
