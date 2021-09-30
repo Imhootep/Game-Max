@@ -7,8 +7,7 @@ import mail from '../img/mail.svg';
 import phone from '../img/phone.svg';
 import user2 from '../img/user2.svg';
 import description from '../img/description.svg';
-// import { isEmpty } from './Utils';
-import { dateParser, isEmpty } from "./Utils";
+import { dateParser } from "./Utils";
 
 
 
