@@ -15,6 +15,7 @@ const UpdateBio = () => {
         adresse: userData.adresse,
         membres: userData.membres,
         jeux: userData.jeux,
+        social: userData.social,
       })
     );
     setUpdateForm(false);
@@ -64,6 +65,14 @@ const UpdateBio = () => {
                   <h3>Jeux</h3>
                   <p onClick={() => setUpdateForm(!updateForm)}>
                     {userData.jeux}
+                  </p>
+                </div>
+                </div>
+                <div className="profil-update-box1">
+                <div>
+                  <h3>Réseaux Sociaux</h3>
+                  <p onClick={() => setUpdateForm(!updateForm)}>
+                    {userData.social}
                   </p>
                 </div>
               </div>
@@ -118,6 +127,16 @@ const UpdateBio = () => {
                 defaultValue={userData.jeux}
                 placeholder="Jeux"
                 onChange={(e) => (userData.jeux = e.target.value)}
+              ></textarea>
+            </div>
+            <div>
+              <h3>Réseaux Sociaux</h3>
+              <textarea
+                type="text"
+                className="updateForm"
+                defaultValue={userData.social}
+                placeholder="Réseaux Sociaux"
+                onChange={(e) => (userData.social = e.target.value)}
               ></textarea>
             </div>
 
