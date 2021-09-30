@@ -17,7 +17,6 @@ const SearchStudio = () => {
     const dispatch = useDispatch();
     const user = useSelector((state)=> state.userReducer)
     const users = useSelector((state) => state.usersReducer);
-
     const newProfilActif =(data) => {
         console.log("profil actif ici")
         console.log(data)
@@ -64,7 +63,7 @@ const SearchStudio = () => {
                 {/* <button><span>Rechercher</span></button> */}
                 <button onClick={(e)=>clearSearch()}><span>Vider</span></button>
             </div>
-            {users.map((val)=>{
+            {users.sort((a, b) => a.timeM > b.timeM ? 1:-1).map((val)=>{
             return(
                 <>
                     <div className={((val._id === user._id && profilActif === undefined) || val._id === profilActif) ? "firstBlock" : "profilsBlock" }>
