@@ -95,8 +95,44 @@
     // border-bottom:1px solid red;
   }
 
-  .RoleAdmin{
-    color:red !important;
+  .boss{
+    color:#ff7675 !important;
+  }
+
+  .borderboss{
+    border-color:#ff7675 !important;
+  }
+
+  .queen{
+    color:#00b894 !important;
+  }
+
+  .borderqueen{
+    border-color:#00b894 !important;
+  }
+
+  .testeur{
+    color:#74b9ff;
+  }
+
+  .bordertesteur{
+    border-color:#74b9ff !important;
+  }
+
+  .patron{
+    color:#fd79a8;
+  }
+
+  .borderpatron{
+    border-color:#fd79a8 !important;
+  }
+
+  .partenaire{
+    color:#ffeaa7;
+  }
+
+  .borderpartenaire{
+    border-color:#ffeaa7 !important;
   }
 
   .sectionProfil{
@@ -137,23 +173,23 @@
   order: 2;
 }
 
-.sectionProfil{
-  width:24%;
-  min-width:250px;
-  margin: 20px 0 0 0;
+// .sectionProfil{
+//   width:24%;
+//   min-width:250px;
+//   margin: 20px 0 0 0;
 
-}
+// }
 
-.sectionProfil:not(:first-child){
-  padding: 0 0 0 10px;
+// .sectionProfil:not(:first-child){
+//   padding: 0 0 0 10px;
 
-  /* border: 0px solid blue; */
-  border-bottom-width: 1px;
-  -webkit-box-shadow: -5px 4px 0px -4px black;
-     -moz-box-shadow: -5px 4px 0px -4px black;
-          box-shadow: -5px 4px 0px -4px black;
+//   /* border: 0px solid blue; */
+//   border-bottom-width: 1px;
+//   -webkit-box-shadow: -5px 4px 0px -4px black;
+//      -moz-box-shadow: -5px 4px 0px -4px black;
+//           box-shadow: -5px 4px 0px -4px black;
 
-}
+// }
 
 
 .modifyProfil{
@@ -195,7 +231,8 @@
 }
 
 .socialProfil svg{
-  fill: white;
+  // fill: white;
+  fill:#8c4d94;
   width: 35px;
   height: 35px;
   padding:10px;
@@ -208,6 +245,12 @@
 
 .avatarIcon{
   width:50px;
+}
+
+.littlePseudo{
+  vertical-align: top;
+  display: inline-block;
+  padding:15px 0 0 10px;
 }
 
 .profilIcon{
@@ -238,6 +281,14 @@
 
 .arrowup{
   width:20px;
+}
+
+.roleTitle{
+  margin:-20px auto 0;
+  background-color:white;
+  height:20px;
+  text-align: center;
+  width:50%;
 }
 }
 
