@@ -7,6 +7,7 @@ import mail from '../img/mail.svg';
 import phone from '../img/phone.svg';
 import user2 from '../img/user2.svg';
 import description from '../img/description.svg';
+import newStudio from '../img/new.svg';
 // import { isEmpty } from './Utils';
 import { dateParser, isEmpty } from "./Utils";
 
@@ -27,6 +28,31 @@ const SearchStudio = () => {
         setSearch("")
         document.getElementById('searchField').placeholder = 'Rechercher...';
     };
+
+    const compareDate = (date) => {
+
+        const date1 = date;
+        const date2 = Date();
+
+        // console.log(Date.parse(date1))
+        // console.log(Date.parse(date2))
+
+        // console.log(Date.parse(date1))
+        // console.log(Date.parse(date2))
+
+        // console.log(dateParser(date1))
+        // console.log(dateParser(date2))
+
+        const diffTime = Math.abs(Date.parse(date2) - Date.parse(date1))
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+        // console.log("ma difference de jours: ")
+        // console.log(diffDays)
+
+        return diffDays
+
+
+    }
 
     const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
     const [search, setSearch] = useState();
@@ -152,6 +178,8 @@ const SearchStudio = () => {
                             <div className="infosProfil">
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
                                 <div className="goProfil"  title={"afficher "+val.pseudo+" en grand"}  onClick={() => newProfilActif(val._id)}>
+                                    {/* {console.log(compareDate(val.createdAt)) } */}
+                                    {compareDate(val.createdAt) <= 7 ? <img src={newStudio} alt="nouveau studio" className="newStudio"/> : ''}
                                     <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                     <div><b> {val.pseudo}</b></div>
                                     <div>VOIR<img className="arrowup" src={arrowup} alt="arrow up"/></div>
