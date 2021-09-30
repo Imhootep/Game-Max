@@ -60,6 +60,14 @@ const userSchema = new mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
+    },
+    social: {
+      discord : { type: String },
+      twitter : { type: String },
+      youtube : { type: String },
+      facebook : { type: String },
+      instagram : { type: String },
+      twitch : { type: String }
     }
   },
   {
