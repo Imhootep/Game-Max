@@ -9,7 +9,7 @@ import user2 from '../img/user2.svg';
 import description from '../img/description.svg';
 import newStudio from '../img/new.svg';
 // import { isEmpty } from './Utils';
-import { dateParser, isEmpty } from "./Utils";
+import { dateParser } from "./Utils";
 
 
 
@@ -71,14 +71,14 @@ const SearchStudio = () => {
 
                         {(profilActif !== undefined && val._id === profilActif) ? 
                         //premier resultat
-                        <div className={(val.role == 'boss' ? "bigBlock adminBorder"  : "bigBlock" )}>
+                        <div className={(val.role === 'boss' ? "bigBlock adminBorder"  : "bigBlock" )}>
                             <div className="sectionProfil">
                                 <div className="bigBlockRole">
                                     <div>
                                         <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                         <b>{val.pseudo}</b>
                                     </div>
-                                    <div className={(val.role == 'boss' ? "Role RoleAdmin"  : "Role" )}>
+                                    <div className={(val.role === 'boss' ? "Role RoleAdmin"  : "Role" )}>
                                         {val.role}
                                     </div>
                                 </div>
@@ -121,14 +121,14 @@ const SearchStudio = () => {
                         //deuxieme resultat 
                         (val._id === user._id && profilActif === undefined) ?
                         
-                        <div className={(val.role == 'boss' ? "bigBlock adminBorder"  : "bigBlock" )}>
+                        <div className={(val.role === 'boss' ? "bigBlock adminBorder"  : "bigBlock" )}>
                             <div className="sectionProfil">
                                 <div className="bigBlockRole">
                                     <div>
                                         <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                         <b>{val.pseudo}</b>
                                     </div>
-                                    <div className={(val.role == 'boss' ? "Role RoleAdmin"  : "Role" )}>
+                                    <div className={(val.role === 'boss' ? "Role RoleAdmin"  : "Role" )}>
                                         {val.role}
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ const SearchStudio = () => {
                         ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 )
                         ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 ))
                         ?
-                        <div className={(val.role == 'boss' ? "littleBlock adminBorder"  : "littleBlock" )}>
+                        <div className={(val.role === 'boss' ? "littleBlock adminBorder"  : "littleBlock" )}>
                             <div className="infosProfil">
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
                                 <div className="goProfil"  title={"afficher "+val.pseudo+" en grand"}  onClick={() => newProfilActif(val._id)}>
