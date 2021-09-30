@@ -97,53 +97,54 @@
 
     //--- début partie styles de roles ---
 
-  .boss{
-    color:#ff7675 !important;
-  }
-
-  .borderboss{
-    border-color:#ff7675 !important;
-  }
-
-  .activeboss{
-    background-color: #ff7675;
-  }
-
-  .queen{
-    color:#00b894 !important;
-  }
-
-  .borderqueen{
-    border-color:#00b894 !important;
-  }
-
-  .testeur{
-    color:#74b9ff;
-  }
-
-  .bordertesteur{
-    border-color:#74b9ff !important;
-  }
-
-  .activetesteur{
-    background-color: #74b9ff;
-  }
-
-  .patron{
-    color:#fd79a8;
-  }
-
-  .borderpatron{
-    border-color:#fd79a8 !important;
-  }
-
   .partenaire{
-    color:#ffeaa7;
+    color:#c83575 !important;
   }
 
   .borderpartenaire{
-    border-color:#ffeaa7 !important;
+    border-color:#c83575 !important;
   }
+
+  .activepartenaire{
+    background-color: #c83575;
+  }
+
+  .sponsor{
+    color:#a2c037 !important;
+  }
+
+  .bordersponsor{
+    border-color:#a2c037 !important;
+  }
+
+  .activesponsor{
+    background-color: #a2c037;
+  }
+
+  .expert{
+    color:#009de0; //#74b9ff
+  }
+
+  .borderexpert{
+    border-color:#009de0 !important;
+  }
+
+  .activeexpert{
+    background-color: #009de0;
+  }
+
+  .studio{
+    color:#dc911b;
+  }
+
+  .borderstudio{
+    border-color:#dc911b !important;
+  }
+
+  .activestudio{
+    background-color: #dc911b;
+  }
+
   //--- fin partie styles de roles ---
 
   .sectionProfil{

@@ -64,8 +64,10 @@ const SearchStudio = () => {
         <div className="profilsContainer">
             <div className="searchBar">
                 <div>
-                    <button onClick={(e)=>searchSpecific("boss")} className={specificSearch === "boss" ? 'active'+specificSearch : ''}><span>Boss</span></button>
-                    <button onClick={(e)=>searchSpecific("testeur")} className={specificSearch === "testeur" ? 'active'+specificSearch : ''}><span>Testeur</span></button>
+                    <button onClick={(e)=>searchSpecific("partenaire")} className={specificSearch === "partenaire" ? 'active'+specificSearch : ''}><span>Partenaire</span></button>
+                    <button onClick={(e)=>searchSpecific("expert")} className={specificSearch === "expert" ? 'active'+specificSearch : ''}><span>Expert</span></button>
+                    <button onClick={(e)=>searchSpecific("sponsor")} className={specificSearch === "sponsor" ? 'active'+specificSearch : ''}><span>Sponsor</span></button>
+                    <button onClick={(e)=>searchSpecific("studio")} className={specificSearch === "studio" ? 'active'+specificSearch : ''}><span>Studio</span></button>
                 </div>
                 <div>
                     <input id="searchField" type="text" placeholder='Rechercher...' onChange={(e)=>setSearch(e.target.value)} value={search} onFocus={(e) => e.target.placeholder = ''} onBlur={(e) => e.target.placeholder = 'Rechercher...'}></input>
