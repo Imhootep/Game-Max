@@ -26,8 +26,8 @@ const UpdateProfil = () => {
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
 
-  
 
+  
   //fonction pour mise à jour de la bio
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, {bio, adresse, membres, jeux}));
@@ -82,32 +82,32 @@ const UpdateProfil = () => {
               <div>
                 <textarea
                   type="text"
-                  defaultValue={userData.bio}
                   placeholder="Bio"
+                  defaultValue={userData.bio}
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
                 </div>
                 <div>
                 <textarea
                   type="text"
-                  defaultValue={userData.adresse}
                   placeholder="Adresse"
+                  defaultValue={userData.adresse}
                   onChange={(e) => setAdresse(e.target.value)}
                 ></textarea>
                 </div>
                 <div>
                 <textarea
                   type="text"
-                  defaultValue={userData.membres}
                   placeholder="Membres"
+                  defaultValue={userData.membres}
                   onChange={(e) => setMembres(e.target.value)}
                 ></textarea>
                 </div>
                 <div>
                 <textarea
                   type="text"
-                  defaultValue={userData.jeux}
                   placeholder="Jeux"
+                  defaultValue={userData.jeux}
                   onChange={(e) => setJeux(e.target.value)}
                 ></textarea>
                 </div>
