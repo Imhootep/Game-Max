@@ -17,6 +17,11 @@ const SearchStudio = () => {
     const user = useSelector((state)=> state.userReducer)
     const users = useSelector((state) => state.usersReducer);
     const usersSorted = users.sort((a, b) => a.timeM > b.timeM ? 1:-1)
+
+    const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
+    const [search, setSearch] = useState();
+    const [specificSearch, setSpecificSearch] = useState();
+
     const newProfilActif =(data) => {
         console.log("profil actif ici")
         console.log(data)
@@ -26,42 +31,46 @@ const SearchStudio = () => {
     const clearSearch = () => {
         setSearch("")
         document.getElementById('searchField').placeholder = 'Rechercher...';
+        setSpecificSearch()
+    };
+
+    const searchSpecific = (data) => {
+
+        console.log("specific search: ")
+        console.log(specificSearch)
+
+        if(data === specificSearch){
+            setSpecificSearch()
+        }else{
+            setSpecificSearch(data)
+        }
+
+        
     };
 
     const compareDate = (date) => {
-
         const date1 = date;
         const date2 = Date();
-
-        // console.log(Date.parse(date1))
-        // console.log(Date.parse(date2))
-
-        // console.log(Date.parse(date1))
-        // console.log(Date.parse(date2))
-
-        // console.log(dateParser(date1))
-        // console.log(dateParser(date2))
 
         const diffTime = Math.abs(Date.parse(date2) - Date.parse(date1))
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
 
-        // console.log("ma difference de jours: ")
-        // console.log(diffDays)
-
         return diffDays
-
-
     }
 
-    const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
-    const [search, setSearch] = useState();
+   
 
     return (
         <div className="profilsContainer">
             <div className="searchBar">
-                <input id="searchField" type="text" placeholder='Rechercher...' onChange={(e)=>setSearch(e.target.value)} value={search} onFocus={(e) => e.target.placeholder = ''} onBlur={(e) => e.target.placeholder = 'Rechercher...'}></input>
-                {/* <button><span>Rechercher</span></button> */}
-                <button onClick={(e)=>clearSearch()}><span>Vider</span></button>
+                <div>
+                    <button onClick={(e)=>searchSpecific("boss")} className={specificSearch === "boss" ? 'active'+specificSearch : ''}><span>Boss</span></button>
+                    <button onClick={(e)=>searchSpecific("testeur")} className={specificSearch === "testeur" ? 'active'+specificSearch : ''}><span>Testeur</span></button>
+                </div>
+                <div>
+                    <input id="searchField" type="text" placeholder='Rechercher...' onChange={(e)=>setSearch(e.target.value)} value={search} onFocus={(e) => e.target.placeholder = ''} onBlur={(e) => e.target.placeholder = 'Rechercher...'}></input>
+                    <button onClick={(e)=>clearSearch()}><span>Vider</span></button>
+                </div>
             </div>
             {usersSorted.map((val)=>{
             return(
@@ -169,9 +178,10 @@ const SearchStudio = () => {
                         
                         : 
 
-                        (search === undefined || search ==='' 
-                        ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 )
-                        ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 ))
+                        (    (search === undefined && (specificSearch === undefined || specificSearch  === val.role.toLowerCase()))
+                        ||   (search === '' && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
+                        ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
+                        ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase())))
                         ?
                         <div className={"littleBlock border"+val.role.toLowerCase()}>
                             <div className="infosProfil">
