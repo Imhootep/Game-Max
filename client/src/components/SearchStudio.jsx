@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import arrowup from '../img/arrowup.png';
 import home2 from '../img/home2.svg';
@@ -12,7 +12,6 @@ import { dateParser } from "./Utils";
 
 
 const SearchStudio = () => {
-    const dispatch = useDispatch();
     const user = useSelector((state)=> state.userReducer)
     const users = useSelector((state) => state.usersReducer);
 
