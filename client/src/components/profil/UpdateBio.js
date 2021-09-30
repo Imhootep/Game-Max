@@ -19,6 +19,7 @@ const UpdateBio = () => {
       })
     );
     setUpdateForm(false);
+    
   };
 
   return (
