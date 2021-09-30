@@ -12,10 +12,10 @@ const UpdateBio = () => {
   const [adresse, setAdresse] = useState("")
   const [membres, setMembres] = useState("")
   const [jeux, setJeux] = useState("")
-      if(userData.bio) setBio(userData.bio) 
-      if(userData.adresse) setAdresse(userData.adresse)
-      if(userData.membres) setMembres(userData.membres)
-      if(userData.jeux) setJeux(userData.jeux) 
+    //   if(userData.bio) setBio(userData.bio) 
+    //   if(userData.adresse) setAdresse(userData.adresse)
+    //   if(userData.membres) setMembres(userData.membres)
+    //   if(userData.jeux) setJeux(userData.jeux) 
      
     const [updateForm, setUpdateForm] = useState(false)
 
