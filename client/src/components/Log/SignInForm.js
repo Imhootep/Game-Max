@@ -11,6 +11,7 @@ const SignInForm = () => {
         e.preventDefault();
 
         const emailError = document.querySelector('.email.error')
+        const validationError = document.querySelector('.validation.error')
         const passwordError = document.querySelector('.password.error')
 
         axios({
@@ -26,6 +27,7 @@ const SignInForm = () => {
             console.log(res);
             if(res.data.errors){
                 emailError.innerHTML = res.data.errors.email;
+                validationError.innerHTML = res.data.errors.validation;
                 passwordError.innerHTML = res.data.errors.password;
             } else {
                 window.location ='/home';
@@ -54,6 +56,7 @@ const SignInForm = () => {
                                 value={email}
                             />
                             <div className="email error"></div>
+                            <div className="validation error"></div>
                         </div> 
                         <div className="form-group">
                             <label className="formLabel" htmlFor="password">Mot de passe</label>  
