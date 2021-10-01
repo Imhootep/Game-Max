@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
+import { updatePost } from "../../actions/post.actions";
 
 const Card = ({ post }) => {
   //on appelle post en props
@@ -12,9 +13,13 @@ const Card = ({ post }) => {
   const [textUpdate, setTextUpdate] = useState(null);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch()
 
-  const updateItem = async () =>{
-    
+  const updateItem = () =>{
+    if(textUpdate) {
+       dispatch(updatePost(post._id, textUpdate))
+    }
+    setIsUpdated(false)
   }
 
   useEffect(() => {

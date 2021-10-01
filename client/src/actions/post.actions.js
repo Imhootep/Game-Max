@@ -52,7 +52,12 @@ export const updatePost = (postId, message) =>{
     return (dispatch) =>{
         return axios ({
             method:'put',
-            url:`${process.env.REACT_APP_API_URL}api/post/${postId}`
+            url:`${process.env.REACT_APP_API_URL}api/post/${postId}`,
+            data:{message}
         })
+        .then((res)=>{
+            dispatch({type: UPDATE_POST, payload:{message, postId}})
+        })
+        .catch((err)=>console.log(err))
     }
 }
