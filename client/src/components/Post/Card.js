@@ -4,6 +4,8 @@ import { dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
+import DeleteCard from "./DeleteCard";
+import CardComment from "./CardComment";
 
 const Card = ({ post }) => {
   //on appelle post en props
@@ -11,16 +13,17 @@ const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
+  const [showComment, setShowComment] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const updateItem = () =>{
-    if(textUpdate) {
-       dispatch(updatePost(post._id, textUpdate))
+  const updateItem = () => {
+    if (textUpdate) {
+      dispatch(updatePost(post._id, textUpdate));
     }
-    setIsUpdated(false)
-  }
+    setIsUpdated(false);
+  };
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -34,7 +37,8 @@ const Card = ({ post }) => {
         <>
           <div className="card-left">
             <img
-              src={usersData
+              src={ 
+                usersData
                 .map((user) => {
                   if (user._id === post.posterId) return user.picture;
                   else return null;
@@ -62,9 +66,9 @@ const Card = ({ post }) => {
             {isUpdated === false && <p>{post.message}</p>}
             {isUpdated && (
               <div className="update-post">
-                <textarea 
-                defaultValue={post.message}
-                onChange={(e)=>setTextUpdate(e.target.value)}
+                <textarea
+                  defaultValue={post.message}
+                  onChange={(e) => setTextUpdate(e.target.value)}
                 />
                 <div className="button-container">
                   <button className="btn" onClick={updateItem}>
@@ -89,22 +93,26 @@ const Card = ({ post }) => {
             )}
             {userData._id === post.posterId && (
               <div className="button-container">
-                <div onClick={()=>setIsUpdated(!isUpdated)}>
+                <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit-btn" />
-                  </div> 
-
+                </div>
+                <DeleteCard id={post._id} />
               </div>
             )}
-            
+
             <div className="card-footer">
               <div className="comment-icon">
-                <img src="./img/icons/message1.svg" alt="comment" />
+                <img
+                  onClick={() => setShowComment(!showComment)}
+                  src="./img/icons/message1.svg"
+                  alt="comment"
+                />
                 <span>{post.comments.length}</span>
               </div>
               <FavoriteButton post={post} />
-              <h6>gestion comments</h6>
+              <img src="./img/icons/share.svg" alt="share"/>
             </div>
-            
+            {showComment && <CardComment post={post} />}
           </div>
         </>
       )}

@@ -1,7 +1,7 @@
 .card-container {
   display: grid;
   grid-template-columns: 66px 1fr;
-  border: 2px solid $color-2;
+  border: 2px solid $color-5;
   margin: 10px;
   padding: 16px;
   border-radius: 20px;
@@ -160,13 +160,14 @@
       div {
         padding: 5px 9px;
         margin-left: 5px;
-        background: $color-2;
+        background: $color-5;
         border-radius: 50px;
         transition: 0.1s;
         cursor: pointer;
 
         &:hover {
           transform: scale(1.07);
+          background-color: $color-1;
         }
 
         img {
