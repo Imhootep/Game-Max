@@ -1,4 +1,10 @@
 {
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "name": "mern-project",
   "version": "1.0.0",
   "description": "",
