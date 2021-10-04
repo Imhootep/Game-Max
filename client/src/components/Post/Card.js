@@ -5,7 +5,7 @@ import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
-import CardComment from "./CardComment";
+import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
   //on appelle post en props
@@ -13,7 +13,7 @@ const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
-  const [showComment, setShowComment] = useState(false);
+  const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
@@ -103,7 +103,7 @@ const Card = ({ post }) => {
             <div className="card-footer">
               <div className="comment-icon">
                 <img
-                  onClick={() => setShowComment(!showComment)}
+                  onClick={() => setShowComments(!showComments)}
                   src="./img/icons/message1.svg"
                   alt="comment"
                 />
@@ -112,7 +112,7 @@ const Card = ({ post }) => {
               <FavoriteButton post={post} />
               <img src="./img/icons/share.svg" alt="share"/>
             </div>
-            {showComment && <CardComment post={post} />}
+            {showComments && <CardComments post={post} />}
           </div>
         </>
       )}
