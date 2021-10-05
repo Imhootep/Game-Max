@@ -16,7 +16,7 @@ module.exports.signUp = async (req, res) => {
   const role = "";
 
   try {
-    const user = await UserModel.create({pseudo, email, password, role, isAdmin });
+    const user = await UserModel.create({ pseudo, email, password, role, isAdmin });
     res.status(201).json({ user: user._id});
   }
   catch(err) {
