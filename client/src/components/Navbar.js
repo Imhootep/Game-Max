@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { UidContext } from './AppContext';
 import Logout from './Log/Logout';
-import discord from '../img/DiscordW.svg'
-import instagram from '../img/instagram.svg'
-import utube from '../img/youtube.svg'
+// import discord from '../img/DiscordW.svg'
+// import instagram from '../img/instagram.svg'
+// import utube from '../img/youtube.svg'
 
 
 
