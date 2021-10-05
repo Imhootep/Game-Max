@@ -4,6 +4,29 @@
         // flex-wrap: wrap;
         margin: 75px 0 14px 75px;
 
+        .adminBigBlock{
+            margin:0 0 50px 0;
+
+            #howToDoContent{
+                display:none;
+            }
+
+            .adminSubTitle{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0 50px 20px 0;
+            }
+
+            .howToDo{
+                cursor: pointer;
+            }
+
+            .howToDo:hover{
+                color:rgba(78, 39, 83, 0.4)
+            }
+        }
+
         .adminBlock{
             display: flex;
             flex-direction: row;
@@ -15,10 +38,26 @@
                 max-width: 300px;
                 min-width: 150px;
             }
+
+            
+        }
+
+        .noRole{
+            background-color: #fab1a0;
         }
 
         .adminRoleSelect{
             margin: 0 0 0 20px;
         }
+        
+        .adminIconEvent{
+            width:20px;
+            margin:0 10px 0 0;
+            cursor:pointer;
+        }
 
+        .adminIconEvent:hover{
+            background-color:rgba(140, 77, 148, 0.4);
+        }
 }
+
