@@ -10,7 +10,7 @@ const EditDeleteComment = ({ comment, postId }) => {
   const [text, setText] = useState("");
   const uid = useContext(UidContext);
   const dispatch = useDispatch();
-  const usersData = useSelector((state)=>state.usersReducer)
+  const userData = useSelector((state)=>state.userReducer)
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -24,14 +24,14 @@ const EditDeleteComment = ({ comment, postId }) => {
 
   const handleDelete = () => dispatch(deleteComment(postId, comment._id));
 
-  useEffect(() => {
-    const checkAdmin = () => {
-      if (usersData.isAdmin) {
-        setIsAdmin(true);
-      }
-    };
-    checkAdmin();
-  }, []);
+  // useEffect(() => {
+  //   const checkAdmin = () => {
+  //     if (usersData.isAdmin) {
+  //       setIsAdmin(true);
+  //     }
+  //   };
+  //   checkAdmin();
+  // }, []);
 
 
   useEffect(() => {
@@ -46,7 +46,9 @@ const EditDeleteComment = ({ comment, postId }) => {
 
   return (
     <div className="edit-comment">
-      {isAdmin &&(
+      {console.log("t es admin?")}
+      {console.log(userData.isAdmin)}
+      {userData.isAdmin === true ?
           <div className="btn">
           <span
             onClick={() => {
@@ -58,7 +60,7 @@ const EditDeleteComment = ({ comment, postId }) => {
             <img src="./img/icons/trash.svg" alt="delete" />
           </span>
         </div>
-      )}
+      : ''} 
       {isAuthor && edit === false && (
         <span onClick={() => setEdit(!edit)}>
           <img src="./img/icons/edit.svg" alt="edit-comment" />
