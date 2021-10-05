@@ -1,7 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const LeftNav = () => {
+    const user = useSelector((state)=> state.userReducer)
+
+    console.log('is admin?: ')
+    console.log(user.isAdmin)
+
     return (
         <div className="left-nav-container">
             <div className="icons">
@@ -17,6 +23,20 @@ const LeftNav = () => {
                     <NavLink to='/profil' exact activeClassName="active-left-nav">
                         <img src="./img/icons/user.svg" alt="home"/>
                     </NavLink>
+                    <br/>
+                    {
+                        user.isAdmin === true ?
+
+                        <NavLink to='/admin' exact activeClassName="active-left-nav">
+                            <img src="./img/icons/admin1.svg" alt="admin" className="NavImg"/>
+                        </NavLink>
+
+                        :
+
+                        ''
+
+                    }
+                    
                 </div>
             </div>
         </div>
