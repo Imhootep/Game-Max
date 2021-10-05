@@ -1,24 +1,38 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { editComment } from "../../actions/post.actions";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteComment, editComment } from "../../actions/post.actions";
 import { UidContext } from "../AppContext";
 
 const EditDeleteComment = ({ comment, postId }) => {
   const [isAuthor, setIsAuthor] = useState(false);
+  const [isAdmin, setIsAdmin]= useState(false);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState("");
   const uid = useContext(UidContext);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const usersData = useSelector((state)=>state.usersReducer)
 
   const handleEdit = (e) => {
-      e.preventDefault();
-      if(text) {
-          dispatch (editComment(postId, comment._id, text))
-          setText('');
-          setEdit(false)
-          window.location.reload()
-      }
+    e.preventDefault();
+    if (text) {
+      dispatch(editComment(postId, comment._id, text));
+      setText("");
+      setEdit(false);
+      // window.location.reload();
+    }
   };
+
+  const handleDelete = () => dispatch(deleteComment(postId, comment._id));
+
+  useEffect(() => {
+    const checkAdmin = () => {
+      if (usersData.isAdmin) {
+        setIsAdmin(true);
+      }
+    };
+    checkAdmin();
+  }, []);
+
 
   useEffect(() => {
     const checkAuthor = () => {
@@ -29,8 +43,22 @@ const EditDeleteComment = ({ comment, postId }) => {
     checkAuthor();
   }, [uid, comment.commenterId]);
 
+
   return (
     <div className="edit-comment">
+      {isAdmin &&(
+          <div className="btn">
+          <span
+            onClick={() => {
+              if (window.confirm("Voulez-vous supprimer ce commentaire?")) {
+                handleDelete();
+              }
+            }}
+          >
+            <img src="./img/icons/trash.svg" alt="delete" />
+          </span>
+        </div>
+      )}
       {isAuthor && edit === false && (
         <span onClick={() => setEdit(!edit)}>
           <img src="./img/icons/edit.svg" alt="edit-comment" />
@@ -48,8 +76,20 @@ const EditDeleteComment = ({ comment, postId }) => {
             onChange={(e) => setText(e.target.value)}
             defaultValue={comment.text}
           />
-          <br/>
-          <input type="submit" value="Valider modification"/>
+          <br />
+          <div className="btn">
+            <span
+              onClick={() => {
+                if (window.confirm("Voulez-vous supprimer ce commentaire?")) {
+                  handleDelete();
+                }
+              }}
+            >
+              <img src="./img/icons/trash.svg" alt="delete" />
+            </span>
+
+            <input type="submit" value="Valider modification" />
+          </div>
         </form>
       )}
     </div>

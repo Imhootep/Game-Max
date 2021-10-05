@@ -10,6 +10,8 @@ export const DELETE_POST = "DELETE_POST";
 //comments
 export const ADD_COMMENT = "ADD_COMMENT";
 export const EDIT_COMMENT = "EDIT_COMMENT";
+export const EDIT_COMMENT_ADMIN = "EDIT_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
 
 
 
@@ -104,6 +106,34 @@ export const editComment = (postId, commentId, text) =>{
     })
       .then((res) => {
         dispatch({ type: EDIT_COMMENT, payload: { postId, commentId, text } });
+      })
+      .catch((err) => console.log(err));
+  }
+} 
+
+export const editCommentAdmin = (postId, commentId) =>{
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
+      data: { commentId },
+    })
+      .then((res) => {
+        dispatch({ type: EDIT_COMMENT_ADMIN, payload: { postId, commentId } });
+      })
+      .catch((err) => console.log(err));
+  }
+} 
+
+export const deleteComment = (postId, commentId) =>{
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
+      data: { commentId },
+    })
+      .then((res) => {
+        dispatch({ type: DELETE_COMMENT, payload: { postId, commentId } });
       })
       .catch((err) => console.log(err));
   }
