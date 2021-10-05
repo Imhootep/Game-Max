@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getRoledUsers } from "../actions/users.actions";
 
 import arrowup from '../img/arrowup.png';
 import home2 from '../img/home2.svg';
@@ -15,14 +16,57 @@ import { dateParser } from "./Utils";
 
 const SearchStudio = () => {
 
-    
+    const dispatch = useDispatch ();
+
     const user = useSelector((state)=> state.userReducer)
     const users = useSelector((state) => state.usersReducer);
-    const usersSorted = users.sort((a, b) => a.timeM > b.timeM ? 1:-1)
+     const usersSorted = users.sort((a, b) => a.timeM > b.timeM ? 1:-1)
+
+    
 
     const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
     const [search, setSearch] = useState();
     const [specificSearch, setSpecificSearch] = useState();
+
+    // const mesrolesstp = () =>{
+    //     dispatch(
+    //         getRoledUsers(users._id, {
+    //         bio: users.bio,
+    //         adresse: users.adresse,
+    //         membres: users.membres,
+    //         jeux: users.jeux,
+    //         social: users.social
+    //       })
+    //     )
+    // }
+
+
+
+    // dispatch(
+    //     getRoledUsers(users._id, {
+    //     bio: users.bio,
+    //     adresse: users.adresse,
+    //     membres: users.membres,
+    //     jeux: users.jeux,
+    //     social: users.social
+    // })
+    // )
+
+
+    console.log('roles enculé:')
+    console.log(users)
+
+    
+    // const tamer =  dispatch(
+    //         getRoledUsers(users._id, {
+    //         bio: users.bio,
+    //         adresse: users.adresse,
+    //         membres: users.membres,
+    //         jeux: users.jeux,
+    //         social: users.social
+    //       })
+    //     )
+    
 
     const newProfilActif =(data) => {
         console.log("profil actif ici")
