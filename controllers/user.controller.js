@@ -24,6 +24,7 @@ module.exports.userInfo = (req, res) => {
   }).select("-password");
 };
 
+// Modification des données de l'utilisateur via le formulaire
 module.exports.updateUser = async (req, res) => {
   console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
@@ -52,6 +53,57 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
+// Disable : l'utilisateur est désactivé (variable isDisabled à "true")
+module.exports.setDisableUserTrue = async (req, res) => {
+  console.log(req.body)
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          isDisabled: true
+        },
+      },
+      { new: true, upsert: true, setDefaultsOnInsert: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+        if (err) return res.status(500).send({ message: err });
+      }
+    );
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+// Annulation du disable : l'utilisateur est réactivé (variable isDisabled remise à "false")
+module.exports.setDisableUserFalse = async (req, res) => {
+  console.log(req.body)
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          isDisabled: false
+        },
+      },
+      { new: true, upsert: true, setDefaultsOnInsert: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+        if (err) return res.status(500).send({ message: err });
+      }
+    );
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+// Suppression d'un utilisateur, peut être à modifier/enlever
 module.exports.deleteUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -64,6 +116,7 @@ module.exports.deleteUser = async (req, res) => {
   }
 };
 
+// Méthode de follow d'un utilisateur 
 module.exports.follow = async (req, res) => {
   if (
     !ObjectID.isValid(req.params.id) ||

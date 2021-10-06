@@ -16,7 +16,6 @@ module.exports.signUp = async (req, res) => {
   const isDisabled = false;
   const role = "";
 
-
   try {
     const user = await UserModel.create({ pseudo, email, password, role, isAdmin, isDisabled });
     res.status(201).json({ user: user._id});
