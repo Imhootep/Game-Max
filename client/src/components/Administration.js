@@ -114,7 +114,7 @@ const Administration = () => {
                 return(
                     <>
                     {val.isDisabled === true ?
-                    <div className="adminBlock">
+                    <div className="adminBlock disable">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
