@@ -3,9 +3,6 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
-// export const UPDATE_ADRESSE = "UPDATE_ADRESSE"
-// export const UPDATE_MEMBRE = "UPDATE_MEMBRE"
-// export const UPDATE_JEUX = "UPDATE_JEUX"
 export const FOLLOW_USER = "FOLLOW_USER"
 export const UNFOLLOW_USER = "UNFOLLOW_USER"
 
@@ -63,57 +60,6 @@ export const updateBio = (userId, {bio, adresse, membres, jeux, social}) => {
   };
 };
 
-
-// //-------------------------MODIF ADRESSE
-// export const updateAdresse = (userId, adresse) => {
-//   return (dispatch) => {
-//     return axios({
-//       //modif de adresse
-//       method: "put",
-//       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
-//       data: { adresse },
-//     })
-//       .then((res) => {
-//         dispatch({ type: UPDATE_ADRESSE, payload: adresse });
-//       })
-//       // catch de l'erreur si besoin
-//       .catch((err) => console.log(err));
-//   };
-// };
-
-// //-------------------------MODIF DE MEMBRES
-// export const updateMembre = (userId, membres) => {
-//   return (dispatch) => {
-//     return axios({
-//       //modif de Membres
-//       method: "put",
-//       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
-//       data: { membres },
-//     })
-//       .then((res) => {
-//         dispatch({ type: UPDATE_MEMBRE, payload: membres });
-//       })
-//       // catch de l'erreur si besoin
-//       .catch((err) => console.log(err));
-//   };
-// };
-
-// //-------------------------MODIF DE JEUX
-// export const updateJeux = (userId, jeux) => {
-//   return (dispatch) => {
-//     return axios({
-//       //modif de jeux
-//       method: "put",
-//       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
-//       data: { jeux },
-//     })
-//       .then((res) => {
-//         dispatch({ type: UPDATE_JEUX, payload: jeux });
-//       })
-//       // catch de l'erreur si besoin
-//       .catch((err) => console.log(err));
-//   };
-// };
 
 //-------------------------MODIF DE LA LISTE FOLLOW
 export const followUser =(followerId, idToFollow) =>{
