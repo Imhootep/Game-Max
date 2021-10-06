@@ -10,6 +10,7 @@ import pen from '../img/pen.svg';
 import cross from '../img/cross.svg';
 import cross2 from '../img/cross2.svg'; //choisir
 import thumb from '../img/thumb.svg';
+import info from '../img/info.svg';
 
 const Administration = () => {
 
@@ -42,8 +43,6 @@ const Administration = () => {
     }
 
     const validate = (id) => {
-        console.log("le role qui va etre envoyé et l'id:")
-        console.log(id, role)
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
@@ -54,7 +53,9 @@ const Administration = () => {
     
 
     const showHTD = () => {
-        if(document.getElementById("howToDoContent").style.display === "none"){
+        console.log("display style: ")
+        console.log(document.getElementById("howToDoContent").style.display)
+        if(document.getElementById("howToDoContent").style.display === "none" || document.getElementById("howToDoContent").style.display === '' || document.getElementById("howToDoContent").style.display === null){
             document.getElementById("howToDoContent").style.display = "block";
         }else{
             document.getElementById("howToDoContent").style.display = "none";
@@ -66,12 +67,28 @@ const Administration = () => {
         <div className="administrationContainer">
             <div className="adminBigBlock">
                 <div id="howToDoContent">
-                    Ceci est le block d'aide pour l'admin
+                    <p><b>Aide pour admin</b></p>
+                    <p>Cette section est divisée en trois parties:</p>
+                    <ol className="ordonnedList">
+                        <li>Utilisateurs en attentes</li>
+                        <li>Utilisateurs validés</li>
+                        <li>Utilisateurs désactivés</li>
+                    </ol>
+                    <p>
+                        1. Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. Pour leur donner accès il vous suffit de cliquer sur l'icone "V". Pour refuser la demande et donc supprimer leur compte cliquer sur "X"
+                    </p>
+                    <p>
+                        2. Ici sont répertoriés les utilisateurs qui ont créé un compte et ont été validé par un admin. Ils ont libre accès au site. Pour désactiver un compte cliquez sur le poubelle. Pour modifier le rôle d'un compte cliquez sur le crayon puis sur le "V".
+                    </p>
+                    <p>
+                        3. Ici sont répertoriés les utilisateurs qui ont été désactivés. Ils n'ont plus accès au site. Pour les réactiver, appuyez sur le pouce en l'air.
+                    </p>
                 </div>
                 <div className="adminSubTitle">
                     <b>Utilisateurs en attente</b>
                     <div  className="howToDo"  onClick={() => showHTD()}>
                         <b>Comment faire ?</b>
+                        <img src={info} alt="info" title="plus d'infos" className="adminIconEvent"/>
                     </div>
                 </div>
                 {users.map((val)=>{
@@ -124,7 +141,7 @@ const Administration = () => {
 
             <div className="adminBigBlock">
                 <div className="adminSubTitle">
-                    <b>Utilisateurs Désactivés</b>
+                    <b>Utilisateurs désactivés</b>
                 </div>
                 {users.map((val)=>{
                 return(
