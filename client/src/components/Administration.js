@@ -9,11 +9,13 @@ import bin from '../img/bin.svg';
 import pen from '../img/pen.svg';
 import cross from '../img/cross.svg';
 import cross2 from '../img/cross2.svg'; //choisir
+import thumb from '../img/thumb.svg';
 
 const Administration = () => {
 
     const dispatch = useDispatch ();
 
+    const user = useSelector((state) => state.userReducer);
     const users = useSelector((state) => state.usersReducer);
     dispatch(getUsers())
 
@@ -25,6 +27,15 @@ const Administration = () => {
             url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
           })
     }
+
+    const enable = (id) => {
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+          })
+    }
+
+    
 
     const showHTD = () => {
         if(document.getElementById("howToDoContent").style.display === "none"){
@@ -80,7 +91,7 @@ const Administration = () => {
                 {users.map((val)=>{
                 return(
                     <>
-                    {val.role !== '' ?
+                    {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
@@ -107,8 +118,7 @@ const Administration = () => {
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
-                            <img src={bin} alt="poubelle" title="désactiver" className="adminIconEvent"/>
-                            <img src={pen} alt="crayon" title="modifier" className="adminIconEvent"/>
+                            <img src={thumb} alt="poubelle" title="ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
                         </div>
                     </div>
 
