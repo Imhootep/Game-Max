@@ -24,14 +24,7 @@ const EditDeleteComment = ({ comment, postId }) => {
 
   const handleDelete = () => dispatch(deleteComment(postId, comment._id));
 
-  // useEffect(() => {
-  //   const checkAdmin = () => {
-  //     if (usersData.isAdmin) {
-  //       setIsAdmin(true);
-  //     }
-  //   };
-  //   checkAdmin();
-  // }, []);
+  
 
 
   useEffect(() => {
