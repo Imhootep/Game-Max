@@ -16,7 +16,7 @@ mongoose
 
 describe('Création d\'un user ', () => {
 
-    it('First user', async (done) => {
+    it.skip('First user', async (done) => {
 
         pseudo = "Modeti"
         email = "cammarata@test.com"
