@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
-import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
+// import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
 import bin from '../img/bin.svg';
