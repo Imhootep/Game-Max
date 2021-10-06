@@ -9,7 +9,21 @@
 
             #howToDoContent{
                 display:none;
+                background-color:#ffeaa7;
             }
+
+            ol li{
+                list-style-type:decimal !important;
+            }
+
+            .ordonnedList{
+                padding: 0 0 20px 40px;
+            }
+
+            p{
+                padding:0 0 0 10px;
+            }
+            
 
             .adminSubTitle{
                 display:flex;
