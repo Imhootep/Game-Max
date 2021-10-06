@@ -16,6 +16,7 @@ router.get("/all", userController.getAllUsers);
 router.get("/:id", userController.userInfo);
 router.patch("/disabled/:id", userController.setDisableUserTrue);
 router.patch("/enabled/:id", userController.setDisableUserFalse);
+router.patch("/role", userController.setRole);
 router.patch("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 router.patch("/follow/:id", userController.follow);
