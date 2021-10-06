@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { isEmpty } from "../Utils";
+import { timestampParser } from "../Utils";
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +76,21 @@ const NewPostForm = () => {
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
-
+            {message || postPicture || video.lentgh >20? (
+                <li className="card-container">
+                    <div className="card-left">
+                        <img src={userData.picture} alt="user-pic" />
+                    </div>
+                    <div className="card-right">
+                        <div className="card-header">
+                            <div className="pseudo">
+                                <h3>{userData.pseudo}</h3>
+                            </div>
+                            <span>{timestampParser(Date.now())}</span>
+                        </div>
+                    </div>
+                </li>
+            ) : null }
             <div className="footer-form">
               <div className="icon">
                 {isEmpty(video) && (
@@ -92,7 +107,7 @@ const NewPostForm = () => {
                 )}
               </div>
               <div className="event-form">
-              <input type="checkbox" onChange={(e)=> handleEvent(!event)} />
+              <input type="checkbox" onChange={()=> handleEvent(!event)} />
                 <p>Event</p>
                 <input type="date" onChange={(e)=> setDate(e.target.value)} value={date} />
                 <p>date</p>
@@ -115,7 +130,9 @@ const NewPostForm = () => {
               )}
             </div>
             <div className="btn-send">
+                {message || postPicture || event===true || date || video.length > 20 ?(
                 <button className="cancel" onClick={cancelPost}>Annuler le message</button>
+                ) : null }
                 <button className="send" onClick={handlePost}>Envoyer</button>
             </div>
           </div>

@@ -40,7 +40,7 @@ module.exports.updateUser = async (req, res) => {
           membres: req.body.membres,
           jeux: req.body.jeux,
           social: req.body.social
-        },
+        }
       },
       { new: true, upsert: true, setDefaultsOnInsert: true },
       (err, docs) => {
@@ -65,7 +65,7 @@ module.exports.setDisableUserTrue = async (req, res) => {
       {
         $set: {
           isDisabled: true
-        },
+        }
       },
       { new: true, upsert: true, setDefaultsOnInsert: true },
       (err, docs) => {
@@ -90,7 +90,32 @@ module.exports.setDisableUserFalse = async (req, res) => {
       {
         $set: {
           isDisabled: false
-        },
+        }
+      },
+      { new: true, upsert: true, setDefaultsOnInsert: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+        if (err) return res.status(500).send({ message: err });
+      }
+    );
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+// Modification du role d'un utilisateur (par l'admin)
+module.exports.setRole = async (req, res) => {
+  console.log(req.body)
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          role: req.body.role
+        }
       },
       { new: true, upsert: true, setDefaultsOnInsert: true },
       (err, docs) => {
