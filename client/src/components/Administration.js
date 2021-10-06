@@ -19,6 +19,12 @@ const Administration = () => {
     const users = useSelector((state) => state.usersReducer);
     dispatch(getUsers())
 
+    const [role,setRole] = useState('Studio');
+
+    const handleRole = (data) =>{
+        setRole(data);
+    }
+
     // const deleteQuote = ()=> dispatch(deletePost(props.id))
 
     const disable = (id) => {
@@ -32,6 +38,16 @@ const Administration = () => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+          })
+    }
+
+    const validate = (id) => {
+        console.log("le role qui va etre envoyé et l'id:")
+        console.log(id, role)
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
+            data: role
           })
     }
 
@@ -65,15 +81,15 @@ const Administration = () => {
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">
-                            <select className="adminRoleSelect">
-                                <option value="studio" selected>Studio</option>
-                                <option value="expert">Expert</option>
-                                <option value="sponsor">Sponsor</option>
-                                <option value="partenaire">Partenaire</option>
+                            <select className="adminRoleSelect" onChange={(e) => handleRole(e.target.value)}>
+                                <option value="Studio" selected>Studio</option>
+                                <option value="Expert">Expert</option>
+                                <option value="Sponsor">Sponsor</option>
+                                <option value="Partenaire">Partenaire</option>
                             </select>
                         </div>
                         <div className="adminSection">
-                            <img className="adminIconEvent" src={check} alt="add" title="valider"/>
+                            <img className="adminIconEvent" src={check} alt="add" title="valider" onClick={() => validate(val._id)}/>
                             <img className="adminIconEvent" src={cross2} alt="add" title="valider"/>
                         </div>
                     </div>
