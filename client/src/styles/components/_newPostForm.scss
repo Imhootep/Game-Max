@@ -135,7 +135,7 @@
         button {
           width: 190px;
           padding: 10px 20px;
-          background: $white;
+          background: $color-4;
           transition: 0.2s;
 
           &:hover {
@@ -177,20 +177,20 @@
             color: rgb(211, 206, 206);
           }
           .formation{
-            color: purple;
+            color:#8c4d94;
           }
          
           .GameWeek{
-            color: orange;
+            color: #dc911b;
           }
           .GameCafe{
-            color: rgb(59, 80, 107);
+            color: #009de0;
           }
           .Stream{
-            color: greenyellow;
+            color: #a2c037;
           }
           .Autre{
-            color: pink;
+            color: #c83575;
           }
         }
 
