@@ -19,7 +19,7 @@ const Administration = () => {
     const users = useSelector((state) => state.usersReducer);
     dispatch(getUsers())
 
-    const [role,setRole] = useState('Studio');
+    const [role,setRole] = useState("Studio");
 
     const handleRole = (data) =>{
         setRole(data);
@@ -47,7 +47,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
-            data: role
+            data: {role:role}
           })
     }
 
