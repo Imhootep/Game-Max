@@ -5,7 +5,7 @@ import { UidContext } from "../AppContext";
 
 const EditDeleteComment = ({ comment, postId }) => {
   const [isAuthor, setIsAuthor] = useState(false);
-  const [isAdmin, setIsAdmin]= useState(false);
+  // const [isAdmin, setIsAdmin]= useState(false);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState("");
   const uid = useContext(UidContext);
@@ -24,14 +24,7 @@ const EditDeleteComment = ({ comment, postId }) => {
 
   const handleDelete = () => dispatch(deleteComment(postId, comment._id));
 
-  // useEffect(() => {
-  //   const checkAdmin = () => {
-  //     if (usersData.isAdmin) {
-  //       setIsAdmin(true);
-  //     }
-  //   };
-  //   checkAdmin();
-  // }, []);
+  
 
 
   useEffect(() => {

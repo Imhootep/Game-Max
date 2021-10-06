@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
+import { getUsers} from "../actions/users.actions";
+import axios from 'axios';
+// import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
 import bin from '../img/bin.svg';
 import pen from '../img/pen.svg';
 import cross from '../img/cross.svg';
 import cross2 from '../img/cross2.svg'; //choisir
+import thumb from '../img/thumb.svg';
 
 const Administration = () => {
 
-    const users = useSelector((state) => state.usersReducer);
+    const dispatch = useDispatch ();
 
-    const disable = (data) => {
-        alert(data+' a été désactivé')
-        alert("Non j'déconne ça marche pas encore")
+    const user = useSelector((state) => state.userReducer);
+    const users = useSelector((state) => state.usersReducer);
+    dispatch(getUsers())
+
+    // const deleteQuote = ()=> dispatch(deletePost(props.id))
+
+    const disable = (id) => {
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
+          })
     }
+
+    const enable = (id) => {
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+          })
+    }
+
+    
 
     const showHTD = () => {
         if(document.getElementById("howToDoContent").style.display === "none"){
@@ -69,14 +90,18 @@ const Administration = () => {
                 </div>
                 {users.map((val)=>{
                 return(
+                    <>
+                    {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
-                            <img src={bin} alt="poubelle" title="désactiver" className="adminIconEvent" onClick={() => disable(val.pseudo)}/>
+                            <img src={bin} alt="poubelle" title="désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
                             <img src={pen} alt="crayon" title="modifier" className="adminIconEvent"/>
                         </div>
                     </div>
+                    : ''}
+                    </>
                     )          
                 })}
             </div>
@@ -93,8 +118,7 @@ const Administration = () => {
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
-                            <img src={bin} alt="poubelle" title="désactiver" className="adminIconEvent"/>
-                            <img src={pen} alt="crayon" title="modifier" className="adminIconEvent"/>
+                            <img src={thumb} alt="poubelle" title="ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
                         </div>
                     </div>
 
