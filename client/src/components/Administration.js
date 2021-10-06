@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
+import axios from 'axios';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
@@ -18,10 +19,11 @@ const Administration = () => {
 
     // const deleteQuote = ()=> dispatch(deletePost(props.id))
 
-    const disable = (data) => {
-        alert(data+' a été désactivé')
-        alert("Non j'déconne ça marche pas encore")
-        dispatch()
+    const disable = (id) => {
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
+          })
     }
 
     const showHTD = () => {
@@ -83,7 +85,7 @@ const Administration = () => {
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
-                            <img src={bin} alt="poubelle" title="désactiver" className="adminIconEvent" onClick={() => disable(val.pseudo)}/>
+                            <img src={bin} alt="poubelle" title="désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
                             <img src={pen} alt="crayon" title="modifier" className="adminIconEvent"/>
                         </div>
                     </div>
