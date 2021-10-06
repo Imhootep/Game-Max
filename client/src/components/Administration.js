@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
+import { getUsers} from "../actions/users.actions";
+// import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
 import bin from '../img/bin.svg';
@@ -9,11 +11,17 @@ import cross2 from '../img/cross2.svg'; //choisir
 
 const Administration = () => {
 
+    const dispatch = useDispatch ();
+
     const users = useSelector((state) => state.usersReducer);
+    dispatch(getUsers())
+
+    // const deleteQuote = ()=> dispatch(deletePost(props.id))
 
     const disable = (data) => {
         alert(data+' a été désactivé')
         alert("Non j'déconne ça marche pas encore")
+        dispatch()
     }
 
     const showHTD = () => {
@@ -69,6 +77,8 @@ const Administration = () => {
                 </div>
                 {users.map((val)=>{
                 return(
+                    <>
+                    {val.role !== '' ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
@@ -77,6 +87,8 @@ const Administration = () => {
                             <img src={pen} alt="crayon" title="modifier" className="adminIconEvent"/>
                         </div>
                     </div>
+                    : ''}
+                    </>
                     )          
                 })}
             </div>
