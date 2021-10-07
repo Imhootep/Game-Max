@@ -52,7 +52,13 @@ nav {
     .nav-logo{
       display: flex;
       justify-content: center;
+      height:50px;
       padding-left: 30px;
+
+      .socialProfil{
+        width: 100px;
+        padding: 10px 30px;
+      }
     }
     h3{
       padding: 10px 0 0 20px;
@@ -63,6 +69,11 @@ nav {
       max-height: 60px;
       max-width: 60px;
       padding-top: 5px;
+    }
+    .icon-navBar2{
+      max-width: 40px;
+      max-height: 40px;
+      margin: 10px 10px;
     }
 
     .welcomeNav{

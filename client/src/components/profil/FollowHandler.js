@@ -3,47 +3,46 @@ import { useDispatch, useSelector } from "react-redux";
 import { followUser, unfollowUser } from "../../actions/user.actions";
 import { isEmpty } from "../Utils";
 
-const FollowHandler = (idToFollow) => {
+const FollowHandler = ({ idToFollow, type }) => {
   const userData = useSelector((state) => state.userReducer);
   const [isFollowed, setIsFollowed] = useState(false);
-  const dispatch = useDispatch(); // avant de pouvoir utiliser redux
+  const dispatch = useDispatch();
 
+    // le follow
   const handleFollow = () => {
-    dispatch(followUser(userData._id, idToFollow))
-    //si on suit la personne le setIsFollowed doit être sur true
-    //avec ça le bouton va changer aussi
-    setIsFollowed(true)
+    dispatch(followUser(userData._id, idToFollow));
+    setIsFollowed(true);
   };
 
+    // le unfollow
   const handleUnfollow = () => {
-    dispatch(unfollowUser(userData._id, idToFollow))
-    //si on suit la personne le setIsFollowed doit être sur false
-    //avec ça le bouton va changer aussi et on ne le suit plus
-    setIsFollowed(false)
+    dispatch(unfollowUser(userData._id, idToFollow));
+    setIsFollowed(false);
   };
 
   useEffect(() => {
-    //on doit attendre que userData arrive pour lancer useEffect
     if (!isEmpty(userData.following)) {
       if (userData.following.includes(idToFollow)) {
         setIsFollowed(true);
       } else setIsFollowed(false);
     }
-    // quand on a le userData qui évolue, on relance le useEffect
   }, [userData, idToFollow]);
 
   return (
     <>
       {isFollowed && !isEmpty(userData) && (
-        //si click on ne suit plus
         <span onClick={handleUnfollow}>
-          <button className="unfollow-btn">Abonné</button>
+          {/* dans le cas d'une suggestion  */}
+          {type === "suggestion" && <button className="unfollow-btn">Abonné</button>}
+          {/* dans le cas d'une card (post) */}
+          {type === "card" && <img src="./img/icons/checked.svg" alt="checked"/>}
         </span>
       )}
       {isFollowed === false && !isEmpty(userData) && (
-        //si click on suit
         <span onClick={handleFollow}>
-          <button className="follow-btn">Suivre</button>
+          {/* idem que pour au dessus */}
+          {type === "suggestion" && <button className="follow-btn">Suivre</button>}
+          {type === "card" && <img src="./img/icons/check.svg" alt="check"/>}
         </span>
       )}
     </>

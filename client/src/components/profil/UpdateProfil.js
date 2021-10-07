@@ -1,28 +1,20 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateBio } from "../../actions/user.actions";
+import { useSelector } from "react-redux";
+// import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
 import { dateParser } from "../Utils";
 import FollowHandler from "./FollowHandler";
+import UpdateBio from "./UpdateBio";
 import UploadImg from "./UploadImg";
 
 const UpdateProfil = () => {
-  const dispatch = useDispatch();
-  const [bio, setBio] = useState("");
-  const [updateForm, setUpdateForm] = useState(false);
-
-  const [followingPopup, setFollowingPopup] = useState(false);
-  const [followersPopup, setFollowersPopup] = useState(false);
 
   //pour recup des données user et users
   const userData = useSelector((state) => state.userReducer);
   const usersData = useSelector((state) => state.usersReducer);
 
-  //fonction pour mise à jour de la bio
-  const handleUpdate = () => {
-    dispatch(updateBio(userData._id, bio));
-    setUpdateForm(false);
-  };
+  const [followingPopup, setFollowingPopup] = useState(false);
+  const [followersPopup, setFollowersPopup] = useState(false);
 
   return (
     <div className="profil-container">
@@ -35,32 +27,8 @@ const UpdateProfil = () => {
           <UploadImg />
         </div>
         <div className="right-part">
-          <div className="bio-update">
-            <h3> Profil </h3>
-            {updateForm === false && (
-              <>
-                <p> Pseudo: {userData.pseudo} </p>
-                <p> Email: {userData.email} </p>
-                <p onClick={() => setUpdateForm(!updateForm)}>
-                  Adresse: {userData.bio}
-                </p>
-                <div></div>
-                <button onClick={() => setUpdateForm(!updateForm)}>
-                  Modifier profil
-                </button>
-              </>
-            )}
-            {updateForm && (
-              <>
-                <textarea
-                  type="text"
-                  defaultValue={userData.bio}
-                  onChange={(e) => setBio(e.target.value)}
-                ></textarea>
-                <button onClick={handleUpdate}>Valider modification </button>
-              </>
-            )}
-          </div>
+          <UpdateBio/>
+         
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           <h5 onClick={() => setFollowingPopup(true)}>
             Abonnements: {userData.following ? userData.following.length : ""}
@@ -107,7 +75,8 @@ const UpdateProfil = () => {
             <span className="cross" onClick={() => setFollowersPopup(false)}>
               &#10005;
             </span>
-            <ul>
+            <ul>{console.log("userdata qui marche")}
+            {console.log(usersData)}
               {usersData.map((user) => {
                 //on va chercher dans les profils
                 for (let i = 0; i < userData.followers.length; i++) {

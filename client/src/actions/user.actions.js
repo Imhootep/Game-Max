@@ -6,6 +6,7 @@ export const UPDATE_BIO = "UPDATE_BIO";
 export const FOLLOW_USER = "FOLLOW_USER"
 export const UNFOLLOW_USER = "UNFOLLOW_USER"
 
+
 //-------------------------RECUP DU USER
 export const getUser = (uid) => {
   // on met uid en paramètre pour qu'il se retrouve dans la requête plus bas
@@ -42,16 +43,17 @@ export const uploadPicture = (data, id) => {
 };
 
 //-------------------------MODIF DE LA BIO
-export const updateBio = (userId, bio) => {
+export const updateBio = (userId, {bio, adresse, membres, jeux, social}) => {
+  console.log(bio, adresse, membres, jeux, social)
   return (dispatch) => {
     return axios({
       //modif de la BIO
-      method: "put",
+      method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
-      data: { bio },
+      data: { bio, adresse, membres, jeux, social },
     })
       .then((res) => {
-        dispatch({ type: UPDATE_BIO, payload: bio });
+        dispatch({ type: UPDATE_BIO, payload: {bio, adresse, membres, jeux, social} });
       })
       // catch de l'erreur si besoin
       .catch((err) => console.log(err));
