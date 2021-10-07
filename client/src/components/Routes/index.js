@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+// import React, { useEffect, useState } from 'react';
 import React from 'react';
 import Home from '../../pages/Home';
 import Profil from '../../pages/Profil';
@@ -10,9 +11,9 @@ import Admin from '../../pages/Admin';
 
 
 
-const index = () => {
+const Index = () => {
 
-    // const user = useSelector((state)=> state.userReducer)
+    const user = useSelector((state)=> state.userReducer)
 
     return (
         <div>
@@ -22,8 +23,7 @@ const index = () => {
                     <Route path="/home" exact component={Home} />
                     <Route path="/profil" exact component={Profil} />
                     <Route path="/studio" exact component={Studio} />
-                    <Route path="/admin" exact component={Admin} />
-                    {/* {user.isAdmin === true ? <Route path="/admin" exact component={Admin} /> : ''} */}
+                    {user.isAdmin === true ? <Route path="/admin" exact component={Admin} /> : ''}
                     <Redirect to="/" />
                 </Switch>
             </Router>
@@ -31,4 +31,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;

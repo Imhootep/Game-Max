@@ -5,12 +5,18 @@ import axios from 'axios';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
+import disabledIco from '../img/disabled.svg';
 import bin from '../img/bin.svg';
 import pen from '../img/pen.svg';
 import cross from '../img/cross.svg';
 import cross2 from '../img/cross2.svg'; //choisir
 import thumb from '../img/thumb.svg';
 import info from '../img/info.svg';
+import skull from '../img/skull.svg';
+import skull2 from '../img/skull2.svg';
+import skull3 from '../img/skull3.svg';
+import skull4 from '../img/skull4.svg';
+import heart from '../img/heart.svg';
 
 const Administration = () => {
 
@@ -79,10 +85,13 @@ const Administration = () => {
     }
 
     const deleteUser = (id) => {
-        return axios({
-            method:"delete",
-            url: `${process.env.REACT_APP_API_URL}api/user/` + id
-          })
+
+        if (window.confirm("GAME OVER: Voulez-vous supprimer cet utilisateur de manière définitive?")) {
+            return axios({
+                method:"delete",
+                url: `${process.env.REACT_APP_API_URL}api/user/` + id
+              })
+        } 
     }
 
     
@@ -124,6 +133,17 @@ const Administration = () => {
                         <img src={info} alt="info" title="Plus d'infos" className="adminIconEvent"/>
                     </div>
                 </div>
+                <div className="adminBlock">
+                    <div className="adminSection adminSectionTitle">
+                        Nom
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Rôle
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Actions
+                    </div>
+                </div>
                 {users.map((val)=>{
                 return(
                     <>
@@ -154,6 +174,17 @@ const Administration = () => {
                 <div className="adminSubTitle">
                     <b>Utilisateurs validés</b>
                 </div>
+                <div className="adminBlock">
+                    <div className="adminSection adminSectionTitle">
+                        Nom
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Rôle
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Actions
+                    </div>
+                </div>
                 {users.map((val)=>{
                 return(
                     <>
@@ -169,7 +200,7 @@ const Administration = () => {
                             </select>    
                         </div>
                         <div className="adminSection">
-                            <img src={bin} alt="poubelle" title="Désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
+                            <img src={disabledIco} alt="poubelle" title="Désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
                             {modifying === val._id ?
                                 <img src={check} alt="valider" title="Valider la modification" className="adminIconEvent" onClick={() => setModify(val._id)}/>
                                 :
@@ -188,6 +219,17 @@ const Administration = () => {
                 <div className="adminSubTitle">
                     <b>Utilisateurs désactivés</b>
                 </div>
+                <div className="adminBlock">
+                    <div className="adminSection adminSectionTitle">
+                        Nom
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Rôle
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Actions
+                    </div>
+                </div>
                 {users.map((val)=>{
                 return(
                     <>
@@ -196,8 +238,8 @@ const Administration = () => {
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
-                            <img src={thumb} alt="poubelle" title="Ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
-                            <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"  onClick={() => deleteUser(val._id)}/>
+                            <img src={heart} alt="poubelle" title="Ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
+                            <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"  onClick={() => deleteUser(val._id)}/>
                         </div>
                     </div>
 

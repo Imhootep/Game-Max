@@ -2,9 +2,6 @@ const { signUpErrors, signInErrors } = require('../utils/errors.utils')
 const UserModel = require('../models/user.model')
 const controller = require('../controllers/auth.controller')
 const mongoose = require("mongoose");
-const { JsonWebTokenError } = require('jsonwebtoken');
-const jwt = require('jsonwebtoken');
-
 mongoose
   .connect(
     
