@@ -30,8 +30,9 @@ module.exports.signIn = async (req, res) => {
   const { email, password } = req.body
 
   try {
+    // const emailInsered = await UserModel.findOne(email);
     const user = await UserModel.login(email, password);
-    if(user.role == "") throw err
+    if(user.role == "" ) throw err
     if(user.role != ""){
       const token = createToken(user._id);
       res.cookie('jwt', token, { httpOnly: true, maxAge});
