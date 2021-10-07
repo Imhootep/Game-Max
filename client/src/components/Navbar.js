@@ -1,20 +1,35 @@
-import React, { useContext } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext,useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUsers} from "../actions/users.actions";
 import { NavLink } from 'react-router-dom';
 import { UidContext } from './AppContext';
 import Logout from './Log/Logout';
 // import discord from '../img/DiscordW.svg'
 // import instagram from '../img/instagram.svg'
 // import utube from '../img/youtube.svg'
+import exclamation from '../img/exclamation.svg'
 
 
 
 const Navbar = () => {
 
+    const dispatch = useDispatch ();
     const uid = useContext(UidContext)
     const userData = useSelector((state)=> state.userReducer)
-    
 
+    const users = useSelector((state)=> state.usersReducer)
+    useEffect(()=>{
+        dispatch(getUsers())
+    }, [])
+    
+    const [acceptUser,setAcceptUser] = useState(false);
+
+    users.map((val)=>{
+        if(acceptUser === false && val.role === ''){
+            setAcceptUser(true)
+        }
+    })
+    
     return (
         <nav>
             <div className="nav-container">
@@ -36,11 +51,10 @@ const Navbar = () => {
                                   <a href="https://www.twitch.tv/gamemaxbe/">  <svg><path fill="white" d="M2.5 2h24.875v17.125l-7.313 7.313h-5.438l-3.563 3.563h-3.75v-3.563H.623V6.813zm22.375 15.875V4.5H4.812v17.563h5.625v3.563L14 22.063h6.688zm-4.187-8.562v7.313h-2.5V9.313h2.5zm-6.688 0v7.313h-2.5V9.313H14z"></path></svg></a>
                                 </div> */}
                         <h3>GameMax App</h3>
-                        
-
                     </div>
 
                 </NavLink>
+                {acceptUser === true ? <a href="/admin" className="waitingUser"><img src={exclamation} alt="point dexclamation" title="Un nouvel utilisateur est en attente" className="exclamation" /></a> : ''}
 
             </div>
             <div className="welcomeNav">
