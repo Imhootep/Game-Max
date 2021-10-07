@@ -10,8 +10,9 @@ const SignInForm = () => {
     const handleLogin =(e)=>{
         e.preventDefault();
 
-        const emailError = document.querySelector('.email.error')
-        const passwordError = document.querySelector('.password.error')
+        const logError = document.querySelector('.log.error')
+        // const validationError = document.querySelector('.validation.error')
+        // const passwordError = document.querySelector('.password.error')
 
         axios({
             method:"post",
@@ -25,8 +26,9 @@ const SignInForm = () => {
         .then((res) =>{
             console.log(res);
             if(res.data.errors){
-                emailError.innerHTML = res.data.errors.email;
-                passwordError.innerHTML = res.data.errors.password;
+                // emailError.innerHTML = res.data.errors.email;
+                // validationError.innerHTML = res.data.errors.validation;
+                logError.innerHTML = res.data.errors.message;
             } else {
                 window.location ='/home';
             }
@@ -53,7 +55,7 @@ const SignInForm = () => {
                                 onChange={(e)=>setEmail(e.target.value)}
                                 value={email}
                             />
-                            <div className="email error"></div>
+                            <div className="log error"></div>
                         </div> 
                         <div className="form-group">
                             <label className="formLabel" htmlFor="password">Mot de passe</label>  
@@ -65,7 +67,6 @@ const SignInForm = () => {
                                 onChange={(e)=>setPassword(e.target.value)}
                                 value={password}
                             />
-                            <div className="password error"></div>
                         </div> 
                         <button className="loginBut" type="submit"  ><span>Sign In</span></button>
                     {/* <h4>{errorMessage}</h4> */}

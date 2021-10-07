@@ -1,13 +1,13 @@
 .card-container {
   display: grid;
-  grid-template-columns: 66px 1fr;
-  border: 2px solid $color-2;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid $color-5;
   margin: 10px;
   padding: 16px;
   border-radius: 20px;
   margin: 8px auto;
   position: relative;
-  min-height: 100px;
+  min-height: 80px;
 
   @media screen and(max-width: 590px) {
     grid-template-columns: 1fr;
@@ -48,6 +48,10 @@
   .card-right {
     @media screen and(max-width: 590px) {
       margin-left: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
     }
     .card-header {
       display: flex;
@@ -142,13 +146,14 @@
       }
     }
     .card-pic {
-      width: 100%;
+      width: 75%;
+      margin: auto;
       border-radius: 6px;
       margin-top: 12px;
       box-shadow: 0 0 3px rgba(51, 51, 51, 0.342);
     }
     iframe {
-      width: 100%;
+      width: 75%;
       min-height: 330px;
       border-radius: 6px;
       box-shadow: 0 0 3px rgba(51, 51, 51, 0.342);
@@ -160,13 +165,14 @@
       div {
         padding: 5px 9px;
         margin-left: 5px;
-        background: $color-2;
+        background: $color-5;
         border-radius: 50px;
         transition: 0.1s;
         cursor: pointer;
 
         &:hover {
           transform: scale(1.07);
+          background-color: $color-1;
         }
 
         img {
@@ -206,14 +212,15 @@
       }
     }
     .comment-container.client {
-      background: $color-4;
+      background: $color-1;
+      color: $white;
       border: none;
       border-radius: 20px 20px 6px 20px;
     }
     .comment-container {
       display: grid;
       grid-template-columns: 50px 1fr;
-      border: 1px solid $color-2;
+      border: 1px solid $color-4;
       padding: 15px;
       margin: 5px 0;
       border-radius: 20px 20px 20px 6px;
@@ -343,12 +350,19 @@
     .comment-form {
       margin-top: 6px;
 
+
+      input::placeholder{
+        color: $white;
+      }
+
       input[type="text"] {
         width: 100%;
-        background: $color-4;
+        background: $color-1;
+        color: $white;
         border-radius: 20px 20px 6px 20px;
         padding: 20px;
         font-size: 1.4rem;
+
 
         &:focus {
           box-shadow: 0 0 2px rgba(51, 51, 51, 0.5);
@@ -358,13 +372,13 @@
         margin-top: 4px;
         padding: 12px 16px;
         width: 120px;
-        background: $color-2;
+        background: $color-2 ;
         border-radius: 20px 6px 20px 20px;
         transition: 0.2s;
         float: right;
 
         &:hover {
-          background: $color-1;
+          background: $color-4;
           letter-spacing: 2px;
           width: 130px;
         }

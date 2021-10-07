@@ -3,11 +3,11 @@
   // border-radius: 20px;
   // padding: 20px;
   // width: 356px;
-  margin: 55px 0 14px 0;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap:wrap;
+  // margin: 55px 0 14px 0;
+  // display: flex;
+  // justify-content: flex-start;
+  // flex-direction: row;
+  // flex-wrap:wrap;
 
   h4 {
     font-size: 1.4rem;
@@ -65,6 +65,13 @@
     }
   }
 
+  .profilsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap; /* permet de passer a la ligne quand ya plus de place plutot que d'ecraser*/
+    margin: 75px 0 14px 75px;
+}
+
   .bigBlock{
     display: flex;
     flex-direction:row;
@@ -72,14 +79,84 @@
     border: 2px solid purple;
     border-radius: 20px;
     min-height: 200px;
-    margin: 0px 20px 20px 75px;
+    // margin: 0px 20px 20px 75px;
     padding:0 20px 20px 20px;
   }
+
+  .bigBlockRole{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding:0 20px 0 0;
+  }
+
+  .Role{
+    font-weight: bold;
+    // border-bottom:1px solid red;
+  }
+
+    //--- début partie styles de roles ---
+
+  .partenaire{
+    color:#c83575 !important;
+  }
+
+  .borderpartenaire{
+    border-color:#c83575 !important;
+  }
+
+  .activepartenaire{
+    background-color: #c83575;
+  }
+
+  .sponsor{
+    color:#a2c037 !important;
+  }
+
+  .bordersponsor{
+    border-color:#a2c037 !important;
+  }
+
+  .activesponsor{
+    background-color: #a2c037;
+  }
+
+  .expert{
+    color:#009de0; //#74b9ff
+  }
+
+  .borderexpert{
+    border-color:#009de0 !important;
+  }
+
+  .activeexpert{
+    background-color: #009de0;
+  }
+
+  .studio{
+    color:#dc911b;
+  }
+
+  .borderstudio{
+    border-color:#dc911b !important;
+  }
+
+  .activestudio{
+    background-color: #dc911b;
+  }
+
+  //--- fin partie styles de roles ---
 
   .sectionProfil{
     width:24%;
     min-width:250px;
     margin: 20px 0 0 0;
+
+    div{
+      b{
+        padding: 0 0 0 10px;
+      }
+    }
 
   }
 
@@ -93,11 +170,228 @@
             box-shadow: -5px 4px 0px -4px black;
 
 }
+.ligne{
+  margin: 0 0 50px 0;
+}
 
 .firstBlock{
   order: -1;
   width: 100%;
   flex-basis: 100%;
+  margin: 0 20px 20px 0 ;
 }
 
+.secondBlock{
+  order: 2;
 }
+
+// .sectionProfil{
+//   width:24%;
+//   min-width:250px;
+//   margin: 20px 0 0 0;
+
+// }
+
+// .sectionProfil:not(:first-child){
+//   padding: 0 0 0 10px;
+
+//   /* border: 0px solid blue; */
+//   border-bottom-width: 1px;
+//   -webkit-box-shadow: -5px 4px 0px -4px black;
+//      -moz-box-shadow: -5px 4px 0px -4px black;
+//           box-shadow: -5px 4px 0px -4px black;
+
+// }
+
+
+.modifyProfil{
+  width:5%;
+}
+
+.littleBlock{
+  border: 2px solid purple;
+  border-radius: 20px;
+  width: 300px;
+  height: 200px;
+  margin:20px 20px 0 0px;
+  padding:10px;
+  display: flex;
+  flex-direction: column;
+   /* align-content: stretch;  */
+  /*align-content: flex-end;*/
+}
+
+// .adminBorder{
+//   border: 2px solid red !important;
+// }
+
+.infosProfil{
+  flex-grow: 1; /* push le bloc links en bas */
+}
+
+.linksProfil{
+  min-height: 50px;
+  width: 100%;
+  background-color: rgba(140,77,148,0.3);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+}
+
+.socialProfil{
+  width: 25%;
+  text-align: center;
+}
+
+.socialProfil svg{
+  // fill: white;
+  fill:#8c4d94;
+  width: 35px;
+  height: 35px;
+  padding:10px;
+  box-sizing: unset;
+}
+
+.socialProfil svg:hover{
+  fill: rgba(250, 249, 250, 0.5)
+}
+
+.avatarIcon{
+  width:50px;
+}
+
+.littlePseudo{
+  vertical-align: top;
+  display: inline-block;
+  padding:15px 0 0 10px;
+}
+
+.profilIcon{
+  width:25px;
+  margin:0 10px 0 0;
+  /*mettre le fill #8c4d94 dans le fichier svg directement */
+}
+
+.goProfil{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0 0 10px 0;
+
+  div{
+    padding:10px 0 0 0;
+  }
+
+  .newStudio{
+    width:40px;
+    position:absolute;
+    margin:-25px 0 0 -25px;
+  }
+
+}
+
+
+.arrowup{
+  width:20px;
+}
+
+.roleTitle{
+  margin:-20px auto 0;
+  background-color:white;
+  height:20px;
+  text-align: center;
+  width:50%;
+}
+}
+
+.searchBar{
+  order: 0;
+  width:100%;
+  text-align: right;
+  padding: 0 50px 0 0;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  input{
+    max-width: 400px;
+    height: 40px;
+    margin-bottom: 0;
+    border: 1px solid #8c4d94;
+    border-radius: 20px;
+    padding:0 0 0 10px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  input:focus::-webkit-input-placeholder { color:transparent; }
+
+
+  input::placeholder{
+    font-size: 15px;
+    font-weight: bold;
+
+  }
+
+  button{
+    position:relative;
+    overflow: hidden;
+    height: 40px;
+    width:110px;
+    margin: 0 0 0 10px;
+    padding: 0 10px 0 10px;
+    background-color: #8c4d94;
+    border: none;
+    color: rgba(250, 249, 250, 0.8);
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  
+    span{
+      position:relative;
+      z-index: 2;
+    }
+  
+  }
+
+  
+
+  
+  button:after {
+    position:absolute;
+    content: '';
+    top:0;
+    left:0;
+    width:0;
+    height:100%;
+    background-color: rgba(78, 39, 83, 1);
+    border-radius: 20px;
+    transition: all 0.35s;
+  }
+  
+  button:hover{
+    z-index: 1000;
+  }
+  button:hover:after{
+    width:100%;
+  }
+
+}
+
+
+
+@media screen and(max-width: 1020px) {
+  .searchBar{
+    flex-direction: column !important;
+    div{
+      margin: 0 0 20px 0 !important;
+    }
+  }
+}
+
+
+
+
+

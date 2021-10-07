@@ -1,0 +1,81 @@
+.administrationContainer{
+        display: flex;
+        flex-direction: column;
+        // flex-wrap: wrap;
+        margin: 75px 0 14px 75px;
+
+        .adminBigBlock{
+            margin:0 0 50px 0;
+
+            #howToDoContent{
+                display:none;
+                background-color:#ffeaa7;
+            }
+
+            ol li{
+                list-style-type:decimal !important;
+            }
+
+            .ordonnedList{
+                padding: 0 0 20px 40px;
+            }
+
+            p{
+                padding:0 0 0 10px;
+            }
+            
+
+            .adminSubTitle{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0 50px 20px 0;
+            }
+
+            .howToDo{
+                cursor: pointer;
+            }
+
+            .howToDo:hover{
+                color:rgba(78, 39, 83, 0.4)
+            }
+        }
+
+        .adminBlock{
+            display: flex;
+            flex-direction: row;
+
+            .adminSection{
+                // flex-grow: 1;
+                // width:20%;
+                width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
+                max-width: 300px;
+                min-width: 150px;
+            }
+
+            
+        }
+
+        .disable{
+            background-color: #dfe6e9;
+        }
+
+        .noRole{
+            background-color: #fab1a0;
+        }
+
+        .adminRoleSelect{
+            margin: 0 0 0 20px;
+        }
+        
+        .adminIconEvent{
+            width:20px;
+            margin:0 10px 0 0;
+            cursor:pointer;
+        }
+
+        .adminIconEvent:hover{
+            background-color:rgba(140, 77, 148, 0.4);
+        }
+}
+

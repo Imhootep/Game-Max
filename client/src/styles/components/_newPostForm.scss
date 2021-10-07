@@ -1,9 +1,14 @@
+.post-container-stream{
+  border: solid 2px greenyellow !important;
+}
+
 .post-container {
   margin: 0 auto 0;
   padding: 16px 40px;
   border-radius: 20px;
   position: relative;
-  background: $color-4;
+  background: $color-2;
+  border: solid 2px $color-1;
 
   i {
     font-size: 1.5rem;
@@ -102,7 +107,7 @@
             font-size: 1.1rem;
           }
           img {
-            width: 100%;
+            width: 50%;
             border-radius: 6px;
             margin-top: 12px;
           }
@@ -134,7 +139,7 @@
         button {
           width: 190px;
           padding: 10px 20px;
-          background: $white;
+          background: $color-4;
           transition: 0.2s;
 
           &:hover {
@@ -158,8 +163,43 @@
       p {
         font-family: $font-3;
         margin-top: 4px;
-        color: red;
+        color: $color-3;
       }
+
+      .event-form{
+        display: flex;
+        flex-direction: row;
+
+        p{
+          margin: 10px;
+        }
+        .popup select{
+          margin-left: 10px;
+          margin-top: 10px;
+
+          .choice{
+            color: rgb(211, 206, 206);
+          }
+          .formation{
+            color:#8c4d94;
+          }
+         
+          .GameWeek{
+            color: #dc911b;
+          }
+          .GameCafe{
+            color: #009de0;
+          }
+          .Stream{
+            color: #a2c037;
+          }
+          .Autre{
+            color: #c83575;
+          }
+        }
+
+      }
+
       .btn-send {
         .cancel {
           border-radius: 20px;

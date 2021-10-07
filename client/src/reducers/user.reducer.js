@@ -1,6 +1,6 @@
 import { GET_USER, UPLOAD_PICTURE, UPDATE_BIO, FOLLOW_USER, UNFOLLOW_USER } from "../actions/user.actions";
 
-const initialState = {};
+const initialState = [];
 
 
 export default function userReducer(state=initialState, action){
@@ -15,7 +15,11 @@ export default function userReducer(state=initialState, action){
         case UPDATE_BIO:
             return {
                 ...state,
-                bio:action.payload
+                bio:action.payload.bio,
+                adresse:action.payload.adresse,
+                membres:action.payload.membres,
+                jeux:action.payload.jeux,
+                social:action.payload.social,
             };
             case FOLLOW_USER:
             return {
