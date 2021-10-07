@@ -6,7 +6,7 @@ import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
-import { deletePostAdmin } from "../../actions/post.actions";
+// import { deletePostAdmin } from "../../actions/post.actions";
 
 const Card = ({ post, postId }) => {
   //on appelle post en props
@@ -19,7 +19,7 @@ const Card = ({ post, postId }) => {
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
-  const handleDelete = () => dispatch(deletePostAdmin(postId));
+  // const handleDelete = () => dispatch(deletePostAdmin(postId));
 
   const updateItem = () => {
     if (textUpdate) {
