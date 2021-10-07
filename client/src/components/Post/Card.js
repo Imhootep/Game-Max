@@ -95,14 +95,14 @@ const Card = ({ post, postId }) => {
             )}
             
             {/* Quand on veut éditer son propre post id du post = id du user  */}
-            {userData._id === post.posterId && (
+            {userData._id === post.posterId || userData.isAdmin === true ? (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit-btn" />
                 </div>
                 <DeleteCard id={post._id} />
               </div>
-            )}
+            ) : "" }
 
             <div className="card-footer">
               <div className="comment-icon">
@@ -117,7 +117,7 @@ const Card = ({ post, postId }) => {
 
               <div>
                 {/* Quand on veut supprimer un post et qu'on est Admin  */}
-                {userData._id !== post.posterId && userData.isAdmin === true ?  (
+                {/* {userData._id !== post.posterId && userData.isAdmin === true ?  (
                   <div className="btn">
                     <span
                       onClick={() => {
@@ -135,7 +135,7 @@ const Card = ({ post, postId }) => {
                   </div>
                 ) : (
                   ""
-                )}
+                )} */}
               </div>
 
               <img src="./img/icons/share.svg" alt="share" />
