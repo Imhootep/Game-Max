@@ -1,5 +1,6 @@
 import {
   DELETE_POST,
+  DELETE_POST_ADMIN,
   GET_POSTS,
   LIKE_POST,
   UNLIKE_POST,
@@ -46,7 +47,8 @@ export default function postReducer(state = initialState, action) {
       });
     case DELETE_POST:
       return state.filter((post) => post._id !== action.payload.postId);
-
+    case DELETE_POST_ADMIN:
+      return state.filter((post) => post._id !== action.payload.postId);
     case EDIT_COMMENT:
       return state.map((post) => {
         if (post._id === action.payload.postId) {
@@ -65,17 +67,17 @@ export default function postReducer(state = initialState, action) {
           };
         } else return post;
       });
-      case EDIT_COMMENT_ADMIN:
-          return state.map((post) => {
-            if (post._id === action.payload.postId) {
-              return {
-                ...post,
-                comments: post.comments.filter(
-                  (comment) => comment._id !== action.payload.commentId
-                ),
-              };
-            } else return post;
-          });
+    case EDIT_COMMENT_ADMIN:
+      return state.map((post) => {
+        if (post._id === action.payload.postId) {
+          return {
+            ...post,
+            comments: post.comments.filter(
+              (comment) => comment._id !== action.payload.commentId
+            ),
+          };
+        } else return post;
+      });
     case DELETE_COMMENT:
       return state.map((post) => {
         if (post._id === action.payload.postId) {

@@ -6,8 +6,9 @@ import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
+import { deletePostAdmin } from "../../actions/post.actions";
 
-const Card = ({ post }) => {
+const Card = ({ post, postId }) => {
   //on appelle post en props
   // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,8 @@ const Card = ({ post }) => {
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+
+  const handleDelete = () => dispatch(deletePostAdmin(postId));
 
   const updateItem = () => {
     if (textUpdate) {
@@ -37,8 +40,7 @@ const Card = ({ post }) => {
         <>
           <div className="card-left">
             <img
-              src={ 
-                usersData
+              src={usersData
                 .map((user) => {
                   if (user._id === post.posterId) return user.picture;
                   else return null;
@@ -63,20 +65,6 @@ const Card = ({ post }) => {
               </div>
               <span>{dateParser2(post.createdAt)}</span>
             </div>
-            {isUpdated === false && <p>{post.message}</p>}
-            {isUpdated && (
-              <div className="update-post">
-                <textarea
-                  defaultValue={post.message}
-                  onChange={(e) => setTextUpdate(e.target.value)}
-                />
-                <div className="button-container">
-                  <button className="btn" onClick={updateItem}>
-                    Valider modification
-                  </button>
-                </div>
-              </div>
-            )}
             {post.picture && (
               <img src={post.picture} alt="card-pic" className="card-pic" />
             )}
@@ -91,6 +79,22 @@ const Card = ({ post }) => {
                 title={post._id}
               ></iframe>
             )}
+            {isUpdated === false && <p>{post.message}</p>}
+            {isUpdated && (
+              <div className="update-post">
+                <textarea
+                  defaultValue={post.message}
+                  onChange={(e) => setTextUpdate(e.target.value)}
+                />
+                <div className="button-container">
+                  <button className="btn" onClick={updateItem}>
+                    Valider modification
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {/* Quand on veut éditer son propre post id du post = id du user  */}
             {userData._id === post.posterId && (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
@@ -110,7 +114,31 @@ const Card = ({ post }) => {
                 <span>{post.comments.length}</span>
               </div>
               <FavoriteButton post={post} />
-              <img src="./img/icons/share.svg" alt="share"/>
+
+              <div>
+                {/* Quand on veut supprimer un post et qu'on est Admin  */}
+                {userData._id !== post.posterId && userData.isAdmin === true ?  (
+                  <div className="btn">
+                    <span
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Voulez-vous supprimer ce commentaire?"
+                          )
+                        ) {
+                          handleDelete();
+                        }
+                      }}
+                    >
+                      <img src="./img/icons/trash.svg" alt="delete" />
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+
+              <img src="./img/icons/share.svg" alt="share" />
             </div>
             {showComments && <CardComments post={post} />}
           </div>

@@ -7,6 +7,7 @@ export const LIKE_POST = "LIKE_POST";
 export const UNLIKE_POST = "UNLIKE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
+export const DELETE_POST_ADMIN = "DELETE_POST_ADMIN";
 
 //comments
 export const ADD_COMMENT = "ADD_COMMENT";
@@ -14,10 +15,7 @@ export const EDIT_COMMENT = "EDIT_COMMENT";
 export const EDIT_COMMENT_ADMIN = "EDIT_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
-
-
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
-
 
 export const getPosts = (num) => {
   return (dispatch) => {
@@ -100,8 +98,20 @@ export const deletePost = (postId) => {
   };
 };
 
+export const deletePostAdmin = (postId) => {
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/delete-post/${postId}`,
+    })
+      .then((res) => {
+        dispatch({ type: DELETE_POST_ADMIN, payload: { postId } });
+      })
+      .catch((err) => console.log(err));
+  };
+};
 
-export const addComment = (postId, commenterId, text, commenterPseudo) =>{
+export const addComment = (postId, commenterId, text, commenterPseudo) => {
   return (dispatch) => {
     return axios({
       method: "patch",
@@ -112,10 +122,10 @@ export const addComment = (postId, commenterId, text, commenterPseudo) =>{
         dispatch({ type: ADD_COMMENT, payload: { postId } });
       })
       .catch((err) => console.log(err));
-  }
-}
+  };
+};
 
-export const editComment = (postId, commentId, text) =>{
+export const editComment = (postId, commentId, text) => {
   return (dispatch) => {
     return axios({
       method: "patch",
@@ -126,10 +136,10 @@ export const editComment = (postId, commentId, text) =>{
         dispatch({ type: EDIT_COMMENT, payload: { postId, commentId, text } });
       })
       .catch((err) => console.log(err));
-  }
-} 
+  };
+};
 
-export const editCommentAdmin = (postId, commentId) =>{
+export const editCommentAdmin = (postId, commentId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
@@ -140,10 +150,10 @@ export const editCommentAdmin = (postId, commentId) =>{
         dispatch({ type: EDIT_COMMENT_ADMIN, payload: { postId, commentId } });
       })
       .catch((err) => console.log(err));
-  }
-} 
+  };
+};
 
-export const deleteComment = (postId, commentId) =>{
+export const deleteComment = (postId, commentId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
@@ -154,5 +164,5 @@ export const deleteComment = (postId, commentId) =>{
         dispatch({ type: DELETE_COMMENT, payload: { postId, commentId } });
       })
       .catch((err) => console.log(err));
-  }
-} 
+  };
+};
