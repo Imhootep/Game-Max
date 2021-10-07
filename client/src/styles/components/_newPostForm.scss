@@ -1,3 +1,7 @@
+.post-container-stream{
+  border: solid 2px greenyellow !important;
+}
+
 .post-container {
   margin: 0 auto 0;
   padding: 16px 40px;
@@ -103,7 +107,7 @@
             font-size: 1.1rem;
           }
           img {
-            width: 100%;
+            width: 50%;
             border-radius: 6px;
             margin-top: 12px;
           }

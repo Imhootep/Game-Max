@@ -9,7 +9,7 @@ import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
   //on appelle post en props
-  console.log(post);
+  // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
