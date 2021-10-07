@@ -9,7 +9,7 @@
   "name": "mern-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server",
     "test": "jest --testEnvironment=node --runInBand ./tests"
