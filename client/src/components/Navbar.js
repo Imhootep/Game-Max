@@ -54,7 +54,9 @@ const Navbar = () => {
                     </div>
 
                 </NavLink>
-                {acceptUser === true ? <a href="/admin" className="waitingUser"><img src={exclamation} alt="point dexclamation" title="Un nouvel utilisateur est en attente" className="exclamation" /></a> : ''}
+                <NavLink exact to="/admin" className="waitingUser">
+                    {acceptUser === true && userData.isAdmin === true ? <img src={exclamation} alt="point dexclamation" title="Un nouvel utilisateur est en attente" className="exclamation" /> : ''}
+                </NavLink>
 
             </div>
             <div className="welcomeNav">
