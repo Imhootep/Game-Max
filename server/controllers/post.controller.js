@@ -36,11 +36,7 @@ module.exports.createPost = async (req, res) => {
     await pipeline(
       req.file.stream,
       fs.createWriteStream(
-<<<<<<< HEAD
-        `${__dirname}/../../client/public/uploads/posts/${fileName}`
-=======
         `${__dirname}/../../../client/public/uploads/posts/ ${fileName}`
->>>>>>> develop
       )
     );
       } catch (err){
@@ -51,11 +47,7 @@ module.exports.createPost = async (req, res) => {
   const newPost = new postModel({
     posterId: req.body.posterId,
     message: req.body.message,
-<<<<<<< HEAD
-    picture: req.file !== null ? "/uploads/posts/" + fileName : "",
-=======
     picture: req.file !== null ? "./../../client/public/uploads/posts/" + fileName : "",
->>>>>>> develop
     video: req.body.video,
     likers: [],
     comments: [],
