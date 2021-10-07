@@ -19,16 +19,13 @@ module.exports.signUpErrors = (err) => {
 };
 
 module.exports.signInErrors = (err) => {
-  let errors = { email: '', password: '', validation: ''}
+  let errors = { message : ''}
 
-  if (err.message.includes("email")) 
-    errors.email = "Email inconnu";
-  
-  if (err.message.includes('password'))
-    errors.password = "Le mot de passe ne correspond pas"
+  if ((err.message.includes("email")) || (err.message.includes('password')))
+    errors.message = "Email ou mot de passe incorrect."
 
-  if (err.message.includes('err'))
-    errors.validation = "Le compte est en attente de validation par un administrateur"
+  if ((err.message.includes('err')) || (err.message.includes("email","password")))
+    errors.message = "Ce compte est invalide ou n'existe pas."
 
   return errors;
 }
