@@ -16,7 +16,7 @@ module.exports.readPost = (req, res) => {
 
 module.exports.createPost = async (req, res) => {
   let fileName;
-
+  console.log(req.file)
   if (req.file !== null) {
     try {
       if (
@@ -32,13 +32,16 @@ module.exports.createPost = async (req, res) => {
       return res.status(201).json({ errors });
     }
     fileName = req.body.posterId + Date.now() + ".jpg";
-
+    try {
     await pipeline(
       req.file.stream,
       fs.createWriteStream(
-        `${__dirname}/../client/public/uploads/posts/${fileName}`
+        `${__dirname}/../../client/public/uploads/posts/ ${fileName}`
       )
     );
+      } catch (err){
+        console.log(err)
+      }
   }
 
   const newPost = new postModel({
