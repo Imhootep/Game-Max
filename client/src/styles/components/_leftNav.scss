@@ -80,6 +80,68 @@
           }
         }
       }
+
+      #homeHover{
+        display: none;
+      }
+
+      a:hover #homeHover{
+        display: block;
+        position: absolute;
+        margin: 0 0 0 50px;
+        background-color:#CBC3E3;
+        width:100px;
+        height:40px;
+        text-align:center;
+        padding:10px 0 0 0;
+      }
+
+      #studioHover{
+        display: none !important;
+      }
+
+      #studioHoverParent:hover #studioHover{
+        display: block !important;
+        position: absolute;
+        margin:0px 0 0 50px;
+        background-color:#CBC3E3;
+        width:100px;
+        height:40px;
+        text-align:center;
+        padding:10px 0 0 0;
+      }
+
+      #profilHover{
+        display: none;
+      }
+
+      #profilHoverParent:hover #profilHover{
+        display: block;
+        position: absolute;
+        margin:0px 0 0 50px;
+        background-color:#CBC3E3;
+        width:100px;
+        height:40px;
+        text-align:center;
+        padding:10px 0 0 0;
+      }
+      
+      #adminHover{
+        display: none;
+      }
+
+      #adminHoverParent:hover #adminHover{
+        display: block;
+        position: absolute;
+        margin:0 0 0 50px;
+        background-color:#CBC3E3;
+        width:100px;
+        height:40px;
+        text-align:center;
+        padding:10px 0 0 0;
+      }
+      
+      
     }
   }
 }

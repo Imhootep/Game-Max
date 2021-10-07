@@ -30,6 +30,7 @@
                 flex-direction: row;
                 justify-content: space-between;
                 padding: 0 50px 20px 0;
+                font-size: 20px;
             }
 
             .howToDo{
@@ -53,20 +54,26 @@
                 min-width: 150px;
             }
 
+            .adminSectionTitle{
+                margin: 0 0 10px 0;
+                font-weight: bold;
+            }
+
             
         }
 
         .disable{
-            background-color: #dfe6e9;
+            // background-color: #dfe6e9;
+            color:rgba(170, 170, 170, 0.7)
         }
 
         .noRole{
             background-color: #fab1a0;
         }
 
-        .adminRoleSelect{
-            margin: 0 0 0 20px;
-        }
+        // .adminRoleSelect{
+        //     margin: 0 0 0 20px;
+        // }
         
         .adminIconEvent{
             width:20px;
