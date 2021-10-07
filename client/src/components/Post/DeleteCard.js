@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../../actions/post.actions";
 
-const DeleteCard = (props) => {
+const DeleteCard = (props, {postId}) => {
 
     const dispatch = useDispatch();
     // const userData = useSelector((state)=>state.userReducer)
