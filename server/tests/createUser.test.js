@@ -3,7 +3,6 @@ const { signUpErrors, signInErrors } = require('../utils/errors.utils')
 const UserModel = require('../models/user.model')
 const controller = require('../controllers/auth.controller')
 const mongoose = require("mongoose");
-
 mongoose
   .connect(
     
