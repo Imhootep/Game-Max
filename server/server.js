@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const path = require('path')
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 require('dotenv').config({path: './config/.env'});
@@ -19,6 +20,12 @@ const corsOptions = {
   'preflightContinue': false
 }
 app.use(cors(corsOptions));
+
+const publicPath = path.join(__dirname, '..', 'public');
+app.use(express.static(publicPath));
+app.get('*', (req, res) => {
+   res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
