@@ -39,7 +39,14 @@ module.exports.updateUser = async (req, res) => {
           adresse: req.body.adresse,
           membres: req.body.membres,
           jeux: req.body.jeux,
-          social: req.body.social
+          social: {
+            discord:req.body.social.discord,
+            twitter:req.body.social.twitter,
+            youtube:req.body.social.youtube,
+            facebook:req.body.social.facebook,
+            instagram:req.body.social.instagram,
+            twitch:req.body.social.twitch,
+          }
         }
       },
       { new: true, upsert: true, setDefaultsOnInsert: true },

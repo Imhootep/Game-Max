@@ -25,10 +25,7 @@ const UpdateProfil = () => {
           <h3> Photo de profil </h3>
           <img src={userData.picture} alt="profil Pic" />
           <UploadImg />
-        </div>
-        <div className="right-part">
-          <UpdateBio/>
-         
+          <br />
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           <h5 onClick={() => setFollowingPopup(true)}>
             Abonnements: {userData.following ? userData.following.length : ""}
@@ -36,6 +33,10 @@ const UpdateProfil = () => {
           <h5 onClick={() => setFollowersPopup(true)}>
             Abonnés: {userData.followers ? userData.followers.length : ""}
           </h5>
+        </div>
+        <div className="right-part">
+          <UpdateBio/>
+         
         </div>
       </div>
       {followingPopup && (
