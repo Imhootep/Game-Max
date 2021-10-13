@@ -20,8 +20,7 @@
   display: flex;
   justify-content: space-between;
 }
-.ul-log{
-  margin-left: 1300px ;
+.ul-log{ 
   margin-top: 20px;
   width: 300px;
   display: flex;
@@ -55,7 +54,7 @@
   background-position: center;
   border-radius: 20px;
   padding: 100px 200px 100px 150px;
-  height: 1000px;
+  max-height: 2500px ;
 }
 
 .logoLog{
@@ -65,6 +64,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 20px ;
+  height: 90%;
 }
 
 .App-logo{
@@ -72,10 +72,10 @@
 }
 
 .App-controller {
-  height: 30vmin;
+  height: 35vmin;
   pointer-events: none;
-  margin: auto;
-  background-image:none
+  // margin: auto;
+  // background-image:none
 }
 
 .controller2{
@@ -305,7 +305,7 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     background-position: center;
     border-radius: 20px;
     padding: 100px 150px 100px 150px;
-    height: 80%;
+    
   }
 
 }
@@ -315,8 +315,9 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     background-image: url("../../img/GameMax.jpg");
     background-position: center;
     border-radius: 20px;
-    padding: 100px 100px 100px 100px;
-    height: 80%;
+
+    padding: 100px 5%;
+    
   }
 
 }
@@ -327,7 +328,8 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     background-position: center;
     border-radius: 20px;
     padding: 100px 5%;
-    height: 80%;
+    max-width: 50%;
+   
   }
 
 }
