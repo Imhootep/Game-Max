@@ -12,6 +12,7 @@ const UpdateProfil = () => {
   //pour recup des données user et users
   const userData = useSelector((state) => state.userReducer);
   const usersData = useSelector((state) => state.usersReducer);
+  const error = useSelector((state) => state.errorReducer.userError);
 
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
@@ -25,6 +26,8 @@ const UpdateProfil = () => {
           <h3> Photo de profil </h3>
           <img src={userData.picture} alt="profil Pic" />
           <UploadImg />
+          <p>{error.maxSize}</p>
+          <p>{error.format}</p>
           <br />
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           <h5 onClick={() => setFollowingPopup(true)}>

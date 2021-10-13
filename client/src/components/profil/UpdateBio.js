@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
 import fb from './../../img/fb.svg'
 import youtube from './../../img/youtube.svg'
 import twit from '../../img/twitter.svg'
+import { isEmpty } from "../Utils";
 
 const UpdateBio = () => {
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
+
+  useEffect(() =>{
+    if (!isEmpty(userData.social[0])) {
+      const socialArr = Object.keys(userData.social).map((i) => userData.social[i])
+      
+      return socialArr
+      
+    }
+  }, [userData.social])
 
   //fonction pour mise à jour de la bio
   const handleUpdate = () => {
@@ -19,8 +29,6 @@ const UpdateBio = () => {
         membres: userData.membres,
         jeux: userData.jeux,
         social: {
-          
-          
             discord:userData.social.discord,
             twitter:userData.social.twitter,
             youtube:userData.social.youtube,

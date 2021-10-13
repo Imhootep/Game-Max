@@ -19,7 +19,15 @@ export default function userReducer(state=initialState, action){
                 adresse:action.payload.adresse,
                 membres:action.payload.membres,
                 jeux:action.payload.jeux,
-                social:action.payload.social,
+                social:{
+                    facebook:action.payload.social.facebook,
+                    twitter:action.payload.social.twitter,
+                    youtube:action.payload.social.youtube,
+                    instagram:action.payload.social.instagram,
+                    discord:action.payload.social.discord,
+                    twitch:action.payload.social.twitch,
+
+                },
             };
             case FOLLOW_USER:
             return {
