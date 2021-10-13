@@ -133,7 +133,12 @@ const SearchStudio = () => {
                             <div className="sectionProfil">
                                 <b>Réseaux</b>
                                 {/* <div>{val.website}</div> */}
-                                <div>{val.social}</div>
+                                <div>{val.social.facebook}</div>
+                                <div>{val.social.twitter}</div>
+                                <div>{val.social.youtube}</div>
+                                <div>{val.social.discord}</div>
+                                <div>{val.social.instagram}</div>
+                                <div>{val.social.twitch}</div>
                             </div>
                         </div> 
                         :
@@ -183,7 +188,12 @@ const SearchStudio = () => {
                             <div className="sectionProfil">
                                 <b>Réseaux</b>
                                 <div>{val.website}</div>
-                                <div>{val.social}</div>
+                                <div>{val.social.facebook}</div>
+                                <div>{val.social.twitter}</div>
+                                <div>{val.social.youtube}</div>
+                                <div>{val.social.discord}</div>
+                                <div>{val.social.instagram}</div>
+                                <div>{val.social.twitch}</div>
                             </div>
                         </div>
                         
