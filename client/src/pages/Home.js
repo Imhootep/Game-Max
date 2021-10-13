@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import LeftNav from "../components/LeftNav";
 import Thread from "../components/Thread";
+import Trends from "../components/Trends";
 import NewPostForm from "../components/Post/NewPostForm";
 
 const Home = () => {
@@ -15,6 +16,9 @@ const Home = () => {
               <NewPostForm/>
           </div>
           <Thread />
+        </div>
+        <div className="rightBlock">
+          <Trends />
         </div>
       </div>
     </div>

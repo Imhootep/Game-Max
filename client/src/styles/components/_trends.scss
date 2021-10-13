@@ -1,0 +1,35 @@
+.trends{
+    background-color: rgba(140, 77, 148, 0.3);
+    border-radius: 20px;
+    min-height:500px;
+    margin:0 50px 0 50px;
+}
+
+.eventBlock, .favoriteBlock{
+    padding:20px 0 0 0;
+    margin: 0 20px 20px 20px;
+}
+
+.eventBlock b, .favoriteBlock b{
+    display: inline-block;
+    background-color: #8c4d94;
+    color:#fdfdfd;
+    padding: 0 5px 0 5px;
+    margin:0 0 10px 0;
+}
+
+.eventBlockText{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.favoriteEventBanner{
+    width:100%;
+}
+
+.favoriteIcon{
+    width:20px;
+    margin:0 10px 0 0;
+}
