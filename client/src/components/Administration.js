@@ -184,6 +184,15 @@ const Administration = () => {
                         Rôle
                     </div>
                     <div className="adminSection adminSectionTitle">
+                        Adresse
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Company
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Membres
+                    </div>
+                    <div className="adminSection adminSectionTitle">
                         Actions
                     </div>
                 </div>
@@ -193,6 +202,7 @@ const Administration = () => {
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
+                        
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>
@@ -201,6 +211,9 @@ const Administration = () => {
                                 <option value="Partenaire" selected={val.role === "Partenaire" ? "selected" : ""}>Partenaire</option>
                             </select>    
                         </div>
+                        <div className="adminSection">{val.adresse}</div>
+                        <div className="adminSection">{val.company}</div>
+                        <div className="adminSection">{val.membres}</div>
                         <div className="adminSection">
                             <img src={disabledIco} alt="poubelle" title="Désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
                             {modifying === val._id ?
