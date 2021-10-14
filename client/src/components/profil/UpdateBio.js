@@ -7,17 +7,21 @@ import twit from '../../img/twitter.svg'
 import { isEmpty } from "../Utils";
 
 const UpdateBio = () => {
-  const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userReducer);
   const [updateForm, setUpdateForm] = useState(false);
 
   useEffect(() =>{
-    if (!isEmpty(userData.social[0])) {
-      const socialArr = Object.keys(userData.social).map((i) => userData.social[i])
-      console.log(socialArr)
-      dispatch(getSocial(socialArr))
+    if(userData.social !== undefined){
+      if (!isEmpty(userData.social[0])) {
+        const socialArr = Object.keys(userData.social).map((i) => userData.social[i])
+        console.log(socialArr)
+        dispatch(getSocial(socialArr))
+      }
+      console.log(getSocial)
     }
-    console.log(getSocial)
+    
+
   }, [userData.social])
 
   //fonction pour mise à jour de la bio
@@ -99,29 +103,35 @@ const UpdateBio = () => {
                   <div>
                   <p>
                   <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social.facebook}
+                    {userData.social !== undefined ? userData.social.facebook : ''}
+                    {/* {userData.social.facebook} */}
                   </p>
                   <p>
                   <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social.discord}
+                    {userData.social !== undefined ? userData.social.discord : ''}
+                    {/* {userData.social.discord} */}
                   </p>
                   <p>
                   <img src={twit} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social.twitter}
+                    {userData.social !== undefined ? userData.social.twitter: ''}
+                    {/* {userData.social.twitter} */}
                   </p>
                   </div>
                   <div>
                   <p>
                   <img src={youtube} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social.youtube}
+                  {userData.social !== undefined ? userData.social.youtube: ''}
+                  {/* {userData.social.youtube} */}
                   </p>
                   <p>
                   <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social.instagram}
+                  {userData.social !== undefined ? userData.social.instagram: ''}
+                  {/* {userData.social.instagram} */}
                   </p> 
                   <p>
                   <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social.twitch}
+                  {userData.social !== undefined ? userData.social.twitch: ''}
+                  {/* {userData.social.twitch} */}
                   </p>
                   </div>
                 
