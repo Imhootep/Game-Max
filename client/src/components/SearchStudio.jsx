@@ -204,9 +204,9 @@ const SearchStudio = () => {
                         ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
                         ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase())))
                         ?
-                        <div className={"littleBlock border"+val.role.toLowerCase()}>
+                        <div className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>
                             <div className="infosProfil">
-                            <div className={"roleTitle "+val.role.toLowerCase()}>{val.role}</div>
+                            <div className={val.role !== undefined ? "roleTitle "+val.role.toLowerCase() : ''}>{val.role}</div>
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
                                 <div className="goProfil"  title={"afficher "+val.pseudo+" en grand"}  onClick={() => newProfilActif(val._id)}>
                                     {/* {console.log(compareDate(val.createdAt)) } */}

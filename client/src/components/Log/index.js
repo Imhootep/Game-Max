@@ -42,21 +42,18 @@ const Log = ( props) => {
             <div>
             <header className="App-header">
                 <div className="div-header">
-                        <div className="div-logo">
+                    <div className="div-logo">
                         <div className="logoLog">
                             <img src={logo} className="App-logo" alt="logo" />
-
                             <img src={controller} className="App-controller" alt="controller" />
-                            
                         </div>
-                        </div>
-                        
-                        <div className="controller2">
+                    </div>
+                    <div className="controller2">
                         <img src={controller} className="App-controller2" alt="controller" />
-                        </div>
-            {signInModal && <SignInForm/>}
-            {signUpModal && <SignUpForm/>}
-            </div>
+                    </div>
+                {signInModal && <SignInForm/>}
+                {signUpModal && <SignUpForm/>}
+                </div>
             </header> 
         </div>
         </div>
