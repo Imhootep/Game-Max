@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateBio } from "../../actions/user.actions";
+import { getSocial, updateBio } from "../../actions/user.actions";
 import fb from './../../img/fb.svg'
 import youtube from './../../img/youtube.svg'
 import twit from '../../img/twitter.svg'
@@ -14,10 +14,10 @@ const UpdateBio = () => {
   useEffect(() =>{
     if (!isEmpty(userData.social[0])) {
       const socialArr = Object.keys(userData.social).map((i) => userData.social[i])
-      
-      return socialArr
-      
+      console.log(socialArr)
+      dispatch(getSocial(socialArr))
     }
+    console.log(getSocial)
   }, [userData.social])
 
   //fonction pour mise à jour de la bio

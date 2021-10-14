@@ -6,7 +6,9 @@ export const UPDATE_BIO = "UPDATE_BIO";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 
-export const GET_USER_ERRORS = "GET_USER_ERRORS";
+export const GET_USER_ERRORS = "GET_USER_ERRORS"
+
+export const GET_SOCIAL = "GET_SOCIAL"
 
 //-------------------------RECUP DU USER
 export const getUser = (uid) => {
@@ -103,5 +105,11 @@ export const unfollowUser = (followerId, idToUnfollow) => {
         dispatch({ type: UNFOLLOW_USER, payload: { idToUnfollow } });
       })
       .catch((err) => console.log(err));
+  };
+};
+
+export const getSocial = (socialArr) =>{
+  return (dispatch) =>{
+    dispatch ({type: GET_SOCIAL, payload:socialArr});
   };
 };

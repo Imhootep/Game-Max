@@ -13,17 +13,17 @@ nav {
     padding: 0 20px;
   }
 
-  &::after {
-    content: "";
-    height: 45px;
-    width: 110%;
-    left: -20px;
-    top:0;
-    position: absolute;
-    backdrop-filter: blur(3px);
-    background: $color-4;
-    z-index: -8;
-  }
+  // &::after {
+  //   content: "";
+  //   height: 45px;
+  //   width: 110%;
+  //   left: -20px;
+  //   top:0;
+  //   position: absolute;
+  //   backdrop-filter: blur(3px);
+  //   background: $color-4;
+  //   z-index: -8;
+  // }
 
   .nav-container {
     display: flex;
