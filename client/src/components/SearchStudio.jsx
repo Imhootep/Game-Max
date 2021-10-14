@@ -206,7 +206,7 @@ const SearchStudio = () => {
                         ?
                         <div className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>
                             <div className="infosProfil">
-                            <div className={val.role !== undefined ? "roleTitle "+val.role.toLowerCase() : ''}>{val.role}</div>
+                            <div className={val.role !== undefined ? "roleTitle "+val.role.toLowerCase() : ''}>{val.role !== undefined ? val.role : 'Compte INVALIDE'}</div>
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}
                                 <div className="goProfil"  title={"afficher "+val.pseudo+" en grand"}  onClick={() => newProfilActif(val._id)}>
                                     {/* {console.log(compareDate(val.createdAt)) } */}
