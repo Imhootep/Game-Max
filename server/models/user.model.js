@@ -64,6 +64,14 @@ const userSchema = new mongoose.Schema(
     isDisabled: {
       type: Boolean,
     },
+    isValid: {
+      type: Boolean,
+    },
+    uniqueString: {
+      type: String,
+      unique: true,
+      max: 10,
+    },
     social: {
       discord : { type: String },
       twitter : { type: String },

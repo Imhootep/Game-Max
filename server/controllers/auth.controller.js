@@ -1,8 +1,11 @@
 const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const { signUpErrors, signInErrors } = require('../utils/errors.utils');
+const nodemailer = require('nodemailer')
 
 const maxAge = 2 * 24 * 60 * 60 * 1000;
+
+var uniqueString = ""
 
 const createToken = (id) => {
   return jwt.sign({id}, process.env.TOKEN_SECRET, {
@@ -10,19 +13,79 @@ const createToken = (id) => {
   })
 };
 
+
+const randomString = () => {
+  const len = 10
+  let randomStr = ""
+  for(let i = 0; i<len; i++){
+    const n = Math.floor((Math.random() * 10) + 1) // n est un nombre entre 1 & 10
+    randomStr += n
+  }
+  return randomStr
+}
+
+//Fonction pour l'envoi du mail de confirmation
+
+const confirmEmail = (pseudo, email, uniqueString) => {
+  var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: 'gamemaxbotmailer@gmail.com',
+          pass: 'gamemaxmail'
+      }
+  })
+
+  var mailOptions = {
+      from: 'gamemaxbotmailer@gmail.com',
+      to: email,
+      subject: "<No-Reply>Confirmation de votre adresse email",
+      html: `Bonjour ${pseudo}, vous venez de vous enregistrer sur le site de Game-Max.<br>
+            Cliquez <a href=http://localhost:3000/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
+            Bien amicalement,<br>
+            l'équipe Game-Max.
+            `
+  }
+
+  transporter.sendMail(mailOptions, (err, info) => {
+      if(err){
+          console.log(err)
+      }
+      else{
+          console.log("Email has been sent successfully to <" + email + "> !" + info.response) 
+      }
+  })
+}
+
 module.exports.signUp = async (req, res) => {
-  const {pseudo, email, password} = req.body
+  const {pseudo, email, password} = req.body;
   const isAdmin = false;
   const isDisabled = false;
+  const isValid = false;
   const role = "";
-
+  uniqueString = randomString()
   try {
-    const user = await UserModel.create({ pseudo, email, password, role, isAdmin, isDisabled });
+    const user = await UserModel.create({ pseudo, email, password, role, isAdmin, isDisabled, isValid, uniqueString });
     res.status(201).json({ user: user._id});
   }
   catch(err) {
     const errors = signUpErrors(err);
     res.status(200).send({ errors })
+  }
+  console.log("uniqueString : " + uniqueString)
+  //Envoi de l'email de confirmation une fois que l'inscription est terminée
+  confirmEmail(pseudo, email, uniqueString)
+}
+
+module.exports.validateUser = async (req, res) => {
+  const user = await UserModel.findOne(
+    {uniqueString: uniqueString}
+  )
+  if(user) {
+    user.isValid = true;
+    user.save();
+  }
+  else{
+    res.json("User not found");
   }
 }
 

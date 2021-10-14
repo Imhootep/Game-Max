@@ -17,11 +17,11 @@ mongoose
 describe('Tests group for auth.controller.js', function() {
 
   beforeAll(done => {
-    jest.setTimeout(10000) //Ajout d'un timeout de 10 secondes 
     done()
   })
 
   test('Test for signUp method', async () => {  
+    jest.setTimeout(10000) //Adding 10 seconds timeout
     const pseudo = 'testPseudo'
     const email = 'test@email.com'
     const password = 'testPassword'

@@ -1,6 +1,7 @@
 const UserModel = require("../models/user.model");
 const userController = require('../controllers/user.controller')
 const mongoose = require("mongoose");
+const { Mongoose } = require("mongoose");
 
 
 mongoose
@@ -68,15 +69,12 @@ mongoose
         }catch(err){
             return err
         }
-        const flag = 1
-        if(testRoledUsers == undefined || testRoledUsers.length != 2)flag = 0
-        
+        const flag = 25
+        if(testRoledUsers != undefined && testRoledUsers.length == 2){flag = 1}
         expect(flag).toBe(1)
 
         //Deleting previously created users from the database
-        await UserModel.deleteOne(
-            { pseudo: 'test1Pseudo'}
-        )
+        await UserModel.deleteMany({})
     })
 
     ///////////////////////////////////////////////////////////////////////

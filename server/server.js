@@ -7,7 +7,9 @@ require('dotenv').config({path: './config/.env'});
 require('./config/db');
 const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
-
+const UserModel = require('./models/user.model')
+const userController = require('./controllers/user.controller');
+const { json } = require('body-parser');
 const app = express();
 
 const corsOptions = {
@@ -29,6 +31,20 @@ app.get('*', checkUser);
 app.get('/jwtid', requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id)
 });
+
+/*app.get('/:uniqueString', async (req, res) => {
+  console.log("J'entre dans la route !!! ")
+  const uniqueString = req.params.uniqueString;
+  const user = await UserModel.findOne({ uniqueString: uniqueString });
+  if(user) {
+    user.isValid = true;
+    user.save();
+    //res.redirect('/');
+  } 
+  else{
+    res.json("User not found");
+  }
+})*/
 
 // routes
 app.use('/api/user', userRoutes);

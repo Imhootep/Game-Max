@@ -32,6 +32,7 @@
     "mongodb-memory-server": "^7.4.3",
     "mongoose": "^5.10.13",
     "multer": "^2.0.0-rc.1",
+    "nodemailer": "^6.6.5",
     "nodemon": "^2.0.6",
     "validator": "^13.1.17"
   },
