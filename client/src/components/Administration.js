@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
+import { getUser} from "../actions/user.actions";
 import axios from 'axios';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -25,6 +26,7 @@ const Administration = () => {
     const user = useSelector((state) => state.userReducer);
     const users = useSelector((state) => state.usersReducer);
     dispatch(getUsers())
+    dispatch(getUser())
 
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
