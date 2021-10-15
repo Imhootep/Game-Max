@@ -3,7 +3,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
 import { getUser} from "../actions/user.actions";
 import axios from 'axios';
-import Csv from './Csv';
+// import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
@@ -27,11 +27,20 @@ const Administration = () => {
     const user = useSelector((state) => state.userReducer);
     const users = useSelector((state) => state.usersReducer);
     dispatch(getUsers())
-   
+    // dispatch(getUser())
 
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
     const [modifying,setModifying] = useState('');
+    // const [csvToSend,setCsvToSend] = useState([]);
+
+    //download CSV
+    // const csvData = [
+    //     ["firstname", "lastname", "email"],
+    //     [csvToSend[0], csvToSend[1], csvToSend[3]],
+    //     ["Raed", "Labes", "rl@smthing.co.com"],
+    //     ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    //   ];
 
     // role d'un non validé
     const handleRole = (data) =>{
@@ -178,6 +187,7 @@ const Administration = () => {
             <div className="adminBigBlock">
                 <div className="adminSubTitle">
                     <b>Utilisateurs validés</b>
+                    {/* <CSVLink data={csvData}>Download me</CSVLink>; */}
                 </div>
                 <div className="adminBlock">
                     <div className="adminSection adminSectionTitle">
@@ -205,7 +215,7 @@ const Administration = () => {
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
-                        
+                        {/* {setCsvToSend([...val.email])} */}
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>

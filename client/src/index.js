@@ -20,7 +20,7 @@ const store = createStore(
 //on fait un getUsers dès qu'on ouvre l'application
 store.dispatch(getUsers());
 store.dispatch(getPosts());
-
+// store.dispatch(getUser());
 
 ReactDOM.render(
   <Provider store={store}>

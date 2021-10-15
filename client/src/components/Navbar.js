@@ -1,7 +1,7 @@
 import React, { useContext,useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
-import {getUser} from "../actions/user.actions"
+// import {getUser} from "../actions/user.actions"
 import { NavLink } from 'react-router-dom';
 import { UidContext } from './AppContext';
 import Logout from './Log/Logout';
@@ -21,7 +21,7 @@ const Navbar = () => {
     const users = useSelector((state)=> state.usersReducer)
     useEffect(()=>{
         dispatch(getUsers())
-       
+        // dispatch(getUser())
     }, [])
     
     const [acceptUser,setAcceptUser] = useState(false);
