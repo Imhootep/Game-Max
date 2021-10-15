@@ -21,7 +21,7 @@ const Navbar = () => {
     const users = useSelector((state)=> state.usersReducer)
     useEffect(()=>{
         dispatch(getUsers())
-        dispatch(getUser())
+       
     }, [])
     
     const [acceptUser,setAcceptUser] = useState(false);

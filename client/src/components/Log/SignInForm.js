@@ -74,7 +74,7 @@ const SignInForm = () => {
                                 value={password}
                             />
                         </div> 
-                        <button id="test" className="loginBut" type="submit" onclick={activeButton}><span>Sign In</span></button>
+                        <button id="test" className="loginBut" type="submit" onClick={activeButton}><span>Sign In</span></button>
                     {/* <h4>{errorMessage}</h4> */}
                 </form>
     );
