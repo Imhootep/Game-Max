@@ -5,9 +5,9 @@ import { getUsers } from "../actions/users.actions";
 
 const Csv = () =>{
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const users = useSelector((state) => state.userReducer)
-    dispatch (getUsers())
+    // dispatch (getUsers())
 
     const csvData =[
         ['firstname', 'lastname', 'email'] ,
@@ -17,14 +17,14 @@ const Csv = () =>{
 return (
     <div>
         <h4>Liste des adresses mail</h4>
-            {users.map((val)=>{
+            {users.map(()=>{
                 return(
                 <>
                     
             <ul>
-                <li> <span> pseudo : {val.pseudo} </span> 
+                <li> <span> pseudo : {users.pseudo} </span> 
                 <br />
-                <span> email : {val.email} </span></li>
+                <span> email : {users.email} </span></li>
                 <br />
             </ul>
             </>
