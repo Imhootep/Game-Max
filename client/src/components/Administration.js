@@ -3,7 +3,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
 import { getUser} from "../actions/user.actions";
 import axios from 'axios';
-import Csv from './Csv';
+// import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
@@ -278,7 +278,7 @@ const Administration = () => {
                 })}
             </div>
             
-            <Csv />
+            {/* <Csv /> */}
            
         </div>
     );
