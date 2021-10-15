@@ -3,7 +3,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
 import { getUser} from "../actions/user.actions";
 import axios from 'axios';
-// import { CSVLink, CSVDownload } from "react-csv";
+import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
 import check from '../img/check.svg';
@@ -115,6 +115,8 @@ const Administration = () => {
             document.getElementById("howToDoContent").style.display = "none";
         }
     };
+
+
 
 
     return (
@@ -275,6 +277,9 @@ const Administration = () => {
                     )          
                 })}
             </div>
+            
+            <Csv />
+           
         </div>
     );
 };
