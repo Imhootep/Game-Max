@@ -7,11 +7,11 @@ const SignInForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const activeButton = () =>{
-        // document.getElementById("login").classList.add = "test";
-        document.getElementById("test").classList.add("test");
-        console.log("et alors mbio tu passes pas ici????");
-    }
+    // const activeButton = () =>{
+    //     // document.getElementById("login").classList.add = "test";
+    //     document.getElementById("test").classList.add("test");
+    //     console.log("et alors mbio tu passes pas ici????");
+    // }
 
     const handleLogin =(e)=>{
         e.preventDefault();
@@ -74,7 +74,8 @@ const SignInForm = () => {
                                 value={password}
                             />
                         </div> 
-                        <button id="test" className="loginBut" type="submit" onclick={activeButton}><span>Sign In</span></button>
+                        <button id="test" className="loginBut" type="submit"><span>Sign In</span></button>
+                        {/* { onclick={activeButton}} */}
                     {/* <h4>{errorMessage}</h4> */}
                 </form>
     );
