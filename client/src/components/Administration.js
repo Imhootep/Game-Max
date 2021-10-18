@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
 import { getUser} from "../actions/user.actions";
 import axios from 'axios';
+import { CSVLink, CSVDownload } from "react-csv";
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -32,15 +33,39 @@ const Administration = () => {
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
     const [modifying,setModifying] = useState('');
-    // const [csvToSend,setCsvToSend] = useState([]);
-
+    const [csvToSend,setCsvToSend] = useState([]);
+    // const [csvData,setCsvData] = useState([]);
+    
     //download CSV
-    // const csvData = [
-    //     ["firstname", "lastname", "email"],
-    //     [csvToSend[0], csvToSend[1], csvToSend[3]],
-    //     ["Raed", "Labes", "rl@smthing.co.com"],
-    //     ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-    //   ];
+    const csvData = [
+                ["firstname", "lastname", "email"],
+                [csvToSend[0], csvToSend[1], csvToSend[3]],
+                ["Raed", "Labes", "rl@smthing.co.com"],
+                ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+            ];
+
+    const setCsvToSendFunction = (email) => {
+        setCsvToSend(email)
+        console.log("tableau de emails:")
+        console.log(csvToSend)
+    }
+    // const dlCsv = () => {
+    //     const csvData = [
+    //         ["firstname", "lastname", "email"],
+    //         [csvToSend[0], csvToSend[1], csvToSend[3]],
+    //         ["Raed", "Labes", "rl@smthing.co.com"],
+    //         ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    //     ];
+    // }
+
+    // useEffect(() => {
+    //     const csvData = [
+    //                 ["firstname", "lastname", "email"],
+    //                 // [csvToSend[0], csvToSend[1], csvToSend[3]],
+    //                 ["Raed", "Labes", "rl@smthing.co.com"],
+    //                 ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    //             ];
+    //   }, []);
 
     // role d'un non validé
     const handleRole = (data) =>{
@@ -187,7 +212,8 @@ const Administration = () => {
             <div className="adminBigBlock">
                 <div className="adminSubTitle">
                     <b>Utilisateurs validés</b>
-                    {/* <CSVLink data={csvData}>Download me</CSVLink>; */}
+                    {/* <CSVLink onClick={dlCsv}>Download me</CSVLink>; */}
+                    <CSVLink data={csvData}>Download me</CSVLink>;
                 </div>
                 <div className="adminBlock">
                     <div className="adminSection adminSectionTitle">
@@ -210,12 +236,19 @@ const Administration = () => {
                     </div>
                 </div>
                 {users.map((val)=>{
+                    // setCsvToSend([val.email])
+                    setCsvToSendFunction(val.email)
+                    console.log("setter val mail")
+                    // console.log(csvToSend)
                 return(
                     <>
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         {/* {setCsvToSend([...val.email])} */}
+                        {/* {setCsvToSend([val.email])} */}
+                        {/* {() => setCsvToSendFunction(val.email)} */}
+                        {/* {val.email !== undefined ? setCsvToSendFunction(val.email) : ''} */}
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>

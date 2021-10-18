@@ -35,7 +35,7 @@ const Trends = () => {
             {trendList.length &&
               trendList.map((post) => {
                 return (
-                  <li key={post.id}>
+                  <li key={post._id}>
                     <div>
                       {post.picture && (
                         <img src={post.picture} alt="post-pic" />
