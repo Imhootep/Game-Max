@@ -237,8 +237,8 @@ const Administration = () => {
                 </div>
                 {users.map((val)=>{
                     // setCsvToSend([val.email])
-                    setCsvToSendFunction(val.email)
-                    console.log("setter val mail")
+                    // setCsvToSendFunction(val.email)
+                    // console.log("setter val mail")
                     // console.log(csvToSend)
                 return(
                     <>
