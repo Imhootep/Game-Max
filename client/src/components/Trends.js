@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "./Utils";
-import star from "../img/star.png";
+// import star from "../img/star.png";
 import exemple from "../img/0125.png";
 import { getTrends } from "../actions/post.actions";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import Modal from "./Modals";
 
 const Trends = () => {
   const posts = useSelector((state) => state.allPostsReducer);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const trendList = useSelector((state) => state.trendingReducer);
+  const [trendPost, setTrendPost] = useState('')
   const dispatch = useDispatch();
+  const [openModal, setOpenModal] = useState(false)
+
+
 
   useEffect(() => {
     if (!isEmpty(posts[0])) {
@@ -25,6 +30,19 @@ const Trends = () => {
       dispatch(getTrends(sortedArray));
     }
   }, [posts]);
+
+
+  const showModal = id => {
+    setOpenModal(true);
+    setTrendPost(id)
+
+
+
+  }
+
+  const hideModal = () => {
+    setOpenModal(false);
+  }
 
   return (
     <>
@@ -46,6 +64,7 @@ const Trends = () => {
             {trendList.length &&
               trendList.map((post) => {
                 return (
+                
                   <li key={post._id}>
                     <div>
                       {post.picture && (
@@ -72,17 +91,58 @@ const Trends = () => {
                     </div>
                     <div className="trend-content">
                         <p>{post.message}</p>
-                        <span>lire</span>
+                        <span onClick={() => showModal(post.postId)}>lire</span>
                     </div>
                   </li>
+                  
                 );
               })}
           </ul>
         
+          
       </div>
         </div>
       </div>
-      
+
+      {/* {trendPost((post) => {
+        return ( */}
+          <>
+          {/* {post.postId === trendPost ?  */}
+          {posts.map((post) =>{
+
+          
+      <div>
+      <Modal showModal={openModal} hideModal={hideModal}>
+                <div className="modal-header">
+                  <h2>Titre {post.titre}</h2>
+                </div>
+                <div className="modal-pic">
+                {/* {post.picture && (
+                        <img src={post.picture} alt="post-pic" />
+                      )}
+                      {post.video && (
+                        <iframe
+                          src={post.video}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          title={post._id}
+                        ></iframe>
+                      )} */}
+                </div>
+                <div className="modal-body">
+                  <h3>Message</h3>
+                </div>
+                <div className="modal-footer">
+                  <button className="modal-btn">Fermer</button>
+                </div>
+          </Modal>
+          </div>
+          {/* : ""} */}
+        } )}
+          </>
+        {/* )
+         })} */}
     </>
   );
 };
