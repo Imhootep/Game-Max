@@ -2,6 +2,8 @@
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     min-height:500px;
+    max-width: 80%;
+    margin: 30px auto 40px auto;
     
 }
 
@@ -35,7 +37,8 @@
 }
 .trending-container {
     height: 350px;
-    margin: 10px auto 20px auto;
+    max-width: 80%;
+    margin: 30px auto 40px auto;
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     h4{
@@ -61,6 +64,11 @@
             width:40%;
             margin-left: 20px;
             margin-top: 5px;
+            
+            img{
+                max-height: 80px;
+                border-radius: 15px;
+            }
 
             p{
                 height: 50px;
