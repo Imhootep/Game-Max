@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRoledUsers } from "../actions/users.actions";
 
@@ -20,7 +20,9 @@ const SearchStudio = () => {
 
     const user = useSelector((state)=> state.userReducer)
     const users = useSelector((state) => state.usersReducer);
-    dispatch(getRoledUsers())
+    useEffect(()=>{
+        dispatch(getRoledUsers())
+    }, [])
     const usersSorted = users.sort((a, b) => a.timeM > b.timeM ? 1:-1)
 
     

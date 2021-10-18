@@ -27,7 +27,9 @@ const Administration = () => {
 
     const user = useSelector((state) => state.userReducer);
     const users = useSelector((state) => state.usersReducer);
-    dispatch(getUsers())
+    useEffect(()=>{
+        dispatch(getUsers())
+    }, [])
     // dispatch(getUser())
 
     const [role,setRole] = useState("Studio"); //add user
