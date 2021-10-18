@@ -23,19 +23,22 @@ import heart from '../img/heart.svg';
 
 const Administration = () => {
 
+    const [refreshData,setRefreshData] = useState(0);
+
     const dispatch = useDispatch ();
 
     const user = useSelector((state) => state.userReducer);
     const users = useSelector((state) => state.usersReducer);
     useEffect(()=>{
         dispatch(getUsers())
-    }, [])
+    }, [refreshData])
     // dispatch(getUser())
 
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
     const [modifying,setModifying] = useState('');
     const [csvToSend,setCsvToSend] = useState([]);
+    
     // const [csvData,setCsvData] = useState([]);
     
     //download CSV
@@ -72,6 +75,7 @@ const Administration = () => {
     // role d'un non validé
     const handleRole = (data) =>{
         setRole(data);
+        setRefreshData(refreshData+1)
     }
 
     //disable et enable un user
@@ -79,14 +83,20 @@ const Administration = () => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
+        
     }
 
     const enable = (id) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
+          
     }
 
     // modifier le role d'un user
@@ -98,19 +108,25 @@ const Administration = () => {
        }
 
        handleRoleUser(role)
+       setRefreshData(refreshData+1)
     }
 
+    // valider la modification du user
     const setModify = (id) => {
         setModifying('')
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
             data: {role:roleUser}
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
     }
 
+    //quand role modifié dans liste déroulante
     const handleRoleUser = (data) =>{
         setRoleUser(data);
+        // setRefreshData(refreshData+1) //pas sur que utile ici
     }
     
 
@@ -120,15 +136,19 @@ const Administration = () => {
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
             data: {role:role}
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
     }
 
+    //supprimer un user definitivement
     const deleteUser = (id) => {
-
         if (window.confirm("GAME OVER: Voulez-vous supprimer cet utilisateur de manière définitive?")) {
             return axios({
                 method:"delete",
                 url: `${process.env.REACT_APP_API_URL}api/user/` + id
+              }).then(response => {
+                setRefreshData(refreshData+1)
               })
         } 
     }
@@ -215,7 +235,7 @@ const Administration = () => {
                 <div className="adminSubTitle">
                     <b>Utilisateurs validés</b>
                     {/* <CSVLink onClick={dlCsv}>Download me</CSVLink>; */}
-                    <CSVLink data={csvData}>Download me</CSVLink>;
+                    {/* <CSVLink data={csvData}>Télécharger emails en excel</CSVLink> */}
                 </div>
                 <div className="adminBlock">
                     <div className="adminSection adminSectionTitle">
