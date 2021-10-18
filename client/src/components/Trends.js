@@ -39,25 +39,9 @@ const Trends = () => {
         </div>
         <div className="favoriteBlock">
           <b>Favoris</b>
-          <div>
-            <div>
-              <a href="https://www.google.com">
-                <img className="favoriteIcon" src={star} />
-                Inscriptions pour la gamejam de Noel
-              </a>
-            </div>
-            <div>
-              <a href="https://www.google.com">
-                <img className="favoriteIcon" src={star} />
-                Les bonnes pratiques d'optimisation by Fishing Cactus
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="trending-container">
-        <h4> Ce que vous aimez!!!</h4>
-        <NavLink exact to="/trending">
+          <div className="trending-container">
+        
+        
           <ul>
             {trendList.length &&
               trendList.map((post) => {
@@ -94,8 +78,11 @@ const Trends = () => {
                 );
               })}
           </ul>
-        </NavLink>
+        
       </div>
+        </div>
+      </div>
+      
     </>
   );
 };

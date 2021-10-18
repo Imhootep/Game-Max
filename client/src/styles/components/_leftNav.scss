@@ -2,7 +2,7 @@
   position: relative;
   min-width: 55px; //gui
   order:-2; //gui
-  margin: 10px 0 0 20px; //gui
+  margin: 25px 0 0 20px; //gui
 
   .icons {
     position: fixed;
@@ -141,6 +141,20 @@
         padding:10px 0 0 0;
       }
       
+      #discordHover{
+        display: none;
+      }
+
+      #discordHoverParent:hover #discordHover{
+        display: block;
+        position: absolute;
+        margin:0 0 0 50px;
+        background-color:#CBC3E3;
+        width:100px;
+        height:40px;
+        text-align:center;
+        padding:10px 0 0 0;
+      }
       
     }
   }

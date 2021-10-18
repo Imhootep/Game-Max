@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import discord from "../img/discord.svg"
 
 const LeftNav = () => {
     const user = useSelector((state)=> state.userReducer)
@@ -34,6 +35,13 @@ const LeftNav = () => {
                         <img src="./img/icons/user.svg" alt="home"/>
                     </NavLink>
                     <br/>
+                    <a href="https://discord.gg/wx53YfaR" id="discordHoverParent">
+                    <div id="discordHover">
+                                Discord
+                            </div>
+                    <img src={discord} alt="discord" className="NavImg"/>
+                    </a>
+                    <br />
                     {
                         user.isAdmin === true ?
 
@@ -43,6 +51,8 @@ const LeftNav = () => {
                             </div>
                             <img src="./img/icons/admin1.svg" alt="admin" className="NavImg"/>
                         </NavLink>
+
+
 
                         :
 
