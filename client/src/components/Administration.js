@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../actions/users.actions";
 import { getUser} from "../actions/user.actions";
 import axios from 'axios';
+import { CSVLink, CSVDownload } from "react-csv";
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -22,29 +23,59 @@ import heart from '../img/heart.svg';
 
 const Administration = () => {
 
+    const [refreshData,setRefreshData] = useState(0);
+
     const dispatch = useDispatch ();
 
     const user = useSelector((state) => state.userReducer);
     const users = useSelector((state) => state.usersReducer);
-    dispatch(getUsers())
+    useEffect(()=>{
+        dispatch(getUsers())
+    }, [refreshData])
     // dispatch(getUser())
 
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
     const [modifying,setModifying] = useState('');
-    // const [csvToSend,setCsvToSend] = useState([]);
-
+    const [csvToSend,setCsvToSend] = useState([]);
+    
+    // const [csvData,setCsvData] = useState([]);
+    
     //download CSV
-    // const csvData = [
-    //     ["firstname", "lastname", "email"],
-    //     [csvToSend[0], csvToSend[1], csvToSend[3]],
-    //     ["Raed", "Labes", "rl@smthing.co.com"],
-    //     ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-    //   ];
+    const csvData = [
+                ["firstname", "lastname", "email"],
+                [csvToSend[0], csvToSend[1], csvToSend[3]],
+                ["Raed", "Labes", "rl@smthing.co.com"],
+                ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+            ];
+
+    const setCsvToSendFunction = (email) => {
+        setCsvToSend(email)
+        console.log("tableau de emails:")
+        console.log(csvToSend)
+    }
+    // const dlCsv = () => {
+    //     const csvData = [
+    //         ["firstname", "lastname", "email"],
+    //         [csvToSend[0], csvToSend[1], csvToSend[3]],
+    //         ["Raed", "Labes", "rl@smthing.co.com"],
+    //         ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    //     ];
+    // }
+
+    // useEffect(() => {
+    //     const csvData = [
+    //                 ["firstname", "lastname", "email"],
+    //                 // [csvToSend[0], csvToSend[1], csvToSend[3]],
+    //                 ["Raed", "Labes", "rl@smthing.co.com"],
+    //                 ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    //             ];
+    //   }, []);
 
     // role d'un non validé
     const handleRole = (data) =>{
         setRole(data);
+        setRefreshData(refreshData+1)
     }
 
     //disable et enable un user
@@ -52,14 +83,20 @@ const Administration = () => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
+        
     }
 
     const enable = (id) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
+          
     }
 
     // modifier le role d'un user
@@ -71,19 +108,25 @@ const Administration = () => {
        }
 
        handleRoleUser(role)
+       setRefreshData(refreshData+1)
     }
 
+    // valider la modification du user
     const setModify = (id) => {
         setModifying('')
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
             data: {role:roleUser}
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
     }
 
+    //quand role modifié dans liste déroulante
     const handleRoleUser = (data) =>{
         setRoleUser(data);
+        // setRefreshData(refreshData+1) //pas sur que utile ici
     }
     
 
@@ -93,15 +136,19 @@ const Administration = () => {
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
             data: {role:role}
+          }).then(response => {
+            setRefreshData(refreshData+1)
           })
     }
 
+    //supprimer un user definitivement
     const deleteUser = (id) => {
-
         if (window.confirm("GAME OVER: Voulez-vous supprimer cet utilisateur de manière définitive?")) {
             return axios({
                 method:"delete",
                 url: `${process.env.REACT_APP_API_URL}api/user/` + id
+              }).then(response => {
+                setRefreshData(refreshData+1)
               })
         } 
     }
@@ -187,7 +234,8 @@ const Administration = () => {
             <div className="adminBigBlock">
                 <div className="adminSubTitle">
                     <b>Utilisateurs validés</b>
-                    {/* <CSVLink data={csvData}>Download me</CSVLink>; */}
+                    {/* <CSVLink onClick={dlCsv}>Download me</CSVLink>; */}
+                    {/* <CSVLink data={csvData}>Télécharger emails en excel</CSVLink> */}
                 </div>
                 <div className="adminBlock">
                     <div className="adminSection adminSectionTitle">
@@ -210,12 +258,19 @@ const Administration = () => {
                     </div>
                 </div>
                 {users.map((val)=>{
+                    // setCsvToSend([val.email])
+                    // setCsvToSendFunction(val.email)
+                    // console.log("setter val mail")
+                    // console.log(csvToSend)
                 return(
                     <>
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         {/* {setCsvToSend([...val.email])} */}
+                        {/* {setCsvToSend([val.email])} */}
+                        {/* {() => setCsvToSendFunction(val.email)} */}
+                        {/* {val.email !== undefined ? setCsvToSendFunction(val.email) : ''} */}
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>
