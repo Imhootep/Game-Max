@@ -24,7 +24,7 @@ const Index = () => {
                     <Route path="/profil" exact component={Profil} />
                     <Route path="/studio" exact component={Studio} />
                     <Route path="/trending" exact component={Trending} />
-                    {user.isAdmin === true ? <Route path="/admin" exact component={Admin} /> : ''}
+                    {user.isAdmin === true ? <Route path="/admin" exact component={Admin} /> : "/home"}
                     <Redirect to="/" />
                 </Switch>
             </Router>
