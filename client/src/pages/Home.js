@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUser} from "../actions/user.actions";
 import  { Redirect } from 'react-router-dom'
-import Navbar from "../components/Navbar";
-import LeftNav from "../components/LeftNav";
-import Thread from "../components/Thread";
-import Trends from "../components/Trends";
+import Navbar from "../components/Navigation/Navbar";
+import LeftNav from "../components/Navigation/LeftNav";
+import Thread from "../components/Post/Thread";
+import Trends from "../components/Post/Trends";
 import NewPostForm from "../components/Post/NewPostForm";
 import { isEmpty } from '../components/Utils';
 
