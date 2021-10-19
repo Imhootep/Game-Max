@@ -2,12 +2,14 @@
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     min-height:500px;
+    max-width: 85%;
+    margin: 30px auto 40px auto;
     
 }
 
 .eventBlock, .favoriteBlock{
-    padding:20px 0 0 0;
-    margin: 0 20px 20px 20px;
+    padding:10px 0 15px 0;
+    margin: 0 20px 10px 20px;
 }
 
 .eventBlock b, .favoriteBlock b{
@@ -16,6 +18,7 @@
     color:$color-2;
     padding: 0 5px 0 5px;
     margin:0 0 10px 0;
+    border-radius: 5px;
 }
 
 .eventBlockText{
@@ -27,6 +30,8 @@
 
 .favoriteEventBanner{
     width:100%;
+    
+    
 }
 
 .favoriteIcon{
@@ -35,7 +40,8 @@
 }
 .trending-container {
     height: 350px;
-    margin: 10px auto 20px auto;
+    max-width: 100%;
+    margin: 10px auto 10px auto;
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     h4{
@@ -43,11 +49,16 @@
         background-color: $color-4;
         color:$color-2;
     }
+
+    ul{
+        padding-top: 5px;
+    }
     li{
         height: 90px;
         background-color: $color-2;
         border-radius: 20px;
         margin: 10px;
+        
         display: flex;
         flex-direction: row;
         img{
@@ -61,6 +72,11 @@
             width:40%;
             margin-left: 20px;
             margin-top: 5px;
+            
+            img{
+                max-height: 80px;
+                border-radius: 15px;
+            }
 
             p{
                 height: 50px;
@@ -70,11 +86,62 @@
                 overflow: hidden;
             }
 
-        span{
-            font-weight: bold;
-            // padding-top: 10px;
-            align-self: flex-end;
-        }
+            span {
+                color: $color-1;
+                font-family: $font-3;
+                font-weight: bold;
+                  // padding-top: 10px;
+                  align-self: flex-end;
+              }
+              span:hover {
+                cursor: pointer;
+              }
         }
     }
+}
+
+.modal-container{
+    background-color: $color-7;
+    width:480px;
+    max-height: 400px;
+    position: relative;
+    right: 600px;
+    top: -700px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+  }
+
+  .modal-header{
+      display: flex;
+      justify-content: center;
+  }
+
+  .modal-pic{
+      max-height: 300px;
+      max-width: 300px;
+      justify-content: center;
+      margin: 10px auto 20px auto;
+
+      img{
+          align-items: center;
+        justify-content: center;
+        max-height: 300px;
+      max-width: 300px;
+
+      }
+
+      
+     
+  }
+
+  .modal-body{
+    max-height: 60px;
+    margin: 20px;
+}
+
+  .modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 15px;
 }

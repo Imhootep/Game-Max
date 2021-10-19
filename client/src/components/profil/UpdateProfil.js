@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 // import { updateBio } from "../../actions/user.actions";
-import LeftNav from "../LeftNav";
+import LeftNav from "../Navigation/LeftNav";
 import { dateParser } from "../Utils";
 import FollowHandler from "./FollowHandler";
 import UpdateBio from "./UpdateBio";
