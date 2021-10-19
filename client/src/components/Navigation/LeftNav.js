@@ -39,7 +39,7 @@ const LeftNav = () => {
                     <div id="discordHover">
                                 Discord
                             </div>
-                    <img src={discord} alt="discord" className="NavImg"/>
+                    <img src={discord} alt="discord" className="NavImg" target="_blank" rel="noreferrer"/>
                     </a>
                     <br />
                     {

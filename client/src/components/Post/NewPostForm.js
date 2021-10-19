@@ -37,7 +37,7 @@ const NewPostForm = () => {
       data.append("video", video);
 
       await dispatch(addPost(data));
-      dispatch(getPosts());
+      
       cancelPost();
     } else {
       alert("Veuillez entrer un message");
