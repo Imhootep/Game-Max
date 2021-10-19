@@ -59,31 +59,31 @@ const LeftNav = () => {
             </div>
             <div className="sm-link">
             <br/>
-                    <a href="https://discord.gg/wx53YfaR" id="discordHoverParent">
+                    <a href="https://discord.gg/wx53YfaR" id="discordHoverParent" target="_blank">
                     <div id="discordHover">
                                
                             </div>
-                    <img src={discord} alt="discord" className="NavImg" target="_blank" rel="noreferrer"/>
+                    <img src={discord} alt="discord" className="NavImg" />
                     </a>
-                    <a href="https://www.facebook.com/gamemaxbe" id="fbHoverParent">
+                    <a href="https://www.facebook.com/gamemaxbe" id="fbHoverParent" target="_blank">
                     <div id="fbHover">
                                 
                             </div>
-                    <img src={fb} alt="facebook" className="NavImg" target="_blank" rel="noreferrer"/>
+                    <img src={fb} alt="facebook" className="NavImg" />
                     </a>
-                    <a href="https://discord.gg/wx53YfaR" id="fbHoverParent">
+                    <a href="https://www.twitch.tv/gamemax" id="fbHoverParent" target="_blank">
 
-                    <div id="youtubeHover">
+                    <div id="twitchHover">
                                 
                             </div>
-                    <img src={twitch} alt="twitch" className="NavImg" target="_blank" rel="noreferrer"/>
+                    <img src={twitch} alt="twitch" className="NavImg" />
                     </a>
-                    <a href="https://discord.gg/wx53YfaR" id="fbHoverParent">
+                    <a href="https://twitter.com/gamemaxbe" id="fbHoverParent" target="_blank">
 
-                    <div id="fbHover">
+                    <div id="twitterHover">
                                 
                             </div>
-                    <img src={twitter} alt="twitter" className="NavImg" target="_blank" rel="noreferrer"/>
+                    <img src={twitter} alt="twitter" className="NavImg" />
                     </a>
             </div>
         </div>
