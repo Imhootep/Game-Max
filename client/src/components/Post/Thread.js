@@ -21,7 +21,7 @@ const Thread = () => {
         if(loadPost) {
             dispatch(getPosts(count));
             setLoadPost(false)
-            setCount(count + 10);
+            setCount(count + 5);
         }
 
         window.addEventListener('scroll', loadMore);
