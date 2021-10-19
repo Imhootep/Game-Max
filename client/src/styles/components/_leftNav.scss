@@ -1,23 +1,177 @@
 .left-nav-container {
-  position: relative;
-  min-width: 55px; //gui
-  order:-2; //gui
-  margin: 25px 0 0 20px; //gui
-
-  .icons {
-    position: fixed;
-    z-index: 10;
-
-    @media screen and(max-width: 590px) {
-      margin: 2px 0 0 -9px;
+    position: relative;
+    min-width: 55px; //gui
+    order:-2; //gui
+    margin: 25px 0 0 20px; //gui
+  
+    .icons {
+      position: fixed;
+      z-index: 10;
+  
+      @media screen and(max-width: 590px) {
+        margin: 2px 0 0 -9px;
+      }
+  
+      .icons-bis {
+        // position: absolute; //gui
+        left: 10px;
+        top: 20px;
+  
+        a {
+          transition: 0.1s;
+          display: inline-block;
+  
+          &:before {
+            transition: .15s ease;
+            transform: scale(0);
+            transform-origin: center;
+            z-index: -10;
+            content: "";
+            height: 45px;
+            width: 45px;
+            position: absolute;
+            background: $color-5;
+            border-radius: 50px;
+          }
+  
+          &:hover {
+            transform: scale(1.02);
+          }
+          &:hover::before {
+            transform: scale(1);
+            @media screen and(max-width: 590px) {
+              background: $color-1;
+              height: 34px;
+              width: 34px;
+            }
+          }
+  
+          img {
+            @media screen and(max-width: 590px) {
+              height: 34px;
+              width: 34px;
+            }
+          }
+        }
+  
+        .active-left-nav {
+          position: relative;
+  
+          &::after {
+            content: "";
+            height: 40px;
+            width: 5px;
+            position: absolute;
+            background: $color-1;
+            left: -7px;
+            bottom: 8px;
+            border-radius: 40px;
+            transform: scaleY(0);
+            animation: scale 1.5s ease forwards;
+  
+            @keyframes scale {
+              to {
+                transform: scaleY(1);
+              }
+            }
+            @media screen and(max-width: 590px) {
+              height: 33px;
+              left: -8px;
+            }
+          }
+        }
+  
+        #homeHover{
+          display: none;
+        }
+  
+        a:hover #homeHover{
+          display: block;
+          position: absolute;
+          margin: 0 0 0 50px;
+          background-color:#CBC3E3;
+          width:100px;
+          height:40px;
+          text-align:center;
+          padding:10px 0 0 0;
+        }
+  
+        #studioHover{
+          display: none !important;
+        }
+  
+        #studioHoverParent:hover #studioHover{
+          display: block !important;
+          position: absolute;
+          margin:0px 0 0 50px;
+          background-color:#CBC3E3;
+          width:100px;
+          height:40px;
+          text-align:center;
+          padding:10px 0 0 0;
+        }
+  
+        #profilHover{
+          display: none;
+        }
+  
+        #profilHoverParent:hover #profilHover{
+          display: block;
+          position: absolute;
+          margin:0px 0 0 50px;
+          background-color:#CBC3E3;
+          width:100px;
+          height:40px;
+          text-align:center;
+          padding:10px 0 0 0;
+        }
+        
+        #adminHover{
+          display: none;
+        }
+  
+        #adminHoverParent:hover #adminHover{
+          display: block;
+          position: absolute;
+          margin:0 0 0 50px;
+          background-color:#CBC3E3;
+          width:100px;
+          height:40px;
+          text-align:center;
+          padding:10px 0 0 0;
+        }
+        
+        #discordHover{
+          display: none;
+        }
+  
+        #discordHoverParent:hover #discordHover{
+          display: block;
+          position: absolute;
+          margin:0 0 0 50px;
+          background-color:#CBC3E3;
+          width:100px;
+          height:40px;
+          text-align:center;
+          padding:10px 0 0 0;
+        }
+        
+      }
     }
+  }
+  
+  .NavImg{
+    width:44px;
+  }
+  
+  .sm-link{
 
-    .icons-bis {
-      // position: absolute; //gui
-      left: 10px;
-      top: 20px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
 
-      a {
+    a {
         transition: 0.1s;
         display: inline-block;
 
@@ -27,8 +181,8 @@
           transform-origin: center;
           z-index: -10;
           content: "";
-          height: 45px;
-          width: 45px;
+          height: 30px;
+          width: 30px;
           position: absolute;
           background: $color-5;
           border-radius: 50px;
@@ -46,120 +200,9 @@
           }
         }
 
-        img {
-          @media screen and(max-width: 590px) {
-            height: 34px;
-            width: 34px;
-          }
+        img{
+            width: 30px;
+            height: 30px;
         }
-      }
-
-      .active-left-nav {
-        position: relative;
-
-        &::after {
-          content: "";
-          height: 40px;
-          width: 5px;
-          position: absolute;
-          background: $color-1;
-          left: -7px;
-          bottom: 8px;
-          border-radius: 40px;
-          transform: scaleY(0);
-          animation: scale 1.5s ease forwards;
-
-          @keyframes scale {
-            to {
-              transform: scaleY(1);
-            }
-          }
-          @media screen and(max-width: 590px) {
-            height: 33px;
-            left: -8px;
-          }
-        }
-      }
-
-      #homeHover{
-        display: none;
-      }
-
-      a:hover #homeHover{
-        display: block;
-        position: absolute;
-        margin: 0 0 0 50px;
-        background-color:#CBC3E3;
-        width:100px;
-        height:40px;
-        text-align:center;
-        padding:10px 0 0 0;
-      }
-
-      #studioHover{
-        display: none !important;
-      }
-
-      #studioHoverParent:hover #studioHover{
-        display: block !important;
-        position: absolute;
-        margin:0px 0 0 50px;
-        background-color:#CBC3E3;
-        width:100px;
-        height:40px;
-        text-align:center;
-        padding:10px 0 0 0;
-      }
-
-      #profilHover{
-        display: none;
-      }
-
-      #profilHoverParent:hover #profilHover{
-        display: block;
-        position: absolute;
-        margin:0px 0 0 50px;
-        background-color:#CBC3E3;
-        width:100px;
-        height:40px;
-        text-align:center;
-        padding:10px 0 0 0;
-      }
-      
-      #adminHover{
-        display: none;
-      }
-
-      #adminHoverParent:hover #adminHover{
-        display: block;
-        position: absolute;
-        margin:0 0 0 50px;
-        background-color:#CBC3E3;
-        width:100px;
-        height:40px;
-        text-align:center;
-        padding:10px 0 0 0;
-      }
-      
-      #discordHover{
-        display: none;
-      }
-
-      #discordHoverParent:hover #discordHover{
-        display: block;
-        position: absolute;
-        margin:0 0 0 50px;
-        background-color:#CBC3E3;
-        width:100px;
-        height:40px;
-        text-align:center;
-        padding:10px 0 0 0;
-      }
-      
     }
   }
-}
-
-.NavImg{
-  width:44px;
-}

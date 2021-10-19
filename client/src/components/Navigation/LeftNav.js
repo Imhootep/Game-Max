@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import discord from "../../img/discord.svg"
+import discord from "../../img/discord2.svg";
+import fb from '../../img/fb.svg';
+import twitch from '../../img/twitch.svg';
+import twitter from '../../img/twitter.svg';
 
 const LeftNav = () => {
     const user = useSelector((state)=> state.userReducer)
@@ -34,13 +37,7 @@ const LeftNav = () => {
                         </div>
                         <img src="./img/icons/user.svg" alt="home"/>
                     </NavLink>
-                    <br/>
-                    <a href="https://discord.gg/wx53YfaR" id="discordHoverParent">
-                    <div id="discordHover">
-                                Discord
-                            </div>
-                    <img src={discord} alt="discord" className="NavImg" target="_blank" rel="noreferrer"/>
-                    </a>
+                    
                     <br />
                     {
                         user.isAdmin === true ?
@@ -52,8 +49,6 @@ const LeftNav = () => {
                             <img src="./img/icons/admin1.svg" alt="admin" className="NavImg"/>
                         </NavLink>
 
-
-
                         :
 
                         ''
@@ -61,6 +56,35 @@ const LeftNav = () => {
                     }
                     
                 </div>
+            </div>
+            <div className="sm-link">
+            <br/>
+                    <a href="https://discord.gg/wx53YfaR" id="discordHoverParent">
+                    <div id="discordHover">
+                               
+                            </div>
+                    <img src={discord} alt="discord" className="NavImg" target="_blank" rel="noreferrer"/>
+                    </a>
+                    <a href="https://www.facebook.com/gamemaxbe" id="fbHoverParent">
+                    <div id="fbHover">
+                                
+                            </div>
+                    <img src={fb} alt="facebook" className="NavImg" target="_blank" rel="noreferrer"/>
+                    </a>
+                    <a href="https://discord.gg/wx53YfaR" id="fbHoverParent">
+
+                    <div id="youtubeHover">
+                                
+                            </div>
+                    <img src={twitch} alt="twitch" className="NavImg" target="_blank" rel="noreferrer"/>
+                    </a>
+                    <a href="https://discord.gg/wx53YfaR" id="fbHoverParent">
+
+                    <div id="fbHover">
+                                
+                            </div>
+                    <img src={twitter} alt="twitter" className="NavImg" target="_blank" rel="noreferrer"/>
+                    </a>
             </div>
         </div>
     );

@@ -5,9 +5,7 @@ import { getUsers} from "../../actions/users.actions";
 import { NavLink } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import Logout from '../Log/Logout';
-// import discord from '../img/DiscordW.svg'
-// import instagram from '../img/instagram.svg'
-// import utube from '../img/youtube.svg'
+
 import exclamation from '../../img/exclamation.svg'
 
 
