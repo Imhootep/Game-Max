@@ -39,8 +39,8 @@ const EditDeleteComment = ({ comment, postId }) => {
 
   return (
     <div className="edit-comment">
-      {console.log("t es admin?")}
-      {console.log(userData.isAdmin)}
+      {/* {console.log("t es admin?")}
+      {console.log(userData.isAdmin)} */}
       {userData.isAdmin === true ?
           <div className="btn">
           <span
