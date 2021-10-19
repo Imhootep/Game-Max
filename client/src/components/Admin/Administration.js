@@ -4,6 +4,7 @@ import { getUsers} from "../../actions/users.actions";
 import { getUser} from "../../actions/user.actions";
 import axios from 'axios';
 import { CSVLink, CSVDownload } from "react-csv";
+import  { Redirect } from 'react-router-dom'
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -23,22 +24,37 @@ import heart from '../../img/heart.svg';
 
 const Administration = () => {
 
+    
+
     const [refreshData,setRefreshData] = useState(0);
 
     const dispatch = useDispatch ();
 
+    //me user
     const user = useSelector((state) => state.userReducer);
+    useEffect(()=>{
+        dispatch(getUser())
+        if(user.isAdmin !== true){
+            return <Redirect to='/Home'  />
+        }
+    }, [])
+
+    //all users
     const users = useSelector((state) => state.usersReducer);
     useEffect(()=>{
         dispatch(getUsers())
     }, [refreshData])
-    // dispatch(getUser())
+    
 
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
+    const [adressUser,setAdressUser] = useState(""); //modify user adress
     const [modifying,setModifying] = useState('');
     const [csvToSend,setCsvToSend] = useState([]);
     
+    // if(user.isAdmin !== true){
+    //     return <Redirect to='/Home'  />
+    // }
     // const [csvData,setCsvData] = useState([]);
     
     //download CSV
@@ -100,7 +116,7 @@ const Administration = () => {
     }
 
     // modifier le role d'un user
-    const modify = (id,role) => {
+    const modify = (id,role,adresse) => {
        if(modifying === ''){
         setModifying(id)
        }else{
@@ -108,16 +124,18 @@ const Administration = () => {
        }
 
        handleRoleUser(role)
+       setAdressUser(adresse)
        setRefreshData(refreshData+1)
     }
 
     // valider la modification du user
+    // on attends la modif du back pour envoyer les données
     const setModify = (id) => {
         setModifying('')
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
-            data: {role:roleUser}
+            data: {role:roleUser,adresse:adressUser}
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -126,7 +144,11 @@ const Administration = () => {
     //quand role modifié dans liste déroulante
     const handleRoleUser = (data) =>{
         setRoleUser(data);
-        // setRefreshData(refreshData+1) //pas sur que utile ici
+    }
+
+    //quand adresse modifiée dans liste déroulante
+    const handleAdressUser = (data) =>{
+        setAdressUser(data);
     }
     
 
@@ -279,7 +301,9 @@ const Administration = () => {
                                 <option value="Partenaire" selected={val.role === "Partenaire" ? "selected" : ""}>Partenaire</option>
                             </select>    
                         </div>
-                        <div className="adminSection">{val.adresse}</div>
+                        <div className="adminSection">
+                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)}/> 
+                        </div>
                         <div className="adminSection">{val.company}</div>
                         <div className="adminSection">{val.membres}</div>
                         <div className="adminSection">
@@ -287,7 +311,7 @@ const Administration = () => {
                             {modifying === val._id ?
                                 <img src={check} alt="valider" title="Valider la modification" className="adminIconEvent" onClick={() => setModify(val._id)}/>
                                 :
-                                <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent" onClick={() => modify(val._id,val.role)}/>
+                                <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent" onClick={() => modify(val._id,val.role,val.adresse)}/>
                             }
                             
                         </div>
