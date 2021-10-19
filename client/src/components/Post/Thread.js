@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../actions/post.actions';
 import Card from './Card';
+import { getUsers } from "../../actions/users.actions";
 // import { isEmpty } from './Utils';
 
 const Thread = () => {
@@ -9,7 +10,12 @@ const Thread = () => {
     const [count, setCount] = useState(5)
     const dispatch = useDispatch();
     const posts = useSelector((state)=>state.postReducer)
-    
+    const usersData = useSelector((state) => state.usersReducer);
+
+    useEffect(() => {
+        dispatch(getUsers())
+        console.log("plusieurs fois?")
+      }, []);
 
     const loadMore = () =>{
         if (window.innerHeight + document.documentElement.scrollTop +1 > document.scrollingElement.scrollHeight) {
@@ -32,7 +38,7 @@ const Thread = () => {
         <div className="thread-container">
             <ul>
                 {posts.map((post)=>{
-                    return <Card post={post} key={post._id}/>
+                    return <Card post={post} key={post._id} usersData={usersData}/>
                 })}
             </ul>
         </div>

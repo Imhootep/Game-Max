@@ -9,14 +9,13 @@ import CardComments from "./CardComments";
 import { getUsers } from "../../actions/users.actions";
 // import { deletePostAdmin } from "../../actions/post.actions";
 
-const Card = ({ post, postId }) => {
+const Card = ({ post, postId, usersData }) => {
   //on appelle post en props
   // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -33,9 +32,7 @@ const Card = ({ post, postId }) => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
 
-  useEffect(() => {
-    dispatch(getUsers())
-  }, []);
+  
 
   return (
     <li className="card-container" key={post._id}>
