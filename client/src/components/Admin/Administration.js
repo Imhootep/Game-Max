@@ -3,7 +3,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../../actions/users.actions";
 import { getUser} from "../../actions/user.actions";
 import axios from 'axios';
-import { CSVLink, CSVDownload } from "react-csv";
+// import { CSVLink, CSVDownload } from "react-csv";
 import  { Redirect } from 'react-router-dom'
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
@@ -64,7 +64,7 @@ const Administration = () => {
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
     const [adressUser,setAdressUser] = useState(""); //modify user adress
     const [modifying,setModifying] = useState('');
-    const [csvToSend,setCsvToSend] = useState([]);
+    // const [csvToSend,setCsvToSend] = useState([]);
     
     // if(user.isAdmin === undefined || user.isAdmin !== true){
     //     return <Redirect to='/Home'  />
@@ -73,18 +73,18 @@ const Administration = () => {
     // const [csvData,setCsvData] = useState([]);
     
     //download CSV
-    const csvData = [
-                ["firstname", "lastname", "email"],
-                [csvToSend[0], csvToSend[1], csvToSend[3]],
-                ["Raed", "Labes", "rl@smthing.co.com"],
-                ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-            ];
+    // const csvData = [
+    //             ["firstname", "lastname", "email"],
+    //             [csvToSend[0], csvToSend[1], csvToSend[3]],
+    //             ["Raed", "Labes", "rl@smthing.co.com"],
+    //             ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    //         ];
 
-    const setCsvToSendFunction = (email) => {
-        setCsvToSend(email)
-        console.log("tableau de emails:")
-        console.log(csvToSend)
-    }
+    // const setCsvToSendFunction = (email) => {
+    //     setCsvToSend(email)
+    //     console.log("tableau de emails:")
+    //     console.log(csvToSend)
+    // }
     // const dlCsv = () => {
     //     const csvData = [
     //         ["firstname", "lastname", "email"],

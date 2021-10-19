@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import React, { useEffect, useState } from 'react';
 import React from 'react';
 import Home from '../../pages/Home';
@@ -13,7 +13,7 @@ import Trending from '../../pages/Trending'
 
 const Index = () => {
 
-    const user = useSelector((state)=> state.userReducer)
+    // const user = useSelector((state)=> state.userReducer)
 
     return (
         <div>
