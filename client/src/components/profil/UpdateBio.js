@@ -4,6 +4,9 @@ import { getSocial, updateBio } from "../../actions/user.actions";
 import fb from './../../img/fb.svg'
 import youtube from './../../img/youtube.svg'
 import twit from '../../img/twitter.svg'
+import discord from '../../img/discord2.svg'
+import instagram from '../../img/instagram1.svg'
+import twitch from '../../img/twitch.svg'
 import { isEmpty } from "../Utils";
 
 const UpdateBio = () => {
@@ -107,7 +110,7 @@ const UpdateBio = () => {
                     {/* {userData.social.facebook} */}
                   </p>
                   <p>
-                  <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                  <img src={discord} alt="" onClick={() => setUpdateForm(!updateForm)} />
                     {userData.social !== undefined ? userData.social.discord : ''}
                     {/* {userData.social.discord} */}
                   </p>
@@ -124,12 +127,12 @@ const UpdateBio = () => {
                   {/* {userData.social.youtube} */}
                   </p>
                   <p>
-                  <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                  <img src={instagram} alt="" onClick={() => setUpdateForm(!updateForm)} />
                   {userData.social !== undefined ? userData.social.instagram: ''}
                   {/* {userData.social.instagram} */}
                   </p> 
                   <p>
-                  <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                  <img src={twitch} alt="" onClick={() => setUpdateForm(!updateForm)} />
                   {userData.social !== undefined ? userData.social.twitch: ''}
                   {/* {userData.social.twitch} */}
                   </p>
