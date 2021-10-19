@@ -31,14 +31,14 @@ const Administration = () => {
     const user = useSelector((state) => state.userReducer);
     useEffect(()=>{
         dispatch(getUser())
-        console.log("ce que user.isAdmin contient avant la condition du redirect: ")
-        console.log(user.isAdmin)
+        // console.log("ce que user.isAdmin contient avant la condition du redirect: ")
+        // console.log(user.isAdmin)
         // fonctionne MAIS si un admin tape l'url ca va le redirect
-        if(user.isAdmin === undefined || user.isAdmin !== true){
-            console.log("premier passage")
-            window.location.href = "/"; //marche dans le useeffect
-            return <Redirect to='/'  /> // ne marche que en dehors du useeffect
-        }
+        // if(user.isAdmin === undefined || user.isAdmin !== true){
+        //     console.log("premier passage")
+        //     window.location.href = "/"; //marche dans le useeffect
+        //     return <Redirect to='/'  /> // ne marche que en dehors du useeffect
+        // }
 
         // if(user.isAdmin === undefined){
         //     console.log("premier passage")
@@ -204,6 +204,8 @@ const Administration = () => {
 
 
     return (
+        // <>
+        // {user.isAdmin !== undefined && user.isAdmin === true ?
         <div className="administrationContainer">
             <div className="adminBigBlock">
                 <div id="howToDoContent">
@@ -375,6 +377,10 @@ const Administration = () => {
             {/* <Csv /> */}
            
         </div>
+        // :
+        // <Redirect to='/' /> 
+        // }
+        // </>
     );
 };
 
