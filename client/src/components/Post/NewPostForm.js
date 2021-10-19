@@ -38,6 +38,7 @@ const NewPostForm = () => {
 
       await dispatch(addPost(data));
       // dispatch(getPosts());
+      // window.location.reload()
       cancelPost();
     } else {
       alert("Veuillez entrer un message");

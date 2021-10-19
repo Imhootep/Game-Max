@@ -6,6 +6,7 @@ import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
+import { getUsers } from "../../actions/users.actions";
 // import { deletePostAdmin } from "../../actions/post.actions";
 
 const Card = ({ post, postId }) => {
@@ -31,6 +32,10 @@ const Card = ({ post, postId }) => {
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, []);
 
   return (
     <li className="card-container" key={post._id}>

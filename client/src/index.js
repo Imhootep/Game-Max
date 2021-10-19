@@ -17,8 +17,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 //on fait un getUsers dès qu'on ouvre l'application
-store.dispatch(getUsers());
-store.dispatch(getPosts());
+// store.dispatch(getUsers());
+// store.dispatch(getPosts());
 
 ReactDOM.render(
   <Provider store={store}>
