@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch  } from 'react-redux';
-import { getUser} from "../actions/user.actions";
-import  { Redirect } from 'react-router-dom'
+// import React, { useEffect, useState } from 'react';
+import React from "react";
+// import { useSelector, useDispatch  } from 'react-redux';
+// import { getUser} from "../actions/user.actions";
+// import  { Redirect } from 'react-router-dom'
 import Navbar from "../components/Navigation/Navbar";
 import LeftNav from "../components/Navigation/LeftNav";
 import Thread from "../components/Post/Thread";
 import Trends from "../components/Post/Trends";
 import NewPostForm from "../components/Post/NewPostForm";
-import { isEmpty } from '../components/Utils';
+// import { isEmpty } from '../components/Utils';
 
 const Home = () => {
 
