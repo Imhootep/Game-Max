@@ -37,6 +37,7 @@ const NewPostForm = () => {
       data.append("video", video);
 
       await dispatch(addPost(data));
+      window.location.reload()
       // dispatch(getPosts());
       // window.location.reload()
       cancelPost();
@@ -74,6 +75,7 @@ const NewPostForm = () => {
   useEffect(() => {
     if (!isEmpty(userData)) setIsLoading(false);
     handleVideo();
+    
   }, [userData, message, video]);
 
   return (
