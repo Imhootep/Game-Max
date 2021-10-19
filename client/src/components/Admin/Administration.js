@@ -24,20 +24,34 @@ import heart from '../../img/heart.svg';
 
 const Administration = () => {
 
-    
-
     const [refreshData,setRefreshData] = useState(0);
 
     const dispatch = useDispatch ();
-
     //me user
     const user = useSelector((state) => state.userReducer);
     useEffect(()=>{
         dispatch(getUser())
-        if(user.isAdmin !== true){
-            return <Redirect to='/Home'  />
+        console.log("ce que user.isAdmin contient avant la condition du redirect: ")
+        console.log(user.isAdmin)
+        // fonctionne MAIS si un admin tape l'url ca va le redirect
+        if(user.isAdmin === undefined || user.isAdmin !== true){
+            console.log("premier passage")
+            window.location.href = "/"; //marche dans le useeffect
+            return <Redirect to='/'  /> // ne marche que en dehors du useeffect
         }
+
+        // if(user.isAdmin === undefined){
+        //     console.log("premier passage")
+        //     window.location.href = "/";
+        //     return <Redirect to='/'  />
+        // }
+        // if(user.isAdmin !== true){
+        //     console.log("deuxieme passage")
+        //     window.location.href = "/home";
+        //     return <Redirect to='/Home'  />
+        // }
     }, [])
+
 
     //all users
     const users = useSelector((state) => state.usersReducer);
@@ -52,9 +66,10 @@ const Administration = () => {
     const [modifying,setModifying] = useState('');
     // const [csvToSend,setCsvToSend] = useState([]);
     
-    // if(user.isAdmin !== true){
+    // if(user.isAdmin === undefined || user.isAdmin !== true){
     //     return <Redirect to='/Home'  />
     // }
+
     // const [csvData,setCsvData] = useState([]);
     
     //download CSV
