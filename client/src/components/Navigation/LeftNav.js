@@ -6,8 +6,8 @@ import discord from "../../img/discord.svg"
 const LeftNav = () => {
     const user = useSelector((state)=> state.userReducer)
 
-    console.log('is admin?: ')
-    console.log(user.isAdmin)
+    // console.log('is admin?: ')
+    // console.log(user.isAdmin)
 
     return (
         <div className="left-nav-container">
