@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import LeftNav from '../components/LeftNav';
-import SearchStudio from '../components/SearchStudio';
+import Navbar from '../components/Navigation/Navbar';
+import LeftNav from '../components/Navigation/LeftNav';
+import SearchStudio from '../components/Search/SearchStudio';
 
 const Studio = () => {
     return (

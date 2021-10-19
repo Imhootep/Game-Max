@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getRoledUsers } from "../actions/users.actions";
+import { getRoledUsers } from "../../actions/users.actions";
 
-import arrowup from '../img/arrowup.png';
-import home2 from '../img/home2.svg';
-import mail from '../img/mail.svg';
-import phone from '../img/phone.svg';
-import user2 from '../img/user2.svg';
-import description from '../img/description.svg';
-import newStudio from '../img/new.svg';
+import arrowup from '../../img/arrowup.png';
+import home2 from '../../img/home2.svg';
+import mail from '../../img/mail.svg';
+import phone from '../../img/phone.svg';
+import user2 from '../../img/user2.svg';
+import description from '../../img/description.svg';
+import newStudio from '../../img/new.svg';
 // import { isEmpty } from './Utils';
-import { dateParser } from "./Utils";
+import { dateParser } from "../Utils";
 
 
 

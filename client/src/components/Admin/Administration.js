@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
-import { getUsers} from "../actions/users.actions";
-import { getUser} from "../actions/user.actions";
+import { getUsers} from "../../actions/users.actions";
+import { getUser} from "../../actions/user.actions";
 import axios from 'axios';
 import { CSVLink, CSVDownload } from "react-csv";
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
-import check from '../img/check.svg';
-import disabledIco from '../img/disabled.svg';
+import check from '../../img/check.svg';
+import disabledIco from '../../img/disabled.svg';
 // import bin from '../img/bin.svg';
-import pen from '../img/pen.svg';
+import pen from '../../img/pen.svg';
 // import cross from '../img/cross.svg';
-import cross2 from '../img/cross2.svg'; //choisir
+import cross2 from '../../img/cross2.svg'; //choisir
 // import thumb from '../img/thumb.svg';
-import info from '../img/info.svg';
+import info from '../../img/info.svg';
 // import skull from '../img/skull.svg';
 // import skull2 from '../img/skull2.svg';
-import skull3 from '../img/skull3.svg';
+import skull3 from '../../img/skull3.svg';
 // import skull4 from '../img/skull4.svg';
-import heart from '../img/heart.svg';
+import heart from '../../img/heart.svg';
 
 const Administration = () => {
 

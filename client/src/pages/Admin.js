@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import LeftNav from '../components/LeftNav';
-import Administration from '../components/Administration';
+import Navbar from '../components/Navigation/Navbar';
+import LeftNav from '../components/Navigation/LeftNav';
+import Administration from '../components/Admin/Administration';
 
 const Admin = () => {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import discord from "../img/discord.svg"
+import discord from "../../img/discord.svg"
 
 const LeftNav = () => {
     const user = useSelector((state)=> state.userReducer)

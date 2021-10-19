@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "./Utils";
+import { isEmpty } from "../Utils";
 // import star from "../img/star.png";
-import exemple from "../img/0125.png";
-import { getTrends } from "../actions/post.actions";
+import exemple from "../../img/0125.png";
+import { getTrends } from "../../actions/post.actions";
 // import { NavLink } from "react-router-dom";
-import Modal from "./Modals";
+import Modal from "../Modals";
 
 const Trends = () => {
   const posts = useSelector((state) => state.allPostsReducer);
@@ -103,18 +103,11 @@ const Trends = () => {
       </div>
         </div>
       </div>
-
-      {/* {trendPost((post) => {
-        return ( */}
           <>
-          {/* {post.postId === trendPost ?  */}
-          {posts.map((post) =>{
-
-          
       <div>
       <Modal showModal={openModal} hideModal={hideModal}>
                 <div className="modal-header">
-                  <h2>Titre {post.titre}</h2>
+                  <h2>Titre </h2>
                 </div>
                 <div className="modal-pic">
                 {/* {post.picture && (
@@ -138,11 +131,9 @@ const Trends = () => {
                 </div>
           </Modal>
           </div>
-          {/* : ""} */}
-        } )}
+        
           </>
-        {/* )
-         })} */}
+        
     </>
   );
 };
