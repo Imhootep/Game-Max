@@ -6,7 +6,7 @@ import Card from './Card';
 
 const Thread = () => {
     const [loadPost, setLoadPost] = useState(true)
-    const [count, setCount] = useState(5)
+    const [count, setCount] = useState(10)
         const dispatch = useDispatch();
     const posts = useSelector((state)=>state.postReducer)
 
@@ -20,7 +20,7 @@ const Thread = () => {
         if(loadPost) {
             dispatch(getPosts(count));
             setLoadPost(false)
-            setCount(count + 5);
+            setCount(count + 10);
         }
 
         window.addEventListener('scroll', loadMore);
