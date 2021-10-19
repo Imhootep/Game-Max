@@ -6,9 +6,10 @@ import Card from './Card';
 
 const Thread = () => {
     const [loadPost, setLoadPost] = useState(true)
-    const [count, setCount] = useState(10)
-        const dispatch = useDispatch();
+    const [count, setCount] = useState(5)
+    const dispatch = useDispatch();
     const posts = useSelector((state)=>state.postReducer)
+    
 
     const loadMore = () =>{
         if (window.innerHeight + document.documentElement.scrollTop +1 > document.scrollingElement.scrollHeight) {
