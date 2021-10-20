@@ -3,9 +3,12 @@ import { UidContext } from '../components/AppContext';
 import Log from '../components/Log';
 import Navbar from '../components/Navigation/Navbar';
 import UpdateProfil from '../components/profil/UpdateProfil';
+import { useSelector } from "react-redux";
 
 
 const Profil = () => {
+
+    const userData = useSelector((state) => state.userReducer);
 
     const uid = useContext(UidContext)
 
@@ -17,7 +20,7 @@ const Profil = () => {
                 <br/>
                 <br/>
                 <br/>
-                <UpdateProfil/>
+                <UpdateProfil userData={userData}/>
             
               </>
             ) : (
