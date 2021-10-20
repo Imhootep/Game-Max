@@ -34,8 +34,7 @@ const Home = () => {
   //   }, [])
 
   return (
-   <>
-      {uid ? 
+  
         <div>
       <Navbar />
       <div className="home">
@@ -56,12 +55,7 @@ const Home = () => {
       </div>
       
       </div>
-      :  
-      // <div className="profil-page">
-      // <Log signin={true} signup={false} />
-      // </div>
-      <Redirect to='/'  /> }
-      </>
+   
     
   );
 };

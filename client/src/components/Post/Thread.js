@@ -5,13 +5,13 @@ import Card from './Card';
 import { getUsers } from "../../actions/users.actions";
 // import { isEmpty } from './Utils';
 
-const Thread = ({posts,userData,usersData}) => {
+const Thread = () => { //{posts,userData,usersData} => bonne méthode mais le reducer envoie un objet pour user donc ça bug
     const [loadPost, setLoadPost] = useState(true)
     const [count, setCount] = useState(5)
     const dispatch = useDispatch();
-    // const posts = useSelector((state)=>state.postReducer)
-    // const usersData = useSelector((state) => state.usersReducer);
-    // const userData = useSelector((state) => state.userReducer);
+    const posts = useSelector((state)=>state.postReducer)
+    const usersData = useSelector((state) => state.usersReducer);
+    const userData = useSelector((state) => state.userReducer);
 
     useEffect(() => {
         dispatch(getUsers())
