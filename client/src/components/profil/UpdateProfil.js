@@ -17,6 +17,10 @@ const UpdateProfil = ({userData,usersData}) => {
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
 
+  const setNewPassword = () =>{
+    alert('tiens ton bouton allan');
+  }
+
   return (
     <div className="profil-container">
       <LeftNav />
@@ -35,6 +39,9 @@ const UpdateProfil = ({userData,usersData}) => {
           </h5>
           <h5 onClick={() => setFollowersPopup(true)}>
             Abonnés: {userData.followers ? userData.followers.length : ""}
+          </h5>
+          <h5 onClick={() => setNewPassword()}>
+            Reset password
           </h5>
         </div>
         <div className="right-part">
