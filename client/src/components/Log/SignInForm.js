@@ -31,7 +31,8 @@ const SignInForm = () => {
                 // validationError.innerHTML = res.data.errors.validation;
                 logError.innerHTML = res.data.errors.message;
             } else {
-                Cookies.set("jwt", res.data.jwt)
+                var one_day = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+                Cookies.set("jwt", res.data.jwt, { expires: one_day })
                 window.location ='/home';
             }
         })
