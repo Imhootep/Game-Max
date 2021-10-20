@@ -4,7 +4,6 @@ import Log from '../components/Log';
 import Navbar from '../components/Navigation/Navbar';
 import UpdateProfil from '../components/profil/UpdateProfil';
 import { useSelector } from "react-redux";
-import  { Redirect } from 'react-router-dom'
 
 const Profil = () => {
     const userData = useSelector((state) => state.userReducer);
@@ -22,9 +21,12 @@ const Profil = () => {
                 <UpdateProfil userData={userData} usersData={usersData}/>
             
               </>
-            ) : (
-                <Redirect to='/'  />
-            )}
+            ) : ''
+
+            // (
+            //     <Log signin={true} signup={false} /> 
+            // )
+        }
         </div>
     );
 };
