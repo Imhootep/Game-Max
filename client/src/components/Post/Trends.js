@@ -80,7 +80,7 @@ const Trends = () => {
                         ></iframe>
                       )}
                       {isEmpty(post.picture) && isEmpty(post.video) && (
-                          <img src={usersData[0] && userData.map((user)=>{
+                          <img src={usersData[0] && usersData.map((user)=>{
                               if(user._id === post.posterId) {
                                   return user.picture;
                               } else return null;

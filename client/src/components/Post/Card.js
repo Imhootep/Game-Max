@@ -7,6 +7,7 @@ import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
 import { getUsers } from "../../actions/users.actions";
+import Parser from 'html-react-parser';
 // import { deletePostAdmin } from "../../actions/post.actions";
 
 const Card = ({ post, postId, usersData }) => {
@@ -81,11 +82,11 @@ const Card = ({ post, postId, usersData }) => {
                 title={post._id}
               ></iframe>
             )}
-            {isUpdated === false && <p>{post.message}</p>}
+            {isUpdated === false && <p>{Parser(post.message)}</p>}
             {isUpdated && (
               <div className="update-post">
                 <textarea
-                  defaultValue={post.message}
+                  defaultValue={Parser(post.message)}
                   onChange={(e) => setTextUpdate(e.target.value)}
                 />
                 <div className="button-container">
