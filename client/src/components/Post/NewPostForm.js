@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addPost, getPosts } from "../../actions/post.actions";
-import { isEmpty } from "../Utils";
+import { dateParser, isEmpty } from "../Utils";
 import { timestampParser } from "../Utils";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import Parser from 'html-react-parser';
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
+  // const setQuillMessage = (e) => setMessage(e.target.value)
   const [event, setEvent] = useState(false);
   const [date, setDate] = useState("");
   const [typeEvent, setTypeEvent] = useState("");
@@ -116,14 +120,16 @@ const NewPostForm = () => {
               <img src={userData.picture} alt="user-pic" />
             </div>
           </NavLink>
+          
           <div className="post-form">
-            <textarea
-              name="message"
+            <ReactQuill name="message"
               id="message"
-              placeholder="Quoi de neuf ?"
-              onChange={(e) => setMessage(e.target.value)}
-              value={message}
-            />
+
+              placeholder="Que Dis?"
+              onChange={setMessage}
+              value={message}/>
+              
+                
             {message || postPicture || video.lentgh > 20 ? (
               <li className="card-container">
                 <div className="card-left">
@@ -137,7 +143,7 @@ const NewPostForm = () => {
                     <span>{timestampParser(Date.now())}</span>
                   </div>
                   <div className="content">
-                    <p>{message}</p>
+                    <p>{Parser(message)}</p>
                     <img src={postPicture} alt="" />
                     {video && (
                       <iframe
@@ -232,7 +238,10 @@ const NewPostForm = () => {
         </>
       )}
     </div>
+    
   );
 };
+
+
 
 export default NewPostForm;

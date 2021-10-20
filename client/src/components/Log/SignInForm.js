@@ -73,6 +73,8 @@ const SignInForm = () => {
                         </div> 
                         <button id="test" className="loginBut" type="submit"  ><span>Sign In</span></button>
                     {/* <h4>{errorMessage}</h4> */}
+                    <br/>
+                    <span>Mot de passe oublié ? </span>
                 </form>
     );
 };
