@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext  } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../../actions/users.actions";
 import { getUser} from "../../actions/user.actions";
+import Cookies from 'js-cookie';
 import axios from 'axios';
 // import { CSVLink, CSVDownload } from "react-csv";
 import  { Redirect } from 'react-router-dom';
@@ -115,6 +116,7 @@ const Administration = () => {
     const disable = (id) => {
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -125,6 +127,7 @@ const Administration = () => {
     const enable = (id) => {
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -151,6 +154,7 @@ const Administration = () => {
         setModifying('')
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
             data: {role:roleUser,adresse:adressUser}
           }).then(response => {
@@ -173,6 +177,7 @@ const Administration = () => {
     const validate = (id) => {
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
             data: {role:role}
           }).then(response => {
@@ -185,6 +190,7 @@ const Administration = () => {
         if (window.confirm("GAME OVER: Voulez-vous supprimer cet utilisateur de manière définitive?")) {
             return axios({
                 method:"delete",
+                headers : { Authorization : "Bearer "+Cookies.get('jwt') },
                 url: `${process.env.REACT_APP_API_URL}api/user/` + id
               }).then(response => {
                 setRefreshData(refreshData+1)
