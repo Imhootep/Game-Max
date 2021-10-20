@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../actions/post.actions';
 import Card from './Card';
 import { getUsers } from "../../actions/users.actions";
+import { getUser } from "../../actions/user.actions";
 // import { isEmpty } from './Utils';
 
 const Thread = () => { //{posts,userData,usersData} => bonne méthode mais le reducer envoie un objet pour user donc ça bug
