@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { Provider } from "react-redux";
 import Routes from "./components/Routes";
 import {UidContext} from './components/AppContext'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import Cookies from 'js-cookie'
 import { getUser } from './actions/user.actions';
+import { createPortal } from 'react-dom';
 
 const App = () => {
 
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch ();
-
+  
   useEffect(() =>{
-      const fetchToken = async () =>{
+      const fetchUser = async () =>{
         await axios ({
           method:"get",
-          url:`${process.env.REACT_APP_API_URL}jwtid`,
-          withCredentials: true,
-
+          withCredentials:true,
+          headers : { Authorization : "Bearer "+Cookies.get('jwt') },
+          url:`${process.env.REACT_APP_API_URL}api/user/all`
         })
           .then((res) => {
-            console.log(res)
-            setUid(res.data)
+            console.log("Je ne passe qu'une fois normalement")
+            setUid(res.data.user)
           })
-          .catch((err) => console.log("No token"))
+          .catch((err) => console.log("No token..."))
       }
-      fetchToken();
-
+      fetchUser();
       //get data and show 
       if(uid) dispatch(getUser(uid)) 
 
-  }, [uid]);
+   }, [uid]);
 
   return (
     <UidContext.Provider value={uid}>

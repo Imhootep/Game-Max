@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSocial, updateBio } from "../../actions/user.actions";
 import fb from './../../img/fb.svg'
 import youtube from './../../img/youtube.svg'
@@ -9,9 +9,9 @@ import instagram from '../../img/instagram1.svg'
 import twitch from '../../img/twitch.svg'
 import { isEmpty } from "../Utils";
 
-const UpdateBio = ({userData}) => {
+const UpdateBio = () => {
   const dispatch = useDispatch();
-  // const userData = useSelector((state) => state.userReducer);
+  const userData = useSelector((state) => state.userReducer);
   const [updateForm, setUpdateForm] = useState(false);
 
   useEffect(() =>{

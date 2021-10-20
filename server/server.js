@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const path = require('path')
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 require('dotenv').config({path: './config/.env'});
@@ -14,7 +13,7 @@ const app = express();
 const corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
-  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'allowedHeaders': ['sessionId', 'Content-Type', 'Authorization', '*'],
   'exposedHeaders': ['sessionId'],
   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
   'preflightContinue': false
@@ -27,9 +26,10 @@ app.use(cookieParser());
 
 // jwt
 app.get('*', checkUser);
-app.get('/jwtid', requireAuth, (req, res) => {
-  res.status(200).send(res.locals.user._id)
-});
+// app.get('/jwtid', (req, res) => {
+//   console.log(res.locals.user._id)
+//   res.status(200).send(res.locals.user._id)
+// });
 
 // routes
 app.use('/api/user', userRoutes);

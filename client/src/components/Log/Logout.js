@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 
 
 const Logout = () => {
 
-    const removeCookie = (key)=>{
+    const removeCookie = () => {
         if(window !== "undefined")
-        cookie.remove(key, {expires:1})
+        Cookies.remove('jwt', { path: '' })
     }
 
     const logout = async () =>{
@@ -16,7 +16,7 @@ const Logout = () => {
             url:`${process.env.REACT_APP_API_URL}api/user/logout`,
             withCredentials:true,
         })
-        .then(()=> removeCookie('jwt'))
+        .then(()=> removeCookie())
         .catch((err)=> console.log(err))
 
         window.location = "/";

@@ -1,13 +1,11 @@
 import React, { useContext,useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUsers} from "../../actions/users.actions";
+// import { getUsers} from "../../actions/users.actions";
 // import {getUser} from "../actions/user.actions"
 import { NavLink } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import Logout from '../Log/Logout';
-// import discord from '../img/DiscordW.svg'
-// import instagram from '../img/instagram.svg'
-// import utube from '../img/youtube.svg'
+
 import exclamation from '../../img/exclamation.svg'
 
 
@@ -21,8 +19,7 @@ const Navbar = () => {
 
     const users = useSelector((state)=> state.usersReducer)
     // useEffect(()=>{
-    //     // dispatch(getUsers())
-    //     // dispatch(getUser())
+        
     // }, [])
     
     const [acceptUser,setAcceptUser] = useState(false);

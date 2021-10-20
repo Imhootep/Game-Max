@@ -6,17 +6,18 @@ import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
-import { getUsers } from "../../actions/users.actions";
+// import { getUsers } from "../../actions/users.actions";
 // import { deletePostAdmin } from "../../actions/post.actions";
 
-const Card = ({ post, postId, usersData }) => {
+const Card = ({ post, postId, userData }) => {
   //on appelle post en props
   // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const userData = useSelector((state) => state.userReducer);
+  const usersData = useSelector((state) => state.usersReducer);
+  // const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   // const handleDelete = () => dispatch(deletePostAdmin(postId));
@@ -31,8 +32,6 @@ const Card = ({ post, postId, usersData }) => {
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
-
-  
 
   return (
     <li className="card-container" key={post._id}>

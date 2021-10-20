@@ -5,11 +5,8 @@ import Navbar from '../components/Navigation/Navbar';
 import UpdateProfil from '../components/profil/UpdateProfil';
 import { useSelector } from "react-redux";
 
-
 const Profil = () => {
-
     const userData = useSelector((state) => state.userReducer);
-
     const uid = useContext(UidContext)
 
     return (

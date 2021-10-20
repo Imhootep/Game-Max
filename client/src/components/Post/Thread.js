@@ -11,6 +11,7 @@ const Thread = () => {
     const dispatch = useDispatch();
     const posts = useSelector((state)=>state.postReducer)
     const usersData = useSelector((state) => state.usersReducer);
+    const userData = useSelector((state) => state.userReducer);
 
     useEffect(() => {
         dispatch(getUsers())
@@ -38,7 +39,9 @@ const Thread = () => {
         <div className="thread-container">
             <ul>
                 {posts.map((post)=>{
-                    return <Card post={post} key={post._id} usersData={usersData}/>
+                    console.log("post:")
+                    console.log(post)
+                    return <Card post={post} key={post._id} userData={userData}/>
                 })}
             </ul>
         </div>
