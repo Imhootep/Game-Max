@@ -13,6 +13,7 @@ const Logout = () => {
     const logout = async () =>{
         await axios({
             method:"get",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
             url:`${process.env.REACT_APP_API_URL}api/user/logout`,
             withCredentials:true,
         })
