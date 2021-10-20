@@ -43,7 +43,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
       to: email,
       subject: "<No-Reply>Confirmation de votre adresse email",
       html: `Bonjour ${pseudo}, vous venez de vous enregistrer sur le site de Game-Max.<br>
-            Cliquez <a href=http://localhost:3000/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
+            Cliquez <a href=http://localhost:3000/confirm/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.
             `
