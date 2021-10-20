@@ -5,13 +5,13 @@ import Card from './Card';
 import { getUsers } from "../../actions/users.actions";
 // import { isEmpty } from './Utils';
 
-const Thread = () => {
+const Thread = ({posts,userData,usersData}) => {
     const [loadPost, setLoadPost] = useState(true)
     const [count, setCount] = useState(5)
     const dispatch = useDispatch();
-    const posts = useSelector((state)=>state.postReducer)
-    const usersData = useSelector((state) => state.usersReducer);
-    const userData = useSelector((state) => state.userReducer);
+    // const posts = useSelector((state)=>state.postReducer)
+    // const usersData = useSelector((state) => state.usersReducer);
+    // const userData = useSelector((state) => state.userReducer);
 
     useEffect(() => {
         dispatch(getUsers())
@@ -39,9 +39,7 @@ const Thread = () => {
         <div className="thread-container">
             <ul>
                 {posts.map((post)=>{
-                    console.log("post:")
-                    console.log(post)
-                    return <Card post={post} key={post._id} userData={userData}/>
+                    return <Card post={post} key={post._id} usersData={usersData} userData={userData}/>
                 })}
             </ul>
         </div>

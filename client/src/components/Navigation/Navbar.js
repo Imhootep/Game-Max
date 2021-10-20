@@ -16,7 +16,6 @@ const Navbar = () => {
     const uid = useContext(UidContext)
     const userData = useSelector((state)=> state.userReducer)
 
-
     const users = useSelector((state)=> state.usersReducer)
     // useEffect(()=>{
         

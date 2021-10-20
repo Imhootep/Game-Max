@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext  } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../../actions/users.actions";
 import { getUser} from "../../actions/user.actions";
 import axios from 'axios';
 // import { CSVLink, CSVDownload } from "react-csv";
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import { UidContext } from '../../components/AppContext';
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -25,6 +26,7 @@ import heart from '../../img/heart.svg';
 const Administration = () => {
 
     const [refreshData,setRefreshData] = useState(0);
+    const uid = useContext(UidContext)
 
     const dispatch = useDispatch ();
     //me user
@@ -204,8 +206,10 @@ const Administration = () => {
 
 
     return (
-        // <>
-        // {user.isAdmin !== undefined && user.isAdmin === true ?
+         <>
+         
+         {/* {user.isAdmin !== undefined && user.isAdmin === true ? */}
+         {uid ? 
         <div className="administrationContainer">
             <div className="adminBigBlock">
                 <div id="howToDoContent">
@@ -377,10 +381,10 @@ const Administration = () => {
             {/* <Csv /> */}
            
         </div>
-        // :
-        // <Redirect to='/' /> 
-        // }
-        // </>
+        :
+        <Redirect to='/' /> 
+        }
+        </>
     );
 };
 

@@ -9,15 +9,13 @@ import CardComments from "./CardComments";
 // import { getUsers } from "../../actions/users.actions";
 // import { deletePostAdmin } from "../../actions/post.actions";
 
-const Card = ({ post, postId, userData }) => {
+const Card = ({ post, postId,usersData, userData }) => {
   //on appelle post en props
   // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const usersData = useSelector((state) => state.usersReducer);
-  // const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   // const handleDelete = () => dispatch(deletePostAdmin(postId));
@@ -141,7 +139,7 @@ const Card = ({ post, postId, userData }) => {
 
               <img src="./img/icons/share.svg" alt="share" />
             </div>
-            {showComments && <CardComments post={post} />}
+            {showComments && <CardComments post={post} userData={usersData} userData={usersData} />}
           </div>
         </>
       )}
