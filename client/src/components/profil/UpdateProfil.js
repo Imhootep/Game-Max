@@ -18,7 +18,7 @@ const UpdateProfil = ({userData,usersData}) => {
   const [followersPopup, setFollowersPopup] = useState(false);
 
   const setNewPassword = () =>{
-    alert('tiens ton bouton allan');
+    alert('tiens ton bouton alan');
   }
 
   return (

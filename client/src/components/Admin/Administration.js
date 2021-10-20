@@ -213,9 +213,9 @@ const Administration = () => {
 
     return (
          <>
-         
+         {console.log("combien de return?")}
          {/* {user.isAdmin !== undefined && user.isAdmin === true ? */}
-         {uid ? 
+         {uid? 
         <div className="administrationContainer">
             <div className="adminBigBlock">
                 <div id="howToDoContent">
@@ -314,7 +314,7 @@ const Administration = () => {
                 return(
                     <>
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
-                    <div className="adminBlock">
+                    <div key={val._id} className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         {/* {setCsvToSend([...val.email])} */}
                         {/* {setCsvToSend([val.email])} */}
@@ -368,7 +368,7 @@ const Administration = () => {
                 return(
                     <>
                     {val.isDisabled === true ?
-                    <div className="adminBlock disable">
+                    <div key={val._id} className="adminBlock disable">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
@@ -388,7 +388,9 @@ const Administration = () => {
            
         </div>
         :
-        <Redirect to='/' /> 
+        '' //il faudra faire ça sur la navbar aussi
+        //mais du coup en fait ça marche vu que le render se fait plusieurs fois et que le dernier render a tjrs les infos chargées, pas besoin du useeffect comme dans home (meme si le useeffect permet de mettre un loading jusqu'a ce que les données soient chargées)
+        // <Redirect to='/' /> 
         }
         </>
     );

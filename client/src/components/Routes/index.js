@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {  useContext,useEffect  } from 'react';
+import { UidContext } from '../../components/AppContext';
 // import { useSelector } from 'react-redux';
 // import React, { useEffect, useState } from 'react';
 import React from 'react';
@@ -14,21 +16,30 @@ import Trending from '../../pages/Trending'
 const Index = () => {
 
     // const user = useSelector((state)=> state.userReducer)
+    // const uid = useContext(UidContext)
+
+    // useEffect(() => {
+    // }, [uid]);
 
     return (
         <div>
             <Router>
-                <Switch>
-                    <Route path="/" exact component={Login} />
-                    <Route path="/home" exact component={Home} />
-                    <Route path="/profil" exact component={Profil} />
-                    <Route path="/studio" exact component={Studio} />
-                    <Route path="/trending" exact component={Trending} />
-                    <Route path="/admin" exact component={Admin} />
-                    {/* {user.isAdmin === true ? <Route path="/admin" exact component={Admin} /> : "" } */}
-                    <Redirect to="/" />
-                </Switch>
-            </Router>
+            <Switch>
+                <Route path="/" exact component={Login} />
+                <Route path="/home" exact component={Home} />
+                <Route path="/profil" exact component={Profil} />
+                <Route path="/studio" exact component={Studio} />
+                <Route path="/trending" exact component={Trending} />
+                <Route path="/admin" exact component={Admin} />
+                {/* {user.isAdmin === true ? <Route path="/admin" exact component={Admin} /> : "" } */}
+                <Redirect to="/" />
+            </Switch>
+        </Router>
+           
+            
+        : ''
+        }
+            
         </div>
     );
 };
