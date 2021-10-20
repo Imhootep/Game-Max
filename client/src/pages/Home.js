@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from 'react';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 // import { getUser} from "../actions/user.actions";
 // import  { Redirect } from 'react-router-dom'
@@ -12,6 +12,7 @@ import Log from '../components/Log';
 import  { Redirect } from 'react-router-dom';
 import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
+import loading from '../img/loading.gif';
 
 const Home = () => {
 
@@ -19,6 +20,7 @@ const Home = () => {
   const posts = useSelector((state)=>state.postReducer)
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+
 
   const uid = useContext(UidContext)
   // const dispatch = useDispatch ();
@@ -33,9 +35,13 @@ const Home = () => {
   //       }
   //   }, [])
 
+
+  useEffect(() => {
+  }, [uid]);
+
   return (
-  //  <>
-  //     {uid ? 
+   <>
+      {uid ? 
         <div>
       <Navbar />
       <div className="home">
@@ -56,14 +62,24 @@ const Home = () => {
       </div>
       
       </div>
-      // :  
-      // // <div className="profil-page">
-      // // <Log signin={true} signup={false} />
-      // // </div>
-      // <Redirect to='/'  /> }
-      // </>
+      : 
+      <img src={loading} alt="loading" title="veuillez patienter" className="loading" />
+      // <div className="profil-page">
+      // <Log signin={true} signup={false} />
+      // </div>
+      // 'LOADING'
+      }
     
-  );
+      
+       {/* <Redirect to='/'  /> */}
+      
+
+      </>
+      
+
+  )
+
+
 };
 
 export default Home;
