@@ -21,7 +21,6 @@ const App = () => {
           url:`${process.env.REACT_APP_API_URL}api/user/all`
         })
           .then((res) => {
-            console.log("Je ne passe qu'une fois normalement")
             setUid(res.data.user)
           })
           .catch((err) => console.log("No token..."))
