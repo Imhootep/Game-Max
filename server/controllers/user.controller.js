@@ -3,8 +3,15 @@ const ObjectID = require("mongoose").Types.ObjectId;
 
 // Retourne tous les utilisateurs
 module.exports.getAllUsers = async (req, res) => {
+  let user = "";
   const users = await UserModel.find().select("-password");
-  res.status(200).json(users);
+  if(res.locals.user == null || res.locals.user == undefined){
+    user = null;
+  }
+  else{
+    user = res.locals.user._id
+  }
+  res.status(200).json({users: users, user: user});
 };
 
 // Retourne tous les utilisateurs avec un role (n'affiche pas ceux sans rôle, ils sont supposés être en attente d'acceptation)

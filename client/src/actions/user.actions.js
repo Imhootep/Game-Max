@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
@@ -16,7 +17,7 @@ export const getUser = (uid) => {
   return (dispatch) => {
     return (
       axios
-        .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
+        .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } })
         .then((res) => {
           dispatch({ type: GET_USER, payload: res.data });
         })
@@ -32,14 +33,14 @@ export const uploadPicture = (data, id) => {
     return (
       axios
         //envoi à la base de donnée
-        .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
+        .post(`${process.env.REACT_APP_API_URL}api/user/upload`, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } },data)
         .then((res) => {
           if (res.data.errors) {
             dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
           } else {
             dispatch({ type: GET_USER_ERRORS, payload: "" });
             return axios
-              .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
+              .get(`${process.env.REACT_APP_API_URL}api/user/${id}`, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } })
               .then((res) => {
                 //va changer le chemin de la data dans le store ...
                 dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
@@ -63,6 +64,7 @@ export const updateBio = (
       axios({
         //modif de la BIO
         method: "patch",
+        headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
         url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
         data: { bio, adresse, membres, jeux, social },
       })
@@ -83,6 +85,7 @@ export const followUser = (followerId, idToFollow) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/user/follow/` + followerId,
       data: { idToFollow },
     })
@@ -98,6 +101,7 @@ export const unfollowUser = (followerId, idToUnfollow) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/user/unfollow/` + followerId,
       data: { idToUnfollow },
     })

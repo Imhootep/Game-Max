@@ -7,11 +7,11 @@ import FollowHandler from "./FollowHandler";
 import UpdateBio from "./UpdateBio";
 import UploadImg from "./UploadImg";
 
-const UpdateProfil = () => {
+const UpdateProfil = ({userData,usersData}) => {
 
   //pour recup des données user et users
-  const userData = useSelector((state) => state.userReducer);
-  const usersData = useSelector((state) => state.usersReducer);
+  // const userData = useSelector((state) => state.userReducer);
+  // const usersData = useSelector((state) => state.usersReducer);
   const error = useSelector((state) => state.errorReducer.userError);
 
   const [followingPopup, setFollowingPopup] = useState(false);
@@ -38,7 +38,7 @@ const UpdateProfil = () => {
           </h5>
         </div>
         <div className="right-part">
-          <UpdateBio/>
+          <UpdateBio userData={userData}/>
          
         </div>
       </div>

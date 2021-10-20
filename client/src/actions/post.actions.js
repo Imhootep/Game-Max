@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import Cookies from "js-cookie"
 // posts
 export const GET_POSTS = "GET_POSTS";
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
@@ -23,7 +23,7 @@ export const GET_POST_ERRORS = "GET_POST_ERRORS";
 export const getPosts = (num) => {
   return (dispatch) => {
     return axios
-      .get(`${process.env.REACT_APP_API_URL}api/post/`)
+      .get(`${process.env.REACT_APP_API_URL}api/post/`, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } })
       .then((res) => {
         const array = res.data.slice(0, num);
         dispatch({ type: GET_POSTS, payload: array });
@@ -36,7 +36,7 @@ export const getPosts = (num) => {
 export const addPost = (data) => {
   return (dispatch) => {
     return axios
-      .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
+      .post(`${process.env.REACT_APP_API_URL}api/post/`, data, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } })
       .then((res) => {
         if (res.data.errors) {
           dispatch({ type: GET_POST_ERRORS, payload: res.data.errors });
@@ -51,6 +51,7 @@ export const likePost = (postId, userId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/like-post/` + postId,
       data: { id: userId },
     })
@@ -64,6 +65,7 @@ export const unlikePost = (postId, userId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/` + postId,
       data: { id: userId },
     })
@@ -79,6 +81,7 @@ export const updatePost = (postId, message) => {
   return (dispatch) => {
     return axios({
       method: "put",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
       data: { message },
     })
@@ -93,6 +96,7 @@ export const deletePost = (postId) => {
   return (dispatch) => {
     return axios({
       method: "delete",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
     })
       .then((res) => {
@@ -106,6 +110,7 @@ export const deletePostAdmin = (postId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/delete-post/${postId}`,
     })
       .then((res) => {
@@ -119,6 +124,7 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
       data: { commenterId, text, commenterPseudo },
     })
@@ -133,6 +139,7 @@ export const editComment = (postId, commentId, text) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
       data: { commentId, text },
     })
@@ -147,6 +154,7 @@ export const editCommentAdmin = (postId, commentId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
       data: { commentId },
     })
@@ -161,6 +169,7 @@ export const deleteComment = (postId, commentId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
       data: { commentId },
     })

@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-
+import Cookies from 'js-cookie'
 import axios from 'axios';
 
 const SignInForm = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    // const activeButton = () =>{
-    //     // document.getElementById("login").classList.add = "test";
-    //     document.getElementById("test").classList.add("test");
-    //     console.log("et alors mbio tu passes pas ici????");
-    // }
+    const [uid, setUid] = useState(null);
 
     const handleLogin =(e)=>{
         e.preventDefault();
@@ -36,6 +31,8 @@ const SignInForm = () => {
                 // validationError.innerHTML = res.data.errors.validation;
                 logError.innerHTML = res.data.errors.message;
             } else {
+                var one_day = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+                Cookies.set("jwt", res.data.jwt, { expires: one_day })
                 window.location ='/home';
             }
         })
@@ -74,8 +71,7 @@ const SignInForm = () => {
                                 value={password}
                             />
                         </div> 
-                        <button id="test" className="loginBut" type="submit"><span>Sign In</span></button>
-                        {/* { onclick={activeButton}} */}
+                        <button id="test" className="loginBut" type="submit"  ><span>Sign In</span></button>
                     {/* <h4>{errorMessage}</h4> */}
                     <br/>
                     <span>Mot de passe oublié ? </span>
