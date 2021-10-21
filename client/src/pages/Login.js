@@ -13,7 +13,6 @@ const Login = () => {
         :
         <div className="profil-page">
             <div className="log-container">
-            
                 <Log signin={true} signup={false} />
             </div>
         </div>
