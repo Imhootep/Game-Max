@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
-import { getUsers } from "../../actions/users.actions";
+// import { getUsers } from "../../actions/users.actions";
+// import Parser from 'html-react-parser';
 // import { deletePostAdmin } from "../../actions/post.actions";
 
-const Card = ({ post, postId, usersData }) => {
+const Card = ({ post, postId,usersData, userData }) => {
   //on appelle post en props
   // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   // const handleDelete = () => dispatch(deletePostAdmin(postId));
@@ -31,8 +31,6 @@ const Card = ({ post, postId, usersData }) => {
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
-
-  
 
   return (
     <li className="card-container" key={post._id}>
@@ -142,7 +140,7 @@ const Card = ({ post, postId, usersData }) => {
 
               <img src="./img/icons/share.svg" alt="share" />
             </div>
-            {showComments && <CardComments post={post} />}
+            {showComments && <CardComments post={post} userData={userData} usersData={usersData} />}
           </div>
         </>
       )}

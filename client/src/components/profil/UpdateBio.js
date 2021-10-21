@@ -9,9 +9,9 @@ import instagram from '../../img/instagram1.svg'
 import twitch from '../../img/twitch.svg'
 import { isEmpty } from "../Utils";
 
-const UpdateBio = () => {
+const UpdateBio = ({userData}) => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userReducer);
+  // const userData = useSelector((state) => state.userReducer);
   const [updateForm, setUpdateForm] = useState(false);
 
   useEffect(() =>{

@@ -206,7 +206,7 @@ const SearchStudio = () => {
                         ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
                         ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase())))
                         ?
-                        <div className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>
+                        <div key={val._id} className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>
                             <div className="infosProfil">
                             <div className={val.role !== undefined ? "roleTitle "+val.role.toLowerCase() : ''}>{val.role !== undefined ? val.role : 'Compte INVALIDE'}</div>
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}

@@ -7,16 +7,24 @@ import { getTrends } from "../../actions/post.actions";
 // import { NavLink } from "react-router-dom";
 import Modal from "../Modals";
 
-const Trends = () => {
-  const posts = useSelector((state) => state.allPostsReducer);
-  const usersData = useSelector((state) => state.usersReducer);
-  const userData = useSelector((state) => state.userReducer);
+const Trends = ({posts,userData,usersData}) => {
+  // const posts = useSelector((state) => state.allPostsReducer);
+  // const usersData = useSelector((state) => state.usersReducer);
+  // const userData = useSelector((state) => state.userReducer);
   const trendList = useSelector((state) => state.trendingReducer);
   const [trendPost, setTrendPost] = useState('')
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false)
 
-
+  //si on prends les props, seul userdata est un objet les deux autres sont des array
+  // pareil quand je fais les reducer ici wtf?
+  {console.log("userdata est sensé etre un array:")}
+  {console.log(userData)}
+  {console.log("userSdata est sensé etre un array:")}
+  {console.log(usersData)}
+  {console.log("posts est sensé etre un array:")}
+  {console.log(posts)}
+  
 
   useEffect(() => {
     if (!isEmpty(posts[0])) {
@@ -80,7 +88,7 @@ const Trends = () => {
                         ></iframe>
                       )}
                       {isEmpty(post.picture) && isEmpty(post.video) && (
-                          <img src={usersData[0] && userData.map((user)=>{
+                          <img src={usersData !== isEmpty && usersData.map((user)=>{
                               if(user._id === post.posterId) {
                                   return user.picture;
                               } else return null;

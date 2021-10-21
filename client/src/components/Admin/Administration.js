@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext  } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { getUsers} from "../../actions/users.actions";
 import { getUser} from "../../actions/user.actions";
+import Cookies from 'js-cookie';
 import axios from 'axios';
 // import { CSVLink, CSVDownload } from "react-csv";
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import { UidContext } from '../../components/AppContext';
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -25,9 +27,10 @@ import heart from '../../img/heart.svg';
 const Administration = () => {
 
     const [refreshData,setRefreshData] = useState(0);
+    const uid = useContext(UidContext)
 
     const dispatch = useDispatch ();
-    //me user
+    //le user
     const user = useSelector((state) => state.userReducer);
     useEffect(()=>{
         dispatch(getUser())
@@ -113,6 +116,7 @@ const Administration = () => {
     const disable = (id) => {
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -123,6 +127,7 @@ const Administration = () => {
     const enable = (id) => {
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -149,6 +154,7 @@ const Administration = () => {
         setModifying('')
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
             data: {role:roleUser,adresse:adressUser}
           }).then(response => {
@@ -171,6 +177,7 @@ const Administration = () => {
     const validate = (id) => {
         return axios({
             method:"patch",
+            headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
             data: {role:role}
           }).then(response => {
@@ -183,6 +190,7 @@ const Administration = () => {
         if (window.confirm("GAME OVER: Voulez-vous supprimer cet utilisateur de manière définitive?")) {
             return axios({
                 method:"delete",
+                headers : { Authorization : "Bearer "+Cookies.get('jwt') },
                 url: `${process.env.REACT_APP_API_URL}api/user/` + id
               }).then(response => {
                 setRefreshData(refreshData+1)
@@ -204,8 +212,10 @@ const Administration = () => {
 
 
     return (
-        // <>
-        // {user.isAdmin !== undefined && user.isAdmin === true ?
+         <>
+         {console.log("combien de return?")}
+         {/* {user.isAdmin !== undefined && user.isAdmin === true ? */}
+         {uid? 
         <div className="administrationContainer">
             <div className="adminBigBlock">
                 <div id="howToDoContent">
@@ -304,7 +314,7 @@ const Administration = () => {
                 return(
                     <>
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
-                    <div className="adminBlock">
+                    <div key={val._id} className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         {/* {setCsvToSend([...val.email])} */}
                         {/* {setCsvToSend([val.email])} */}
@@ -358,7 +368,7 @@ const Administration = () => {
                 return(
                     <>
                     {val.isDisabled === true ?
-                    <div className="adminBlock disable">
+                    <div key={val._id} className="adminBlock disable">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
                         <div className="adminSection">
@@ -377,10 +387,12 @@ const Administration = () => {
             {/* <Csv /> */}
            
         </div>
-        // :
+        :
+        '' //il faudra faire ça sur la navbar aussi
+        //mais du coup en fait ça marche vu que le render se fait plusieurs fois et que le dernier render a tjrs les infos chargées, pas besoin du useeffect comme dans home (meme si le useeffect permet de mettre un loading jusqu'a ce que les données soient chargées)
         // <Redirect to='/' /> 
-        // }
-        // </>
+        }
+        </>
     );
 };
 

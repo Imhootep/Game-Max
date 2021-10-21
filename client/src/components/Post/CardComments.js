@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addComment, getPosts } from "../../actions/post.actions";
 import FollowHandler from "../profil/FollowHandler";
 import { isEmpty, timestampParser } from "../Utils";
 import EditDeleteComment from "./EditDeleteComment";
 
-const CardComments = ({ post }) => {
+const CardComments = ({ post,userData,usersData }) => {
   const [text, setText] = useState("");
-  const usersData = useSelector((state) => state.usersReducer);
-  const userData = useSelector((state) => state.userReducer);
+  // const usersData = useSelector((state) => state.usersReducer);
+  // const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   const handleComment = (e) => {

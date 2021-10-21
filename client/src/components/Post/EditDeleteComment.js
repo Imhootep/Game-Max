@@ -18,7 +18,7 @@ const EditDeleteComment = ({ comment, postId }) => {
       dispatch(editComment(postId, comment._id, text));
       setText("");
       setEdit(false);
-      // window.location.reload();
+      window.location.reload();
     }
   };
 
@@ -83,7 +83,7 @@ const EditDeleteComment = ({ comment, postId }) => {
               <img src="./img/icons/trash.svg" alt="delete" />
             </span>
 
-            <input type="submit" value="Valider modification" />
+            <input type="submit" value="Valider modification"/>
           </div>
         </form>
       )}

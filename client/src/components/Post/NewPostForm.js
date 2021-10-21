@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { addPost, getPosts } from "../../actions/post.actions";
+import { addPost } from "../../actions/post.actions";
 import { isEmpty } from "../Utils";
 import { timestampParser } from "../Utils";
+import { getRoledUsers } from "../../actions/users.actions";
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
+// import Parser from 'html-react-parser';
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
+  // const setQuillMessage = (e) => setMessage(e.target.value)
   const [event, setEvent] = useState(false);
   const [date, setDate] = useState("");
   const [typeEvent, setTypeEvent] = useState("");
@@ -17,6 +22,7 @@ const NewPostForm = () => {
   const userData = useSelector((state) => state.userReducer);
   const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
+  const [postRole, setPostRole] = useState("");
 
   const handlePicture = (e) => {
     setPostPicture(URL.createObjectURL(e.target.files[0]));
@@ -39,7 +45,6 @@ const NewPostForm = () => {
       await dispatch(addPost(data));
       window.location.reload()
       // dispatch(getPosts());
-      // window.location.reload()
       cancelPost();
     } else {
       alert("Veuillez entrer un message");
@@ -72,7 +77,25 @@ const NewPostForm = () => {
     }
   };
 
+
+  // const rolePost = (data) => {
+  //   setEvent(true);
+  //   setDate(true);
+
+  //   if(data === postRole) {
+  //     setPostRole()
+  //   } else {
+  //     setPostRole(data)
+  //   }
+
+  // }
+    
+
+  
+
+
   useEffect(() => {
+
     if (!isEmpty(userData)) setIsLoading(false);
     handleVideo();
     
@@ -117,14 +140,22 @@ const NewPostForm = () => {
               <img src={userData.picture} alt="user-pic" />
             </div>
           </NavLink>
+          
           <div className="post-form">
-            <textarea
-              name="message"
+            {/* <ReactQuill name="message"
               id="message"
-              placeholder="Quoi de neuf ?"
+
+              placeholder="Que Dis?"
+              onChange={setMessage}
+              value={message}/> */}
+              <textarea name="message"
+              id="message"
+
+              placeholder="Que Dis?"
               onChange={(e) => setMessage(e.target.value)}
-              value={message}
-            />
+              value={message}/>
+              
+                
             {message || postPicture || video.lentgh > 20 ? (
               <li className="card-container">
                 <div className="card-left">
@@ -188,7 +219,7 @@ const NewPostForm = () => {
                       <option className="choice" value="choice">
                         Choisir un Event
                       </option>
-                      <option className="GameCafe" value="game">
+                      <option className={"GameCafe" + "blueframe" } value="game">
                         Game Dev Café
                       </option>
                       <option className="formation" value="formation">
@@ -233,7 +264,10 @@ const NewPostForm = () => {
         </>
       )}
     </div>
+    
   );
 };
+
+
 
 export default NewPostForm;
