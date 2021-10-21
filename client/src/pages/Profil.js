@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 // import { UidContext } from '../components/AppContext';
 // import Log from '../components/Log';
 import Navbar from '../components/Navigation/Navbar';

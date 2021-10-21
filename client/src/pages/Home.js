@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react';
-import React, { useContext, useEffect, useState } from 'react';
-import { useSelector, useDispatch  } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 // import { getUser} from "../actions/user.actions";
 // import  { Redirect } from 'react-router-dom'
 import Navbar from "../components/Navigation/Navbar";
@@ -12,7 +12,7 @@ import NewPostForm from "../components/Post/NewPostForm";
 import  { Redirect } from 'react-router-dom';
 // import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
-import loading from '../img/loading.gif';
+// import loading from '../img/loading.gif';
 import Cookies from 'js-cookie';
 
 const Home = () => {
