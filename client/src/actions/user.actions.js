@@ -33,7 +33,7 @@ export const uploadPicture = (data, id) => {
     return (
       axios
         //envoi à la base de donnée
-        .post(`${process.env.REACT_APP_API_URL}api/user/upload`, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } },data)
+        .post(`${process.env.REACT_APP_API_URL}api/user/upload`,data, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } })
         .then((res) => {
           if (res.data.errors) {
             dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
