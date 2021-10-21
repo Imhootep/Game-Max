@@ -37,9 +37,6 @@ const Home = () => {
   //   }, [])
 
 
-  useEffect(() => {
-  }, [uid]);
-
   return (
    <>
       {Cookies.get("jwt") ? 
