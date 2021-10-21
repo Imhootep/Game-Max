@@ -140,7 +140,7 @@ const Card = ({ post, postId,usersData, userData }) => {
 
               <img src="./img/icons/share.svg" alt="share" />
             </div>
-            {showComments && <CardComments post={post} userData={usersData} userData={usersData} />}
+            {showComments && <CardComments post={post} userData={userData} usersData={usersData} />}
           </div>
         </>
       )}
