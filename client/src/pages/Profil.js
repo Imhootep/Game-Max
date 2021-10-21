@@ -19,7 +19,6 @@ const Profil = () => {
                 <br/>
                 <br/>
                 <UpdateProfil userData={userData} usersData={usersData}/>
-            
               </>
             ) : ''
 

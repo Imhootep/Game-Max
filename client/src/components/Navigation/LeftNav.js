@@ -19,7 +19,7 @@ const LeftNav = () => {
                 <div className="icons-bis">
                     <NavLink to='/home' exact activeClassName="active-left-nav" id="homeHoverParent">
                         <div id="homeHover">
-                            Home
+                        Home
                         </div>
                         <img src="./img/icons/home.svg" alt="home"/>
                     </NavLink>
@@ -34,7 +34,7 @@ const LeftNav = () => {
                     <br/>
                     <NavLink to='/profil' exact activeClassName="active-left-nav" id="profilHoverParent">
                         <div id="profilHover">
-                            Profil
+                        Profil
                         </div>
                         <img src="./img/icons/user.svg" alt="home"/>
                     </NavLink>
