@@ -14,10 +14,7 @@ const Trending = () => {
         <>
         <Navbar/>
         <LeftNav />
-    <div className="trending-page">
-        
-        
-
+    <div className="trending-page">      
     </div>
     </>
     )
