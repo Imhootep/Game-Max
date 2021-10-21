@@ -13,6 +13,7 @@ import  { Redirect } from 'react-router-dom';
 import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
 import loading from '../img/loading.gif';
+import Cookies from 'js-cookie';
 
 const Home = () => {
 
@@ -36,12 +37,9 @@ const Home = () => {
   //   }, [])
 
 
-  useEffect(() => {
-  }, [uid]);
-
   return (
    <>
-      {uid ? 
+      {Cookies.get("jwt") ? 
         <div>
       <Navbar />
       <div className="home">
@@ -63,23 +61,11 @@ const Home = () => {
       
       </div>
       : 
-      <img src={loading} alt="loading" title="veuillez patienter" className="loading" />
-      // <div className="profil-page">
-      // <Log signin={true} signup={false} />
-      // </div>
-      // 'LOADING'
-      }
-    
-      
-       {/* <Redirect to='/'  /> */}
-      
-
+      // <img src={loading} alt="loading" title="veuillez patienter" className="loading" />
+      <Redirect to='/'  />
+      }   
       </>
-      
-
   )
-
-
 };
 
 export default Home;
