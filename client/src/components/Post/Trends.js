@@ -17,14 +17,7 @@ const Trends = ({posts,userData,usersData}) => {
   const [openModal, setOpenModal] = useState(false)
 
   //si on prends les props, seul userdata est un objet les deux autres sont des array
-  // pareil quand je fais les reducer ici wtf?
-  {console.log("userdata est sensé etre un array:")}
-  {console.log(userData)}
-  {console.log("userSdata est sensé etre un array:")}
-  {console.log(usersData)}
-  {console.log("posts est sensé etre un array:")}
-  {console.log(posts)}
-  
+  // pareil quand je fais les reducer ici wtf?  
 
   useEffect(() => {
     if (!isEmpty(posts[0])) {

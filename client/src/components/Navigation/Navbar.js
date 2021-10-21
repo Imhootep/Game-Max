@@ -18,6 +18,9 @@ const Navbar = () => {
     
     const [acceptUser,setAcceptUser] = useState(false);
 
+    let imagesPath = process.env.REACT_APP_API_URL+userData.picture;
+    console.log("path : "+imagesPath) 
+
     users.map((val)=>{
         if(acceptUser === false && val.role === ''){
             setAcceptUser(true)
@@ -58,7 +61,7 @@ const Navbar = () => {
                         <li></li>
                         <li className="welcome">
                             <NavLink exact to="/profil">
-                                <img src={process.env.IMAGES_URL} alt="profil Pic"/>
+                                <img src={imagesPath} alt="profil Pic"/>
                                 <h5>Bienvenue {userData.pseudo} </h5>
                             </NavLink>
                         </li>

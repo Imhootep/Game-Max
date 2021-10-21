@@ -27,7 +27,7 @@ app.use(cookieParser());
 // jwt
 app.get('*', checkUser);
 
-app.use('/images', express.static('images')); 
+app.use('/uploads', express.static('uploads')); 
 
 // routes
 app.use('/api/user', userRoutes);
