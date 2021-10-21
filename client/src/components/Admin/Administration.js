@@ -30,7 +30,7 @@ const Administration = () => {
     const uid = useContext(UidContext)
 
     const dispatch = useDispatch ();
-    //me user
+    //le user
     const user = useSelector((state) => state.userReducer);
     useEffect(()=>{
         dispatch(getUser())
