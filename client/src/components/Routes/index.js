@@ -35,10 +35,6 @@ const Index = () => {
                 <Redirect to="/" />
             </Switch>
         </Router>
-           
-            
-        : ''
-        }
             
         </div>
     );
