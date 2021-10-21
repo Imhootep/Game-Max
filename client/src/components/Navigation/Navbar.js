@@ -8,8 +8,6 @@ import Logout from '../Log/Logout';
 
 import exclamation from '../../img/exclamation.svg'
 
-
-
 const Navbar = () => {
 
     const dispatch = useDispatch ();
@@ -17,9 +15,6 @@ const Navbar = () => {
     const userData = useSelector((state)=> state.userReducer)
 
     const users = useSelector((state)=> state.usersReducer)
-    // useEffect(()=>{
-        
-    // }, [])
     
     const [acceptUser,setAcceptUser] = useState(false);
 
@@ -56,7 +51,6 @@ const Navbar = () => {
                 <NavLink exact to="/admin" className="waitingUser">
                     {acceptUser === true && userData.isAdmin === true ? <img src={exclamation} alt="point dexclamation" title="Un nouvel utilisateur est en attente" className="exclamation" /> : ''}
                 </NavLink>
-
             </div>
             <div className="welcomeNav">
                 {uid?(
@@ -64,7 +58,7 @@ const Navbar = () => {
                         <li></li>
                         <li className="welcome">
                             <NavLink exact to="/profil">
-                                <img src={userData.picture} alt="profil Pic"/>
+                                <img src={process.env.IMAGES_URL} alt="profil Pic"/>
                                 <h5>Bienvenue {userData.pseudo} </h5>
                             </NavLink>
                         </li>

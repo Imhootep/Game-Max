@@ -8,22 +8,22 @@ import LeftNav from "../components/Navigation/LeftNav";
 import Thread from "../components/Post/Thread";
 import Trends from "../components/Post/Trends";
 import NewPostForm from "../components/Post/NewPostForm";
-import Log from '../components/Log';
+// import Log from '../components/Log';
 import  { Redirect } from 'react-router-dom';
-import { UidContext } from '../components/AppContext';
+// import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
 import loading from '../img/loading.gif';
 import Cookies from 'js-cookie';
 
 const Home = () => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const posts = useSelector((state)=>state.postReducer)
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
 
 
-  const uid = useContext(UidContext)
+  // const uid = useContext(UidContext)
   // const dispatch = useDispatch ();
   // const user = useSelector((state) => state.userReducer);
   // useEffect(()=>{

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { UidContext } from '../components/AppContext';
+// import { UidContext } from '../components/AppContext';
 // import Log from '../components/Log';
 import Navbar from '../components/Navigation/Navbar';
 import UpdateProfil from '../components/profil/UpdateProfil';
@@ -10,8 +10,7 @@ import { Redirect } from 'react-router';
 const Profil = () => {
     const userData = useSelector((state) => state.userReducer);
     const usersData = useSelector((state) => state.usersReducer);
-    const uid = useContext(UidContext);
-    
+    // const uid = useContext(UidContext);
 
     return (
         <div className="profil-page">
