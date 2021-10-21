@@ -18,7 +18,7 @@ const Card = ({ post, postId,usersData, userData }) => {
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const dispatch = useDispatch();
-
+  
   // const handleDelete = () => dispatch(deletePostAdmin(postId));
 
   const updateItem = () => {
@@ -42,7 +42,8 @@ const Card = ({ post, postId,usersData, userData }) => {
             <img
               src={usersData
                 .map((user) => {
-                  if (user._id === post.posterId) return user.picture;
+                  let userImagePath = process.env.REACT_APP_API_URL+user.picture;
+                  if (user._id === post.posterId) return userImagePath;
                   else return null;
                 })
                 .join("")}

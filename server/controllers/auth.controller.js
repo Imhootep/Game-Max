@@ -1,9 +1,8 @@
-const UserModel = require('../models/user.model');
-const jwt = require('jsonwebtoken');
-const { signUpErrors, signInErrors } = require('../utils/errors.utils');
+const UserModel = require("../models/user.model");
+const jwt = require("jsonwebtoken");
+const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 const nodemailer = require('nodemailer');
 var uniqueString = "";
-
 const maxAge = 2 * 24 * 60 * 60 * 1000;
 
 const createToken = (id) => {
@@ -29,7 +28,6 @@ const randomString = () => {
 
 //Fonction pour l'envoi du mail de confirmation
 const confirmEmail = (pseudo, email, uniqueString) => {
-  console.log("Je rentre dans confirmEmail");
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -62,6 +60,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 // -----------------------------------------------------------------------
 
 module.exports.validateUser = async (req, res) => {
+  console.log("J'entre dans validateUser");
   const user = await UserModel.findOne(
     {uniqueString: uniqueString}
   )
@@ -82,20 +81,37 @@ module.exports.signUp = async (req, res) => {
   const isDisabled = false;
   const role = "";
   uniqueString = randomString();
-
+  const social = {
+    discord: "",
+    twitter: "",
+    youtube: "",
+    facebook: "",
+    instagram: "",
+    twitch: "",
+  };
   try {
-    const user = await UserModel.create({ pseudo, email, password, role, isAdmin, isDisabled, uniqueString });
-    res.status(201).json({ user: user._id});
-  }
-  catch(err) {
+    const user = await UserModel.create({
+      pseudo,
+      email,
+      password,
+      role,
+      isAdmin,
+      isDisabled,
+      social,
+      uniqueString,
+    });
+    res.status(201).json({ user: user._id });
+  } catch (err) {
     const errors = signUpErrors(err);
     res.status(200).send({ errors })
   }
-  //Envoi du mail de confirmation après la création du compte
+  //Envoi de l'email de confirmation une fois que l'inscription est terminée
+  console.log("J'envoie le mail")
   confirmEmail(pseudo, email, uniqueString);
-}
 
-// -----------------------------------------------------------------------
+};
+
+// ------------------------------------------------------------------------------------
 
 module.exports.signIn = async (req, res) => {
   const { email, password } = req.body

@@ -13,6 +13,7 @@ const UpdateProfil = ({userData,usersData}) => {
   // const userData = useSelector((state) => state.userReducer);
   // const usersData = useSelector((state) => state.usersReducer);
   const error = useSelector((state) => state.errorReducer.userError);
+  let imagePath = process.env.REACT_APP_API_URL+userData.picture;
 
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
@@ -28,7 +29,7 @@ const UpdateProfil = ({userData,usersData}) => {
       <div className="update-container">
         <div className="left-part">
           <h3> Photo de profil </h3>
-          <img src={userData.picture} alt="profil Pic" />
+          <img src={imagePath} alt="profil Pic" />
           <UploadImg />
           <p>{error.maxSize}</p>
           <p>{error.format}</p>

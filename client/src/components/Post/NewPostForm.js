@@ -23,6 +23,7 @@ const NewPostForm = () => {
   const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
   const [postRole, setPostRole] = useState("");
+  let imagePath = process.env.REACT_APP_API_URL+userData.picture;
 
   const handlePicture = (e) => {
     setPostPicture(URL.createObjectURL(e.target.files[0]));
@@ -137,7 +138,7 @@ const NewPostForm = () => {
           </div>
           <NavLink exact to="/profil">
             <div className="user-info">
-              <img src={userData.picture} alt="user-pic" />
+              <img src={imagePath} alt="user-pic" />
             </div>
           </NavLink>
           
@@ -159,7 +160,7 @@ const NewPostForm = () => {
             {message || postPicture || video.lentgh > 20 ? (
               <li className="card-container">
                 <div className="card-left">
-                  <img src={userData.picture} alt="user-pic" />
+                  <img src={imagePath} alt="user-pic" />
                 </div>
                 <div className="card-right">
                   <div className="card-header">

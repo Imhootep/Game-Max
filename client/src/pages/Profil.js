@@ -11,7 +11,6 @@ const Profil = () => {
     const userData = useSelector((state) => state.userReducer);
     const usersData = useSelector((state) => state.usersReducer);
     // const uid = useContext(UidContext);
-    
 
     return (
         <div className="profil-page">
