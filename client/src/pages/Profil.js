@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { UidContext } from '../components/AppContext';
-import Log from '../components/Log';
+// import Log from '../components/Log';
 import Navbar from '../components/Navigation/Navbar';
 import UpdateProfil from '../components/profil/UpdateProfil';
 import { useSelector } from "react-redux";

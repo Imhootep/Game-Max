@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
-import { getUsers } from "../../actions/users.actions";
+// import { getUsers } from "../../actions/users.actions";
 import Parser from 'html-react-parser';
 // import { deletePostAdmin } from "../../actions/post.actions";
 
