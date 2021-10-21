@@ -12,7 +12,16 @@ nav {
 
   @media screen and(max-width: 1251px) {
     padding: 0 20px;
+    border-radius: 0;
   }
+
+  @media screen and(max-width: 750px){
+    
+      height: 50px;
+  
+  }
+
+  
 
   // &::after {
   //   content: "";
@@ -35,7 +44,71 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: $color-4;
+
+    @media screen and(max-width: 1007px) {
+      justify-content: left;
+
+      
+      .welcomeNav{
+        margin: 0 0 0 auto;
+        @media screen and(max-width: 818px){
+          padding: 0;
+          margin: 0 0 0 auto;
+
+          ul{
+            li{
+              margin: 0;
+            }
+          }
+          .welcome{
+            justify-content: flex-start;
+            margin-left: 30px;
+            a{
+              justify-content: flex-start;
+              width: 270px;
+            }
+          }
+        }
+        .welcome{
+          width: 270px;
+        a{
+
+          img{
+            width: 30px;
+            height: 30px;
+
+          }
+          h5{
+            font-size: 15px;
+            padding: 15px;
+            width:300px;
+            margin:0 0 0 0;
+            align-self: center;
+            align-items: flex-start;
+          }
+        }
+        ul{
+        li{
+          img{
+            width: 30px;
+          }
+        }
+      }
+      }
+      }
+    }
+    @media screen and(max-width: 750px){
+      height: 50px;
+      .nav-logo{
+        height: 50px;
+      }
+    }
     
+    @media screen and(max-width: 750px) {
+      height: 50px;
+      border-radius: 0px;
+    }
+
     .logo {
       display: flex;
       align-items: center;
@@ -81,6 +154,8 @@ nav {
 
     .welcomeNav{
       padding-right: 50px;
+
+
     }
     
     ul {
@@ -115,10 +190,17 @@ nav {
       .welcome {
         transform: translateY(2px);
         
+        @media screen and(max-width: 1007px) {
+          img{
+            margin: 0;
+          }
+        }
         
 
-        @media screen and(max-width: 830px) {
+        @media screen and(max-width: 640px) {
           display: none;
+
+          
         }
         
         h5 {

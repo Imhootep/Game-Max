@@ -10,6 +10,11 @@
   background: $color-2;
   border: solid 2px $color-1;
 
+  @media screen and(max-width: 750px) {
+    margin: 30px 20px 10px 20px;
+
+  }
+
   i {
     font-size: 1.5rem;
     margin: 20px 0;
@@ -64,20 +69,20 @@
       .card-left {
         text-align: left;
         img {
-          @media screen and(max-width: 590px) {
+          @media screen and(max-width: 750px) {
             margin-left: 0;
           }
         }
       }
       .card-right {
-        @media screen and(max-width: 590px) {
+        @media screen and(max-width: 750px) {
           margin-left: 0;
         }
         .card-header {
           @media screen and(max-width: 632px) {
             flex-direction: column;
           }
-          @media screen and(max-width: 590px) {
+          @media screen and(max-width: 750px) {
             margin: 0;
           }
           .pseudo {
@@ -90,7 +95,7 @@
               position: absolute;
               top: 40px;
             }
-            @media screen and(max-width: 590px) {
+            @media screen and(max-width: 750px) {
               left: 68px;
             }
             @media screen and(max-width: 440px) {
