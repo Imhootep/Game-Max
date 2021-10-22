@@ -18,10 +18,25 @@
 
   .main {
 
+    @media screen and (max-width:550px) {
+      max-width: 90%;
+    }
+
+    @media screen and (max-width:470px) {
+      max-width: 500px;
+    }
+    
+
     margin-top: 40px;
     .home-header {
       margin: 0 auto 12px;
       text-align: center;
+      
+
+      @media screen and (max-width:470px) {
+        margin: 0;
+      }
+      
       
       .connection-form {
         background: $color-4;
@@ -71,7 +86,30 @@
           }
         }
       }
+    
+
+    @media screen and(max-width: 750px) {
+      margin-top: 100px;
     }
+    .post-form{
+      width: 100%;
+    }
+
+    @media screen and (max-width:550px) {
+      width: 100%;
+      .post-container {
+        width: 100%;
+        // margin-left: 5px;
+      }
+    }
+    @media screen and (max-width:530px) {
+    width: 100%;
+    }
+    @media screen and (max-width: 515px) {
+      width: 90%;
+      margin-left: 0;
+    }
+  }
   }
   .right-side {
     position: relative;
@@ -85,6 +123,9 @@
     .right-side-container {
       position: fixed;
     
+    }
+    .thread-container{
+      width: 100%;
     }
   }
 }

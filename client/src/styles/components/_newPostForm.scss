@@ -10,10 +10,6 @@
   background: $color-2;
   border: solid 2px $color-1;
 
-  @media screen and(max-width: 750px) {
-    margin: 30px 20px 10px 20px;
-
-  }
 
   i {
     font-size: 1.5rem;
@@ -36,7 +32,30 @@
     span {
       font-weight: bold;
     }
+
+    @media screen and(max-width: 750px) {
+      margin: 30px 20px 10px 20px;
+  
+    }
+
   }
+
+  @media screen and(max-width: 550px) {
+    
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    .data{
+      display: none;
+    }
+    .user-info{
+      width: 200px;
+      margin: 0;
+    }
+
+  }
+
 
   .user-info {
     margin-bottom: 10px;
@@ -127,6 +146,17 @@
       justify-content: space-between;
       margin: 0 auto;
       width: 100%;
+      @media screen and(max-width: 550px) {
+        width: 80%;
+        margin: 0;
+        .icon{
+          margin: 0 10px 0 20px;
+        }
+        .event-form{
+          width: 100%;
+        }
+      }
+
 
       .icon {
         position: relative;
