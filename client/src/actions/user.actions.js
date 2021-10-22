@@ -66,7 +66,7 @@ export const updateBio = (
         method: "patch",
         headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
         url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
-        data: { bio, adresse, membres, jeux, social },
+        data: { pseudo, company, bio, adresse, membres, jeux, social },
       })
         .then((res) => {
           dispatch({

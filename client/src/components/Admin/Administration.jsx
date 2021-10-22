@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { CSVLink, CSVDownload } from "react-csv";
 import  { Redirect } from 'react-router-dom';
-import { UidContext } from '../../components/AppContext';
+import { UidContext } from '../AppContext';
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
@@ -235,10 +235,10 @@ const Administration = () => {
                         1. Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. Pour leur donner accès il vous suffit de cliquer sur l'icone "V". Pour refuser la demande et donc supprimer leur compte cliquer sur "X"
                     </p>
                     <p>
-                        2. Ici sont répertoriés les utilisateurs qui ont créé un compte et ont été validé par un admin. Ils ont libre accès au site. Pour désactiver un compte cliquez sur le poubelle. Pour modifier le rôle d'un compte cliquez sur le crayon puis sur le "V".
+                        2. Ici sont répertoriés les utilisateurs qui ont créé un compte et ont été validé par un admin. Ils ont libre accès au site. Pour désactiver un compte cliquez sur la poubelle. Pour modifier le rôle d'un compte cliquez sur le crayon puis sur le "V".
                     </p>
                     <p>
-                        3. Ici sont répertoriés les utilisateurs qui ont été désactivés. Ils n'ont plus accès au site. Pour les réactiver, appuyez sur le pouce en l'air.
+                        3. Ici sont répertoriés les utilisateurs qui ont été désactivés. Ils n'ont plus accès au site. Pour les réactiver, appuyez sur le coeur.
                     </p>
                 </div>
                 <div className="adminSubTitle">

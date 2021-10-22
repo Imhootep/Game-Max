@@ -31,6 +31,8 @@ const UpdateBio = ({userData}) => {
   const handleUpdate = () => {
     dispatch(
       updateBio(userData._id, {
+        pseudo: userData.pseudo,
+        company: userData.company,
         bio: userData.bio,
         adresse: userData.adresse,
         membres: userData.membres,
