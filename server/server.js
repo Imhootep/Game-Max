@@ -5,8 +5,9 @@ const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 require('dotenv').config({path: './config/.env'});
 require('./config/db');
-const {checkUser, requireAuth} = require('./middleware/auth.middleware');
+const {checkUser} = require('./middleware/auth.middleware');
 const cors = require('cors');
+let port = process.env.PORT || 8000;
 
 const app = express();
 
@@ -34,6 +35,6 @@ app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
 
 // server
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 })
