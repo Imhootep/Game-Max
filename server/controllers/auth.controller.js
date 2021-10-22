@@ -119,14 +119,12 @@ module.exports.signIn = async (req, res) => {
   try {
     // const emailInsered = await UserModel.findOne(email);
     const user = await UserModel.login(email, password);
-    if(user.role == "" ) throw err2
+    if(user.role == "" ) throw err
     if(user.role != ""){
-    const token = createToken(user._id);
-    console.log("Token : ",token)
-    console.log("User : ",user._id)
-    console.log(err)
-    console.log(err2)
-    res.status(200).json({ jwt: token, id: user._id, user: user})
+      const token = createToken(user._id);
+      console.log("Token : ",token)
+      console.log("User : ",user._id)
+      res.status(200).json({ jwt: token, id: user._id, user: user})
     }
   } catch (err){
     const errors = signInErrors(err);
