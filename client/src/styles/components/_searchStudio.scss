@@ -479,6 +479,15 @@
 
   .searchZone{
     min-width:390px;
+    @media screen and(max-width: 390px) {
+      min-width: 0;
+     }
+
+    button{
+      @media screen and(max-width: 390px) {
+       display: none;
+      }
+    }
   }
 
 }
