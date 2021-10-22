@@ -88,17 +88,12 @@ const Administration = () => {
 
         if(csvData.length === 0){
             for(let i = 0; i < users.length; i++){
-                console.log(users[i].email)
+                // console.log(users[i].email)
                 setCsvData(oldArray => [...oldArray, [users[i].pseudo, users[i].email]]); 
             }
         }else{
             console.log("csv deja rempli !")
         }
-
-        console.log("users:")
-        console.log(users)
-        console.log("csvdata final:")
-        console.log(csvData)
     }, [users])
 
     // const [theArray, setTheArray] = useState([]); //sans cette ligne et la const addEntryClick le useeffect du dessus ne mache pas...WTF???
