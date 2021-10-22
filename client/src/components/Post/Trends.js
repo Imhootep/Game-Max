@@ -27,7 +27,6 @@ const Trends = ({posts,userData,usersData}) => {
       });
 
       sortedArray.length = 3;
-      console.log(sortedArray);
       dispatch(getTrends(sortedArray));
     }
   }, [posts]);
