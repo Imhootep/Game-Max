@@ -30,6 +30,8 @@ app.get('*', checkUser);
 
 app.use('/uploads', express.static('uploads')); 
 
+app.use('/validate', userRoutes);
+
 // routes
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
