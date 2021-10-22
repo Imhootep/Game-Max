@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SignInForm from './SignInForm'
-const SITE_KEY = "<6LcVzugcAAAAADjUydojvUBjcZAJlV6unFMF9Pg2>";
+const SITE_KEY = "6LcVzugcAAAAADjUydojvUBjcZAJlV6unFMF9Pg2";
 
 const SignUpForm = () => {
 
@@ -10,7 +10,7 @@ const SignUpForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [controlPassword, setControlPassword] = useState('')
-    const [loading, setLoading] = useState(false);
+    
   const [response, setResponse] = useState(null);
     
     const handleRegister = async (e) =>{
@@ -51,7 +51,6 @@ const SignUpForm = () => {
                     emailError.innerHTML = res.data.errors.email;
                     passwordError.innerHTML = res.data.errors.password;
                 } else {
-                    setLoading(true);
                     window.grecaptcha.ready(() => {
                     window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(token => {
                     submitData(token);})
@@ -67,7 +66,7 @@ const SignUpForm = () => {
 
     const submitData = token => {
         // call a backend API to verify reCAPTCHA response
-        fetch('http://localhost:4000/verify', {
+        fetch('http://localhost:8000/verify', {
           method: 'POST',
           headers: {
             "Content-Type": "application/json"
@@ -78,8 +77,8 @@ const SignUpForm = () => {
             "g-recaptcha-response": token
           })
         }).then(res => res.json()).then(res => {
-          setLoading(false);
           setResponse(res);
+          console.log(response)
         });
       }
 
