@@ -120,8 +120,10 @@ const SignUpForm = () => {
                             </div>
                         </div> 
                         <button className="loginBut signUpBut" type="submit"  ><span>Sign Up</span></button>
-                   
+                        
+                        
                     </form>
+                    
                     )}
                 </> 
         
