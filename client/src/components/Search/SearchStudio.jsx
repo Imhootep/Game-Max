@@ -220,9 +220,9 @@ const SearchStudio = () => {
                                     </div>
                                     <div>VOIR<img className="arrowup" src={arrowup} alt="arrow up"/></div>
                                 </div>
-                                <div>{val.email }</div>
-                                <div>{val.phone }</div>
-                                <div>{val.adresse }</div>
+                                <div className="goProfilEmail">{val.email }</div>
+                                <div className="goProfilPhone">{val.phone }</div>
+                                <div className="goProfilAdress">{val.adresse }</div>
                                 {/* <div><a href={"https://"+val.website}>{val.website}</a></div> */}
                             </div>
                             <div className="linksProfil">

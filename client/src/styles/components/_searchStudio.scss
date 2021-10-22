@@ -76,6 +76,13 @@
     // margin: 75px 0 14px 75px;
     margin:75px auto;
     max-width: 80%;
+    @media screen and(max-width: 818px){
+      display: flex;
+
+      .profilsBlock{
+        padding-left: 10px;
+      }
+    }
 
 }
 
@@ -90,6 +97,11 @@
     padding:0 20px 20px 20px;
     // width: 80%;
     margin:auto;
+
+    @media screen and(max-width: 750px){
+      margin-top: 50px;
+    }
+
   }
 
   .bigBlockRole{
@@ -229,6 +241,21 @@
   flex-direction: column;
    /* align-content: stretch;  */
   /*align-content: flex-end;*/
+  @media screen and(max-width: 818px){
+   
+    width: 175px;
+  }
+
+  @media screen and(max-width: 720px){
+   
+    width: 250px;
+  }
+
+  @media screen and(max-width: 675px){
+   
+    width: 350px;
+  }
+  
 }
 
 // .adminBorder{
@@ -237,6 +264,19 @@
 
 .infosProfil{
   flex-grow: 1; /* push le bloc links en bas */
+  @media screen and(max-width: 818px){
+   
+    width: 150px;
+  }
+  @media screen and(max-width: 720px){
+   
+    width: 230px;
+  }
+
+  @media screen and(max-width: 675px){
+   
+    width: 300px;
+  }
 }
 
 .linksProfil{
@@ -298,6 +338,21 @@
     margin:-25px 0 0 -25px;
   }
 
+}
+
+@media screen and(max-width: 818px){
+  
+  .goProfilEmail{
+    display: none;
+  }
+
+  .goProfilPhone{
+    display: none;
+  }
+
+  .goProfilAdress{
+    display: none;
+  }
 }
 
 

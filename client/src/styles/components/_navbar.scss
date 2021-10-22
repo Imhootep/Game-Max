@@ -71,11 +71,22 @@ nav {
         }
         .welcome{
           width: 270px;
+
+          @media screen and(max-width: 750px) {
+            width: 40px;
+          height: 40px;
+          margin:0 20px 5px 0;
+          }
+
         a{
 
           img{
             width: 30px;
             height: 30px;
+            @media screen and(max-width: 750px) {
+              width: 40px;
+            height: 40px;
+            }
 
           }
           h5{
@@ -85,6 +96,10 @@ nav {
             margin:0 0 0 0;
             align-self: center;
             align-items: flex-start;
+
+            @media screen and(max-width: 750px) {
+              display: none;
+            }
           }
         }
         ul{
@@ -101,6 +116,7 @@ nav {
       height: 50px;
       .nav-logo{
         height: 50px;
+        
       }
     }
     
@@ -128,6 +144,9 @@ nav {
       justify-content: center;
       height:70px;
       padding-left: 30px;
+      @media screen and(max-width: 750px) {
+        padding-left: 0;
+      }
 
       .socialProfil{
         width: 100px;
@@ -155,6 +174,9 @@ nav {
     .welcomeNav{
       padding-right: 50px;
 
+      @media screen and(max-width: 750px) {
+        padding-right: 0;
+      }
 
     }
     
@@ -185,7 +207,12 @@ nav {
         
       }
     }
+    .logout{
 
+      @media screen and(max-width: 1007px) {
+       margin-left: 20px;
+      }
+    }
       
       .welcome {
         transform: translateY(2px);
@@ -197,11 +224,11 @@ nav {
         }
         
 
-        @media screen and(max-width: 640px) {
-          display: none;
+        // @media screen and(max-width: 640px) {
+        //   display: none;
 
           
-        }
+        // }
         
         h5 {
           font-family: $font-3;
