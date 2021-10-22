@@ -18,10 +18,10 @@ const UpdateBio = ({userData}) => {
     if(userData.social !== undefined){
       if (!isEmpty(userData.social[0])) {
         const socialArr = Object.keys(userData.social).map((i) => userData.social[i])
-        console.log(socialArr)
+        // console.log(socialArr)
         dispatch(getSocial(socialArr))
       }
-      console.log(getSocial)
+      // console.log(getSocial)
     }
     
 
