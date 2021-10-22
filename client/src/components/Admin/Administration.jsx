@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { CSVLink, CSVDownload } from "react-csv";
 import  { Redirect } from 'react-router-dom';
-import { UidContext } from '../../components/AppContext';
+import { UidContext } from '../AppContext';
 // import Csv from './Csv';
 // import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
 
