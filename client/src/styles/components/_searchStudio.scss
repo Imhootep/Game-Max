@@ -191,45 +191,45 @@
        -moz-box-shadow: -5px 4px 0px -4px black;
             box-shadow: -5px 4px 0px -4px black;
 
-}
+  }
 
-.sectionProfilReseaux{
-    display: flex;
-    flex-direction: row;
-  div{
-    max-width: 50px;
-    max-height:50px;
-
-    svg{
+  .sectionProfilReseaux{
+      display: flex;
+      flex-direction: row;
+    div{
       max-width: 50px;
       max-height:50px;
+
+      svg{
+        max-width: 50px;
+        max-height:50px;
+      }
+    }
+
+    b{
+      display: block;
+      width:100%;
+    }
+
+    .fullSizeBlock{
+      width:100%;
     }
   }
 
-  b{
-    display: block;
-    width:100%;
+  .ligne{
+    margin: 0 0 50px 0;
   }
 
-  .fullSizeBlock{
-    width:100%;
+  .firstBlock{
+    order: -1;
+    width: 100%;
+    flex-basis: 100%;
+    margin: 0 20px 20px 0 ;
   }
-}
 
-.ligne{
-  margin: 0 0 50px 0;
-}
-
-.firstBlock{
-  order: -1;
-  width: 100%;
-  flex-basis: 100%;
-  margin: 0 20px 20px 0 ;
-}
-
-.secondBlock{
-  order: 2;
-}
+  .secondBlock{
+    order: 2;
+  }
 
 // .sectionProfil{
 //   width:24%;
@@ -250,9 +250,9 @@
 // }
 
 
-.modifyProfil{
-  width:5%;
-}
+  .modifyProfil{
+    width:5%;
+  }
 
 .littleBlock{
   border: 2px solid purple;
@@ -381,17 +381,23 @@
 // }
 
 
-.arrowup{
-  width:20px;
-}
+  .arrowup{
+    width:20px;
+  }
 
-.roleTitle{
-  margin:-20px auto 0;
-  background-color:white;
-  height:20px;
-  text-align: center;
-  width:50%;
-}
+  .roleTitle{
+    margin:-20px auto 0;
+    background-color:white;
+    height:20px;
+    text-align: center;
+    width:50%;
+  }
+
+  @media screen and(max-width: 750px) { 
+    .profilsContainer{
+     margin-top: 110px;
+    }
+  }
 }
 
 .searchBar{
