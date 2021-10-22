@@ -25,7 +25,7 @@ module.exports.signInErrors = (err) => {
     errors.message = "Email ou mot de passe incorrect."
 
   if (err.message.includes('err'))
-    errors.message = "Votre compte est en attente d'acceptation."
+    errors.message = "Compte en attente d'acceptation."
 
   return errors;
 }
