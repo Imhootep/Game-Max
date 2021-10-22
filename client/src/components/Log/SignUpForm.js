@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SignInForm from './SignInForm'
+const SITE_KEY = "<6LcVzugcAAAAADjUydojvUBjcZAJlV6unFMF9Pg2>";
 
 const SignUpForm = () => {
 
@@ -9,6 +10,8 @@ const SignUpForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [controlPassword, setControlPassword] = useState('')
+    const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState(null);
     
     const handleRegister = async (e) =>{
         e.preventDefault();
@@ -48,13 +51,61 @@ const SignUpForm = () => {
                     emailError.innerHTML = res.data.errors.email;
                     passwordError.innerHTML = res.data.errors.password;
                 } else {
+                    setLoading(true);
+                    window.grecaptcha.ready(() => {
+                    window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(token => {
+                    submitData(token);})
+                    })
                    setFormSubmit(true)
+
                 }
             })
             .catch((err) => console.log(err));
         }
 
     }
+
+    const submitData = token => {
+        // call a backend API to verify reCAPTCHA response
+        fetch('http://localhost:4000/verify', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            "name": pseudo,
+            "email": email,
+            "g-recaptcha-response": token
+          })
+        }).then(res => res.json()).then(res => {
+          setLoading(false);
+          setResponse(res);
+        });
+      }
+
+    useEffect(() => {
+        const loadScriptByURL = (id, url, callback) => {
+          const isScriptExist = document.getElementById(id);
+     
+          if (!isScriptExist) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = url;
+            script.id = id;
+            script.onload = function () {
+              if (callback) callback();
+            };
+            document.body.appendChild(script);
+          }
+     
+          if (isScriptExist && callback) callback();
+        }
+     
+        // load the script by passing the URL
+        loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`, function () {
+          console.log("Script loaded!");
+        });
+      }, []);
 
 
     return (
