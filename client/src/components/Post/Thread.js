@@ -16,7 +16,6 @@ const Thread = ({posts,userData,usersData}) => {
 
     useEffect(() => {
         dispatch(getUsers())
-        console.log("plusieurs fois?")
       }, []);
 
     const loadMore = () =>{
