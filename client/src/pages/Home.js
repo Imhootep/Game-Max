@@ -22,7 +22,6 @@ const Home = () => {
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
 
-
   // const uid = useContext(UidContext)
   // const dispatch = useDispatch ();
   // const user = useSelector((state) => state.userReducer);
