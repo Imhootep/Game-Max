@@ -24,8 +24,8 @@ module.exports.signInErrors = (err) => {
   if ((err.message.includes("email")) || (err.message.includes('password')))
     errors.message = "Email ou mot de passe incorrect."
 
-  if ((err.message.includes('err')) || (err.message.includes("email","password")))
-    errors.message = "Ce compte est invalide ou n'existe pas."
+  if (err.message.includes('err'))
+    errors.message = "Compte en attente d'acceptation."
 
   return errors;
 }
