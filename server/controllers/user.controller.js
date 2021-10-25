@@ -14,11 +14,15 @@ module.exports.getAllUsers = async (req, res) => {
   res.status(200).json({users: users, user: user});
 };
 
+// ------------------------------------------------------------------------------------
+
 // Retourne tous les utilisateurs avec un role (n'affiche pas ceux sans rôle, ils sont supposés être en attente d'acceptation)
 module.exports.getRoledUsers = async (req, res) => {
   const users = await UserModel.find({ role: { $ne: "" } }).select("-password");
   res.status(200).json(users);
 };
+
+// ------------------------------------------------------------------------------------
 
 // Données de l'utilisateur selon l'ID
 module.exports.userInfo = (req, res) => {
@@ -30,6 +34,8 @@ module.exports.userInfo = (req, res) => {
     else console.log("ID unknown : " + err);
   }).select("-password");
 };
+
+// ------------------------------------------------------------------------------------
 
 // Modification des données de l'utilisateur via le formulaire
 module.exports.updateUser = async (req, res) => {
@@ -69,6 +75,8 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
+// ------------------------------------------------------------------------------------
+
 // Disable : l'utilisateur est désactivé (variable isDisabled à "true")
 module.exports.setDisableUserTrue = async (req, res) => {
   console.log(req.body)
@@ -93,6 +101,8 @@ module.exports.setDisableUserTrue = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
+
+// ------------------------------------------------------------------------------------
 
 // Annulation du disable : l'utilisateur est réactivé (variable isDisabled remise à "false")
 module.exports.setDisableUserFalse = async (req, res) => {
@@ -119,6 +129,8 @@ module.exports.setDisableUserFalse = async (req, res) => {
   }
 };
 
+// ------------------------------------------------------------------------------------
+
 // Modification du role d'un utilisateur (par l'admin)
 module.exports.setRole = async (req, res) => {
   console.log(req.body)
@@ -144,6 +156,8 @@ module.exports.setRole = async (req, res) => {
   }
 };
 
+// ------------------------------------------------------------------------------------
+
 // Suppression d'un utilisateur, peut être à modifier/enlever
 module.exports.deleteUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
@@ -156,6 +170,8 @@ module.exports.deleteUser = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
+
+// ------------------------------------------------------------------------------------
 
 // Méthode de follow d'un utilisateur 
 module.exports.follow = async (req, res) => {
@@ -191,6 +207,8 @@ module.exports.follow = async (req, res) => {
   }
 };
 
+// ------------------------------------------------------------------------------------
+
 module.exports.unfollow = async (req, res) => {
   if (
     !ObjectID.isValid(req.params.id) ||
@@ -222,3 +240,10 @@ module.exports.unfollow = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
+
+// ------------------------------------------------------------------------------------
+
+module.exports.changePassword = async (req, res) => {
+  
+}
+

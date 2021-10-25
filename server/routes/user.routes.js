@@ -8,7 +8,7 @@ const upload = multer();
 
 // auth
 router.post("/register", authController.signUp);
-//router.get("/validate/:uniqueString", authController.validateUser);
+router.get("/validate/:uniqueString", authController.validateUser);
 router.post("/login", authController.signIn);
 
 // user DB
