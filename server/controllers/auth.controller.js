@@ -44,6 +44,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
             Cliquez <a href=http://localhost:8000/api/user/validation/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.
+            Et nique sa mère si ça marche pas
             `
   }
 
