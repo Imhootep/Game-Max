@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext  } from 'react';
+import { UidContext } from '../components/AppContext';
 import { Redirect } from 'react-router';
 import Cookies from 'js-cookie';
 
@@ -6,9 +7,10 @@ import Log from '../components/Log'
 
 
 const Login = () => {
+    const uid = useContext(UidContext)
     return (
         <>
-        {Cookies.get("jwt") ? 
+        {uid ? 
          <Redirect to='/home'  />
         :
         <div className="profil-page">

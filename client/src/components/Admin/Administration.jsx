@@ -30,6 +30,7 @@ const Administration = () => {
     const [refreshData,setRefreshData] = useState(0);
     const uid = useContext(UidContext)
 
+    console.log("uid: "+uid)
     const dispatch = useDispatch ();
     //le user
     const user = useSelector((state) => state.userReducer);
@@ -218,7 +219,7 @@ const Administration = () => {
 
     return (
          <>
-         {console.log("combien de return?")}
+         {/* {console.log("combien de return?")} */}
          {/* {user.isAdmin !== undefined && user.isAdmin === true ? */}
          {uid? 
         <div className="administrationContainer">
