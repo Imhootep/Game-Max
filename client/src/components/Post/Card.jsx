@@ -32,6 +32,9 @@ const Card = ({ post, postId,usersData, userData }) => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
 
+  
+  let postImagePath = process.env.REACT_APP_API_URL+post.picture;
+
   return (
     <li className="card-container" key={post._id}>
       {isLoading ? (
@@ -67,7 +70,7 @@ const Card = ({ post, postId,usersData, userData }) => {
               <span>{dateParser2(post.createdAt)}</span>
             </div>
             {post.picture && (
-              <img src={post.picture} alt="card-pic" className="card-pic" />
+              <img src={postImagePath} alt="card-pic" className="card-pic" />
             )}
             {post.video && (
               <iframe
