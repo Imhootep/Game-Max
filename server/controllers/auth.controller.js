@@ -14,7 +14,7 @@ const createToken = (id) => {
 // -----------------------------------------------------------------------
 
 const randomString = () => {
-  const len = 20
+  const len = 40
   let randomStr = ""
   for(let i = 0; i<len; i++){
     const n = Math.floor((Math.random() * 10) + 1) // n est un nombre entre 1 & 10

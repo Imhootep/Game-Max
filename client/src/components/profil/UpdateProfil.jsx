@@ -19,7 +19,7 @@ const UpdateProfil = ({userData,usersData}) => {
   const [followersPopup, setFollowersPopup] = useState(false);
 
   const setNewPassword = () =>{
-    alert('tiens ton bouton alan');
+    alert("Un mail va être envoyé à l'adresse " + userData.email + "\n Voulez-vous continuer ?");
   }
 
   return (
@@ -42,7 +42,7 @@ const UpdateProfil = ({userData,usersData}) => {
             Abonnés: {userData.followers ? userData.followers.length : ""}
           </h5>
           <h5 onClick={() => setNewPassword()}>
-            Reset password
+            Modifier le mot de passe
           </h5>
         </div>
         <div className="right-part">
