@@ -254,6 +254,9 @@ const Administration = () => {
                         Nom
                     </div>
                     <div className="adminSection adminSectionTitle">
+                        Company
+                    </div>
+                    <div className="adminSection adminSectionTitle">
                         Rôle
                     </div>
                     <div className="adminSection adminSectionTitle">
@@ -266,6 +269,7 @@ const Administration = () => {
                     {val.role === '' ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
+                        <div className="adminSection">{val.company}</div>
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRole(e.target.value)}>
                                 <option value="Studio" selected>Studio</option>
