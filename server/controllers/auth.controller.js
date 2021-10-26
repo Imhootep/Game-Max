@@ -83,6 +83,7 @@ module.exports.signUp = async (req, res) => {
   const isAdmin = false;
   const isDisabled = false;
   const role = "";
+  // pas d'expert_role de base vu qu'on ne sait pas le role de l'utilisateur
   uniqueString = randomString();
   const social = {
     discord: "",
