@@ -7,6 +7,7 @@ const SignUpForm = () => {
 
     const [formSubmit, setFormSubmit] = useState(false)
     const [pseudo, setPseudo] = useState('')
+    const [company, setCompany] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [controlPassword, setControlPassword] = useState('')
@@ -40,6 +41,7 @@ const SignUpForm = () => {
                 url:`${process.env.REACT_APP_API_URL}api/user/register`,
                 data:{
                     pseudo,
+                    company,
                     email, 
                     password
                 }
@@ -129,11 +131,17 @@ const SignUpForm = () => {
                         
                         <br/>
                         <div className="form-group">
+                        <input 
+                            type="text" 
+                            placeholder="Votre nom"
+                            value={pseudo} 
+                            onChange={(e)=>{setPseudo(e.target.value)}}/>
+                            <br />
                             <input 
                             type="text" 
                             placeholder="Nom du Studio"
-                            value={pseudo} 
-                            onChange={(e)=>{setPseudo(e.target.value)}}/>
+                            value={company} 
+                            onChange={(e)=>{setCompany(e.target.value)}}/>
 
                             <div className="pseudo error"></div>
                             <br/>

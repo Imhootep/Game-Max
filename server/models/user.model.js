@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: "./uploads/profil/random-user.png"
+      default: "uploads/profil/random-user.png"
     },
     bio :{
       type: String,
@@ -60,6 +60,10 @@ const userSchema = new mongoose.Schema(
       type: [String]
     },
     role: {
+      type: String,
+      max: 1024,
+    },
+    expert_role: {
       type: String,
       max: 1024,
     },

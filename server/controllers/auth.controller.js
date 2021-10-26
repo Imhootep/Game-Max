@@ -14,7 +14,7 @@ const createToken = (id) => {
 // -----------------------------------------------------------------------
 
 const randomString = () => {
-  const len = 20
+  const len = 40
   let randomStr = ""
   for(let i = 0; i<len; i++){
     const n = Math.floor((Math.random() * 10) + 1) // n est un nombre entre 1 & 10
@@ -61,6 +61,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 // -----------------------------------------------------------------------
 
 module.exports.validateUser = async (req, res) => {
+  console.log("J'entre dans validateUser avec comme uniqueString : " + uniqueString)
   const user = await UserModel.findOne(
     {uniqueString: uniqueString}
   )
@@ -68,6 +69,7 @@ module.exports.validateUser = async (req, res) => {
     user.isValid = true;
     user.save();
     res.status(201).send("Validation done.");
+    uniqueString = "";
   }
   else{
     res.status(404).send("User not found.");
@@ -77,10 +79,11 @@ module.exports.validateUser = async (req, res) => {
 // -----------------------------------------------------------------------
 
 module.exports.signUp = async (req, res) => {
-  const {pseudo, email, password} = req.body
+  const {pseudo,company, email, password} = req.body
   const isAdmin = false;
   const isDisabled = false;
   const role = "";
+  // pas d'expert_role de base vu qu'on ne sait pas le role de l'utilisateur
   uniqueString = randomString();
   const social = {
     discord: "",
@@ -93,6 +96,7 @@ module.exports.signUp = async (req, res) => {
   try {
     const user = await UserModel.create({
       pseudo,
+      company,
       email,
       password,
       role,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 // import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../Navigation/LeftNav";
 import { dateParser } from "../Utils";
@@ -17,10 +18,6 @@ const UpdateProfil = ({userData,usersData}) => {
 
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
-
-  const setNewPassword = () =>{
-    alert('tiens ton bouton alan');
-  }
 
   return (
     <div className="profil-container">
@@ -41,9 +38,11 @@ const UpdateProfil = ({userData,usersData}) => {
           <h5 onClick={() => setFollowersPopup(true)}>
             Abonnés: {userData.followers ? userData.followers.length : ""}
           </h5>
-          <h5 onClick={() => setNewPassword()}>
-            Reset password
-          </h5>
+          <NavLink to="/trending">
+            <h5>
+              Modifier le mot de passe
+            </h5>
+          </NavLink>
         </div>
         <div className="right-part">
           <UpdateBio userData={userData}/>

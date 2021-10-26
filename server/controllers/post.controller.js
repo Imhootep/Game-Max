@@ -15,8 +15,12 @@ module.exports.readPost = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  let fileName;
-  console.log(req.file)
+
+  let fileName = Date.now()+"_"+req.body.posterId;
+  let entiereFileName = "";
+  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;
+  
+  
   if (req.file !== null) {
     try {
       if (
@@ -31,13 +35,13 @@ module.exports.createPost = async (req, res) => {
       const errors = uploadErrors(err);
       return res.status(201).json({ errors });
     }
-    fileName = req.body.posterId + Date.now() + ".jpg";
+
     try {
     await pipeline(
       req.file.stream,
       fs.createWriteStream(
-        `uploads/posts/${fileName}`
-      )
+        `uploads/posts/${entiereFileName}`
+      ) 
     );
       } catch (err){
         console.log(err)
@@ -47,7 +51,7 @@ module.exports.createPost = async (req, res) => {
   const newPost = new postModel({
     posterId: req.body.posterId,
     message: req.body.message,
-    picture: req.file !== null ? "uploads/posts/" + fileName : "",
+    picture: req.file !== null ? "uploads/posts/" + entiereFileName : "",
     video: req.body.video,
     likers: [],
     comments: [],
@@ -85,7 +89,14 @@ module.exports.deletePost = (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   PostModel.findByIdAndRemove(req.params.id, (err, docs) => {
-    if (!err) res.send(docs);
+    if (!err) {
+    if(docs.picture !== ''){
+    fs.unlinkSync(
+      `${docs.picture}`
+    ) 
+    }
+    res.send(docs);
+    }
     else console.log("Delete error : " + err);
   });
 };
