@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
     company: {
       type: String,
       minLength: 3,
-      maxLength: 55,
+      maxLength: 55
     },
     email: {
       type: String,
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
       validate: [isEmail],
       lowercase: true,
       unique: true,
-      trim: true,
+      trim: true
     },
     password: {
       type: String,
@@ -37,15 +37,15 @@ const userSchema = new mongoose.Schema(
     },
     bio :{
       type: String,
-      max: 1024,
+      max: 1024
     },
     adresse :{
       type: String,
-      max: 1024,
+      max: 1024
     },
     jeux :{
       type: String,
-      max: 1024,
+      max: 1024
     },
     membres :{
       type: [String]
@@ -61,24 +61,24 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      max: 1024,
+      max: 1024
     },
     expert_role: {
       type: String,
-      max: 1024,
+      max: 1024
     },
     isAdmin: {
-      type: Boolean,
+      type: Boolean
     },
     isDisabled: {
-      type: Boolean,
+      type: Boolean
     },
     isValid: {
       type: Boolean,
-      default: false,
+      default: false
     },
     uniqueString: {
-      type: String,
+      type: String
     },
     social: {
       discord : { type: String },

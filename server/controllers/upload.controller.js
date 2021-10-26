@@ -19,7 +19,7 @@ module.exports.uploadProfil = async (req, res) => {
     return res.status(201).json({ errors });
   }
 
-  let fileName = Date.now()+"_"+req.body.userId+"_"+req.body.name;
+  let fileName = Date.now()+"_"+req.body.userId;
   let entiereFileName = fileName+req.file.detectedFileExtension;
 
   await pipeline(

@@ -88,7 +88,7 @@ module.exports.validateUser = async (req, res) => {
 // -----------------------------------------------------------------------
 
 module.exports.signUp = async (req, res) => {
-  const {pseudo, email, password} = req.body
+  const {pseudo,company, email, password} = req.body
   const isAdmin = false;
   const isDisabled = false;
   const role = "";
@@ -105,6 +105,7 @@ module.exports.signUp = async (req, res) => {
   try {
     const user = await UserModel.create({
       pseudo,
+      company,
       email,
       password,
       role,
