@@ -14,7 +14,7 @@ const createToken = (id) => {
 // -----------------------------------------------------------------------
 
 const randomString = () => {
-  const len = 20
+  const len = 40
   let randomStr = ""
   for(let i = 0; i<len; i++){
     const n = Math.floor((Math.random() * 10) + 1) // n est un nombre entre 1 & 10
@@ -41,9 +41,10 @@ const confirmEmail = (pseudo, email, uniqueString) => {
       to: email,
       subject: "<No-Reply>Confirmation de votre adresse email",
       html: `Bonjour ${pseudo}, vous venez de vous enregistrer sur le site de Game-Max.<br>
-            Cliquez <a href=http://localhost:3000/validation/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
+            Cliquez <a href=http://localhost:8000/api/user/validation/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.
+            Et nique sa mère si ça marche pas
             `
   }
 
@@ -60,7 +61,6 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 // -----------------------------------------------------------------------
 
 module.exports.validateUser = async (req, res) => {
-  console.log("J'entre dans validateUser");
   const user = await UserModel.findOne(
     {uniqueString: uniqueString}
   )

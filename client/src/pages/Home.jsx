@@ -1,6 +1,7 @@
 // import React, { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useContext  } from 'react';
 import { useSelector } from 'react-redux';
+import { UidContext } from '../components/AppContext';
 // import { getUser} from "../actions/user.actions";
 // import  { Redirect } from 'react-router-dom'
 import Navbar from "../components/Navigation/Navbar";
@@ -22,6 +23,8 @@ const Home = () => {
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
 
+  const uid = useContext(UidContext)
+
   // const uid = useContext(UidContext)
   // const dispatch = useDispatch ();
   // const user = useSelector((state) => state.userReducer);
@@ -38,7 +41,7 @@ const Home = () => {
 
   return (
    <>
-      {Cookies.get("jwt") ? 
+      {uid !== null ? 
         <div>
       <Navbar />
       <div className="home">
@@ -59,7 +62,7 @@ const Home = () => {
       </div>
       
       </div>
-      : 
+      :  
       // <img src={loading} alt="loading" title="veuillez patienter" className="loading" />
       <Redirect to='/'  />
       }   

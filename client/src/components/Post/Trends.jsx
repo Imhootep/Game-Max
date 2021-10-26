@@ -35,9 +35,6 @@ const Trends = ({posts,userData,usersData}) => {
   const showModal = id => {
     setOpenModal(true);
     setTrendPost(id)
-
-
-
   }
 
   const hideModal = () => {
@@ -63,12 +60,13 @@ const Trends = ({posts,userData,usersData}) => {
           <ul>
             {trendList.length &&
               trendList.map((post) => {
+                let postImagePath = process.env.REACT_APP_API_URL+post.picture;
                 return (
                 
                   <li key={post._id}>
                     <div>
                       {post.picture && (
-                        <img src={post.picture} alt="post-pic" />
+                        <img src={postImagePath} alt="post-pic" />
                       )}
                       {post.video && (
                         <iframe
