@@ -1,5 +1,6 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
+const bcrypt = require("bcrypt");
 
 // Retourne tous les utilisateurs
 module.exports.getAllUsers = async (req, res) => {
@@ -245,6 +246,24 @@ module.exports.unfollow = async (req, res) => {
 // ------------------------------------------------------------------------------------
 // Changement de password
 module.exports.changePassword = async (req, res) => {
-  
+  let ancienPass = req.body.ancienPass;
+  let newPass = req.body.newPass;
+  let confirmNewPass = req.body.confirmNewPass;
+  const user = await UserModel.findById(
+    { _id: req.params.id }
+  );
+  if(bcrypt.compare(ancienPass, user.password) && newPass == confirmNewPass){
+    const salt = await bcrypt.genSalt();
+    newPass = await bcrypt.hash(newPass, salt);
+    user.password = newPass;
+    user.save();
+    console.log("LE mot de passe a bien été modifié poulet !")
+  }
+  else if(!bcrypt.compare(ancienPass, user.password)){
+    res.json("Le mot de passe est incorrect");
+  }
+  else if(newPass != confirmNewPass){
+    res.json("Les mots de passe ne correspondent pas !");
+  }
 }
 
