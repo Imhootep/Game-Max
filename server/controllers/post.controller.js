@@ -55,6 +55,9 @@ module.exports.createPost = async (req, res) => {
     video: req.body.video,
     likers: [],
     comments: [],
+    isEvent: req.body.isEvent,
+    date: req.body.date,
+    eventType: req.body.eventType
   });
 
   try {
