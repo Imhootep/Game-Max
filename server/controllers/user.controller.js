@@ -142,7 +142,8 @@ module.exports.setRole = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
-          role: req.body.role
+          role: req.body.role,
+          expert_role: req.body.expert
         }
       },
       { new: true, upsert: true, setDefaultsOnInsert: true },
@@ -208,7 +209,7 @@ module.exports.follow = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
+// Méthode d'unfollow d'un utilisateur
 module.exports.unfollow = async (req, res) => {
   if (
     !ObjectID.isValid(req.params.id) ||
@@ -242,11 +243,8 @@ module.exports.unfollow = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
+// Changement de password
 module.exports.changePassword = async (req, res) => {
-  const user = await UserModel.findOne(
-    {email: req.body.email}
-    )
-    
+  
 }
 

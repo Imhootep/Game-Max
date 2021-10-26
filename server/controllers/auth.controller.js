@@ -61,6 +61,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 // -----------------------------------------------------------------------
 
 module.exports.validateUser = async (req, res) => {
+  console.log("J'entre dans validateUser avec comme uniqueString : " + uniqueString)
   const user = await UserModel.findOne(
     {uniqueString: uniqueString}
   )
@@ -68,6 +69,7 @@ module.exports.validateUser = async (req, res) => {
     user.isValid = true;
     user.save();
     res.status(201).send("Validation done.");
+    uniqueString = "";
   }
   else{
     res.status(404).send("User not found.");
@@ -81,6 +83,7 @@ module.exports.signUp = async (req, res) => {
   const isAdmin = false;
   const isDisabled = false;
   const role = "";
+  // pas d'expert_role de base vu qu'on ne sait pas le role de l'utilisateur
   uniqueString = randomString();
   const social = {
     discord: "",
