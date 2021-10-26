@@ -244,9 +244,6 @@ module.exports.unfollow = async (req, res) => {
 // ------------------------------------------------------------------------------------
 
 module.exports.changePassword = async (req, res) => {
-  const user = await UserModel.findOne(
-    {email: req.body.email}
-    )
-    
+  
 }
 
