@@ -82,7 +82,7 @@
 .card-container {
   display: grid;
   grid-template-columns: 80px 1fr;
-  border: 3px solid;
+  border: 3px solid $color-4;
   
   padding: 16px;
   border-radius: 20px;
