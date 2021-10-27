@@ -15,9 +15,25 @@ const Trends = ({posts,userData,usersData}) => {
   const [trendPost, setTrendPost] = useState('')
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false)
+  const [incomingEvent, setIncomingEvent] = useState('')
+  const [incomingEventDate, setIncomingEventDate] = useState('')
 
   //si on prends les props, seul userdata est un objet les deux autres sont des array
   // pareil quand je fais les reducer ici wtf?  
+  useEffect(() => {
+   
+    for(let i = 0; i < posts.length; i++){
+      if(posts.isEvent === true && incomingEvent === ''){
+        setIncomingEvent(posts._id)
+        setIncomingEventDate(posts.createdAt)
+      }else if(posts.isEvent === true && incomingEvent !== ''){
+        if(posts.createdAt.getTime() < incomingEventDate.createdAt.getTime()){
+          setIncomingEvent(posts._id)
+          setIncomingEventDate(posts.createdAt)
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (!isEmpty(posts[0])) {
@@ -45,14 +61,32 @@ const Trends = ({posts,userData,usersData}) => {
   return (
     <>
       <div className="trends">
-        <div className="eventBlock">
-          <b>Prochain évènement</b>
-          <div className="eventBlockText">
-            <div>Soirée d'information gamemax</div>
-            <div>15/10/2021</div>
-          </div>
-          <img className="favoriteEventBanner" src={exemple}/>
-        </div>
+        {posts.map((posts) => {
+           return (
+            incomingEvent === posts._id ?
+              <div className="eventBlock">
+              <b>Prochain évènement</b>
+              <div className="eventBlockText">
+                <div>Soirée d'information gamemax</div>
+                <div>15/10/2021</div>
+              </div>
+              <img className="favoriteEventBanner" src={exemple}/>
+            </div>
+           : 
+           ''
+        )})}
+
+          {incomingEvent === '' ?
+            <div className="eventBlock">
+              <b>Prochain évènement</b>
+              <div className="eventBlockText">
+                <div>Pas d'évènement à venir</div>
+                <div>xx/xx/xxxx</div>
+              </div>
+              {/* <img className="favoriteEventBanner" src={exemple}/> */}
+            </div>
+            : ''}
+
         <div className="favoriteBlock">
           <b>Favoris</b>
           <div className="trending-container">
@@ -104,8 +138,8 @@ const Trends = ({posts,userData,usersData}) => {
                 {console.log(posts)} */}
                 
                   {/* {trendPost} */}
-                  {console.log("trendList")}
-                  {console.log(trendList)}
+                  {/* {console.log("trendList")}
+                  {console.log(trendList)} */}
                  {trendList && trendList[0] !== undefined && (
                  trendList.map((popupPost) => {
                    if(popupPost._id === trendPost){
