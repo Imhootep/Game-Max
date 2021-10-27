@@ -57,7 +57,8 @@ module.exports.createPost = async (req, res) => {
     comments: [],
     isEvent: req.body.isEvent,
     date: req.body.date,
-    eventType: req.body.eventType
+    eventType: req.body.eventType,
+    title:req.body.title
   });
 
   try {
@@ -74,6 +75,7 @@ module.exports.updatePost = (req, res) => {
 
   const updatedRecord = {
     message: req.body.message,
+    title: req.body.title,
   };
 
   PostModel.findByIdAndUpdate(
