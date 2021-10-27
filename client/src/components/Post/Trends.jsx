@@ -50,7 +50,7 @@ const Trends = ({posts,userData,usersData}) => {
             <div>Soirée d'information gamemax</div>
             <div>15/10/2021</div>
           </div>
-          <img className="favoriteEventBanner" src={exemple} />
+          <img className="favoriteEventBanner" src={exemple}/>
         </div>
         <div className="favoriteBlock">
           <b>Favoris</b>
@@ -66,7 +66,7 @@ const Trends = ({posts,userData,usersData}) => {
                   <li key={post._id}>
                     <div>
                       {post.picture && (
-                        <img src={postImagePath} alt="post-pic" />
+                        <img src={postImagePath} alt="post-pic"/>
                       )}
                       {post.video && (
                         <iframe
@@ -102,7 +102,7 @@ const Trends = ({posts,userData,usersData}) => {
         </div>
       </div>
           <>
-      <div>
+      
       <Modal showModal={openModal} hideModal={hideModal}>
                 <div className="modal-header">
                   <h2>Titre </h2>
@@ -128,7 +128,7 @@ const Trends = ({posts,userData,usersData}) => {
                   <button className="modal-btn">Fermer</button>
                 </div>
           </Modal>
-          </div>
+          
         
           </>
         
