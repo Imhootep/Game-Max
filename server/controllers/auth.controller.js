@@ -61,18 +61,6 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 
 module.exports.validateUser = async (req, res) => {
   console.log("J'entre dans validateUser avec comme uniqueString : " + uniqueString)
-  /*const user = await UserModel.findOne(
-    {uniqueString: uniqueString}
-  )
-  if(user) {
-    user.isValid = true;
-    user.save();
-    res.status(201).send("Validation done.");
-    uniqueString = "";
-  }
-  else{
-    res.status(404).send("User not found.");
-  }*/
   const user = await UserModel.updateOne(
     {uniqueString: uniqueString}, {$set: {isValid: true}}
   )

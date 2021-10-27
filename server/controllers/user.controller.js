@@ -252,18 +252,29 @@ module.exports.changePassword = async (req, res) => {
   const user = await UserModel.findById(
     { _id: req.params.id }
   );
-  if(bcrypt.compare(ancienPass, user.password) && newPass == confirmNewPass){
-    const salt = await bcrypt.genSalt();
-    newPass = await bcrypt.hash(newPass, salt);
-    user.password = newPass;
-    user.save();
-    console.log("LE mot de passe a bien été modifié poulet !")
+  if(user){
+    if(await bcrypt.compare(ancienPass, user.password)){
+      console.log("L'ancien mot de passe est correct");
+      if(newPass == confirmNewPass){
+        console.log("L'ancien mot de passe est : " + ancienPass);
+        console.log("Le nouveau mot de passe est : " + newPass);
+        const salt = await bcrypt.genSalt();
+        newPass = await bcrypt.hash(newPass, salt);
+        const updatedUser = await UserModel.updateOne(
+          { _id: req.params.id }, { $set: {password: newPass} }
+        );
+        console.log("Le mot de passe a bien été modifié");
+        }
+        else{
+          console.log("Les mots de passe ne correspondent pas");
+        }
+    }
+    else{
+      console.log("L'ancien mot de passe est incorrect !");
+    }
   }
-  else if(!bcrypt.compare(ancienPass, user.password)){
-    res.json("Le mot de passe est incorrect");
+  else{
+    res.json("User not found");
   }
-  else if(newPass != confirmNewPass){
-    res.json("Les mots de passe ne correspondent pas !");
-  }
-}
+} 
 
