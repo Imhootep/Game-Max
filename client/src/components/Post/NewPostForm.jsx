@@ -34,6 +34,7 @@ const NewPostForm = () => {
 
   const handleEvent = () => {
     setEvent(!event);
+    
   };
 
   const handlePost = async () => {
@@ -46,6 +47,7 @@ const NewPostForm = () => {
       data.append("video", video);
       if(event === true ) data.append("eventType", typeEvent)
       if(event === true ) data.append("date", date)
+      if(event === true ) data.append ("isEvent", true)
 
       await dispatch(addPost(data));
       window.location.reload()

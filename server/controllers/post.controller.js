@@ -75,7 +75,7 @@ module.exports.updatePost = (req, res) => {
 
   const updatedRecord = {
     message: req.body.message,
-    title: req.body.title,
+    
   };
 
   PostModel.findByIdAndUpdate(
