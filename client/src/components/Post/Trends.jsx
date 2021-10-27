@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "../Utils";
+import { dateParser, isEmpty } from "../Utils";
 // import star from "../img/star.png";
 import exemple from "../../img/0125.png";
 import { getTrends } from "../../actions/post.actions";
@@ -55,7 +55,7 @@ const Trends = ({posts,userData,usersData}) => {
         return b.likers.length - a.likers.length;
       });
 
-      sortedArray.length = 3;
+      sortedArray.length = 5;
       dispatch(getTrends(sortedArray));
     }
   }, [posts]);
@@ -92,10 +92,22 @@ const Trends = ({posts,userData,usersData}) => {
               {console.log(passage)}
               {handlePassage} */}
               <div className="eventBlockText">
-                <div>{posts.title}</div>
-                <div>{posts.date}</div>
+                <div className={"eventText" + posts.eventType}>{posts.title}</div>
+                <div className="eventText">{dateParser(posts.date)}</div>
+                
               </div>
-              <img className="favoriteEventBanner" src={exemple}/>
+              {posts.picture && (
+              <img className={"favoriteEventBanner favoriteEventBanner" + posts.eventType } src={process.env.REACT_APP_API_URL+posts.picture}/>)}
+              {posts.video &&(
+                <iframe
+                src={posts.video}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={posts._id}
+              ></iframe>
+              )}
+              <div className={"eventMess"}>{posts.message}</div>
             </div>
            : 
            ''
