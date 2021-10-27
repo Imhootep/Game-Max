@@ -20,29 +20,37 @@ const UpdateProfil = ({userData,usersData}) => {
   const [followersPopup, setFollowersPopup] = useState(false);
 
   return (
+    <>
+    <LeftNav />
     <div className="profil-container">
-      <LeftNav />
+      
       <h1> Profil de {userData.pseudo} </h1>
       <div className="update-container">
         <div className="left-part">
+          <div>
           <h3> Photo de profil </h3>
           <img src={imagePath} alt="profil Pic" />
+          
           <UploadImg />
+          </div>
           <p>{error.maxSize}</p>
           <p>{error.format}</p>
+          
+          <div>
           <br />
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
-          <h5 onClick={() => setFollowingPopup(true)}>
+          {/* <h5 onClick={() => setFollowingPopup(true)}>
             Abonnements: {userData.following ? userData.following.length : ""}
           </h5>
           <h5 onClick={() => setFollowersPopup(true)}>
             Abonnés: {userData.followers ? userData.followers.length : ""}
-          </h5>
+          </h5> */}
           <NavLink to="/trending">
-            <h5>
+            <button className="passwordModify">
               Modifier le mot de passe
-            </h5>
+            </button>
           </NavLink>
+          </div>
         </div>
         <div className="right-part">
           <UpdateBio userData={userData}/>
@@ -111,6 +119,7 @@ const UpdateProfil = ({userData,usersData}) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
