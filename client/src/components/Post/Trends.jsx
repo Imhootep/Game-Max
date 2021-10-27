@@ -16,24 +16,37 @@ const Trends = ({posts,userData,usersData}) => {
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false)
   const [incomingEvent, setIncomingEvent] = useState('')
-  const [incomingEventDate, setIncomingEventDate] = useState('')
+  const [incomingEventDate, setIncomingEventDate] = useState()
+  // const [passage, setPassage] = useState(false)
 
   //si on prends les props, seul userdata est un objet les deux autres sont des array
   // pareil quand je fais les reducer ici wtf?  
+
+  //bonne version mais qui load pas assez vite donc le tableau est vide
   useEffect(() => {
-   
+    // console.log("les posts de ses morts:")
+    // console.log(posts[0])
+    // console.log(posts[0].createdAt.getTime())
+    if(posts[0] !== undefined){
     for(let i = 0; i < posts.length; i++){
-      if(posts.isEvent === true && incomingEvent === ''){
-        setIncomingEvent(posts._id)
-        setIncomingEventDate(posts.createdAt)
-      }else if(posts.isEvent === true && incomingEvent !== ''){
-        if(posts.createdAt.getTime() < incomingEventDate.createdAt.getTime()){
-          setIncomingEvent(posts._id)
-          setIncomingEventDate(posts.createdAt)
+      if(posts[i].isEvent === true && incomingEvent === ''){
+        setIncomingEvent(posts[i]._id)
+        setIncomingEventDate(posts[i].date)
+      }else if(posts[i].isEvent === true && incomingEventDate !== undefined && incomingEventDate !== null && incomingEventDate !== null){
+        if(Date.parse(posts[i].date) < Date.parse(incomingEventDate)){
+          // console.log("on va jamais passer ici je parie sans le .getTime() qui bug de ses morts???")
+          setIncomingEvent(posts[i]._id)
+          setIncomingEventDate(posts[i].date)
         }
       }
     }
-  }, []);
+  }
+  }, [posts]);
+
+  
+  // const handlePassage = () => {
+  //   setPassage(true);
+  // }
 
   useEffect(() => {
     if (!isEmpty(posts[0])) {
@@ -61,14 +74,26 @@ const Trends = ({posts,userData,usersData}) => {
   return (
     <>
       <div className="trends">
-        {posts.map((posts) => {
+        {/* version clean mais probleme de load avec la requete qui se refait quand on scroll */}
+      {posts.map((posts) => {
            return (
-            incomingEvent === posts._id ?
+            incomingEvent === posts._id && incomingEventDate === posts.date ?
               <div className="eventBlock">
               <b>Prochain évènement</b>
+              {/* {console.log("incomingEvent")}
+              {console.log(incomingEvent)}
+              {console.log("incomingEventDate")}
+              {console.log(incomingEventDate)}
+              {console.log("posts._id")}
+              {console.log(posts._id)}
+              {console.log("posts.createdAt")}
+              {console.log(posts.createdAt)}
+              {console.log("passage")}
+              {console.log(passage)}
+              {handlePassage} */}
               <div className="eventBlockText">
-                <div>Soirée d'information gamemax</div>
-                <div>15/10/2021</div>
+                <div>{posts.title}</div>
+                <div>{posts.date}</div>
               </div>
               <img className="favoriteEventBanner" src={exemple}/>
             </div>
@@ -83,7 +108,6 @@ const Trends = ({posts,userData,usersData}) => {
                 <div>Pas d'évènement à venir</div>
                 <div>xx/xx/xxxx</div>
               </div>
-              {/* <img className="favoriteEventBanner" src={exemple}/> */}
             </div>
             : ''}
 
