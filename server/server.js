@@ -16,7 +16,7 @@ let port = process.env.PORT || 8000;
 const app = express();
 
 const fetch = require('node-fetch');
-const SECRET_KEY = "6LcVzugcAAAAALlaZzqIxz1wZc4Vt7edDVNp7NRu";
+// const SECRET_KEY = SECRET_KEY;
 
 const corsOptions = {
   origin: process.env.CLIENT_URL,
@@ -45,12 +45,10 @@ app.post('/verify', (req, res) => {
 });
 
 
-// jwt
+// checking user en décryptant le token
 app.get('*', checkUser);
 
 app.use('/uploads', express.static('uploads'));
-
-app.use('/validate', userRoutes);
 
 // routes
 app.use('/api/user', userRoutes);

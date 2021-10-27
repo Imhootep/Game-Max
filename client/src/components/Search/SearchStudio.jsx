@@ -85,6 +85,7 @@ const SearchStudio = () => {
                 </div>
             </div>
             {usersSorted.map((val)=>{
+            let imagePath = process.env.REACT_APP_API_URL+val.picture;
             return(
                 <>
                     
@@ -95,7 +96,7 @@ const SearchStudio = () => {
                             <div className="sectionProfil">
                                 <div className="bigBlockRole">
                                     <div>
-                                        <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
+                                        <img src={imagePath} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                         <b>{val.pseudo}</b>
                                     </div>
                                     <div className={"Role "+val.role.toLowerCase()}>
@@ -262,7 +263,7 @@ const SearchStudio = () => {
                                     {compareDate(val.createdAt) <= 7 ? <img src={newStudio} alt="nouveau studio" className="newStudio"/> : ''}
                                     
                                     <div>
-                                        <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
+                                        <img src={imagePath} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                         <b className="littlePseudo"> {val.pseudo}</b>
                                     </div>
                                     <div>VOIR<img className="arrowup" src={arrowup} alt="arrow up"/></div>

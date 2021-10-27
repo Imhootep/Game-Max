@@ -51,7 +51,7 @@ const Trends = ({posts,userData,usersData}) => {
             <div>Soirée d'information gamemax</div>
             <div>15/10/2021</div>
           </div>
-          <img className="favoriteEventBanner" src={exemple} />
+          <img className="favoriteEventBanner" src={exemple}/>
         </div>
         <div className="favoriteBlock">
           <b>Favoris</b>
@@ -66,7 +66,7 @@ const Trends = ({posts,userData,usersData}) => {
                   <div key={post._id} className="favoriteContainer">
                     <div>
                       {post.picture && (
-                        <img src={postImagePath} alt="post-pic" />
+                        <img src={postImagePath} alt="post-pic"/>
                       )}
                       {post.video && (
                         <iframe

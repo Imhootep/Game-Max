@@ -39,7 +39,8 @@ const CardComments = ({ post,userData,usersData }) => {
                   !isEmpty(usersData[0]) &&
                   usersData
                     .map((user) => {
-                      if (user._id === comment.commenterId) return user.picture;
+                      let postImagePath = process.env.REACT_APP_API_URL+user.picture;
+                      if (user._id === comment.commenterId) return postImagePath;
                       else return null;
                     })
                     .join("")

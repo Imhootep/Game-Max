@@ -136,14 +136,13 @@ const SignUpForm = () => {
                             placeholder="Votre nom"
                             value={pseudo} 
                             onChange={(e)=>{setPseudo(e.target.value)}}/>
+                            <div className="pseudo error"></div>
                             <br />
                             <input 
                             type="text" 
                             placeholder="Nom du Studio"
                             value={company} 
                             onChange={(e)=>{setCompany(e.target.value)}}/>
-
-                            <div className="pseudo error"></div>
                             <br/>
                             <input 
                             type="email" 
