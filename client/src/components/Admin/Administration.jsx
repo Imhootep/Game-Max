@@ -330,7 +330,7 @@ const Administration = () => {
                             </select>    
                         </div>
                         <div className="adminSection">
-                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)}/> 
+                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }/> 
                         </div>
                         <div className="adminSection">{val.company}</div>
                         <div className="adminSection">{val.membres}</div>
