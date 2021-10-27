@@ -146,7 +146,7 @@ const Trends = ({posts,userData,usersData}) => {
                     return (
                       <>
                         <div className="modal-header">
-                          <h2>Titre</h2>
+                          <h2>{popupPost.title}</h2>
                         </div>
                         <div className="modal-body">
                           <div className="modal-pic">

@@ -218,10 +218,12 @@ const NewPostForm = () => {
                 <input type="checkbox" onChange={() => handleEvent(event)} />
                 <p>Event</p>
                 <input
+                className="date-happening"
                   type="date"
                   onChange={(e) => setDate(e.target.value)}
                   value={date}
                 />
+                
                 <p>date</p>
                 {event === true && (
                   <div className="popup">
