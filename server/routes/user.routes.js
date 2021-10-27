@@ -15,6 +15,7 @@ router.post("/login", authController.signIn);
 router.get("/roled", requireAuth, userController.getRoledUsers);
 router.get("/all", userController.getAllUsers);
 router.get("/:id", requireAuth, userController.userInfo);
+//router.patch("/update/password/:id", requireAuth, userController.changePassword);
 router.patch("/disabled/:id", requireAuth, userController.setDisableUserTrue);
 router.patch("/enabled/:id", requireAuth, userController.setDisableUserFalse);
 router.patch("/role/:id", requireAuth, userController.setRole);

@@ -111,23 +111,23 @@
     }
   }
   }
-  .right-side {
-    position: relative;
-    width: 100%;
-    margin: 0px 0 0 14px;
+  // .right-side {
+  //   position: relative;
+  //   width: 100%;
+  //   margin: 0px 0 0 14px;
 
-    @media screen and(max-width: 990px) {
-      display: none;
-    }
+  //   @media screen and(max-width: 990px) {
+  //     display: none;
+  //   }
   
-    .right-side-container {
-      position: fixed;
+  //   .right-side-container {
+  //     position: fixed;
     
-    }
-    .thread-container{
-      width: 100%;
-    }
-  }
+  //   }
+  //   .thread-container{
+  //     width: 100%;
+  //   }
+  // }
 }
 
 .loading{

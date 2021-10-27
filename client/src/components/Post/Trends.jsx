@@ -32,7 +32,8 @@ const Trends = ({posts,userData,usersData}) => {
   }, [posts]);
 
 
-  const showModal = id => {
+  const showModal = (id) => {
+    // alert(id)
     setOpenModal(true);
     setTrendPost(id)
   }
@@ -89,7 +90,7 @@ const Trends = ({posts,userData,usersData}) => {
                     </div>
                     <div className="trend-content">
                         <p>{post.message}</p>
-                        <span onClick={() => showModal(post.postId)}>lire</span>
+                        <span onClick={() => showModal(post._id)}>lire</span>
                     </div>
                   </li>
                   
@@ -100,35 +101,38 @@ const Trends = ({posts,userData,usersData}) => {
           
       </div>
         </div>
+        <Modal showModal={openModal} hideModal={hideModal}  postId={trendPost}>
+                {/* {console.log("posts dans modal:")}
+                {console.log(posts)} */}
+                
+                  {/* {trendPost} */}
+                  {console.log("trendList")}
+                  {console.log(trendList)}
+                 {trendList && trendList[0] !== undefined && (
+                 trendList.map((popupPost) => {
+                   if(popupPost._id === trendPost){
+                    return (
+                      <>
+                        <div className="modal-header">
+                          <h2>Titre</h2>
+                        </div>
+                        <div className="modal-body">
+                          <div className="modal-pic">
+                            <img src={process.env.REACT_APP_API_URL+popupPost.picture} />
+                          </div>
+                          <p>{popupPost.message}</p>
+                      </div>
+                      </>
+                     )
+                   }
+                 }))
+                 }
+          </Modal>
       </div>
           <>
+      <div>
       
-      <Modal showModal={openModal} hideModal={hideModal}>
-                <div className="modal-header">
-                  <h2>Titre </h2>
-                </div>
-                <div className="modal-pic">
-                {/* {post.picture && (
-                        <img src={post.picture} alt="post-pic" />
-                      )}
-                      {post.video && (
-                        <iframe
-                          src={post.video}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          title={post._id}
-                        ></iframe>
-                      )} */}
-                </div>
-                <div className="modal-body">
-                  <h3>Message</h3>
-                </div>
-                <div className="modal-footer">
-                  <button className="modal-btn">Fermer</button>
-                </div>
-          </Modal>
-          
+          </div>
         
           </>
         

@@ -9,13 +9,13 @@ const PostSchema = new mongoose.Schema(
     message: {
       type: String,
       trim: true,
-      maxlength: 500,
+      maxlength: 500
     },
     picture: {
-      type: String,
+      type: String
     },
     video: {
-      type: String,
+      type: String
     },
     likers: {
       type: [String],
@@ -32,6 +32,16 @@ const PostSchema = new mongoose.Schema(
       ],
       required: true,
     },
+    isEvent: {
+      type: Boolean,
+      default: false
+    },
+    date: {
+      type: Date
+    },
+    eventType: {
+      type: String
+    }
   },
   {
     timestamps: true,

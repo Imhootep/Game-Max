@@ -45,12 +45,10 @@ app.post('/verify', (req, res) => {
 });
 
 
-// jwt
+// checking user en décryptant le token
 app.get('*', checkUser);
 
 app.use('/uploads', express.static('uploads'));
-
-app.use('/validate', userRoutes);
 
 // routes
 app.use('/api/user', userRoutes);
