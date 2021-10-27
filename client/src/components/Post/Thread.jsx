@@ -13,6 +13,7 @@ const Thread = ({posts,userData,usersData}) => {
     // const posts = useSelector((state)=>state.postReducer)
     // const usersData = useSelector((state) => state.usersReducer);
     // const userData = useSelector((state) => state.userReducer);
+    
 
     useEffect(() => {
         dispatch(getUsers())

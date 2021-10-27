@@ -279,3 +279,15 @@ module.exports.changePassword = async (req, res) => {
   }
 } 
 
+module.exports.favoritesPosts = async (req,res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+    
+    UserModel.findById(req.params.id, (err, docs) => {
+      if (!err) {
+      console.log(docs)
+      res.send(docs);
+      }
+      else console.log("ID unknown : " + err);
+    }).select("likes");
+};
