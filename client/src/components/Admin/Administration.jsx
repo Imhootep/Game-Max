@@ -123,7 +123,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/disable/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -134,7 +134,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/enable/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
           })

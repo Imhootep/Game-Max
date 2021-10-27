@@ -67,7 +67,7 @@ const Card = ({ post, postId,usersData, userData }) => {
                   <FollowHandler idToFollow={post.posterId} type={"card"} />
                 )}
               </div>
-              {<div className={"event-info" + post.eventType }>{post.eventType}</div>}
+              {post.isEvent && ( <div className={"event-info" + post.eventType }>Event : {post.eventType}</div>)}
               <span>{dateParser2(post.createdAt)}</span>
             </div>
             {post.title && ( <h2 className={"card-title" + post.eventType} >{post.title} </h2> )}
