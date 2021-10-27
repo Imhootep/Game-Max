@@ -38,7 +38,7 @@ const ChangePassword = () => {
                <input type="password" name="ancienPass" placeholder="Mot de passe actuel" onChange={(e) => handleAncienPass(e.target.value)}/>
                <input type="password" name="newPass" placeholder="Nouveau mot de passe" onChange={(e) => handleNewPass(e.target.value)}/>
                <input type="password" name="confirmNewPass" placeholder="Confirmer nouveau mot de passe" onChange={(e) => handleConfirmNewPass(e.target.value)}/>
-               <button type="Submit" onClick={updatePassword()}>Modifier</button>
+               <button type="Submit" onClick={() => updatePassword()}>Modifier</button>
            </form>
         </div>
     );

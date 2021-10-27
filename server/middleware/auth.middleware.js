@@ -21,7 +21,6 @@ module.exports.checkUser = (req, res, next) => {
     });
   } else {
     res.locals.user = null;
-    console.log("Le user n'est plus connecté !")
     next();
   }
 };

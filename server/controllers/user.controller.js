@@ -132,8 +132,8 @@ module.exports.setDisableUserFalse = async (req, res) => {
 
 // ------------------------------------------------------------------------------------
 
-// Modification du role d'un utilisateur (par l'admin)
-module.exports.setRole = async (req, res) => {
+// Modification du role ou de l'adresse d'un utilisateur (par l'admin)
+module.exports.updateUserFromAdmin = async (req, res) => {
   console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -143,6 +143,7 @@ module.exports.setRole = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
+          adresse: req.body.adresse,
           role: req.body.role,
           expert_role: req.body.expert
         }
@@ -252,18 +253,29 @@ module.exports.changePassword = async (req, res) => {
   const user = await UserModel.findById(
     { _id: req.params.id }
   );
-  if(bcrypt.compare(ancienPass, user.password) && newPass == confirmNewPass){
-    const salt = await bcrypt.genSalt();
-    newPass = await bcrypt.hash(newPass, salt);
-    user.password = newPass;
-    user.save();
-    console.log("LE mot de passe a bien été modifié poulet !")
+  if(user){
+    if(await bcrypt.compare(ancienPass, user.password)){
+      console.log("L'ancien mot de passe est correct");
+      if(newPass == confirmNewPass){
+        console.log("L'ancien mot de passe est : " + ancienPass);
+        console.log("Le nouveau mot de passe est : " + newPass);
+        const salt = await bcrypt.genSalt();
+        newPass = await bcrypt.hash(newPass, salt);
+        const updatedUser = await UserModel.updateOne(
+          { _id: req.params.id }, { $set: {password: newPass} }
+        );
+        console.log("Le mot de passe a bien été modifié");
+        }
+        else{
+          console.log("Les mots de passe ne correspondent pas");
+        }
+    }
+    else{
+      console.log("L'ancien mot de passe est incorrect !");
+    }
   }
-  else if(!bcrypt.compare(ancienPass, user.password)){
-    res.json("Le mot de passe est incorrect");
+  else{
+    res.json("User not found");
   }
-  else if(newPass != confirmNewPass){
-    res.json("Les mots de passe ne correspondent pas !");
-  }
-}
+} 
 
