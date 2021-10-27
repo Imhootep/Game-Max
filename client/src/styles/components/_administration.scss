@@ -52,6 +52,14 @@
                 width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
                 max-width: 300px;
                 min-width: 150px;
+
+                input{
+                    font-family: "font-2", serif;
+                }
+
+                input:disabled{
+                    color:rgb(170,170,170);
+                }
             }
 
             .adminSectionTitle{
@@ -85,4 +93,3 @@
             background-color:rgba(140, 77, 148, 0.4);
         }
 }
-
