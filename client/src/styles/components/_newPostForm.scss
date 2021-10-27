@@ -50,7 +50,7 @@
       display: none;
     }
     .user-info{
-      width: 200px;
+      // width: 200px;
       margin: 0;
     }
 
@@ -59,6 +59,7 @@
 
   .user-info {
     margin-bottom: 10px;
+    width: 100px;
     img {
       border-radius: 20px;
       height: 60px;
@@ -73,9 +74,22 @@
   .post-form {
     position: relative;
     margin: 0 auto 0;
+    display: flex;
+    flex-direction: column;
+    .post-form1{
+      display: grid;
+    grid-template-columns:1fr 7fr;
+
+    .titleAndPost{
+      width: 100%;
+    }
+    }
+    a{
+      width: 100px;
+    }
 
     textarea {
-      height: 62px;
+      height: 42px;
       width: 100%;
       font-size: 1.4rem;
       padding: 12px 15px;
@@ -161,13 +175,15 @@
       .icon {
         position: relative;
         cursor: pointer;
-        width: 30px;
-        height: 20px;
+       margin: 40px 0 0 60px;
+        // width: 50px;
+        // height: 50px;
 
         img {
           position: absolute;
-          height: 24px;
-          width: 24px;
+          // margin: 20px 0 0 60px;
+          height: 35px;
+          width: 35px;
           transform: translate(-18px, -1px);
         }
 
@@ -204,9 +220,13 @@
       .event-form{
         display: flex;
         flex-direction: row;
+        margin: 20px;
 
         p{
           margin: 10px;
+        }
+        .date-happening{
+          width: 150px;
         }
         .popup select{
           margin-left: 10px;

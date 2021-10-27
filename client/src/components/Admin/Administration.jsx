@@ -123,7 +123,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/disabled/` + id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/disable/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -134,7 +134,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/enabled/` + id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/enable/` + id,
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -161,7 +161,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` + id,
             data: {role:roleUser,adresse:adressUser}
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -184,7 +184,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` +id,
             data: {role:role}
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -330,7 +330,7 @@ const Administration = () => {
                             </select>    
                         </div>
                         <div className="adminSection">
-                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)}/> 
+                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }/> 
                         </div>
                         <div className="adminSection">{val.company}</div>
                         <div className="adminSection">{val.membres}</div>

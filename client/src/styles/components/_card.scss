@@ -1,11 +1,92 @@
+
+ .card-containerformation{
+  border: solid 2px $color-mauve !important;
+  .event-infoformation{
+    color: $color-mauve;
+    font-size: 20px;
+    height: 20px;
+    margin: -30px;
+    padding: 0 10px;
+    background-color: $white;
+  }
+}
+.card-titleformation{
+  color: $color-4 !important;
+}
+
+
+.card-containergame{
+  border: solid 2px $color-bleu !important;
+  .event-infogame{
+    color: $color-bleu;
+    font-size: 20px;
+    height: 20px;
+    margin: -30px;
+    padding: 0 10px;
+    background-color: $white;
+  }
+  // background-color: blue !important;
+}
+.card-titlegame{
+  color: $color-bleu !important;
+}
+
+
+.card-containerstream{
+  border: solid 2px $color-vert !important;
+  .event-infostream{
+    color: $color-vert;
+    font-size: 20px;
+    height: 20px;
+    margin: -30px;
+    padding: 0 10px;
+    background-color: $white;
+  }
+}
+.card-titlestream{
+  color: $color-vert !important;
+}
+
+
+.card-containerweek{
+  border: solid 2px $color-orange !important;
+  .event-infoweek{
+    color: $color-orange;
+    font-size: 20px;
+    height: 20px;
+    margin: -30px;
+    padding: 0 10px;
+    background-color: $white;
+  }
+}
+.card-titleweek{
+  color: $color-orange !important;
+}
+
+.card-containerautre{
+  border: solid 2px $color-rose !important;
+  .event-infoautre{
+    color: $color-rose;
+    font-size: 20px;
+    height: 20px;
+    margin: -30px;
+    padding: 0 10px;
+    background-color: $white;
+  }
+}
+.card-titleautre{
+  color: $color-rose !important;
+}
+
+
 .card-container {
   display: grid;
   grid-template-columns: 80px 1fr;
-  border: 2px solid $color-5;
-  margin: 10px;
+  border: 3px solid $color-4;
+  
   padding: 16px;
   border-radius: 20px;
-  margin: 8px auto;
+  margin: 20px auto;
   position: relative;
   min-height: 80px;
 
@@ -27,6 +108,8 @@
     font-size: 1.5rem;
     color: $color-1;
   }
+
+ 
 
   .card-left {
     img {
@@ -145,6 +228,7 @@
         border-radius: 20px 20px 6px 20px;
       }
       .button-container {
+        
         .btn {
           background: $color-2;
           width: 240px;

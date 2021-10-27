@@ -24,7 +24,7 @@ const NewPostForm = () => {
   const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
   const [postRole, setPostRole] = useState("");
-  let imagePath = process.env.REACT_APP_API_URL+userData.picture;
+  let imagePath = process.env.REACT_APP_API_URL + userData.picture;
 
   const handlePicture = (e) => {
     setPostPicture(URL.createObjectURL(e.target.files[0]));
@@ -42,11 +42,14 @@ const NewPostForm = () => {
       data.append("posterId", userData._id);
       data.append("message", message);
       data.append("title", title);
-      if(file) data.append("file", file);
+      if (file) data.append("file", file);
       data.append("video", video);
+      if (event === true) data.append("eventType", typeEvent);
+      if (event === true) data.append("date", date);
+      if (event === true) data.append("isEvent", true);
 
       await dispatch(addPost(data));
-      window.location.reload()
+      window.location.reload();
       // dispatch(getPosts());
       cancelPost();
     } else {
@@ -62,6 +65,7 @@ const NewPostForm = () => {
     setDate("");
     setFile("");
     setTitle("");
+    setDate("");
   };
 
   const handleVideo = () => {
@@ -81,7 +85,6 @@ const NewPostForm = () => {
     }
   };
 
-
   // const rolePost = (data) => {
   //   setEvent(true);
   //   setDate(true);
@@ -93,16 +96,10 @@ const NewPostForm = () => {
   //   }
 
   // }
-    
-
-  
-
 
   useEffect(() => {
-
     if (!isEmpty(userData)) setIsLoading(false);
     handleVideo();
-    
   }, [userData, message, video]);
 
   return (
@@ -117,7 +114,7 @@ const NewPostForm = () => {
         <i className="fas fa-spinner fa-pulse"></i>
       ) : (
         <>
-          <div className="data">
+          {/* <div className="data">
             <p>
               {" "}
               <span>
@@ -138,33 +135,40 @@ const NewPostForm = () => {
                 ? "s"
                 : null}{" "}
             </p>
-          </div>
-          <NavLink exact to="/profil">
-            <div className="user-info">
-              <img src={imagePath} alt="user-pic" />
-            </div>
-          </NavLink>
-          
+          </div> */}
+
           <div className="post-form">
+            <div className="post-form1">
+            <NavLink exact to="/profil">
+              <div className="user-info">
+                <img src={imagePath} alt="user-pic" />
+              </div>
+            </NavLink>
             {/* <ReactQuill name="message"
               id="message"
 
               placeholder="Que Dis?"
               onChange={setMessage}
               value={message}/> */}
-              <textarea name="title"
-              id="title"
-              placeholder="Titre"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}/>
+            <div className="titleAndPost">
+              <textarea
+                name="title"
+                id="title"
+                placeholder="Titre"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+              />
 
-              <textarea name="message"
-              id="message"
-              placeholder="Que Dis?"
-              onChange={(e) => setMessage(e.target.value)}
-              value={message}/>
-              
-                
+              <textarea
+                name="message"
+                id="message"
+                placeholder="Que Dis?"
+                onChange={(e) => setMessage(e.target.value)}
+                value={message}
+              />
+            </div>
+            </div>
+
             {message || postPicture || video.lentgh > 20 ? (
               <li className="card-container">
                 <div className="card-left">
@@ -213,10 +217,12 @@ const NewPostForm = () => {
                 <input type="checkbox" onChange={() => handleEvent(event)} />
                 <p>Event</p>
                 <input
+                  className="date-happening"
                   type="date"
                   onChange={(e) => setDate(e.target.value)}
                   value={date}
                 />
+
                 <p>date</p>
                 {event === true && (
                   <div className="popup">
@@ -229,7 +235,7 @@ const NewPostForm = () => {
                       <option className="choice" value="choice">
                         Choisir un Event
                       </option>
-                      <option className={"GameCafe" + "blueframe" } value="game">
+                      <option className={"GameCafe" + "blueframe"} value="game">
                         Game Dev Café
                       </option>
                       <option className="formation" value="formation">
@@ -253,8 +259,8 @@ const NewPostForm = () => {
               )}
             </div>
 
-                {!isEmpty(error.format) && <p>{error.format}</p>}
-                {!isEmpty(error.maxSize) && <p>{error.maxSize}</p>}
+            {!isEmpty(error.format) && <p>{error.format}</p>}
+            {!isEmpty(error.maxSize) && <p>{error.maxSize}</p>}
 
             <div className="btn-send">
               {message ||
@@ -275,10 +281,7 @@ const NewPostForm = () => {
         </>
       )}
     </div>
-    
   );
 };
-
-
 
 export default NewPostForm;

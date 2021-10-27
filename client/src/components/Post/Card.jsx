@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { dateParser2, isEmpty } from "../Utils";
+import { dateParser, dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
@@ -36,7 +36,7 @@ const Card = ({ post, postId,usersData, userData }) => {
   let postImagePath = process.env.REACT_APP_API_URL+post.picture;
 
   return (
-    <li className="card-container" key={post._id}>
+    <li className= {"card-container card-container" + post.eventType} key={post._id}>
       {isLoading ? (
         <i className="fas fa-spinner fa-spin"></i>
       ) : (
@@ -67,9 +67,13 @@ const Card = ({ post, postId,usersData, userData }) => {
                   <FollowHandler idToFollow={post.posterId} type={"card"} />
                 )}
               </div>
+              {post.isEvent && ( <div className={"event-info" + post.eventType }>Event : {post.eventType}</div>)}
               <span>{dateParser2(post.createdAt)}</span>
             </div>
-            {isUpdated === false &&   <h2>{post.title}</h2> }
+            {post.title && ( <h2 className={"card-title" + post.eventType} >{post.title} </h2> )}
+
+            {post.date && ( <p>{dateParser(post.date)}</p> )}
+             
             {post.picture && (
               <img src={postImagePath} alt="card-pic" className="card-pic" />
             )}
@@ -102,7 +106,7 @@ const Card = ({ post, postId,usersData, userData }) => {
             {/* Quand on veut éditer son propre post id du post = id du user  */}
             {userData._id === post.posterId || userData.isAdmin === true ? (
               <div className="button-container">
-                <div onClick={() => setIsUpdated(!isUpdated)}>
+                <div className={"modif-button" + post.eventType} onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit-btn" />
                 </div>
                 <DeleteCard id={post._id} />

@@ -63,20 +63,20 @@ const UpdateBio = ({userData}) => {
                 <div>
                   <h3>Pseudo</h3>
                   <p onClick={() => setUpdateForm(!updateForm)}> {userData.pseudo} </p>
-                  <h3>Company</h3>
-                  <p onClick={() => setUpdateForm(!updateForm)}> {userData.company} </p>
-                </div>
-                <div>
                   <h3>Email</h3>
-                  <p> {userData.email} </p>
+                  <p onClick={() => setUpdateForm(!updateForm)}> {userData.email} </p>
+                </div>
+                <div className="bio-profil">
+                  <h3>Bio</h3>
+                  <p> {userData.bio} </p>
                 </div>
               </div>
 
               <div className="profil-update-box1">
                 <div>
-                  <h3>Bio</h3>
+                  <h3>Société</h3>
                   <p onClick={() => setUpdateForm(!updateForm)}>
-                    {userData.bio}
+                    {userData.company}
                   </p>
                 </div>
                 <div>

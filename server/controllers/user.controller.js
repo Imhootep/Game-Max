@@ -133,8 +133,8 @@ module.exports.setDisableUserFalse = async (req, res) => {
 
 // ------------------------------------------------------------------------------------
 
-// Modification du role d'un utilisateur (par l'admin)
-module.exports.setRole = async (req, res) => {
+// Modification du role ou de l'adresse d'un utilisateur (par l'admin)
+module.exports.updateUserFromAdmin = async (req, res) => {
   console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -144,6 +144,7 @@ module.exports.setRole = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
+          adresse: req.body.adresse,
           role: req.body.role,
           expert_role: req.body.expert
         }
@@ -284,5 +285,15 @@ module.exports.changePassword = async (req, res) => {
   }
 } 
 
-// ------------------------------------------------------------------------------------
-
+module.exports.favoritesPosts = async (req,res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+    
+    UserModel.findById(req.params.id, (err, docs) => {
+      if (!err) {
+      console.log(docs)
+      res.send(docs);
+      }
+      else console.log("ID unknown : " + err);
+    }).select("likes");
+};

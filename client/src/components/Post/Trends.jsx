@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "../Utils";
+import { dateParser, isEmpty } from "../Utils";
 // import star from "../img/star.png";
 import exemple from "../../img/0125.png";
 import { getTrends } from "../../actions/post.actions";
@@ -15,9 +15,38 @@ const Trends = ({posts,userData,usersData}) => {
   const [trendPost, setTrendPost] = useState('')
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false)
+  const [incomingEvent, setIncomingEvent] = useState('')
+  const [incomingEventDate, setIncomingEventDate] = useState()
+  // const [passage, setPassage] = useState(false)
 
   //si on prends les props, seul userdata est un objet les deux autres sont des array
   // pareil quand je fais les reducer ici wtf?  
+
+  //bonne version mais qui load pas assez vite donc le tableau est vide
+  useEffect(() => {
+    // console.log("les posts de ses morts:")
+    // console.log(posts[0])
+    // console.log(posts[0].createdAt.getTime())
+    if(posts[0] !== undefined){
+    for(let i = 0; i < posts.length; i++){
+      if(posts[i].isEvent === true && incomingEvent === ''){
+        setIncomingEvent(posts[i]._id)
+        setIncomingEventDate(posts[i].date)
+      }else if(posts[i].isEvent === true && incomingEventDate !== undefined && incomingEventDate !== null && incomingEventDate !== null){
+        if(Date.parse(posts[i].date) < Date.parse(incomingEventDate)){
+          // console.log("on va jamais passer ici je parie sans le .getTime() qui bug de ses morts???")
+          setIncomingEvent(posts[i]._id)
+          setIncomingEventDate(posts[i].date)
+        }
+      }
+    }
+  }
+  }, [posts]);
+
+  
+  // const handlePassage = () => {
+  //   setPassage(true);
+  // }
 
   useEffect(() => {
     if (!isEmpty(posts[0])) {
@@ -26,7 +55,7 @@ const Trends = ({posts,userData,usersData}) => {
         return b.likers.length - a.likers.length;
       });
 
-      sortedArray.length = 3;
+      sortedArray.length = 5;
       dispatch(getTrends(sortedArray));
     }
   }, [posts]);
@@ -45,14 +74,44 @@ const Trends = ({posts,userData,usersData}) => {
   return (
     <>
       <div className="trends">
-        <div className="eventBlock">
-          <b>Prochain évènement</b>
-          <div className="eventBlockText">
-            <div>Soirée d'information gamemax</div>
-            <div>15/10/2021</div>
-          </div>
-          <img className="favoriteEventBanner" src={exemple}/>
-        </div>
+        {/* version clean mais probleme de load avec la requete qui se refait quand on scroll */}
+      {posts.map((posts) => {
+           return (
+            incomingEvent === posts._id && incomingEventDate === posts.date ?
+              <div className="eventBlock">
+              <b>Prochain évènement</b>
+              <div className="eventBlockText">
+                <div className={"eventText" + posts.eventType}>{posts.title}</div>
+                <div className="eventText">{dateParser(posts.date)}</div>
+                
+              </div>
+              {posts.picture && (
+              <img className={"favoriteEventBanner favoriteEventBanner" + posts.eventType } src={process.env.REACT_APP_API_URL+posts.picture}/>)}
+              {posts.video &&(
+                <iframe
+                src={posts.video}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={posts._id}
+              ></iframe>
+              )}
+              <div className={"eventMess"}>{posts.message}</div>
+            </div>
+           : 
+           ''
+        )})}
+
+          {incomingEvent === '' ?
+            <div className="eventBlock">
+              <b>Prochain évènement</b>
+              <div className="eventBlockText">
+                <div>Pas d'évènement à venir</div>
+                <div>xx/xx/xxxx</div>
+              </div>
+            </div>
+            : ''}
+
         <div className="favoriteBlock">
           <b>Favoris</b>
           <div className="trending-container">
@@ -104,15 +163,15 @@ const Trends = ({posts,userData,usersData}) => {
                 {console.log(posts)} */}
                 
                   {/* {trendPost} */}
-                  {console.log("trendList")}
-                  {console.log(trendList)}
+                  {/* {console.log("trendList")}
+                  {console.log(trendList)} */}
                  {trendList && trendList[0] !== undefined && (
                  trendList.map((popupPost) => {
                    if(popupPost._id === trendPost){
                     return (
                       <>
                         <div className="modal-header">
-                          <h2>Titre</h2>
+                          <h2>{popupPost.title}</h2>
                         </div>
                         <div className="modal-body">
                           <div className="modal-pic">
