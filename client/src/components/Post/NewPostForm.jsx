@@ -44,6 +44,8 @@ const NewPostForm = () => {
       data.append("title", title);
       if(file) data.append("file", file);
       data.append("video", video);
+      if(event === true ) data.append("eventType", typeEvent)
+      if(event === true ) data.append("date", date)
 
       await dispatch(addPost(data));
       window.location.reload()
@@ -62,6 +64,7 @@ const NewPostForm = () => {
     setDate("");
     setFile("");
     setTitle("");
+    setDate("")
   };
 
   const handleVideo = () => {

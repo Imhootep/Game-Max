@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { dateParser2, isEmpty } from "../Utils";
+import { dateParser, dateParser2, isEmpty } from "../Utils";
 import FollowHandler from "../profil/FollowHandler";
 import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
@@ -69,7 +69,10 @@ const Card = ({ post, postId,usersData, userData }) => {
               </div>
               <span>{dateParser2(post.createdAt)}</span>
             </div>
-            {isUpdated === false &&   <h2>{post.title}</h2> }
+            {isUpdated === false &&   <h2>{post.title} + {post.eventType} + </h2> }
+
+            {post.date !== isEmpty && ( <p>{dateParser(post.date)}</p> )}
+             
             {post.picture && (
               <img src={postImagePath} alt="card-pic" className="card-pic" />
             )}
