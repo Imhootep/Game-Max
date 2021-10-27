@@ -6,8 +6,13 @@ import exemple from "../../img/0125.png";
 import { getTrends } from "../../actions/post.actions";
 // import { NavLink } from "react-router-dom";
 import Modal from "../Modals";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const Trends = ({posts,userData,usersData}) => {
+
+
+  // const posts = await posts.json()
   // const posts = useSelector((state) => state.allPostsReducer);
   // const usersData = useSelector((state) => state.usersReducer);
   // const userData = useSelector((state) => state.userReducer);
@@ -22,6 +27,15 @@ const Trends = ({posts,userData,usersData}) => {
   //si on prends les props, seul userdata est un objet les deux autres sont des array
   // pareil quand je fais les reducer ici wtf?  
 
+  useEffect(() => { //a faire dans reducer et get le reducer
+    return axios({
+      method:"get",
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') },
+      url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + userData._id,
+    }).then((res) => {
+      
+    })
+  })
   //bonne version mais qui load pas assez vite donc le tableau est vide
   useEffect(() => {
     // console.log("les posts de ses morts:")

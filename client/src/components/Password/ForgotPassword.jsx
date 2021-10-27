@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { UidContext } from '../AppContext';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 
 const ForgotPassword = () => {
