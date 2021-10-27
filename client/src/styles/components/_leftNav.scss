@@ -1,8 +1,10 @@
 .left-nav-container {
     position: relative;
-    min-width: 55px; //gui
+    min-width: 70px; //gui
     order:-2; //gui
     margin: 25px 0 0 20px; //gui
+    display: flex;
+    flex-direction: column;
 
     @media screen and(max-width: 750px) {
 
@@ -51,6 +53,7 @@
         a {
           transition: 0.1s;
           display: inline-block;
+          margin-top: 25px;
   
           &:before {
             transition: .15s ease;
@@ -58,9 +61,11 @@
             transform-origin: center;
             z-index: -10;
             content: "";
-            height: 45px;
-            width: 45px;
+            height: 60px;
+            width: 60px;
             position: absolute;
+            left: -8px;
+            top: -5px;
             background: $color-5;
             border-radius: 50px;
           }
@@ -200,7 +205,7 @@
     position: fixed;
     bottom: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     // margin-bottom: 20px;
 
     @media screen and(max-width: 750px){

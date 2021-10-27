@@ -175,14 +175,15 @@
       .icon {
         position: relative;
         cursor: pointer;
+       margin: 40px 0 0 60px;
         // width: 50px;
         // height: 50px;
 
         img {
           position: absolute;
-          margin: 20px 0 0 60px;
-          height: 30px;
-          width: 30px;
+          // margin: 20px 0 0 60px;
+          height: 35px;
+          width: 35px;
           transform: translate(-18px, -1px);
         }
 

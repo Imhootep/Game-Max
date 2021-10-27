@@ -11,6 +11,7 @@ import Trends from "../components/Post/Trends";
 import NewPostForm from "../components/Post/NewPostForm";
 // import Log from '../components/Log';
 import  { Redirect } from 'react-router-dom';
+import loupe from "../img/loupe.svg"
 // import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
 // import loading from '../img/loading.gif';
@@ -55,6 +56,10 @@ const Home = () => {
         <div className="right-side">
           <div className="right-side-container">
             <div className="wrapper">
+              <div className="homeSearch">
+                <input type="text" placeholder="recherche" />
+                <a href=""> <img src={loupe} alt="" /> </a>
+              </div>
               <Trends posts={posts} userData={userData} usersData={usersData} />
             </div>
           </div>
