@@ -69,6 +69,7 @@ const Card = ({ post, postId,usersData, userData }) => {
               </div>
               <span>{dateParser2(post.createdAt)}</span>
             </div>
+            {isUpdated === false &&   <h2>{post.title}</h2> }
             {post.picture && (
               <img src={postImagePath} alt="card-pic" className="card-pic" />
             )}
@@ -83,7 +84,7 @@ const Card = ({ post, postId,usersData, userData }) => {
                 title={post._id}
               ></iframe>
             )}
-            {isUpdated === false && <p>{post.message}</p>}
+            {isUpdated === false &&  <p>{post.message}</p>} 
             {isUpdated && (
               <div className="update-post">
                 <textarea

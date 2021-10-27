@@ -11,6 +11,9 @@ const PostSchema = new mongoose.Schema(
       trim: true,
       maxlength: 500
     },
+    title :{
+      type:String
+    },
     picture: {
       type: String
     },

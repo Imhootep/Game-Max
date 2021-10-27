@@ -12,6 +12,7 @@ import { getRoledUsers } from "../../actions/users.actions";
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [title, setTitle] = useState("");
   // const setQuillMessage = (e) => setMessage(e.target.value)
   const [event, setEvent] = useState(false);
   const [date, setDate] = useState("");
@@ -40,6 +41,7 @@ const NewPostForm = () => {
       const data = new FormData();
       data.append("posterId", userData._id);
       data.append("message", message);
+      data.append("title", title);
       if(file) data.append("file", file);
       data.append("video", video);
 
@@ -59,6 +61,7 @@ const NewPostForm = () => {
     setEvent(false);
     setDate("");
     setFile("");
+    setTitle("");
   };
 
   const handleVideo = () => {
@@ -149,9 +152,14 @@ const NewPostForm = () => {
               placeholder="Que Dis?"
               onChange={setMessage}
               value={message}/> */}
+              <textarea name="title"
+              id="title"
+              placeholder="Titre"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}/>
+
               <textarea name="message"
               id="message"
-
               placeholder="Que Dis?"
               onChange={(e) => setMessage(e.target.value)}
               value={message}/>
@@ -170,6 +178,7 @@ const NewPostForm = () => {
                     <span>{timestampParser(Date.now())}</span>
                   </div>
                   <div className="content">
+                    <p>{title}</p>
                     <p>{message}</p>
                     <img src={postPicture} alt="" />
                     {video && (
@@ -249,6 +258,7 @@ const NewPostForm = () => {
 
             <div className="btn-send">
               {message ||
+              title ||
               postPicture ||
               event === true ||
               date ||

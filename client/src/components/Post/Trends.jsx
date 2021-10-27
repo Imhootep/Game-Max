@@ -58,13 +58,12 @@ const Trends = ({posts,userData,usersData}) => {
           <div className="trending-container">
         
         
-          <ul>
             {trendList.length &&
               trendList.map((post) => {
                 let postImagePath = process.env.REACT_APP_API_URL+post.picture;
                 return (
                 
-                  <li key={post._id}>
+                  <div key={post._id} className="favoriteContainer">
                     <div>
                       {post.picture && (
                         <img src={postImagePath} alt="post-pic"/>
@@ -85,18 +84,17 @@ const Trends = ({posts,userData,usersData}) => {
                               } else return null;
                           })
                           .join("")
-                        } alt="profile-pic" />
+                        } alt="post-pic" />
                       )}
                     </div>
                     <div className="trend-content">
                         <p>{post.message}</p>
                         <span onClick={() => showModal(post._id)}>lire</span>
                     </div>
-                  </li>
+                  </div>
                   
                 );
               })}
-          </ul>
         
           
       </div>
