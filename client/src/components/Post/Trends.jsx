@@ -80,22 +80,16 @@ const Trends = ({posts,userData,usersData}) => {
             incomingEvent === posts._id && incomingEventDate === posts.date ?
               <div className="eventBlock">
               <b>Prochain évènement</b>
-              {/* {console.log("incomingEvent")}
-              {console.log(incomingEvent)}
-              {console.log("incomingEventDate")}
-              {console.log(incomingEventDate)}
-              {console.log("posts._id")}
-              {console.log(posts._id)}
-              {console.log("posts.createdAt")}
-              {console.log(posts.createdAt)}
-              {console.log("passage")}
-              {console.log(passage)}
-              {handlePassage} */}
               <div className="eventBlockText">
                 <div>{posts.title}</div>
                 <div>{posts.date}</div>
               </div>
-              <img className="favoriteEventBanner" src={exemple}/>
+              {posts.picture !== '' ?
+                <img className="favoriteEventBanner" src={posts.picture}/>
+                :
+                <img className="favoriteEventBanner" src={exemple}/>
+              }
+              
             </div>
            : 
            ''
