@@ -133,3 +133,45 @@ module.exports.signIn = async (req, res) => {
     res.status(200).json({ errors });
   }
 }
+
+// ------------------------------------------------------------------------------------
+
+//mail pour mot de passe oublié
+
+module.exports.forgottenPassword = async (req, res) => {
+  let email = req.body.email;
+  uniqueString = randomString();
+  const user = await UserModel.findOne({email: email});
+  if(user){
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: 'gamemaxbotmailer@gmail.com',
+          pass: 'gamemaxmail'
+      }
+    })
+
+    var mailOptions = {
+      from: 'gamemaxbotmailer@gmail.com',
+      to: email,
+      subject: "<No-Reply>Réinitialisation de votre mot de passe",
+      html: `Bonjour ${user.pseudo}.<br>
+            Cliquez <a href=http://localhost:8000/api/user/validation/${uniqueString}> sur ce lien </a> pour réinitialiser votre mot de passe.<br>
+            Bien amicalement,<br>
+            l'équipe Game-Max.
+            `
+  }
+
+    transporter.sendMail(mailOptions, (err, info) => {
+      if(err){
+          console.log(err)
+      }
+      else{
+          console.log("Email for password reset has been sent successfully to <" + email + "> !") 
+      }
+    })
+  }  
+  else{
+    console.log("No user found");
+  } 
+}

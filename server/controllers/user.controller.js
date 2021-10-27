@@ -1,6 +1,7 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 const bcrypt = require("bcrypt");
+const { changePasswordErrors } = require("../utils/errors.utils");
 
 // Retourne tous les utilisateurs
 module.exports.getAllUsers = async (req, res) => {
@@ -252,29 +253,36 @@ module.exports.changePassword = async (req, res) => {
   const user = await UserModel.findById(
     { _id: req.params.id }
   );
-  if(user){
-    if(await bcrypt.compare(ancienPass, user.password)){
-      console.log("L'ancien mot de passe est correct");
-      if(newPass == confirmNewPass){
-        console.log("L'ancien mot de passe est : " + ancienPass);
-        console.log("Le nouveau mot de passe est : " + newPass);
-        const salt = await bcrypt.genSalt();
-        newPass = await bcrypt.hash(newPass, salt);
-        const updatedUser = await UserModel.updateOne(
-          { _id: req.params.id }, { $set: {password: newPass} }
-        );
-        console.log("Le mot de passe a bien été modifié");
-        }
-        else{
-          console.log("Les mots de passe ne correspondent pas");
-        }
+  try{
+    if(user){
+      if(await bcrypt.compare(ancienPass, user.password)){
+        console.log("L'ancien mot de passe est correct");
+        if(newPass == confirmNewPass){
+          console.log("L'ancien mot de passe est : " + ancienPass);
+          console.log("Le nouveau mot de passe est : " + newPass);
+          const salt = await bcrypt.genSalt();
+          newPass = await bcrypt.hash(newPass, salt);
+          const updatedUser = await UserModel.updateOne(
+            { _id: req.params.id }, { $set: {password: newPass} }
+          );
+          console.log("Le mot de passe a bien été modifié");
+          }
+          else{
+            throw Error("passwords have no match");
+          }
+      }
+      else{
+        throw Error("incorrect old password");
+      }
     }
     else{
-      console.log("L'ancien mot de passe est incorrect !");
+      throw Error("user not found");
     }
-  }
-  else{
-    res.json("User not found");
+  }catch(err){
+    const errors = changePasswordErrors(err);
+    res.status(200).json({ errors });
   }
 } 
+
+// ------------------------------------------------------------------------------------
 
