@@ -161,7 +161,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/role/` + id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` + id,
             data: {role:roleUser,adresse:adressUser}
           }).then(response => {
             setRefreshData(refreshData+1)
@@ -184,7 +184,7 @@ const Administration = () => {
         return axios({
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-            url: `${process.env.REACT_APP_API_URL}api/user/role/` +id,
+            url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` +id,
             data: {role:role}
           }).then(response => {
             setRefreshData(refreshData+1)
