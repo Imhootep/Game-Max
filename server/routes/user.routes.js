@@ -18,7 +18,7 @@ router.get("/:id", requireAuth, userController.userInfo);
 router.patch("/update/password/:id", requireAuth, userController.changePassword);
 router.patch("/disabled/:id", requireAuth, userController.setDisableUserTrue);
 router.patch("/enabled/:id", requireAuth, userController.setDisableUserFalse);
-router.patch("/role/:id", requireAuth, userController.setRole);
+router.patch("/admin/update/:id", requireAuth, userController.updateUserFromAdmin);
 router.patch("/:id", requireAuth, userController.updateUser);
 router.delete("/:id", requireAuth, userController.deleteUser);
 router.patch("/follow/:id", requireAuth, userController.follow);
