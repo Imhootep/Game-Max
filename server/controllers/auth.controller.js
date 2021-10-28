@@ -7,6 +7,7 @@ var resetPass = ";"
 const maxAge = 2 * 24 * 60 * 60 * 1000;
 const bcrypt = require('bcrypt');
 
+
 const createToken = (id) => {
   return jwt.sign({id}, process.env.TOKEN_SECRET, {
     expiresIn: maxAge
@@ -165,9 +166,10 @@ module.exports.forgottenPassword = async (req, res) => {
             Une fois identifié, vous pouvez vous rendre dans la section "Profil" afin de le remplacer par le mot de passe de votre choix.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.<br>
-            <img src="../../uploads/profil/random-user.png" alt="Gamemax" />
+            <img src="../uploads/profil/random-user.png" alt="Gamemax" />
             `
   }
+  
 
     transporter.sendMail(mailOptions, async (err, info) => {
       if(err){
