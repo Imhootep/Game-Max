@@ -18,14 +18,27 @@ const createToken = (id) => {
 // -----------------------------------------------------------------------
 
 const randomString = () => {
-  const len = 40
-  let randomStr = ""
+  const len = 40;
+  let randomStr = "";
   for(let i = 0; i<len; i++){
     const n = Math.floor((Math.random() * 10) + 1) // n est un nombre entre 1 & 10
-    randomStr += n
+    randomStr += n;
   }
-  console.log("uniqueString : " + randomStr)
-  return randomStr
+  return randomStr;
+}
+
+// -----------------------------------------------------------------------
+
+const randomResetString = () => {
+  const len = 15;
+  let randomStr = "";
+  const chars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  for(let i = 0; i<len; i++){
+    const n = Math.floor((Math.random() * 36) + 1); // n est un nombre entre 1 & 36
+    randomStr += chars[n];
+  }
+
+  return randomStr;
 }
 
 // -----------------------------------------------------------------------
@@ -144,7 +157,7 @@ module.exports.signIn = async (req, res) => {
 module.exports.forgottenPassword = async (req, res) => {
   console.log("J'entre dans forgottenPassword !")
   let email = req.body.email;
-  resetPass = randomString();
+  resetPass = randomResetString();
   const user = await UserModel.findOne({email: email});
   if(user){
     const salt = await bcrypt.genSalt();
