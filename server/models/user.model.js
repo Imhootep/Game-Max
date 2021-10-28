@@ -78,7 +78,7 @@ const userSchema = new mongoose.Schema(
       default: false
     },
     uniqueString: {
-      type: String
+      type: String,
     },
     social: {
       discord : { type: String },

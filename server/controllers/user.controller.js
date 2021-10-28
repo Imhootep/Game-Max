@@ -285,6 +285,8 @@ module.exports.changePassword = async (req, res) => {
   }
 } 
 
+// ------------------------------------------------------------------------------------
+
 module.exports.favoritesPosts = async (req,res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
