@@ -144,12 +144,6 @@ const NewPostForm = () => {
                 <img src={imagePath} alt="user-pic" />
               </div>
             </NavLink>
-            {/* <ReactQuill name="message"
-              id="message"
-
-              placeholder="Que Dis?"
-              onChange={setMessage}
-              value={message}/> */}
             <div className="titleAndPost">
               <textarea
                 name="title"
@@ -162,7 +156,7 @@ const NewPostForm = () => {
               <textarea
                 name="message"
                 id="message"
-                placeholder="Que Dis?"
+                placeholder="Quoi de neuf?"
                 onChange={(e) => setMessage(e.target.value)}
                 value={message}
               />

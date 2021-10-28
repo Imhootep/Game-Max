@@ -7,6 +7,8 @@ import { dateParser } from "../Utils";
 import FollowHandler from "./FollowHandler";
 import UpdateBio from "./UpdateBio";
 import UploadImg from "./UploadImg";
+import Modal from "../Modals";
+import ChangePassword from "../Password/ChangePassword";
 
 const UpdateProfil = ({userData,usersData}) => {
 
@@ -18,7 +20,15 @@ const UpdateProfil = ({userData,usersData}) => {
 
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const showModal = () => {
+    setOpenModal(true);
+    
+  }
 
+  const hideModal = () => {
+    setOpenModal(false);
+  }
   return (
     <>
     <LeftNav />
@@ -28,7 +38,7 @@ const UpdateProfil = ({userData,usersData}) => {
       <div className="update-container">
         <div className="left-part">
           <div>
-          <h3> Photo de profil </h3>
+          
           <img src={imagePath} alt="profil Pic" />
           
           <UploadImg />
@@ -45,11 +55,11 @@ const UpdateProfil = ({userData,usersData}) => {
           <h5 onClick={() => setFollowersPopup(true)}>
             Abonnés: {userData.followers ? userData.followers.length : ""}
           </h5> */}
-          <NavLink to="/trending">
-            <button className="passwordModify">
+          
+            <span className="passwordModify" onClick={()=>showModal()}>
               Modifier le mot de passe
-            </button>
-          </NavLink>
+            </span>
+         
           </div>
         </div>
         <div className="right-part">
@@ -119,6 +129,13 @@ const UpdateProfil = ({userData,usersData}) => {
         </div>
       )}
     </div>
+    <Modal showModal={openModal} hideModal={hideModal}>
+                    <div className="forgotPassword"> 
+                    <div className="forgotPass">
+            <ChangePassword/>
+       </div>
+                    </div>
+                </Modal>
     </>
   );
 };

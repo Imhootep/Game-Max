@@ -339,10 +339,12 @@
 
         input[type="file"] {
           position: absolute;
-          right:170px;
+          left:-570px;
+          top:50px;
           opacity: 0;
           transform: translate(-3px, -50%);
           cursor: pointer;
+          height:200px;
           // padding: 10px 20px;
 
           @media screen and(max-width: 1121px) {
@@ -517,4 +519,9 @@
       }
     }
   }
+}
+
+.previsPic{
+  height: 500px;
+  width: 500px;
 }
