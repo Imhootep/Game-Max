@@ -3,7 +3,9 @@ const jwt = require("jsonwebtoken");
 const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 const nodemailer = require('nodemailer');
 var uniqueString = "";
+var resetPass = ";"
 const maxAge = 2 * 24 * 60 * 60 * 1000;
+const bcrypt = require('bcrypt');
 
 const createToken = (id) => {
   return jwt.sign({id}, process.env.TOKEN_SECRET, {
@@ -137,12 +139,14 @@ module.exports.signIn = async (req, res) => {
 // ------------------------------------------------------------------------------------
 
 //mail pour mot de passe oublié
-
 module.exports.forgottenPassword = async (req, res) => {
   let email = req.body.email;
-  uniqueString = randomString();
+  resetPass = randomString();
   const user = await UserModel.findOne({email: email});
   if(user){
+    const salt = await bcrypt.genSalt();
+    cryptedPass = await bcrypt.hash(cryptedPass, salt);
+    await UserModel.updateone({email: email}, {$set: {password: cryptedPass}});
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -155,10 +159,13 @@ module.exports.forgottenPassword = async (req, res) => {
       from: 'gamemaxbotmailer@gmail.com',
       to: email,
       subject: "<No-Reply>Réinitialisation de votre mot de passe",
-      html: `Bonjour ${user.pseudo}.<br>
-            Cliquez <a href=http://localhost:8000/api/user/validation/${uniqueString}> sur ce lien </a> pour réinitialiser votre mot de passe.<br>
+      html: `Bonjour ${user.pseudo},<br>
+            Votre mot de passe a été réinitialisé.<br>
+            Votre nouveau mot de passe est : ${resetPass}.<br>
+            Une fois identifié, vous pouvez vous rendre dans la section "Profil" afin de le remplacer par le mot de passe de votre choix.<br>
             Bien amicalement,<br>
-            l'équipe Game-Max.
+            l'équipe Game-Max.<br>
+            <img src="../../uploads/profil/random-user.png" alt="Gamemax" />
             `
   }
 
@@ -167,11 +174,14 @@ module.exports.forgottenPassword = async (req, res) => {
           console.log(err)
       }
       else{
-          console.log("Email for password reset has been sent successfully to <" + email + "> !") 
+          console.log("Email for password reset has been sent successfully to <" + email + "> !");
+          await UserModel.updateOne({email: email}, { $set:{ resetString: resetString }}); 
       }
     })
   }  
   else{
-    console.log("No user found");
+    console.log("User not found");
   } 
 }
+
+// ------------------------------------------------------------------------------------
