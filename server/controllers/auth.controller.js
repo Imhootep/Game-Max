@@ -169,7 +169,7 @@ module.exports.forgottenPassword = async (req, res) => {
             `
   }
 
-    transporter.sendMail(mailOptions, (err, info) => {
+    transporter.sendMail(mailOptions, async (err, info) => {
       if(err){
           console.log(err)
       }
