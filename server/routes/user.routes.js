@@ -17,6 +17,7 @@ router.get("/all", userController.getAllUsers);
 router.get("/:id", requireAuth, userController.userInfo);
 router.get("/favorites-posts/:id", requireAuth, userController.favoritesPosts)
 router.patch("/update/password/:id", requireAuth, userController.changePassword);
+router.post("/reset/password", authController.forgottenPassword);
 router.patch("/admin/disable/:id", requireAuth, userController.setDisableUserTrue);
 router.patch("/admin/enable/:id", requireAuth, userController.setDisableUserFalse);
 router.patch("/admin/update/:id", requireAuth, userController.updateUserFromAdmin);

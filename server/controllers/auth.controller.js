@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 const nodemailer = require('nodemailer');
 var uniqueString = "";
-var resetPass = ";"
+var resetPass = "";
+var cryptedPass = "";
 const maxAge = 2 * 24 * 60 * 60 * 1000;
 const bcrypt = require('bcrypt');
 
@@ -141,13 +142,14 @@ module.exports.signIn = async (req, res) => {
 
 //mail pour mot de passe oublié
 module.exports.forgottenPassword = async (req, res) => {
+  console.log("J'entre dans forgottenPassword !")
   let email = req.body.email;
   resetPass = randomString();
   const user = await UserModel.findOne({email: email});
   if(user){
     const salt = await bcrypt.genSalt();
-    cryptedPass = await bcrypt.hash(cryptedPass, salt);
-    await UserModel.updateone({email: email}, {$set: {password: cryptedPass}});
+    cryptedPass = await bcrypt.hash(resetPass, salt);
+    await UserModel.updateOne({email: email}, {$set: {password: cryptedPass}});
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -177,7 +179,8 @@ module.exports.forgottenPassword = async (req, res) => {
       }
       else{
           console.log("Email for password reset has been sent successfully to <" + email + "> !");
-          await UserModel.updateOne({email: email}, { $set:{ resetString: resetString }}); 
+          resetPass = "";
+          cryptedPass = "";
       }
     })
   }  

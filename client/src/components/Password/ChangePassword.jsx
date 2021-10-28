@@ -20,12 +20,6 @@ const ChangePassword = () => {
 
     const handleConfirmNewPass = (data) => {
         setConfirmNewPass(data);
-        /*const newPassError = document.querySelector('.newPassError');
-        newPassError.innerHTML = "";
-        
-        if(newPass !== confirmNewPass){
-            newPassError.innerHTML = "Les mots de passe ne correspondent pas";
-        }*/
     }
 
     const updatePassword = () => {
