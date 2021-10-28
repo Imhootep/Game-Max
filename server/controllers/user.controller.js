@@ -293,7 +293,6 @@ module.exports.favoritesPosts = async (req,res) => {
     
     UserModel.findById(req.params.id, (err, docs) => {
       if (!err) {
-      console.log(docs)
       res.send(docs);
       }
       else console.log("ID unknown : " + err);

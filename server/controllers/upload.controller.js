@@ -19,6 +19,11 @@ module.exports.uploadProfil = async (req, res) => {
     return res.status(201).json({ errors });
   }
 
+  let oldPicture = await UserModel.findById(req.body.userId, 'picture').exec();
+  fs.unlinkSync(
+    `${oldPicture.picture}`
+    ) 
+
   let fileName = Date.now()+"_"+req.body.userId;
   let entiereFileName = fileName+req.file.detectedFileExtension;
 
