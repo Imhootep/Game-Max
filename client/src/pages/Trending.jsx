@@ -12,7 +12,7 @@ const Trending = () => {
         <>
         
        <div className="forgotPass">
-            <ForgotPassword/>
+            <NewPasswordForgotten/>
        </div>
        <div className="changePass">
             <ChangePassword/>
