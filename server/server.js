@@ -36,7 +36,7 @@ app.use(cookieParser());
 
 // verify reCAPTCHA answer
 app.post('/verify', (req, res) => {
-  var VERIFY_URL = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${req.body['g-recaptcha-response']}`;
+  var VERIFY_URL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${req.body['g-recaptcha-response']}`;
   return fetch(VERIFY_URL, {
       method: 'POST'
     })

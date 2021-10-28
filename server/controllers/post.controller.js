@@ -18,8 +18,7 @@ module.exports.createPost = async (req, res) => {
 
   let fileName = Date.now()+"_"+req.body.posterId;
   let entiereFileName = "";
-  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;
-  
+  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;  
   
   if (req.file !== null) {
     try {
@@ -98,7 +97,7 @@ module.exports.deletePost = (req, res) => {
     if(docs.picture !== ''){
     fs.unlinkSync(
       `${docs.picture}`
-    ) 
+      ) 
     }
     res.send(docs);
     }
