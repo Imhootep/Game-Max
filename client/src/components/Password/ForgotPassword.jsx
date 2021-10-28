@@ -15,13 +15,6 @@ const ForgotPassword = () => {
                 <input className="inputForgotPass" type="text" placeholder="Veuillez entrer votre email" />
                 <button onClick="Submit">Envoyer</button>
             </form>
-
-            <form action="">
-                <h3>Entrez votre mot de passe</h3>
-                <input className="inputNewPass" type="text" placeholder="Nouveau mot de passe" />
-                <input className="inputNewPass" type="text" placeholder="Confirmer nouveau mot de passe" />
-                <button onClick="Submit">Envoyer la demande</button>
-            </form>
         </div>
     );
 };

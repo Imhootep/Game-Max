@@ -1,6 +1,6 @@
 // import React, { useContext } from "react";
 import React from "react";
-import ForgotPassword from "../components/Password/ForgotPassword";
+import NewPasswordForgotten from "../components/Password/NewPasswordForgotten";
 import ChangePassword from "../components/Password/ChangePassword";
 
 
