@@ -34,7 +34,7 @@ const ChangePassword = () => {
     return (
         <div className="changePass-container">
              <form action="">
-           <h3>modification du mot de passe</h3>
+           <h3>Modification du mot de passe</h3>
                 <br/>
                <input type="password" name="ancienPass" placeholder="Mot de passe actuel" onChange={(e) => handleAncienPass(e.target.value)}/>
                 <br/><br/>
