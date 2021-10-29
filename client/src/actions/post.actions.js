@@ -198,7 +198,7 @@ export const getFavorites = (id) => {
   }).then((res) => {
     console.log("res::: ")
     console.log(res)
-    const array = res.data.likes //.data.slice(0, 1);
+    const array = res.data //.data.slice(0, 1);
     dispatch({ type: GET_FAVORITES, payload: array });
   }).catch((err) => console.log(err));
   };

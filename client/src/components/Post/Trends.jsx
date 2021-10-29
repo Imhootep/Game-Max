@@ -31,7 +31,7 @@ const Trends = ({posts,userData,usersData}) => {
     // console.log("trandinglist apres:")
     // console.log(trendList2)
 
-  },[]) //posts dans le []?
+  },[posts]) //posts dans le []?
 
 // pour supprimer les events passés
   useEffect(() => {
@@ -108,18 +108,18 @@ const Trends = ({posts,userData,usersData}) => {
   //   setPassage(true);
   // }
 
-  // c'est quoi ça?
-  useEffect(() => {
-    if (!isEmpty(posts[0])) {
-      const postsArr = Object.keys(posts).map((i) => posts[i]);
-      let sortedArray = postsArr.sort((a, b) => {
-        return b.likers.length - a.likers.length;
-      });
+  // c'est quoi ça? => la fonction qui charge quand on touche le fond et qui BUG => DESACTIVED
+  // useEffect(() => {
+  //   if (!isEmpty(posts[0])) {
+  //     const postsArr = Object.keys(posts).map((i) => posts[i]);
+  //     let sortedArray = postsArr.sort((a, b) => {
+  //       return b.likers.length - a.likers.length;
+  //     });
 
-      sortedArray.length = 5;
-      dispatch(getTrends(sortedArray));
-    }
-  }, [posts]);
+  //     sortedArray.length = 5;
+  //     dispatch(getTrends(sortedArray));
+  //   }
+  // }, [posts]);
 
 
   const showModal = (id) => {
@@ -136,28 +136,28 @@ const Trends = ({posts,userData,usersData}) => {
     <>
       <div className="trends">
         {/* version clean mais probleme de load avec la requete qui se refait quand on scroll */}
-      {posts.map((posts) => {
+      {posts.map((vals) => {
            return (
-            incomingEvent === posts._id && incomingEventDate === posts.date ?
+            incomingEvent === vals._id && incomingEventDate === vals.date ?
               <div className="eventBlock">
               <b>Prochain évènement</b>
               <div className="eventBlockText">
-                <div className={"eventText" + posts.eventType}>{posts.title}</div>
-                <div className="eventText">{dateParser(posts.date)}</div>
+                <div className={"eventText" + vals.eventType}>{vals.title}</div>
+                <div className="eventText">{dateParser(vals.date)}</div>
                 
               </div>
-              {posts.picture && (
-              <img className={"favoriteEventBanner favoriteEventBanner" + posts.eventType } src={process.env.REACT_APP_API_URL+posts.picture}/>)}
-              {posts.video &&(
+              {vals.picture && (
+              <img className={"favoriteEventBanner favoriteEventBanner" + vals.eventType } src={process.env.REACT_APP_API_URL+vals.picture}/>)}
+              {vals.video &&(
                 <iframe
-                src={posts.video}
+                src={vals.video}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                title={posts._id}
+                title={vals._id}
               ></iframe>
               )}
-              <div className={"eventMess"}>{posts.message}</div>
+              <div className={"eventMess"}>{vals.message}</div>
             </div>
            : 
            ''
@@ -180,27 +180,27 @@ const Trends = ({posts,userData,usersData}) => {
         {console.log(trendList2)} */}
         
             {trendList2.length &&
-              trendList2.map((post) => {
-                let postImagePath = process.env.REACT_APP_API_URL+post.picture;
+              trendList2.map((val) => {
+                let postImagePath = process.env.REACT_APP_API_URL+val.picture;
                 return (
                 
-                  <div key={post._id} className="favoriteContainer">
+                  <div key={val._id} className="favoriteContainer">
                     <div>
-                      {post.picture && (
+                      {val.picture && (
                         <img src={postImagePath} alt="post-pic"/>
                       )}
-                      {post.video && (
+                      {val.video && (
                         <iframe
-                          src={post.video}
+                          src={val.video}
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
-                          title={post._id}
+                          title={val._id}
                         ></iframe>
                       )}
-                      {isEmpty(post.picture) && isEmpty(post.video) && (
+                      {isEmpty(val.picture) && isEmpty(val.video) && (
                           <img src={usersData !== isEmpty && usersData.map((user)=>{
-                              if(user._id === post.posterId) {
+                              if(user._id === val.posterId) {
                                   return user.picture;
                               } else return null;
                           })
@@ -209,8 +209,8 @@ const Trends = ({posts,userData,usersData}) => {
                       )}
                     </div>
                     <div className="trend-content">
-                        <p>{post.message}</p>
-                        <span onClick={() => showModal(post._id)}>lire</span>
+                        <p>{val.message}</p>
+                        <span onClick={() => showModal(val._id)}>lire</span>
                     </div>
                   </div>
                   
