@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
+const helmet = require('helmet');
 require('dotenv').config({
   path: './config/.env'
 });
@@ -49,6 +50,9 @@ app.post('/verify', (req, res) => {
 app.get('*', checkUser);
 
 app.use('/uploads', express.static('uploads'));
+
+//Helmet
+app.use(helmet());
 
 // routes
 app.use('/api/user', userRoutes);

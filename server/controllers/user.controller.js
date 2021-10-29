@@ -1,7 +1,9 @@
 const UserModel = require("../models/user.model");
+const PostModel = require("../models/post.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 const bcrypt = require("bcrypt");
 const { changePasswordErrors } = require("../utils/errors.utils");
+const nodemailer = require('nodemailer');
 
 // Retourne tous les utilisateurs
 module.exports.getAllUsers = async (req, res) => {
@@ -135,11 +137,18 @@ module.exports.setDisableUserFalse = async (req, res) => {
 
 // Modification du role ou de l'adresse d'un utilisateur (par l'admin)
 module.exports.updateUserFromAdmin = async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
+  var role = "vide";
+  var pseudo = "";
+  var email = "";
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
+    const user = await UserModel.findOne({ _id: req.params.id });
+    role = user.role;
+    pseudo = user.pseudo;
+    email = user.email;
     await UserModel.findOneAndUpdate(
       { _id: req.params.id },
       {
@@ -155,6 +164,9 @@ module.exports.updateUserFromAdmin = async (req, res) => {
         if (err) return res.status(500).send({ message: err });
       }
     );
+    if(role == ""){
+      roledEmail(pseudo, email, req.body.role);
+    }
   } catch (err) {
     return res.status(500).json({ message: err });
   }
@@ -286,15 +298,57 @@ module.exports.changePassword = async (req, res) => {
 } 
 
 // ------------------------------------------------------------------------------------
-
+// Renvoi les posts (toutes les données du post, pas juste l'id) qu'un utilisateur a liké (pour entre autre les afficher à droite)
 module.exports.favoritesPosts = async (req,res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
-    
-    UserModel.findById(req.params.id, (err, docs) => {
+    var arrayPosts = []
+    await UserModel.findById(req.params.id, async (err, docs) => {
       if (!err) {
-      res.send(docs);
-      }
+        for(const like of docs.likes) {
+          await PostModel.findById(like, async (err, docs) => {
+          if (!err) {
+            arrayPosts.push(docs)
+          }
+          else console.log("ID unknown : " + err);
+        })
+      }      
+    }
       else console.log("ID unknown : " + err);
+      res.send(arrayPosts)
     }).select("likes");
 };
+
+// ------------------------------------------------------------------------------------
+//Méthode qui envoie un mail une fois que le user en question reçoit un rôle et peut donc se connecter en utilisant ses identifiants
+const roledEmail = (pseudo, email, role) => {
+  console.log("J'envoie le mail pour le rôle")
+  var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: 'gamemaxbotmailer@gmail.com',
+          pass: 'gamemaxmail'
+      }
+  })
+
+  var mailOptions = {
+      from: 'gamemaxbotmailer@gmail.com',
+      to: email,
+      subject: "<No-Reply>Un rôle vous a été octroyé",
+      html: `Bonjour ${pseudo}, <br>
+            un administrateur vous à octroyé le rôle de : ${role}.<br>   
+            Vous pouvez dès à présent vous connecter en utilisant vos identifiants.<br>    
+            Bien amicalement,<br>
+            l'équipe Game-Max.
+            `
+  }
+
+  transporter.sendMail(mailOptions, (err, info) => {
+      if(err){
+          console.log(err)
+      }
+      else{
+          console.log("Email has been sent successfully to <" + email + "> !") 
+      }
+  })
+}

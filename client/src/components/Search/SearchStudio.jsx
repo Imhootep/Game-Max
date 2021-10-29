@@ -175,7 +175,7 @@ const SearchStudio = () => {
                             <div className="sectionProfil">
                                 <div className="bigBlockRole">
                                     <div>
-                                        <img src={val.picture} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
+                                        <img src={imagePath} alt={val.pseudo} title={val.pseudo} className="avatarIcon"/>
                                         <b>{val.pseudo}</b>
                                     </div>
                                     <div className={"Role "+val.role.toLowerCase()}>
