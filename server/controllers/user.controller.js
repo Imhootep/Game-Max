@@ -1,4 +1,5 @@
 const UserModel = require("../models/user.model");
+const PostModel = require("../models/post.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 const bcrypt = require("bcrypt");
 const { changePasswordErrors } = require("../utils/errors.utils");
@@ -297,16 +298,24 @@ module.exports.changePassword = async (req, res) => {
 } 
 
 // ------------------------------------------------------------------------------------
-
+// Renvoi les posts (toutes les données du post, pas juste l'id) qu'un utilisateur a liké (pour entre autre les afficher à droite)
 module.exports.favoritesPosts = async (req,res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
-    
-    UserModel.findById(req.params.id, (err, docs) => {
+    var arrayPosts = []
+    await UserModel.findById(req.params.id, async (err, docs) => {
       if (!err) {
-      res.send(docs);
-      }
+        for(const like of docs.likes) {
+          await PostModel.findById(like, async (err, docs) => {
+          if (!err) {
+            arrayPosts.push(docs)
+          }
+          else console.log("ID unknown : " + err);
+        })
+      }      
+    }
       else console.log("ID unknown : " + err);
+      res.send(arrayPosts)
     }).select("likes");
 };
 
