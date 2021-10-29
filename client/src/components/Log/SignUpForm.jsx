@@ -170,7 +170,7 @@ const SignUpForm = () => {
                             <div className="password-confirm error"></div>
                             <br/>
                             <br/>
-                            <div>
+                            <div className="termsCond">
                             <input type="checkbox" id="terms" />
                             <label> J'accepte les <a href="https://gamemax.be/" >conditions générales et d'utilisation</a> </label>
                             <div className="terms error"></div>
