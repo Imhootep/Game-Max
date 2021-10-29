@@ -86,7 +86,7 @@ const SignInForm = () => {
                         <button id="test" className="loginBut" type="submit"  ><span>Sign In</span></button>
                     {/* <h4>{errorMessage}</h4> */}
                     <br/>
-                    <span onClick={()=>showModal()}>Mot de passe oublié ? </span>
+                    <span className="forgotPassLink" onClick={()=>showModal()}>Mot de passe oublié ? </span>
                 </form>
 
                 <Modal showModal={openModal} hideModal={hideModal}>
