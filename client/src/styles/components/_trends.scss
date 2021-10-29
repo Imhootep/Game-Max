@@ -21,39 +21,26 @@
         height: 40px;
         display: flex;
         justify-content: center;
-        
-        
-        
-    img{
-        width: 20px;
-        height: 20px;
-        align-self: center;
-       
-        
-        
-
-
-       
-        
+           
+        img{
+            width: 20px;
+            height: 20px;
+            align-self: center;    
+        }
     }
-}
    
 }
-
 .trends{
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     min-height:500px;
     max-width: 85%;
-    margin: 30px auto 40px auto;
-    
+    margin: 30px auto 40px auto;  
 }
-
 .eventBlock, .favoriteBlock{
     padding:10px 0 15px 0;
     margin: 0 20px 10px 20px;
 }
-
 .eventBlock b, .favoriteBlock b{
     display: inline-block;
     background-color: $color-4;
@@ -63,19 +50,143 @@
     margin:5px 0 10px 0;
     border-radius: 5px;
 }
-
 .eventBlockText{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-weight: bold;
 }
-
 .favoriteEventBanner{
     max-width:100%;
     max-height:250px   
 }
+.eventMess{
+    width: 80%;
+    padding-left: 5px;
+}
+.favoriteIcon{
+    width:20px;
+    margin:0 10px 0 0;
+}
+.trending-container {
+    // height: 350px;
+    max-width: 100%;
+    margin: 10px auto 10px auto;
+    background-color: $color-2;
+    border-radius: 20px;
+    padding:5px;
 
+    h4{
+        padding: 5px 0 0 10px;
+        background-color: $color-4;
+        color:$color-2;
+    }
+
+    ul{
+        padding-top: 5px;
+    }
+    .favoriteContainer{
+        height: 90px;
+        background-color: $white;
+        border-radius: 20px;
+        margin: 10px;
+        padding:5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    
+        img{
+            max-height: 50px; 
+        }
+        div{
+
+            display: flex;
+            flex-direction: column;
+            // width:40%;
+            // margin-left: 10px;
+            // margin-top: 5px;
+            
+            img{
+                max-height: 80px;
+                border-radius: 15px;
+            }
+            p{
+                height: 50px;
+                padding: 5px;
+                margin: 0 0 5px 0;
+                width: 100%;
+                overflow: hidden;
+            }
+            span {
+                color: $color-1;
+                font-family: $font-3;
+                font-weight: bold;
+                  // padding-top: 10px;
+                  align-self: flex-end;
+            }
+            span:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+// ----------------------- Popup des postes favoris --------------------------//
+
+
+.modalBackground{
+    width:50%;
+    position:absolute; //pq marche po?
+    left:25%;
+    // right:0;
+    top:200px;
+    min-width:700px;
+}
+
+.modal-container{
+    background-color: $color-7;
+    width:100%;
+    // max-height: 400px;
+    position: relative;
+    // right: 600px;
+    // top: -700px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    padding:20px;
+}
+.modal-header{
+      display: flex;
+      justify-content: center;
+}
+.modal-pic{
+      max-height: 300px;
+      max-width: 300px;
+      justify-content: center;
+      margin: 10px auto 20px auto;
+
+    img{
+          align-items: center;
+        justify-content: center;
+        max-height: 300px;
+      max-width: 300px;
+
+     }
+
+}
+.modal-body{
+    // max-height: 60px;
+    margin: 20px;
+}
+.modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 15px;
+}
+
+
+// ----------------------- modifs en fonction du type d'Event --------------------------//
 
 .favoriteEventBannerFormation{
     border:solid 3px $color-mauve;
@@ -113,135 +224,3 @@
 .eventTextAutre{
     color: $color-rose;
 }
-
-.eventMess{
-    width: 80%;
-    padding-left: 5px;
-}
-
-.favoriteIcon{
-    width:20px;
-    margin:0 10px 0 0;
-}
-.trending-container {
-    // height: 350px;
-    max-width: 100%;
-    margin: 10px auto 10px auto;
-    background-color: $color-2;
-    border-radius: 20px;
-    padding:5px;
-
-    h4{
-        padding: 5px 0 0 10px;
-        background-color: $color-4;
-        color:$color-2;
-    }
-
-    ul{
-        padding-top: 5px;
-    }
-    .favoriteContainer{
-        height: 90px;
-        background-color: $white;
-        border-radius: 20px;
-        margin: 10px;
-        padding:5px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    
-        img{
-            max-height: 50px;
-            
-        }
-        div{
-
-            display: flex;
-            flex-direction: column;
-            // width:40%;
-            // margin-left: 10px;
-            // margin-top: 5px;
-            
-            img{
-                max-height: 80px;
-                border-radius: 15px;
-            }
-
-            p{
-                height: 50px;
-                padding: 5px;
-                margin: 0 0 5px 0;
-                width: 100%;
-                overflow: hidden;
-            }
-
-            span {
-                color: $color-1;
-                font-family: $font-3;
-                font-weight: bold;
-                  // padding-top: 10px;
-                  align-self: flex-end;
-              }
-              span:hover {
-                cursor: pointer;
-              }
-        }
-    }
-}
-
-.modalBackground{
-    width:50%;
-    position:absolute; //pq marche po?
-    left:25%;
-    // right:0;
-    top:200px;
-    min-width:700px;
-}
-
-.modal-container{
-    background-color: $color-7;
-    width:100%;
-    // max-height: 400px;
-    position: relative;
-    // right: 600px;
-    // top: -700px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    padding:20px;
-  }
-
-  .modal-header{
-      display: flex;
-      justify-content: center;
-  }
-
-  .modal-pic{
-      max-height: 300px;
-      max-width: 300px;
-      justify-content: center;
-      margin: 10px auto 20px auto;
-
-      img{
-          align-items: center;
-        justify-content: center;
-        max-height: 300px;
-      max-width: 300px;
-
-      }
-
-      
-     
-  }
-
-  .modal-body{
-    // max-height: 60px;
-    margin: 20px;
-}
-
-  .modal-footer{
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 15px;
-}
-
