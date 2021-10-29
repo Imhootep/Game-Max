@@ -2,12 +2,12 @@ import React, { useEffect, useState,useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 // import star from "../img/star.png";
-import exemple from "../../img/0125.png";
+// import exemple from "../../img/0125.png";
 import { getTrends, getFavorites } from "../../actions/post.actions";
 // import { NavLink } from "react-router-dom";
 import Modal from "../Modals";
-import axios from "axios";
-import Cookies from "js-cookie";
+// import axios from "axios";
+// import Cookies from "js-cookie";
 import { UidContext } from '../AppContext';
 
 const Trends = ({posts,userData,usersData}) => {
@@ -21,55 +21,94 @@ const Trends = ({posts,userData,usersData}) => {
   const trendList2 = useSelector((state) => state.trendingReducer);
   const [trendPost, setTrendPost] = useState('')
   const dispatch = useDispatch();
+  
+  const [openModal, setOpenModal] = useState(false)
+  const [incomingEvent, setIncomingEvent] = useState('')
+  const [incomingEventDate, setIncomingEventDate] = useState()
+  //chercher les favoris
   useEffect(() => {
     dispatch(getFavorites(uid)) 
     // console.log("trandinglist apres:")
     // console.log(trendList2)
 
-  },[posts])
-  const [openModal, setOpenModal] = useState(false)
-  const [incomingEvent, setIncomingEvent] = useState('')
-  const [incomingEventDate, setIncomingEventDate] = useState()
+  },[]) //posts dans le []?
+
+// pour supprimer les events passés
+  useEffect(() => {
+    console.log("ce qu'on a au premier passage: ")
+    console.log(posts)
+    // console.log("trandinglist apres:")
+    // console.log(trendList2)
+
+  },[])
+
+
   // const [passage, setPassage] = useState(false)
 
   //si on prends les props, seul userdata est un objet les deux autres sont des array
   // pareil quand je fais les reducer ici wtf?  
 
-  // useEffect(() => { //a faire dans reducer et get le reducer
-  //   return axios({
-  //     method:"get",
-  //     headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-  //     url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + userData._id,
-  //   }).then((res) => {
-      
-  //   })
-  // })
+
+  //pour afficher le derneir event
   //bonne version mais qui load pas assez vite donc le tableau est vide
+  //LE PROB: comme c'est dans une boucle, le state avant de rentrer dans le use effect est a '' et ne se met pas a jour tant qu'on ne sort pas du useffect
   useEffect(() => {
-    // console.log("les posts de ses morts:")
-    // console.log(posts[0])
+    console.log("dernier event 1:")
+    console.log(incomingEvent)
     // console.log(posts[0].createdAt.getTime())
     if(posts[0] !== undefined){
+      console.log("dernier event 2:")
+      console.log(incomingEvent)
     for(let i = 0; i < posts.length; i++){
+      console.log("la date de maintenant et sa version parsée: ")
+
+      console.log(Date.now()) //DEJA PARSEE
+      console.log(Date.parse(Date.now()))
+
+      console.log("la date du post actuel dans la boucle:")
+      console.log(posts[i].date)
+      console.log(Date.parse(posts[i].date))
+
+      if(Date.parse(posts[i].date) > Date.parse(Date.now())){
+          console.log(posts[i].date+" doit etre supprimé !")
+      }
       if(posts[i].isEvent === true && incomingEvent === ''){
+        // alert(posts[i]._id)
         setIncomingEvent(posts[i]._id)
         setIncomingEventDate(posts[i].date)
+        // changeDate(posts[i]._id,posts[i].date)
+        console.log("dernier event 3:")
+        console.log(incomingEvent)
       }else if(posts[i].isEvent === true && incomingEventDate !== undefined && incomingEventDate !== null && incomingEventDate !== null){
-        if(Date.parse(posts[i].date) < Date.parse(incomingEventDate)){
+        console.log("dernier event 4:")
+        console.log(incomingEvent)
+        if(Date.parse(posts[i].date) > Date.parse(incomingEventDate)){
           // console.log("on va jamais passer ici je parie sans le .getTime() qui bug de ses morts???")
           setIncomingEvent(posts[i]._id)
-          setIncomingEventDate(posts[i].date)
+        setIncomingEventDate(posts[i].date)
+        // changeDate(posts[i]._id,posts[i].date)
+          console.log("dernier event 5:")
+          console.log(incomingEvent)
         }
       }
+
+
     }
   }
-  }, [posts]);
+  console.log("dernier event 6:")
+          console.log(incomingEvent)
+  }, [posts,incomingEvent]); //[posts] ? => ajouté incomingEvent pour que la boucle se mette a jour (meme si pour moi c'est bizarre de devoir faire ça)
 
+  // const changeDate = (id,date) =>{
+  //   setIncomingEvent(id)
+  //   setIncomingEventDate(date)
+  // }
   
   // const handlePassage = () => {
   //   setPassage(true);
   // }
 
+  // c'est quoi ça?
   useEffect(() => {
     if (!isEmpty(posts[0])) {
       const postsArr = Object.keys(posts).map((i) => posts[i]);
@@ -137,8 +176,8 @@ const Trends = ({posts,userData,usersData}) => {
         <div className="favoriteBlock">
           <b>Favoris</b>
           <div className="trending-container">
-        {console.log("trendlist2 avant d'etre use: ")}
-        {console.log(trendList2)}
+        {/* {console.log("trendlist2 avant d'etre use: ")}
+        {console.log(trendList2)} */}
         
             {trendList2.length &&
               trendList2.map((post) => {
