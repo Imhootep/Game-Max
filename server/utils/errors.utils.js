@@ -41,3 +41,21 @@ module.exports.uploadErrors = (err) => {
 
   return errors
 }
+
+module.exports.changePasswordErrors = (err) => {
+  let errors = {message: ''};
+
+  if(err.message.includes("passwords have no match")){
+    errors.message = "Les mots de passe ne correspondent pas";
+  }
+
+  if(err.message.includes("incorrect old password")){
+    errors.message = "Le mot de passe actuel est incorrect";
+  }
+
+  if(err.message.includes("user not found")){
+    errors.message = "Aucun user trouvé";
+  }
+
+  return errors;
+}

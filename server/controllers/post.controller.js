@@ -18,8 +18,7 @@ module.exports.createPost = async (req, res) => {
 
   let fileName = Date.now()+"_"+req.body.posterId;
   let entiereFileName = "";
-  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;
-  
+  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;  
   
   if (req.file !== null) {
     try {
@@ -98,7 +97,7 @@ module.exports.deletePost = (req, res) => {
     if(docs.picture !== ''){
     fs.unlinkSync(
       `${docs.picture}`
-    ) 
+      ) 
     }
     res.send(docs);
     }
@@ -241,5 +240,26 @@ module.exports.deleteCommentPost = (req, res) => {
     );
   } catch (err) {
     return res.status(400).send(err);
+  }
+};
+
+module.exports.findPostByWord = async (req, res) => {
+
+  try{
+    let posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.search + '.*', $options : 'i' } }, { title: { $regex: '.*' + req.body.search + '.*', $options : 'i' } } ]}).sort({ createdAt : 1 }).exec();
+    res.status(200).send(posts);
+  } catch(err) {
+    res.status(400).send(err)
+  }
+};
+
+module.exports.findPostByType = async (req, res) => {
+
+  try{
+    console.log(req.body.eventType)
+    let posts = await PostModel.find({ eventType : req.body.eventType }).sort({ createdAt : 1 }).exec();
+    res.status(200).send(posts);
+  } catch(err) {
+    res.status(400).send(err)
   }
 };

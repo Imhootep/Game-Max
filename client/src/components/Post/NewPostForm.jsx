@@ -144,12 +144,6 @@ const NewPostForm = () => {
                 <img src={imagePath} alt="user-pic" />
               </div>
             </NavLink>
-            {/* <ReactQuill name="message"
-              id="message"
-
-              placeholder="Que Dis?"
-              onChange={setMessage}
-              value={message}/> */}
             <div className="titleAndPost">
               <textarea
                 name="title"
@@ -162,7 +156,7 @@ const NewPostForm = () => {
               <textarea
                 name="message"
                 id="message"
-                placeholder="Que Dis?"
+                placeholder="Quoi de neuf?"
                 onChange={(e) => setMessage(e.target.value)}
                 value={message}
               />
@@ -235,19 +229,19 @@ const NewPostForm = () => {
                       <option className="choice" value="choice">
                         Choisir un Event
                       </option>
-                      <option className={"GameCafe" + "blueframe"} value="game">
+                      <option className={"GameCafe" + "blueframe"} value="Game">
                         Game Dev Café
                       </option>
-                      <option className="formation" value="formation">
+                      <option className="Formation" value="Formation">
                         Formation
                       </option>
-                      <option className="Stream" value="stream">
+                      <option className="Stream" value="Stream">
                         Stream
                       </option>
-                      <option className="GameWeek" value="week">
-                        Gameweek
+                      <option className="GameWeek" value="Week">
+                        Game Week
                       </option>
-                      <option className="Autre" value="autre">
+                      <option className="Autre" value="Autre">
                         Autre
                       </option>
                     </select>

@@ -3,7 +3,11 @@ const jwt = require("jsonwebtoken");
 const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 const nodemailer = require('nodemailer');
 var uniqueString = "";
+var resetPass = "";
+var cryptedPass = "";
 const maxAge = 2 * 24 * 60 * 60 * 1000;
+const bcrypt = require('bcrypt');
+
 
 const createToken = (id) => {
   return jwt.sign({id}, process.env.TOKEN_SECRET, {
@@ -14,14 +18,27 @@ const createToken = (id) => {
 // -----------------------------------------------------------------------
 
 const randomString = () => {
-  const len = 40
-  let randomStr = ""
+  const len = 40;
+  let randomStr = "";
   for(let i = 0; i<len; i++){
     const n = Math.floor((Math.random() * 10) + 1) // n est un nombre entre 1 & 10
-    randomStr += n
+    randomStr += n;
   }
-  console.log("uniqueString : " + randomStr)
-  return randomStr
+  return randomStr;
+}
+
+// -----------------------------------------------------------------------
+
+const randomResetString = () => {
+  const len = 15;
+  let randomStr = "";
+  const chars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  for(let i = 0; i<len; i++){
+    const n = Math.floor((Math.random() * 36) + 1); // n est un nombre entre 1 & 36
+    randomStr += chars[n];
+  }
+
+  return randomStr;
 }
 
 // -----------------------------------------------------------------------
@@ -133,3 +150,56 @@ module.exports.signIn = async (req, res) => {
     res.status(200).json({ errors });
   }
 }
+
+// ------------------------------------------------------------------------------------
+
+//mail pour mot de passe oublié
+module.exports.forgottenPassword = async (req, res) => {
+  console.log("J'entre dans forgottenPassword !")
+  let email = req.body.email;
+  resetPass = randomResetString();
+  const user = await UserModel.findOne({email: email});
+  if(user){
+    const salt = await bcrypt.genSalt();
+    cryptedPass = await bcrypt.hash(resetPass, salt);
+    await UserModel.updateOne({email: email}, {$set: {password: cryptedPass}});
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: 'gamemaxbotmailer@gmail.com',
+          pass: 'gamemaxmail'
+      }
+    })
+
+    var mailOptions = {
+      from: 'gamemaxbotmailer@gmail.com',
+      to: email,
+      subject: "<No-Reply>Réinitialisation de votre mot de passe",
+      html: `Bonjour ${user.pseudo},<br>
+            Votre mot de passe a été réinitialisé.<br>
+            Votre nouveau mot de passe est : ${resetPass}.<br>
+            Une fois identifié, vous pouvez vous rendre dans la section "Profil" afin de le remplacer par le mot de passe de votre choix.<br>
+            Bien amicalement,<br>
+            l'équipe Game-Max.<br>
+            <img src="../uploads/profil/random-user.png" alt="Gamemax" />
+            `
+  }
+  
+
+    transporter.sendMail(mailOptions, async (err, info) => {
+      if(err){
+          console.log(err)
+      }
+      else{
+          console.log("Email for password reset has been sent successfully to <" + email + "> !");
+          resetPass = "";
+          cryptedPass = "";
+      }
+    })
+  }  
+  else{
+    console.log("User not found");
+  } 
+}
+
+// ------------------------------------------------------------------------------------

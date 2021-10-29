@@ -11,15 +11,15 @@ const ChangePassword = () => {
     const [confirmNewPass,setConfirmNewPass] = useState('');
 
     const handleAncienPass = (data) => {
-        setAncienPass(data)
+        setAncienPass(data);
     }
 
     const handleNewPass = (data) => {
-        setNewPass(data)
+        setNewPass(data);
     }
 
     const handleConfirmNewPass = (data) => {
-        setConfirmNewPass(data)
+        setConfirmNewPass(data);
     }
 
     const updatePassword = () => {
@@ -34,11 +34,17 @@ const ChangePassword = () => {
     return (
         <div className="changePass-container">
              <form action="">
-           <h3>modification du mot de passe</h3>
+           <h3>Modification du mot de passe</h3>
+                <br/>
                <input type="password" name="ancienPass" placeholder="Mot de passe actuel" onChange={(e) => handleAncienPass(e.target.value)}/>
+                <br/><br/>
                <input type="password" name="newPass" placeholder="Nouveau mot de passe" onChange={(e) => handleNewPass(e.target.value)}/>
+               <br/><br/>
                <input type="password" name="confirmNewPass" placeholder="Confirmer nouveau mot de passe" onChange={(e) => handleConfirmNewPass(e.target.value)}/>
+               <br/><br/>
                <button type="Submit" onClick={() => updatePassword()}>Modifier</button>
+               <br/><br/>
+               <div className="log error"></div>
            </form>
         </div>
     );

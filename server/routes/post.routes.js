@@ -5,11 +5,13 @@ const multer = require("multer");
 const upload = multer();
 
 router.get('/', requireAuth, postController.readPost);
+router.get('/contains', requireAuth, postController.findPostByWord)
+router.get('/event', requireAuth, postController.findPostByType)
 router.post('/', requireAuth, upload.single("file"), postController.createPost);
 router.put('/:id', requireAuth, postController.updatePost);
-router.delete('/:id', requireAuth, postController.deletePost);
 router.patch('/like-post/:id', requireAuth, postController.likePost);
 router.patch('/unlike-post/:id', requireAuth, postController.unlikePost);
+router.delete('/:id', requireAuth, postController.deletePost);
 
 // comments
 router.patch('/comment-post/:id', requireAuth, postController.commentPost);

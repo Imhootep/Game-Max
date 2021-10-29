@@ -1,7 +1,7 @@
 
- .card-containerformation{
+ .card-containerFormation{
   border: solid 2px $color-mauve !important;
-  .event-infoformation{
+  .event-infoFormation{
     color: $color-mauve;
     font-size: 20px;
     height: 20px;
@@ -10,14 +10,14 @@
     background-color: $white;
   }
 }
-.card-titleformation{
+.card-titleFormation{
   color: $color-4 !important;
 }
 
 
-.card-containergame{
+.card-containerGame{
   border: solid 2px $color-bleu !important;
-  .event-infogame{
+  .event-infoGame{
     color: $color-bleu;
     font-size: 20px;
     height: 20px;
@@ -27,14 +27,14 @@
   }
   // background-color: blue !important;
 }
-.card-titlegame{
+.card-titleGame{
   color: $color-bleu !important;
 }
 
 
-.card-containerstream{
+.card-containerStream{
   border: solid 2px $color-vert !important;
-  .event-infostream{
+  .event-infoStream{
     color: $color-vert;
     font-size: 20px;
     height: 20px;
@@ -43,14 +43,14 @@
     background-color: $white;
   }
 }
-.card-titlestream{
+.card-titleStream{
   color: $color-vert !important;
 }
 
 
-.card-containerweek{
+.card-containerWeek{
   border: solid 2px $color-orange !important;
-  .event-infoweek{
+  .event-infoWeek{
     color: $color-orange;
     font-size: 20px;
     height: 20px;
@@ -59,13 +59,13 @@
     background-color: $white;
   }
 }
-.card-titleweek{
+.card-titleWeek{
   color: $color-orange !important;
 }
 
-.card-containerautre{
+.card-containerAutre{
   border: solid 2px $color-rose !important;
-  .event-infoautre{
+  .event-infoAutre{
     color: $color-rose;
     font-size: 20px;
     height: 20px;
@@ -74,7 +74,7 @@
     background-color: $white;
   }
 }
-.card-titleautre{
+.card-titleAutre{
   color: $color-rose !important;
 }
 

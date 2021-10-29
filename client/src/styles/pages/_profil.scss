@@ -1,17 +1,25 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  div{
+    height: 100%;
+  }
+}
 .profil-page {
   // margin: 80px auto 0;
   // max-width: 1200px;
+  height: 100%;
 
   .icons {
     top: 55px;
   }
-
   .updateForm {
     height: 50px;
     width: 60%;
     margin: 20px;
   }
-
   .bio-update {
 
     .profil-update-box {
@@ -19,7 +27,6 @@
       flex-direction: column;
       margin: 30px;
     }
-
     .profil-update-box1 {
       width: 100%;
       display: flex;
@@ -38,10 +45,8 @@
         p{
           height: 30px;
         }
-      }
-      
+      } 
     }
-
     .profil-update-box2{
       width: 90%;
     display: flex;
@@ -52,7 +57,6 @@
     h3{
       margin: 20px;
     }
-
     div {
       display: flex;
       flex-direction: column;
@@ -63,16 +67,14 @@
       p{
         min-height:50px;
 
-      img{
-        width: 50px;
-        margin: 0 50px 0 0;
-        cursor: pointer;
-        
+        img{
+          width: 50px;
+          margin: 0 50px 0 0;
+          cursor: pointer;
+        }
       }
     }
-    }
-    }
-
+  }
     p {
       margin: 20px 0 10px 10px;
       text-align: start;
@@ -80,12 +82,10 @@
       font-size: 50px;
       background-color: $color-2;
     }
-
     h3 {
       text-align: start;
     }
   }
-
   .web-info{
     display: flex;
     justify-content: space-between;
@@ -98,7 +98,6 @@
       margin: 20px 0 10px 5px;
     }
   }
-
   .web-media{
     display: flex;
     justify-content: space-between;
@@ -108,8 +107,6 @@
       width: 40%;
     }
   }
-  
-
   .log-container {
     margin: 0 auto;
     display: grid;
@@ -119,21 +116,17 @@
       grid-template-columns: 1fr;
     }
   }
-
   .connection-form {
     border: none;
     background: $color-4;
     min-width: 490px;
     width: 100%;
-    text-align: center;
+    // text-align: center;
     margin: 0 auto;
-    padding: 20px;
-    // border-radius: 20px;
-
+    
     @media screen and(max-width: 550px) {
       min-width: 200px;
     }
-
     .form-container {
       // display: grid;
       // grid-template-columns: 30% 70%;
@@ -152,7 +145,7 @@
           border-radius: 20px;
           padding: 10px 20px;
           transition: 0.2s;
-          color: $white;
+          color: $color-4;
 
           @media screen and(max-width: 550px) {
             width: 80%;
@@ -286,8 +279,8 @@
       }
 
       img {
-        height: 400px;
-        width: 40%;
+        height: 200px;
+        width: 17%;
         border-radius: 46px;
         object-fit: cover;
         margin: 50px 0 80px 0;
@@ -339,10 +332,12 @@
 
         input[type="file"] {
           position: absolute;
-          right:170px;
+          left:-570px;
+          top:50px;
           opacity: 0;
           transform: translate(-3px, -50%);
           cursor: pointer;
+          height:200px;
           // padding: 10px 20px;
 
           @media screen and(max-width: 1121px) {
@@ -517,4 +512,9 @@
       }
     }
   }
+}
+
+.previsPic{
+  height: 500px;
+  width: 500px;
 }

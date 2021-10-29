@@ -21,39 +21,26 @@
         height: 40px;
         display: flex;
         justify-content: center;
-        
-        
-        
-    img{
-        width: 20px;
-        height: 20px;
-        align-self: center;
-       
-        
-        
-
-
-       
-        
+           
+        img{
+            width: 20px;
+            height: 20px;
+            align-self: center;    
+        }
     }
-}
    
 }
-
 .trends{
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     min-height:500px;
     max-width: 85%;
-    margin: 30px auto 40px auto;
-    
+    margin: 30px auto 40px auto;  
 }
-
 .eventBlock, .favoriteBlock{
     padding:10px 0 15px 0;
     margin: 0 20px 10px 20px;
 }
-
 .eventBlock b, .favoriteBlock b{
     display: inline-block;
     background-color: $color-4;
@@ -63,62 +50,20 @@
     margin:5px 0 10px 0;
     border-radius: 5px;
 }
-
 .eventBlockText{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-weight: bold;
 }
-
 .favoriteEventBanner{
     max-width:100%;
     max-height:250px   
 }
-
-
-.favoriteEventBannerformation{
-    border:solid 3px $color-mauve;
-    border-radius: 10px;
-}
-.favoriteEventBannergame{
-    border:solid 3px $color-bleu;
-    border-radius: 10px;
-}
-.favoriteEventBannerstream{
-    border:solid 3px $color-vert;
-    border-radius: 10px;
-}
-.favoriteEventBannerweek{
-    border: solid 3px $color-orange;
-    border-radius: 10px;
-}
-.favoriteEventBannerautre{
-    border:solid 3px $color-rose;
-    border-radius: 10px;
-}
-
-.eventTextformation{
-    color: $color-mauve;
-}
-.eventTextgame{
-    color: $color-bleu;
-}
-.eventTextstream{
-    color: $color-vert;
-}
-.eventTextweek{
-    color: $color-orange;
-}
-.eventTextautre{
-    color: $color-rose;
-}
-
 .eventMess{
     width: 80%;
     padding-left: 5px;
 }
-
 .favoriteIcon{
     width:20px;
     margin:0 10px 0 0;
@@ -151,8 +96,7 @@
         justify-content: space-between;
     
         img{
-            max-height: 50px;
-            
+            max-height: 50px; 
         }
         div{
 
@@ -166,7 +110,6 @@
                 max-height: 80px;
                 border-radius: 15px;
             }
-
             p{
                 height: 50px;
                 padding: 5px;
@@ -174,20 +117,23 @@
                 width: 100%;
                 overflow: hidden;
             }
-
             span {
                 color: $color-1;
                 font-family: $font-3;
                 font-weight: bold;
                   // padding-top: 10px;
                   align-self: flex-end;
-              }
-              span:hover {
+            }
+            span:hover {
                 cursor: pointer;
-              }
+            }
         }
     }
 }
+
+
+// ----------------------- Popup des postes favoris --------------------------//
+
 
 .modalBackground{
     width:50%;
@@ -209,39 +155,72 @@
     flex-direction: column;
     border-radius: 15px;
     padding:20px;
-  }
-
-  .modal-header{
+}
+.modal-header{
       display: flex;
       justify-content: center;
-  }
-
-  .modal-pic{
+}
+.modal-pic{
       max-height: 300px;
       max-width: 300px;
       justify-content: center;
       margin: 10px auto 20px auto;
 
-      img{
+    img{
           align-items: center;
         justify-content: center;
         max-height: 300px;
       max-width: 300px;
 
-      }
+     }
 
-      
-     
-  }
-
-  .modal-body{
+}
+.modal-body{
     // max-height: 60px;
     margin: 20px;
 }
-
-  .modal-footer{
+.modal-footer{
     display: flex;
     justify-content: flex-end;
     padding: 0 15px;
 }
 
+
+// ----------------------- modifs en fonction du type d'Event --------------------------//
+
+.favoriteEventBannerFormation{
+    border:solid 3px $color-mauve;
+    border-radius: 10px;
+}
+.favoriteEventBannerGame{
+    border:solid 3px $color-bleu;
+    border-radius: 10px;
+}
+.favoriteEventBannerStream{
+    border:solid 3px $color-vert;
+    border-radius: 10px;
+}
+.favoriteEventBannerWeek{
+    border: solid 3px $color-orange;
+    border-radius: 10px;
+}
+.favoriteEventBannerAutre{
+    border:solid 3px $color-rose;
+    border-radius: 10px;
+}
+
+.eventTextFormation{
+    color: $color-mauve;
+}
+.eventTextGame{
+    color: $color-bleu;
+}
+.eventTextStream{
+    color: $color-vert;
+}
+.eventTextWeek{
+    color: $color-orange;
+}
+.eventTextAutre{
+    color: $color-rose;
+}

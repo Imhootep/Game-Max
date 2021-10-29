@@ -4,8 +4,15 @@ import { uploadPicture } from "../../actions/user.actions";
 
 const UploadImg = () => {
   const [file, setFile] = useState();
+  // const [userPicture, setUserPicture] = useState(null);
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userReducer);
+
+  const handlePictureModif = (e) => {
+    // setUserPicture(URL.createObjectURL(e.target.files[0]));
+    setFile(e.target.files[0]);
+    
+  };
 
   const handlePicture = (e) => {
     e.preventDefault();
@@ -18,18 +25,26 @@ const UploadImg = () => {
     //envoi de la pic en back
     dispatch(uploadPicture(data, userData._id));
   };
+  
+
 
   return (
+    <div>
+
+{ file ? (
+      <div className="previsPic">
+      <img src={file? URL.createObjectURL(file) : null} alt={file? file.name : null}/>
+      </div>
+    ): ""}
+
     <form action="" onSubmit={handlePicture} className="upload-pic">
-      <label htmlFor="file"> Changer de photo de profil </label>{" "}
+      <button htmlFor="file"> Changer de photo de profil </button>{" "}
       <input
         type="file"
         id="file"
         name="file"
         accept=".jpg, .jpeg, .png"
-        onChange={(e) => {
-          setFile(e.target.files[0]);
-        }}
+        onChange={handlePictureModif}
       />{" "}
       <br />
       <br />
@@ -38,6 +53,9 @@ const UploadImg = () => {
         Envoyer{" "}
       </button>
     </form>
+  
+    
+    </div>
   );
 };
 

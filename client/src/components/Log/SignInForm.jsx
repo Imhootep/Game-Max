@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie'
 import axios from 'axios';
+import Modal from "../Modals";
+import ForgotPassword from "../Password/ForgotPassword";
+
 
 const SignInForm = () => {
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [uid, setUid] = useState(null);
+    const [openModal, setOpenModal] = useState(false);
+
+    const showModal = () => {
+        setOpenModal(true);
+        
+      }
+    
+      const hideModal = () => {
+        setOpenModal(false);
+      }
 
     const handleLogin =(e)=>{
         e.preventDefault();
@@ -14,7 +27,6 @@ const SignInForm = () => {
         const logError = document.querySelector('.log.error')
         // const validationError = document.querySelector('.validation.error')
         // const passwordError = document.querySelector('.password.error')
-
         axios({
             method:"post",
             url:`${process.env.REACT_APP_API_URL}api/user/login`,
@@ -43,7 +55,7 @@ const SignInForm = () => {
 
 
     return (
-        
+            <>
                 <form className="login" onSubmit={handleLogin} id="sign-up-form">
                         <h2 className="loginTitle">  GameMax Média, </h2>
                         <h2 className="loginTitle2">le réseau social des créateurs de jeux vidéos belges!</h2>
@@ -74,8 +86,17 @@ const SignInForm = () => {
                         <button id="test" className="loginBut" type="submit"  ><span>Sign In</span></button>
                     {/* <h4>{errorMessage}</h4> */}
                     <br/>
-                    <span>Mot de passe oublié ? </span>
+                    <span className="forgotPassLink" onClick={()=>showModal()}>Mot de passe oublié ? </span>
                 </form>
+
+                <Modal showModal={openModal} hideModal={hideModal}>
+                    <div className="forgotPassword"> 
+                    <div className="forgotPass">
+            <ForgotPassword/>
+       </div>
+                    </div>
+                </Modal>
+                </>
     );
 };
 
