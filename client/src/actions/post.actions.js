@@ -17,6 +17,7 @@ export const EDIT_COMMENT_ADMIN = "EDIT_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
 export const GET_TRENDS = "GET_TRENDS";
+export const GET_FAVORITES = "GET_FAVORITES";
 
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
@@ -185,3 +186,22 @@ export const getTrends = (sortedArray) => {
     dispatch({ type: GET_TRENDS, payload: sortedArray });
   };
 };
+
+
+export const getFavorites = (id) => {
+
+  return (dispatch) => {
+  return axios({
+    method:"get",
+    headers : { Authorization : "Bearer "+Cookies.get('jwt') },
+    url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + id,
+  }).then((res) => {
+    console.log("res::: ")
+    console.log(res)
+    const array = res.data.likes //.data.slice(0, 1);
+    dispatch({ type: GET_FAVORITES, payload: array });
+  }).catch((err) => console.log(err));
+  };
+};
+
+

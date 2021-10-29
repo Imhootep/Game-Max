@@ -1,24 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 // import star from "../img/star.png";
 import exemple from "../../img/0125.png";
-import { getTrends } from "../../actions/post.actions";
+import { getTrends, getFavorites } from "../../actions/post.actions";
 // import { NavLink } from "react-router-dom";
 import Modal from "../Modals";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { UidContext } from '../AppContext';
 
 const Trends = ({posts,userData,usersData}) => {
 
-
+  const uid = useContext(UidContext)
   // const posts = await posts.json()
   // const posts = useSelector((state) => state.allPostsReducer);
   // const usersData = useSelector((state) => state.usersReducer);
   // const userData = useSelector((state) => state.userReducer);
-  const trendList = useSelector((state) => state.trendingReducer);
+  // const trendList = useSelector((state) => state.trendingReducer);
+  const trendList2 = useSelector((state) => state.trendingReducer);
   const [trendPost, setTrendPost] = useState('')
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFavorites(uid)) 
+    // console.log("trandinglist apres:")
+    // console.log(trendList2)
+
+  },[posts])
   const [openModal, setOpenModal] = useState(false)
   const [incomingEvent, setIncomingEvent] = useState('')
   const [incomingEventDate, setIncomingEventDate] = useState()
@@ -27,15 +35,15 @@ const Trends = ({posts,userData,usersData}) => {
   //si on prends les props, seul userdata est un objet les deux autres sont des array
   // pareil quand je fais les reducer ici wtf?  
 
-  useEffect(() => { //a faire dans reducer et get le reducer
-    return axios({
-      method:"get",
-      headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-      url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + userData._id,
-    }).then((res) => {
+  // useEffect(() => { //a faire dans reducer et get le reducer
+  //   return axios({
+  //     method:"get",
+  //     headers : { Authorization : "Bearer "+Cookies.get('jwt') },
+  //     url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + userData._id,
+  //   }).then((res) => {
       
-    })
-  })
+  //   })
+  // })
   //bonne version mais qui load pas assez vite donc le tableau est vide
   useEffect(() => {
     // console.log("les posts de ses morts:")
@@ -129,10 +137,11 @@ const Trends = ({posts,userData,usersData}) => {
         <div className="favoriteBlock">
           <b>Favoris</b>
           <div className="trending-container">
+        {console.log("trendlist2 avant d'etre use: ")}
+        {console.log(trendList2)}
         
-        
-            {trendList.length &&
-              trendList.map((post) => {
+            {trendList2.length &&
+              trendList2.map((post) => {
                 let postImagePath = process.env.REACT_APP_API_URL+post.picture;
                 return (
                 
@@ -179,8 +188,8 @@ const Trends = ({posts,userData,usersData}) => {
                   {/* {trendPost} */}
                   {/* {console.log("trendList")}
                   {console.log(trendList)} */}
-                 {trendList && trendList[0] !== undefined && (
-                 trendList.map((popupPost) => {
+                 {trendList2 && trendList2[0] !== undefined && (
+                 trendList2.map((popupPost) => {
                    if(popupPost._id === trendPost){
                     return (
                       <>
