@@ -44,7 +44,7 @@ const Home = () => {
   const ticTac = () =>{
     setInterval(() => {
       setOust(true)
-    }, 5000)
+    }, 3000)
 }
   
 
