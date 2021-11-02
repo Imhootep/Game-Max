@@ -13,7 +13,7 @@ router.post("/login", authController.signIn);
 
 // user DB
 router.get("/roled", requireAuth, userController.getRoledUsers);
-router.get("/all", userController.getAllUsers);
+router.get("/all", requireAuth, userController.getAllUsers);
 router.get("/:id", requireAuth, userController.userInfo);
 router.get("/favorites-posts/:id", requireAuth, userController.favoritesPosts)
 router.patch("/update/password/:id", requireAuth, userController.changePassword);
