@@ -152,7 +152,6 @@ module.exports.signIn = async (req, res) => {
 }
 
 // ------------------------------------------------------------------------------------
-
 //mail pour mot de passe oublié
 module.exports.forgottenPassword = async (req, res) => {
   console.log("J'entre dans forgottenPassword !")

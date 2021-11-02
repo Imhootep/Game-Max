@@ -18,7 +18,6 @@ module.exports.getAllUsers = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
 // Retourne tous les utilisateurs avec un role (n'affiche pas ceux sans rôle, ils sont supposés être en attente d'acceptation)
 module.exports.getRoledUsers = async (req, res) => {
   const users = await UserModel.find({ role: { $ne: "" } }).select("-password");
@@ -26,7 +25,6 @@ module.exports.getRoledUsers = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
 // Données de l'utilisateur selon l'ID
 module.exports.userInfo = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
@@ -39,7 +37,6 @@ module.exports.userInfo = (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
 // Modification des données de l'utilisateur via le formulaire
 module.exports.updateUser = async (req, res) => {
   console.log(req.body)
@@ -79,8 +76,7 @@ module.exports.updateUser = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
-// Disable : l'utilisateur est désactivé (variable isDisabled à "true")
+// Disable : l'utilisateur est désactivé (variable isDisabled remise à"true")
 module.exports.setDisableUserTrue = async (req, res) => {
   console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
@@ -106,7 +102,6 @@ module.exports.setDisableUserTrue = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
 // Annulation du disable : l'utilisateur est réactivé (variable isDisabled remise à "false")
 module.exports.setDisableUserFalse = async (req, res) => {
   console.log(req.body)
@@ -133,7 +128,6 @@ module.exports.setDisableUserFalse = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-
 // Modification du role ou de l'adresse d'un utilisateur (par l'admin)
 module.exports.updateUserFromAdmin = async (req, res) => {
   console.log(req.body);
@@ -313,7 +307,7 @@ module.exports.favoritesPosts = async (req,res) => {
 // ------------------------------------------------------------------------------------
 //Méthode qui envoie un mail une fois que le user en question reçoit un rôle et peut donc se connecter en utilisant ses identifiants
 const roledEmail = (pseudo, email, role) => {
-  console.log("J'envoie le mail pour le rôle")
+  console.log("J'envoie le mail pour le rôle");
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -325,7 +319,7 @@ const roledEmail = (pseudo, email, role) => {
   var mailOptions = {
       from: 'gamemaxbotmailer@gmail.com',
       to: email,
-      subject: "<No-Reply>Un rôle vous a été octroyé",
+      subject: "<No-Reply>Vous avez un nouveau rôle !", 
       html: `Bonjour ${pseudo}, <br>
             un administrateur vous à octroyé le rôle de : ${role}.<br>   
             Vous pouvez dès à présent vous connecter en utilisant vos identifiants.<br>    
