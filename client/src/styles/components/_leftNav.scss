@@ -89,6 +89,14 @@
             }
           }
         }
+
+        // a:hover{
+        //   img{
+        //     width:35px;
+        //     margin:auto;
+        //     text-align: center;
+        //   }
+        // }
   
         .active-left-nav {
           position: relative;
@@ -124,7 +132,7 @@
         a:hover #homeHover{
           display: block;
           position: absolute;
-          margin: 0 0 0 50px;
+          margin: 5px 0 0 60px;
           background-color:#CBC3E3;
           width:100px;
           height:40px;
@@ -139,7 +147,7 @@
         #studioHoverParent:hover #studioHover{
           display: block !important;
           position: absolute;
-          margin:0px 0 0 50px;
+          margin: 5px 0 0 60px;
           background-color:#CBC3E3;
           width:100px;
           height:40px;
@@ -154,7 +162,7 @@
         #profilHoverParent:hover #profilHover{
           display: block;
           position: absolute;
-          margin:0px 0 0 50px;
+          margin: 5px 0 0 60px;
           background-color:#CBC3E3;
           width:100px;
           height:40px;
@@ -169,7 +177,7 @@
         #adminHoverParent:hover #adminHover{
           display: block;
           position: absolute;
-          margin:0 0 0 50px;
+          margin: 5px 0 0 60px;
           background-color:#CBC3E3;
           width:100px;
           height:40px;
@@ -184,7 +192,7 @@
         #discordHoverParent:hover #discordHover{
           display: block;
           position: absolute;
-          margin:0 0 0 50px;
+          margin: 5px 0 0 60px;
           background-color:#CBC3E3;
           width:100px;
           height:40px;

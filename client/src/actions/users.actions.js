@@ -15,7 +15,7 @@ export const getUsers =()=>{
         .then((res)=>{
             //dispatch dans le store
             const uid = res.data.user;
-            // console.log("uid : ",uid)      
+            // console.log("uid : ",uid)  
             dispatch({type:GET_USERS, payload:res.data.users})
             dispatch(getUser(uid))
         })

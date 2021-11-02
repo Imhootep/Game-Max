@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import Cookies from 'js-cookie';
 import { Redirect } from 'react-router';
 import { UidContext } from '../components/AppContext';
+import loading from '../img/loading.gif';
 
 const Profil = () => {
     const userData = useSelector((state) => state.userReducer);
@@ -26,7 +27,8 @@ const Profil = () => {
                 <br/>
                 <UpdateProfil userData={userData} usersData={usersData}/>
                </>
-            :  <Redirect to='/'  />
+            // :  <Redirect to='/'  /> 
+            : <img src={loading} alt="loading" title="Loading" className="loading" />
             // (
             //     <Log signin={true} signup={false} /> 
             // )

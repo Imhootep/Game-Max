@@ -130,7 +130,7 @@ const SignUpForm = () => {
                         <h2 className="SignUpTitle2">Pas encore inscrit?</h2>
                         
                         <br/>
-                        <div className="form-group">
+                        <div className="form-group2">
                         <input 
                             type="text" 
                             placeholder="Votre nom"

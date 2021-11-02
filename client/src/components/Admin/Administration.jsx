@@ -29,8 +29,8 @@ const Administration = () => {
 
     const [refreshData,setRefreshData] = useState(0);
     const uid = useContext(UidContext)
+    const urole = useContext(UidContext)
 
-    console.log("uid: "+uid)
     const dispatch = useDispatch ();
     //le user
     const user = useSelector((state) => state.userReducer);
@@ -93,7 +93,7 @@ const Administration = () => {
                 setCsvData(oldArray => [...oldArray, [users[i].pseudo, users[i].email]]); 
             }
         }else{
-            console.log("csv deja rempli !")
+            console.log("CSV deja rempli !")
         }
     }, [users])
 
@@ -221,7 +221,7 @@ const Administration = () => {
          <>
          {/* {console.log("combien de return?")} */}
          {/* {user.isAdmin !== undefined && user.isAdmin === true ? */}
-         {uid? 
+         {uid && urole ? 
         <div className="administrationContainer">
             <div className="adminBigBlock">
                 <div id="howToDoContent">
