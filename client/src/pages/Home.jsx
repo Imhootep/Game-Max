@@ -14,7 +14,7 @@ import  { Redirect } from 'react-router-dom';
 import loupe from "../img/loupe.svg"
 // import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
-// import loading from '../img/loading.gif';
+import loading from '../img/loading.gif';
 import Cookies from 'js-cookie';
 
 const Home = () => {
@@ -68,8 +68,8 @@ const Home = () => {
       
       </div>
       :  
-      // <img src={loading} alt="loading" title="veuillez patienter" className="loading" />
-      <Redirect to='/'  />
+      <img src={loading} alt="loading" title="Loading" className="loading" />
+      //<Redirect to='/'  />
       }   
       </>
   )

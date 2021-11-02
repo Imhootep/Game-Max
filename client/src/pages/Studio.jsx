@@ -5,6 +5,7 @@ import SearchStudio from '../components/Search/SearchStudio';
 import Cookies from 'js-cookie';
 import { Redirect } from 'react-router';
 import { UidContext } from '../components/AppContext';
+import loading from '../img/loading.gif';
 
 const Studio = () => {
     const uid = useContext(UidContext)
@@ -20,7 +21,8 @@ const Studio = () => {
             </div>
         </div>
         :
-         <Redirect to='/'  />
+        <img src={loading} alt="loading" title="Loading" className="loading" />
+        //  <Redirect to='/'  />
         }
         </>
     );
