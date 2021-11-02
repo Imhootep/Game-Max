@@ -266,7 +266,7 @@ const Administration = () => {
                 {users.map((val)=>{
                 return(
                     <>
-                    {val.isValid === true ?
+                    {val.isValid === true && val.role === '' ?
                     <div className="adminBlock">
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.company}</div>

@@ -87,7 +87,6 @@ module.exports.validateUser = async (req, res) => {
   )
   if(user){
     res.status(201).send("Validation done.");
-    uniqueString = "";
   }
   else{
     res.status(404).send("User not found.");
