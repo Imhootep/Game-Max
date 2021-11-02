@@ -1,14 +1,18 @@
+//Imports
 const UserModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 const nodemailer = require('nodemailer');
+
+//Déclaration de variables/constantes
 var uniqueString = "";
 var resetPass = "";
 var cryptedPass = "";
 const maxAge = 2 * 24 * 60 * 60 * 1000;
 const bcrypt = require('bcrypt');
 
-
+// -----------------------------------------------------------------------
+//Génération d'un token pour l'authentification
 const createToken = (id) => {
   return jwt.sign({id}, process.env.TOKEN_SECRET, {
     expiresIn: maxAge
@@ -16,7 +20,7 @@ const createToken = (id) => {
 };
 
 // -----------------------------------------------------------------------
-
+//Génération d'un chaîne de 40 caractère aléatoires pour la confirmation d'inscription par email
 const randomString = () => {
   const len = 40;
   let randomStr = "";
@@ -28,7 +32,7 @@ const randomString = () => {
 }
 
 // -----------------------------------------------------------------------
-
+//Génération d'un nouveau password comportant 15 caractères aléatoires en cas d'oubli de password
 const randomResetString = () => {
   const len = 15;
   let randomStr = "";
@@ -42,8 +46,7 @@ const randomResetString = () => {
 }
 
 // -----------------------------------------------------------------------
-
-//Fonction pour l'envoi du mail de confirmation
+//Envoi du mail de confirmation d'inscription
 const confirmEmail = (pseudo, email, uniqueString) => {
   var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -59,6 +62,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
       subject: "<No-Reply>Confirmation de votre adresse email",
       html: `Bonjour ${pseudo}, vous venez de vous enregistrer sur le site de Game-Max.<br>
             Cliquez <a href=http://localhost:8000/api/user/validation/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
+            Vous serez ensuite mis en attente jusqu'à ce qu'un administrateur vous attribue un rôle. Vous pourrez alors vous connecter avec vos identifiants.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.
             `
@@ -75,7 +79,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 }
 
 // -----------------------------------------------------------------------
-
+//Confirmation de l'inscription une fois que le lien dans l'email de confirmation a été cliqué
 module.exports.validateUser = async (req, res) => {
   console.log("J'entre dans validateUser avec comme uniqueString : " + uniqueString)
   const user = await UserModel.updateOne(
@@ -91,7 +95,7 @@ module.exports.validateUser = async (req, res) => {
 };
 
 // -----------------------------------------------------------------------
-
+//Inscription sur le site
 module.exports.signUp = async (req, res) => {
   const {pseudo,company, email, password} = req.body
   const isAdmin = false;
@@ -131,6 +135,7 @@ module.exports.signUp = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
+//Identification sur le site à l'aide des identifiants
 
 module.exports.signIn = async (req, res) => {
   const { email, password } = req.body
@@ -152,7 +157,7 @@ module.exports.signIn = async (req, res) => {
 }
 
 // ------------------------------------------------------------------------------------
-//mail pour mot de passe oublié
+//Envoi de mail avec le nouveau mot de passe généré aléatoirement en cas d'oubli de mot de passe
 module.exports.forgottenPassword = async (req, res) => {
   console.log("J'entre dans forgottenPassword !")
   let email = req.body.email;
