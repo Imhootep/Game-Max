@@ -1,3 +1,4 @@
+//Imports
 const UserModel = require("../models/user.model");
 const PostModel = require("../models/post.model");
 const ObjectID = require("mongoose").Types.ObjectId;
@@ -5,6 +6,7 @@ const bcrypt = require("bcrypt");
 const { changePasswordErrors } = require("../utils/errors.utils");
 const nodemailer = require('nodemailer');
 
+// -----------------------------------------------------------------------
 // Retourne tous les utilisateurs
 module.exports.getAllUsers = async (req, res) => {
   let user = "";
@@ -19,7 +21,7 @@ module.exports.getAllUsers = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-// Retourne tous les utilisateurs avec un role (n'affiche pas ceux sans rôle, ils sont supposés être en attente d'acceptation)
+// Retourne tous les utilisateurs avec un rôle (n'affiche pas ceux sans rôle, ils sont supposés être en attente d'acceptation)
 module.exports.getRoledUsers = async (req, res) => {
   const users = await UserModel.find({ role: { $ne: "" } }).select("-password");
   res.status(200).json(users);
@@ -314,7 +316,7 @@ module.exports.favoritesPosts = async (req,res) => {
 };
 
 // ------------------------------------------------------------------------------------
-//Méthode qui envoie un mail une fois que le user en question reçoit un rôle et peut donc se connecter en utilisant ses identifiants
+//Envoie un mail au user une fois qu'il reçoit un rôle
 const roledEmail = (pseudo, email, role) => {
   console.log("J'envoie le mail pour le rôle");
   var transporter = nodemailer.createTransport({
@@ -329,9 +331,9 @@ const roledEmail = (pseudo, email, role) => {
       from: 'gamemaxbotmailer@gmail.com',
       to: email,
       subject: "<No-Reply>Vous avez un nouveau rôle !", 
-      html: `Bonjour ${pseudo}, <br>
-            un administrateur vous à octroyé le rôle de : ${role}.<br>   
-            Vous pouvez dès à présent vous connecter en utilisant vos identifiants.<br>    
+      html: `Bonjour ${pseudo}, <br><br>
+            un administrateur vous à attribué le rôle de : ${role}.<br>   
+            Vous pouvez dès à présent vous connecter en utilisant vos identifiants.<br><br>
             Bien amicalement,<br>
             l'équipe Game-Max.
             `
