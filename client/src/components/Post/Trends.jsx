@@ -9,6 +9,7 @@ import Modal from "../Modals";
 // import axios from "axios";
 // import Cookies from "js-cookie";
 import { UidContext } from '../AppContext';
+import { deletePost } from "../../actions/post.actions";
 
 const Trends = ({posts,userData,usersData}) => {
 
@@ -53,50 +54,51 @@ const Trends = ({posts,userData,usersData}) => {
   //bonne version mais qui load pas assez vite donc le tableau est vide
   //LE PROB: comme c'est dans une boucle, le state avant de rentrer dans le use effect est a '' et ne se met pas a jour tant qu'on ne sort pas du useffect
   useEffect(() => {
-    console.log("dernier event 1:")
-    console.log(incomingEvent)
+    // console.log("dernier event 1:")
+    // console.log(incomingEvent)
     // console.log(posts[0].createdAt.getTime())
     if(posts[0] !== undefined){
       console.log("dernier event 2:")
       console.log(incomingEvent)
     for(let i = 0; i < posts.length; i++){
-      console.log("la date de maintenant et sa version parsée: ")
+      // console.log("la date de maintenant et sa version parsée: ")
 
-      console.log(Date.now()) //DEJA PARSEE
-      console.log(Date.parse(Date.now()))
+      // console.log(Date.now()) //DEJA PARSEE
+      // console.log(Date.parse(Date.now()))
 
-      console.log("la date du post actuel dans la boucle:")
-      console.log(posts[i].date)
-      console.log(Date.parse(posts[i].date))
+      // console.log("la date du post actuel dans la boucle:")
+      // console.log(posts[i].date)
+      // console.log(Date.parse(posts[i].date))
 
-      if(Date.parse(posts[i].date) > Date.parse(Date.now())){
-          console.log(posts[i].date+" doit etre supprimé !")
+      if(posts[i].isEvent === true && (Date.parse(posts[i].date) < Date.now())){
+          console.log(posts[i].title+" doit etre supprimé !") //plus petit = date deja passée
+          // dispatch(deletePost(posts[i]._id))
       }
       if(posts[i].isEvent === true && incomingEvent === ''){
         // alert(posts[i]._id)
         setIncomingEvent(posts[i]._id)
         setIncomingEventDate(posts[i].date)
         // changeDate(posts[i]._id,posts[i].date)
-        console.log("dernier event 3:")
-        console.log(incomingEvent)
+        // console.log("dernier event 3:")
+        // console.log(incomingEvent)
       }else if(posts[i].isEvent === true && incomingEventDate !== undefined && incomingEventDate !== null && incomingEventDate !== null){
-        console.log("dernier event 4:")
-        console.log(incomingEvent)
+        // console.log("dernier event 4:")
+        // console.log(incomingEvent)
         if(Date.parse(posts[i].date) > Date.parse(incomingEventDate)){
           // console.log("on va jamais passer ici je parie sans le .getTime() qui bug de ses morts???")
           setIncomingEvent(posts[i]._id)
         setIncomingEventDate(posts[i].date)
         // changeDate(posts[i]._id,posts[i].date)
-          console.log("dernier event 5:")
-          console.log(incomingEvent)
+          // console.log("dernier event 5:")
+          // console.log(incomingEvent)
         }
       }
 
 
     }
   }
-  console.log("dernier event 6:")
-  console.log(incomingEvent)
+  // console.log("dernier event 6:")
+  // console.log(incomingEvent)
   // dispatch(getTrends(1,1000))
   }, [posts,incomingEvent]); //[posts] ? => ajouté incomingEvent pour que la boucle se mette a jour (meme si pour moi c'est bizarre de devoir faire ça)
 
@@ -180,7 +182,7 @@ const Trends = ({posts,userData,usersData}) => {
         {/* {console.log("trendlist2 avant d'etre use: ")}
         {console.log(trendList2)} */}
         
-            {trendList2.length &&
+            {/* {trendList2.length &&
               trendList2.map((val) => {
                 let postImagePath = process.env.REACT_APP_API_URL+val.picture;
                 return (
@@ -216,7 +218,7 @@ const Trends = ({posts,userData,usersData}) => {
                   </div>
                   
                 );
-              })}
+              })} */}
         
           
       </div>
@@ -228,7 +230,7 @@ const Trends = ({posts,userData,usersData}) => {
                   {/* {trendPost} */}
                   {/* {console.log("trendList")}
                   {console.log(trendList)} */}
-                 {trendList2 && trendList2[0] !== undefined && (
+                 {/* {trendList2 && trendList2[0] !== undefined && (
                  trendList2.map((popupPost) => {
                    if(popupPost._id === trendPost){
                     return (
@@ -246,7 +248,7 @@ const Trends = ({posts,userData,usersData}) => {
                      )
                    }
                  }))
-                 }
+                 } */}
           </Modal>
       </div>
           <>
