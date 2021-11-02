@@ -31,7 +31,7 @@ const Trends = ({posts,userData,usersData}) => {
     // console.log("trandinglist apres:")
     // console.log(trendList2)
 
-  },[posts]) //posts dans le []?
+  },[posts]) //posts et incomingEvent dans le []?
 
 // pour supprimer les events passés
   useEffect(() => {
@@ -96,7 +96,8 @@ const Trends = ({posts,userData,usersData}) => {
     }
   }
   console.log("dernier event 6:")
-          console.log(incomingEvent)
+  console.log(incomingEvent)
+  // dispatch(getTrends(1,1000))
   }, [posts,incomingEvent]); //[posts] ? => ajouté incomingEvent pour que la boucle se mette a jour (meme si pour moi c'est bizarre de devoir faire ça)
 
   // const changeDate = (id,date) =>{

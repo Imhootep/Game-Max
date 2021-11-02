@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from 'react';
-import React, { useContext  } from 'react';
+import React, { useContext,useState  } from 'react';
 import { useSelector } from 'react-redux';
 import { UidContext } from '../components/AppContext';
 // import { getUser} from "../actions/user.actions";
@@ -15,6 +15,7 @@ import loupe from "../img/loupe.svg"
 // import { UidContext } from '../components/AppContext';
 // import { isEmpty } from '../components/Utils';
 import loading from '../img/loading.gif';
+import logo from "../img/logo2.png";
 import Cookies from 'js-cookie';
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
 
   const uid = useContext(UidContext)
 
+  const [oust,setOust] = useState(false);
   // const uid = useContext(UidContext)
   // const dispatch = useDispatch ();
   // const user = useSelector((state) => state.userReducer);
@@ -39,6 +41,12 @@ const Home = () => {
   //       }
   //   }, [])
 
+  const ticTac = () =>{
+    setInterval(() => {
+      setOust(true)
+    }, 5000)
+}
+  
 
   return (
    <>
@@ -68,8 +76,15 @@ const Home = () => {
       
       </div>
       :  
-      <img src={loading} alt="loading" title="Loading" className="loading" />
-      //<Redirect to='/'  />
+      <div>
+        {/* <img src={loading} alt="loading" title="Loading" className="loading" onLoad={() => ticTac()}/> */}
+        <img src={logo} className="loading" alt="logo"  onLoad={() => ticTac()}/>
+        <div class='pac-man'/>
+        <div>
+            {oust === true ? <Redirect to='/'  /> : '' }
+        </div>
+      </div>
+      //
       }   
       </>
   )
