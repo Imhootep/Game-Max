@@ -137,7 +137,6 @@ module.exports.updateUserFromAdmin = async (req, res) => {
   var role = "vide";
   var pseudo = "";
   var email = "";
-  var company = "";
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -145,7 +144,6 @@ module.exports.updateUserFromAdmin = async (req, res) => {
     const user = await UserModel.findOne({ _id: req.params.id });
     role = user.role;
     pseudo = user.pseudo;
-    company = user.company;
     email = user.email;
     await UserModel.findOneAndUpdate(
       { _id: req.params.id },
