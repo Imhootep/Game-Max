@@ -23,6 +23,7 @@ import info from '../../img/info.svg';
 import skull3 from '../../img/skull3.svg';
 // import skull4 from '../img/skull4.svg';
 import heart from '../../img/heart.svg';
+import cursorPointer from '../../img/cursor-pointer.png';
 import { isEmpty } from '../Utils';
 
 const Administration = () => {
@@ -224,32 +225,52 @@ const Administration = () => {
          {uid && urole ? 
         <div className="administrationContainer">
             <div className="adminBigBlock">
-                <div id="howToDoContent">
-                    <p><b>Aide pour admin</b></p>
-                    <p>Cette section est divisée en trois parties:</p>
-                    <ol className="ordonnedList">
-                        <li>Utilisateurs en attentes</li>
-                        <li>Utilisateurs validés</li>
-                        <li>Utilisateurs désactivés</li>
-                    </ol>
-                    <p>
-                        1. Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. Pour leur donner accès il vous suffit de cliquer sur l'icone "V". Pour refuser la demande et donc supprimer leur compte cliquer sur "X"
-                    </p>
-                    <p>
-                        2. Ici sont répertoriés les utilisateurs qui ont créé un compte et ont été validé par un admin. Ils ont libre accès au site. Pour désactiver un compte cliquez sur la poubelle. Pour modifier le rôle d'un compte cliquez sur le crayon puis sur le "V".
-                    </p>
-                    <p>
-                        3. Ici sont répertoriés les utilisateurs qui ont été désactivés. Ils n'ont plus accès au site. Pour les réactiver, appuyez sur le coeur.
-                    </p>
+                <div className="howToDoContainer">
+                    <div id="howToDoContent">
+                        <p><b>Aide pour admin</b></p>
+                        <p>Cette section est divisée en trois parties:</p>
+                        {/* <ol className="ordonnedList">
+                            <li>Utilisateurs en attentes</li>
+                            <li>Utilisateurs validés</li>
+                            <li>Utilisateurs désactivés</li>
+                        </ol> */}
+                        <p>
+                            <b>1. Utilisateurs en attentes</b><br/>
+                            - Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. <br/>
+                            - Pour leur donner accès il vous suffit de cliquer sur l'icone <img className="adminIconEvent" src={check} alt="add" title="Valider la demande"/>. <br/>
+                            - Pour refuser la demande et donc supprimer leur compte définitivement, cliquez sur <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"/> <br/><br/>
+                        </p>
+                        <p>
+                            <b>2. Utilisateurs validés</b><br/>
+                            - Ici sont répertoriés les utilisateurs qui ont créé un compte et ont été validé par un admin. Ils ont libre accès au site.<br/>
+                            - Pour désactiver un compte, cliquez sur l'icone  <img src={disabledIco} alt="poubelle" title="Désactiver" className="adminIconEvent"/>. <br/>
+                            - Pour modifier le rôle d'un compte cliquez sur l'icone <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent"/>, puis validez les modifications avec l'icone <img src={check} alt="valider" title="Valider la modification" className="adminIconEvent"/>.<br/><br/>
+                        </p>
+                        <p>
+                            <b>3. Utilisateurs désactivés</b><br/>
+                            - Ici sont répertoriés les utilisateurs qui ont été désactivés. Ils n'ont plus accès au site.<br/>
+                            - Pour ré-activer un utilisateur, appuyez sur <img src={heart} alt="poubelle" title="Ré-activer" className="adminIconEvent"/>.<br/>
+                            - Pour supprimer définitivement un utilisateur, appuyez sur  <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"/>.<br/><br/>
+                        </p>
+                    </div>
+                    <div className="howToDo">
+                        <div onClick={() => showHTD()}>
+                            <img src={cursorPointer} alt="info" title="Plus d'infos" className="adminIconEvent"/>
+                            <b>Comment faire ?</b>
+                        </div>
+                        <div>
+                            <img src={cursorPointer} alt="info" title="Télécharger les emails" className="adminIconEvent"/>
+                            <CSVLink data={csvData} headers={headers}><b>Télécharger les emails</b></CSVLink>
+                        </div>
+                    </div>
                 </div>
                 <div className="adminSubTitle">
                     <b>Utilisateurs en attente</b>
-                    <div  className="howToDo"  onClick={() => showHTD()}>
-                        <b>Comment faire ?</b>
-                        <img src={info} alt="info" title="Plus d'infos" className="adminIconEvent"/>
-                    </div>
                 </div>
                 <div className="adminBlock">
+                    <div className="adminSectionActionsTitle">
+                        Actions
+                    </div>
                     <div className="adminSection adminSectionTitle">
                         Nom
                     </div>
@@ -259,15 +280,16 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Rôle
                     </div>
-                    <div className="adminSection adminSectionTitle">
-                        Actions
-                    </div>
                 </div>
                 {users.map((val)=>{
                 return(
                     <>
                     {val.isValid === true && val.role === '' ?
                     <div className="adminBlock">
+                        <div className="adminActions">
+                            <img className="adminIconEvent" src={check} alt="add" title="Valider la demande" onClick={() => validate(val._id)}/>
+                            <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"  onClick={() => deleteUser(val._id)}/>
+                        </div>
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.company}</div>
                         <div className="adminSection">
@@ -277,10 +299,6 @@ const Administration = () => {
                                 <option value="Sponsor">Sponsor</option>
                                 <option value="Partenaire">Partenaire</option>
                             </select>
-                        </div>
-                        <div className="adminSection">
-                            <img className="adminIconEvent" src={check} alt="add" title="Valider la demande" onClick={() => validate(val._id)}/>
-                            <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"  onClick={() => deleteUser(val._id)}/>
                         </div>
                     </div>
                      :
@@ -293,9 +311,11 @@ const Administration = () => {
             <div className="adminBigBlock">
                 <div className="adminSubTitle">
                     <b>Utilisateurs validés</b>
-                    <CSVLink data={csvData} headers={headers}>Télécharger emails en excel</CSVLink>
                 </div>
-                <div className="adminBlock">
+                <div className="adminBlockHeader">
+                    <div className="adminSectionActionsTitle">
+                        Actions
+                    </div>
                     <div className="adminSection adminSectionTitle">
                         Nom
                     </div>
@@ -311,16 +331,22 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Membres
                     </div>
-                    <div className="adminSection adminSectionTitle">
-                        Actions
-                    </div>
                 </div>
                 {users.map((val)=>{
                 return(
                     <>
                     {val.role !== '' && val.isDisabled !== true && val._id !== user._id ?
-                    <div key={val._id} className="adminBlock"> 
-                        <div className="adminSection">{val.pseudo}</div>
+                    <div key={val._id} className="adminBlock">
+                        <div className="adminActions">
+                            <img src={disabledIco} alt="poubelle" title="Désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
+                            {modifying === val._id ?
+                                <img src={check} alt="valider" title="Valider la modification" className="adminIconEvent" onClick={() => setModify(val._id)}/>
+                                :
+                                <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent" onClick={() => modify(val._id,val.role,val.adresse)}/>
+                            }
+                            
+                        </div>
+                        <div className="adminSection"><div>{val.pseudo}</div></div>
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>
@@ -332,17 +358,8 @@ const Administration = () => {
                         <div className="adminSection">
                            <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }/> 
                         </div>
-                        <div className="adminSection">{val.company}</div>
-                        <div className="adminSection">{val.membres}</div>
-                        <div className="adminSection">
-                            <img src={disabledIco} alt="poubelle" title="Désactiver" className="adminIconEvent" onClick={() => disable(val._id)}/>
-                            {modifying === val._id ?
-                                <img src={check} alt="valider" title="Valider la modification" className="adminIconEvent" onClick={() => setModify(val._id)}/>
-                                :
-                                <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent" onClick={() => modify(val._id,val.role,val.adresse)}/>
-                            }
-                            
-                        </div>
+                        <div className="adminSection"><div>{val.company}</div></div>
+                        <div className="adminSection"><div>{val.membres}</div></div>
                     </div>
                     : ''}
                     </>
@@ -355,14 +372,14 @@ const Administration = () => {
                     <b>Utilisateurs désactivés</b>
                 </div>
                 <div className="adminBlock">
+                    <div className="adminSectionActionsTitle">
+                        Actions
+                    </div>
                     <div className="adminSection adminSectionTitle">
                         Nom
                     </div>
                     <div className="adminSection adminSectionTitle">
                         Rôle
-                    </div>
-                    <div className="adminSection adminSectionTitle">
-                        Actions
                     </div>
                 </div>
                 {users.map((val)=>{
@@ -370,12 +387,12 @@ const Administration = () => {
                     <>
                     {val.isDisabled === true ?
                     <div key={val._id} className="adminBlock disable">
-                        <div className="adminSection">{val.pseudo}</div>
-                        <div className="adminSection">{val.role}</div>
-                        <div className="adminSection">
+                        <div className="adminActions">
                             <img src={heart} alt="poubelle" title="Ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
                             <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"  onClick={() => deleteUser(val._id)}/>
                         </div>
+                        <div className="adminSection">{val.pseudo}</div>
+                        <div className="adminSection">{val.role}</div>
                     </div>
 
                      : ''
