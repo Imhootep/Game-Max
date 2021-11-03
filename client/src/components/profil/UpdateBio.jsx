@@ -29,6 +29,11 @@ const UpdateBio = ({userData}) => {
 
   //fonction pour mise à jour de la bio
   const handleUpdate = () => {
+
+    if(userData.social.discord.includes("https")){
+      alert("SOCIAL DISCORD NA PAS DE HTTPS!!!")
+    }
+
     dispatch(
       updateBio(userData._id, {
         pseudo: userData.pseudo,
