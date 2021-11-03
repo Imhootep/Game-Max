@@ -183,9 +183,7 @@ module.exports.forgottenPassword = async (req, res) => {
             Votre nouveau mot de passe est : ${resetPass}.<br>
             Une fois identifié, vous pouvez vous rendre dans la section "Profil" afin de le remplacer par le mot de passe de votre choix.<br>
             Bien amicalement,<br>
-            l'équipe Game-Max.<br>
-            <img src="../uploads/profil/random-user.png" alt="Gamemax" />
-            `
+            l'équipe Game-Max.<br>            `
   }
   
 
