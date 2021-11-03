@@ -99,6 +99,14 @@ module.exports.deletePost = (req, res) => {
       `${docs.picture}`
       ) 
     }
+
+    for(const like of docs.likes) {
+      const query = { likes: like };
+      console.log("find un user avec le like : ",like)
+      const user = UserModel.findOneAndUpdate(query, { $set: {likes: 'test'} })
+      console.log("le user a un like et je l'ai modif : ",user)
+    }
+
     res.send(docs);
     }
     else console.log("Delete error : " + err);
