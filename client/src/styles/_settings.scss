@@ -159,6 +159,12 @@ body {
       center .5s infinite,
       ball .5s -.33s infinite linear;
   }
+
+}
+
+.pac-man + h2{
+  text-align: center;
+  margin:100px 0 0 0;
 }
 
 @keyframes eating-top{
