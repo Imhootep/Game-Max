@@ -7,9 +7,17 @@
         .adminBigBlock{
             margin:0 0 50px 0;
 
+            .howToDoContainer{
+                display:flex;
+                flex-direction: row;
+                
+            }
+
             #howToDoContent{
                 display:none;
                 background-color:#ffeaa7;
+                width:80%;
+                margin:0 0 50px 0;
             }
 
             ol li{
@@ -35,16 +43,24 @@
 
             .howToDo{
                 cursor: pointer;
+                display: block;
+                max-width: 500px;
+                min-width: 230px;
+                height:100px;
+                background-color:#ffeaa7;
+                margin: 0 20px 0 auto;
+                padding:20px;
             }
 
-            .howToDo:hover{
+            .howToDo div b:hover{
                 color:rgba(78, 39, 83, 0.4)
             }
         }
 
-        .adminBlock{
+        .adminBlock, .adminBlockHeader{
             display: flex;
             flex-direction: row;
+            
 
             .adminSection{
                 // flex-grow: 1;
@@ -52,22 +68,57 @@
                 width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
                 max-width: 300px;
                 min-width: 150px;
+                // padding:5px 0 0 0;
 
-                input{
+                input, select{
                     font-family: "font-2", serif;
+                    height:100%;
                 }
 
                 input:disabled{
                     color:rgb(170,170,170);
                 }
+
+                div{
+                    padding:5px 0 0 0;
+                }
             }
 
             .adminSectionTitle{
-                margin: 0 0 10px 0;
+                padding:5px 0 0 5px;
                 font-weight: bold;
             }
 
+            .adminSectionActionsTitle{
+                padding:5px 0 0 5px;
+                margin: 0 0 10px 0;
+                font-weight: bold;
+                max-width:80px !important;
+                width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
+ 
+            }
             
+        }
+
+        .adminActions{
+            width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
+            max-width:80px !important; 
+        }
+
+        .adminBlock:nth-child(2n+1){
+            background-color:rgba(140, 77, 148, 0.1);
+
+            input{
+                background-color:rgba(140, 77, 148, -0.9);
+            }
+
+            select{
+                background-color:rgba(140, 77, 148, -0.9);
+            }
+        }
+
+        .adminBlock input, .adminBlock select{
+            cursor:pointer;
         }
 
         .disable{
@@ -85,7 +136,7 @@
         
         .adminIconEvent{
             width:20px;
-            margin:0 10px 0 0;
+            margin:5px 5px 0 5px;
             cursor:pointer;
         }
 
