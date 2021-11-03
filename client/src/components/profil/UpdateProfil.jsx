@@ -16,7 +16,7 @@ const UpdateProfil = ({userData,usersData}) => {
   // const userData = useSelector((state) => state.userReducer);
   // const usersData = useSelector((state) => state.usersReducer);
   const error = useSelector((state) => state.errorReducer.userError);
-  let imagePath = process.env.REACT_APP_API_URL+userData.picture;
+  // let imagePath = process.env.REACT_APP_API_URL+userData.picture;
 
   const [followingPopup, setFollowingPopup] = useState(false);
   const [followersPopup, setFollowersPopup] = useState(false);
@@ -37,17 +37,18 @@ const UpdateProfil = ({userData,usersData}) => {
       <h1> Profil de {userData.pseudo} </h1>
       <div className="update-container">
         <div className="left-part">
-          <div>
+         
           
-          <img src={imagePath} alt="profil Pic" />
+          {/* <img src={imagePath} alt="profil Pic" /> */}
           
           <UploadImg />
-          </div>
+          
+          
           <p>{error.maxSize}</p>
           <p>{error.format}</p>
           
           <div>
-          <br />
+         
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           {/* <h5 onClick={() => setFollowingPopup(true)}>
             Abonnements: {userData.following ? userData.following.length : ""}

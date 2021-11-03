@@ -7,6 +7,7 @@ const UploadImg = () => {
   // const [userPicture, setUserPicture] = useState(null);
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userReducer);
+  let imagePath = process.env.REACT_APP_API_URL+userData.picture;
 
   const handlePictureModif = (e) => {
     // setUserPicture(URL.createObjectURL(e.target.files[0]));
@@ -31,27 +32,34 @@ const UploadImg = () => {
   return (
     <div>
 
-{ file ? (
-      <div className="previsPic">
-      <img src={file? URL.createObjectURL(file) : null} alt={file? file.name : null}/>
-      </div>
-    ): ""}
 
-    <form action="" onSubmit={handlePicture} className="upload-pic">
-      <button htmlFor="file"> Changer de photo de profil </button>{" "}
+      {/* <div className="previsPic"> */}
+      
+      <label For="file"><img src={file? URL.createObjectURL(file) : imagePath} alt={file? file.name : null}/></label>
       <input
         type="file"
         id="file"
         name="file"
         accept=".jpg, .jpeg, .png"
         onChange={handlePictureModif}
-      />{" "}
-      <br />
-      <br />
-      <button type="submit" value="Envoyer">
-        {" "}
-        Envoyer{" "}
-      </button>
+        
+      />
+      {/* </div> */}
+    
+
+    <form action="" onSubmit={handlePicture} className="upload-pic">
+      <button htmlFor="file">Valider modif </button>{" "}
+      <input
+        type="file"
+        id="file"
+        name="file"
+        accept=".jpg, .jpeg, .png"
+        onChange={handlePictureModif}
+      />
+      
+      {/* <button type="submit" value="Envoyer">
+        Envoyer
+      </button> */}
     </form>
   
     
