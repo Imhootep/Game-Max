@@ -176,17 +176,15 @@ module.exports.deleteUser = async (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    /*const posts = await PostModel.find();
+    const posts = await PostModel.find();
     for(let i = 0; i < posts.length; i++){
       for(let j = 0; j < posts[i].likers.length; j++){
-        console.log("Je regarde les likes du post numéro " + (i+1))
         if(posts[i].likers[j] === req.params.id){
-          console.log("Le user a liké ce post, je supprime le like");
           posts[i].likers.splice(j, 1);
           await PostModel.updateOne({ _id: posts[i]._id }, { $set: { likers: posts[i].likers } });      
         }
       }
-    }*/
+    }
     await UserModel.deleteOne({ _id: req.params.id }).exec();
     res.status(200).json({ message: "Successfully deleted. " });
   } catch (err) {
