@@ -87,7 +87,7 @@ const Card = ({ post, postId,usersData, userData }) => {
               ></iframe>
             )}
 <br />
-              <div>
+              <div className="postTitleAndPost">
             {post.title && ( <h2 className={"card-title" + post.eventType} >{post.title} </h2> )}
             {post.date && ( <p> Le {dateParser(post.date)}</p> )}
             </div>
