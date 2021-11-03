@@ -153,7 +153,7 @@ module.exports.updateUserFromAdmin = async (req, res) => {
         $set: {
           adresse: req.body.adresse,
           role: req.body.role,
-          email: req.body.email,
+          company: req.body.company,
           expert_role: req.body.expert
         }
       },
@@ -287,8 +287,6 @@ module.exports.changePassword = async (req, res) => {
             { _id: req.params.id }, { $set: {password: newPass} }
           );
           console.log("Le mot de passe a bien été modifié");
-          req.logout();
-          res.redirect("/");
           }
           else{
             throw Error("passwords have no match");
