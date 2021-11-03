@@ -30,7 +30,6 @@ module.exports.requireAuth = (req, res, next) => {
   // console.log("On passe par le requireAuth ?")
   let token = "";
   const header = req.headers.authorization.split(" ");
-  console.log("header : ", header[1])
   if(header[1] != "" && header[1] != "undefined") {  
   token = header[1]
   }

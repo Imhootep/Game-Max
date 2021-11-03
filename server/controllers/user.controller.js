@@ -182,7 +182,8 @@ module.exports.deleteUser = async (req, res) => {
         console.log("Je regarde les likes du post numéro " + (i+1))
         if(posts[i].likers[j] === req.params.id){
           console.log("Le user a liké ce post, je supprime le like");
-          posts[i].likers.splice(j, 1);          
+          posts[i].likers.splice(j, 1);
+          await PostModel.updateOne({ _id: posts[i]._id }, { $set: { likers: posts[i].likers } });      
         }
       }
     }*/
