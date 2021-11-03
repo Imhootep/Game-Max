@@ -1,13 +1,15 @@
 nav {
   position: fixed;
   width: 100%;
-  height: 70px;
+  height: 80px;
   border-radius: 6px;
   // box-shadow: 18px 1px 0px $color-5, 22px 4px 0px 0px $shadow;
   z-index: 10;
   background-color: $color-4;
   top: 0;
   margin-bottom: 15px;
+  display: flex;
+  align-items: center;
   
 
   @media screen and(max-width: 1251px) {
@@ -64,6 +66,7 @@ nav {
           .welcome{
             justify-content: flex-start;
             margin-left: 30px;
+            // height: 100%;
             a{
               justify-content: flex-start;
               width: 270px;
@@ -82,16 +85,6 @@ nav {
           }
 
         a{
-
-          img{
-            width: 30px;
-            height: 30px;
-            @media screen and(max-width: 750px) {
-              width: 40px;
-            height: 40px;
-            }
-
-          }
           h5{
             font-size: 15px;
             padding: 15px;
@@ -107,6 +100,9 @@ nav {
         }
         ul{
         li{
+          height: 100%;
+
+
           img{
             width: 30px;
           }
@@ -137,10 +133,10 @@ nav {
         font-size: 1.5rem;
         font-family: $font-3;
       }
-      img {
-        height: 26px;
-        width: 26px;
-      }
+      // img {
+      //   height: 26px;
+      //   width: 26px;
+      // }
     }
     .nav-logo{
       display: flex;
@@ -186,7 +182,7 @@ nav {
     
     ul {
       display: flex;
-      align-items: center;
+      // align-items: center;
       justify-content: center;
       // width: 35%;
       justify-content: space-between;
@@ -195,7 +191,7 @@ nav {
 
       li{
 
-        height: 60px;
+        // height: 60px;
         margin: 0;
         padding: 0;
 
@@ -203,7 +199,7 @@ nav {
         display: flex;
         width: 400px ;
         justify-content: center;
-        height: 70px;
+        height: 65px;
 
 
       }
@@ -216,27 +212,17 @@ nav {
       }
     }
     .logout{
+      margin: auto;
+      height: 60%;
 
-      @media screen and(max-width: 1007px) {
-       margin-left: 20px;
-      }
+
+      // @media screen and(max-width: 1007px) {
+      //  margin-left: 20px;
+      // }
     }
       
       .welcome {
         transform: translateY(2px);
-        
-        @media screen and(max-width: 1007px) {
-          img{
-            margin: 0;
-          }
-        }
-        
-
-        // @media screen and(max-width: 640px) {
-        //   display: none;
-
-          
-        // }
         
         h5 {
           font-family: $font-3;
@@ -256,8 +242,8 @@ nav {
           align-items: center;
           justify-items: center;
           height: 100%;
-          background-color: white;
-          border-radius: 50px;
+          background-color: $color-2;
+          border-radius: 60px;
           padding: 4px;
           margin: auto 10px auto auto;
         }

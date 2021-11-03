@@ -28,11 +28,11 @@ module.exports.checkUser = (req, res, next) => {
 module.exports.requireAuth = (req, res, next) => {
   // console.log("On passe par le requireAuth ?")
   let token = "";
-  if(req.headers.authorization != "" && req.headers.authorization != undefined) {
   const header = req.headers.authorization.split(" ");
+  if(header[1] != "" && header[1] != "undefined") {
   token = header[1]
   }
-  // console.log("Token reqAuth : ",token)
+  //console.log("Token reqAuth : ",token)
   if (token && token != "" && token != undefined && token != null) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
       if (err) {
@@ -43,6 +43,6 @@ module.exports.requireAuth = (req, res, next) => {
       }
     });
   } else {
-    res.send(401).json('No token')
+    console.log("No token.")
   }
 };

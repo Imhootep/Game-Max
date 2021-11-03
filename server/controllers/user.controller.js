@@ -176,7 +176,16 @@ module.exports.deleteUser = async (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    await UserModel.remove({ _id: req.params.id }).exec();
+    const posts = await PostModel.find();
+    for(let i = 0; i < posts.length; i++){
+      for(let j = 0; j < posts[i].likers.length; j++){
+        if(posts[i].likers[j] === req.params.id){
+          posts[i].likers.splice(j, 1);
+          await PostModel.updateOne({ _id: posts[i]._id }, { $set: { likers: posts[i].likers } });      
+        }
+      }
+    }
+    await UserModel.deleteOne({ _id: req.params.id }).exec();
     res.status(200).json({ message: "Successfully deleted. " });
   } catch (err) {
     return res.status(500).json({ message: err });
@@ -294,7 +303,7 @@ module.exports.changePassword = async (req, res) => {
 } 
 
 // ------------------------------------------------------------------------------------
-// Renvoi les posts (toutes les données du post, pas juste l'id) qu'un utilisateur a liké (pour entre autre les afficher à droite)
+// Renvoie les posts (toutes les données du post, pas juste l'id) qu'un utilisateur a liké (pour entre autre les afficher à droite)
 module.exports.favoritesPosts = async (req,res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
