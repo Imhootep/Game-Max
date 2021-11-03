@@ -57,7 +57,7 @@ const Navbar = () => {
             <div className="welcomeNav">
                 {uid?(
                     <ul>
-                        <li></li>
+                        
                         <li className="welcome">
                             <NavLink exact to="/profil">
                                 <img src={imagePath} alt="profil Pic"/>
@@ -68,7 +68,7 @@ const Navbar = () => {
                     </ul>
                 ) : (
                     <ul>
-                        <li></li>
+                        
                         <li>
                             <NavLink exact to="/profil">
                                 <img src="./img/icons/login.svg" alt="login-img"/>

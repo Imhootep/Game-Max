@@ -26,6 +26,7 @@ const Login = () => {
         <div>
         <img src={logo} className="loading" alt="logo"  onLoad={() => ticTac()}/>
         <div class='pac-man'/>
+        <h2>Redirection...</h2>
         <div>
             {oust === true ? <Redirect to='/home'  /> : '' }
         </div>
