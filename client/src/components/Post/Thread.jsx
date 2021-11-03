@@ -6,12 +6,12 @@ import { getUsers } from "../../actions/users.actions";
 import { getUser } from "../../actions/user.actions";
 // import { isEmpty } from './Utils';
 
-const Thread = ({posts,userData,usersData}) => {
+const Thread = ({posts,userData}) => {
     const [loadPost, setLoadPost] = useState(true)
     const [count, setCount] = useState(5)
     const dispatch = useDispatch();
     // const posts = useSelector((state)=>state.postReducer)
-    // const usersData = useSelector((state) => state.usersReducer);
+    const usersData = useSelector((state) => state.usersReducer); //si on le fait passer en props et qu'on recupere ici ça ne marche pas sans le getusers du useeffects en dessous...wtf?
     // const userData = useSelector((state) => state.userReducer);
     
 

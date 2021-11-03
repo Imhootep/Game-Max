@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { likePost, unlikePost } from '../../actions/post.actions';
 import { UidContext } from '../AppContext';
+import Trends from './Trends';
 
 const FavoriteButton = ({post}) => {
 
@@ -12,12 +13,14 @@ const FavoriteButton = ({post}) => {
     const like= () => {
         dispatch(likePost(post._id, uid))
         setLiked(true)
+        // window.location.reload();
     }
 
 
     const unlike= () => {
         dispatch(unlikePost(post._id, uid))
         setLiked(false)
+        // window.location.reload();
     }
 
     useEffect(()=>{
