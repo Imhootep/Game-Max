@@ -20,6 +20,7 @@ module.exports.uploadProfil = async (req, res) => {
   }
 
   let oldPicture = await UserModel.findById(req.body.userId, 'picture').exec();
+  if(oldPicture.picture !== "uploads/profil/random-user.png")
   fs.unlinkSync(
     `${oldPicture.picture}`
     ) 

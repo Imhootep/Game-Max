@@ -58,8 +58,8 @@ const Trends = ({posts,userData,usersData}) => {
     // console.log(incomingEvent)
     // console.log(posts[0].createdAt.getTime())
     if(posts[0] !== undefined){
-      console.log("dernier event 2:")
-      console.log(incomingEvent)
+      // console.log("dernier event 2:")
+      // console.log(incomingEvent)
     for(let i = 0; i < posts.length; i++){
       // console.log("la date de maintenant et sa version parsée: ")
 

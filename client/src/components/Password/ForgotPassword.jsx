@@ -23,7 +23,7 @@ const ForgotPassword = () => {
         <div className="forgotPass-container">
              <form action="">
                 <h3>Oublié votre mot de passe?</h3>
-                <p>Nous vous enverrons un mail avec un lien pour créer un nouveau mot de passe</p>
+                <p>Nous vous enverrons un mail avec votre nouveau mot de passe. N'oubliez pas de le modifier lors de votre prochaine connection.</p>
                 <input className="inputForgotPass" type="text" name="email" placeholder="Veuillez entrer votre email" onChange={(e) => handleEmail(e.target.value)}/>
                 <button type="Submit" onClick={() => resetPassword()}>Envoyer</button>
             </form>

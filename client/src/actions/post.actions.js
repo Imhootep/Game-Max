@@ -196,8 +196,8 @@ export const getFavorites = (id) => {
     headers : { Authorization : "Bearer "+Cookies.get('jwt') },
     url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + id,
   }).then((res) => {
-    // console.log("res::: ")
-    // console.log(res)
+    console.log("res::: ")
+    console.log(res)
     const array = res.data //.data.slice(0, 1);
     dispatch({ type: GET_FAVORITES, payload: array });
   }).catch((err) => console.log(err));
