@@ -157,6 +157,12 @@ const SearchStudio = () => {
                                             <svg><path d="M2.5 2h24.875v17.125l-7.313 7.313h-5.438l-3.563 3.563h-3.75v-3.563H.623V6.813zm22.375 15.875V4.5H4.812v17.563h5.625v3.563L14 22.063h6.688zm-4.187-8.562v7.313h-2.5V9.313h2.5zm-6.688 0v7.313h-2.5V9.313H14z"></path></svg>
                                         </a> 
                                     </div>
+                                    <div>
+                                        Discord (à faire)
+                                    </div>
+                                    <div>
+                                        Insta ( à faire)
+                                    </div>
                                 </div>
                                 {/* <div><a target="_blank" rel="noreferrer" href={val.social.facebook}>{val.social.facebook}</a></div>
                                 <div><a target="_blank" rel="noreferrer" href={val.social.twitter}>{val.social.twitter}</a></div>
@@ -234,6 +240,12 @@ const SearchStudio = () => {
                                         <a target="_blank" rel="noreferrer" href={val.social.twitch}>
                                             <svg><path d="M2.5 2h24.875v17.125l-7.313 7.313h-5.438l-3.563 3.563h-3.75v-3.563H.623V6.813zm22.375 15.875V4.5H4.812v17.563h5.625v3.563L14 22.063h6.688zm-4.187-8.562v7.313h-2.5V9.313h2.5zm-6.688 0v7.313h-2.5V9.313H14z"></path></svg>
                                         </a> 
+                                    </div>
+                                    <div>
+                                        Discord (à faire)
+                                    </div>
+                                    <div>
+                                        Insta ( à faire)
                                     </div>
                                 </div>
                                 {/* <div><a target="_blank" rel="noreferrer" href={val.social.facebook}>{val.social.facebook}</a></div>
