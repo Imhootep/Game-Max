@@ -34,7 +34,7 @@ const UploadImg = () => {
 
 
       {/* <div className="previsPic"> */}
-      <p>cliquez sur la photo pour modifier votre image de profil!</p>
+      <p>Cliquez sur la photo pour modifier votre image de profil</p>
       
       <label For="file"><img src={file? URL.createObjectURL(file) : imagePath} alt={file? file.name : null}/></label>
       <input

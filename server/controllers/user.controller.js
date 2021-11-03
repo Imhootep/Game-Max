@@ -284,8 +284,6 @@ module.exports.changePassword = async (req, res) => {
             { _id: req.params.id }, { $set: {password: newPass} }
           );
           console.log("Le mot de passe a bien été modifié");
-          req.logout();
-          res.redirect("/");
           }
           else{
             throw Error("passwords have no match");
