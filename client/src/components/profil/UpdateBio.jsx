@@ -30,9 +30,15 @@ const UpdateBio = ({userData}) => {
   //fonction pour mise à jour de la bio
   const handleUpdate = () => {
 
-    if(userData.social.discord.includes("https")){
-      alert("SOCIAL DISCORD NA PAS DE HTTPS!!!")
-    }
+    console.log("serData.social.discord::")
+    console.log(userData.social.discord)
+    
+    if(userData.social.discord.includes("http") === false){userData.social.discord = "https://"+userData.social.discord}
+    if(userData.social.twitter.includes("http") === false){userData.social.twitter = "https://"+userData.social.twitter}
+    if(userData.social.youtube.includes("http") === false){userData.social.youtube = "https://"+userData.social.youtube}
+    if(userData.social.facebook.includes("http") === false){userData.social.facebook = "https://"+userData.social.facebook}
+    if(userData.social.instagram.includes("http") === false){userData.social.instagram = "https://"+userData.social.instagram}
+    if(userData.social.twitch.includes("http") === false){userData.social.twitch = "https://"+userData.social.twitch}
 
     dispatch(
       updateBio(userData._id, {
