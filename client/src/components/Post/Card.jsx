@@ -59,7 +59,7 @@ const Card = ({ post, postId,usersData, userData }) => {
                 <h3>
                   
                   {usersData.map((user) => {
-                    if (user._id === post.posterId) return user.pseudo;
+                    if (user._id === post.posterId) return user.pseudo + " " + "/" + " " + user.company;
                     else return null;
                   })}
                 </h3>
