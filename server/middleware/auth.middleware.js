@@ -32,7 +32,7 @@ module.exports.requireAuth = (req, res, next) => {
   const header = req.headers.authorization.split(" ");
   token = header[1]
   }
-  // console.log("Token reqAuth : ",token)
+  console.log("Token reqAuth : ",token)
   if (token && token != "" && token != undefined && token != null) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
       if (err) {
