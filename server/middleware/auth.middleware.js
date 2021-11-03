@@ -3,10 +3,9 @@ const UserModel = require("../models/user.model");
 
 module.exports.checkUser = (req, res, next) => {
   let token = "";
+  if(req.headers.authorization != "" && req.headers.authorization != undefined) {
   const header = req.headers.authorization.split(" ");
-  console.log("header : ", header[1])
-  if(header[1] != "" && header[1] != "undefined") {  
-  token = header[1]
+  token = header[1];
   }
   if (token && token != "" && token != undefined && token != null) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
