@@ -5,12 +5,14 @@ import Navbar from '../components/Navigation/Navbar';
 import LeftNav from '../components/Navigation/LeftNav';
 import Administration from '../components/Admin/Administration';
 import { getUser} from "../actions/user.actions";
-
+import logo from "../img/logo2.png";
 import loading from '../img/loading.gif';
 import Cookies from 'js-cookie';
 import { Redirect } from 'react-router';
 
+
 const Admin = () => {
+
     const uid = useContext(UidContext)
     const user = useSelector((state) => state.userReducer);
     const dispatch = useDispatch ();
@@ -20,6 +22,13 @@ const Admin = () => {
             console.log(user)    
             console.log("uid : ",uid) 
         }, [])
+    const [oust,setOust] = useState(false);
+
+    const ticTac = () =>{
+    setInterval(() => {
+      setOust(true)
+    }, 3000)
+}
 
     return (
         <>
@@ -32,7 +41,13 @@ const Admin = () => {
             </div>
         </div>
         :
-        <img src={loading} alt="loading" title="Loading" className="loading" />
+        <div>
+            <img src={logo} className="loading" alt="logo"  onLoad={() => ticTac()}/>
+            <div class='pac-man'/>
+            <div>
+                {oust === true ? <Redirect to='/home'  /> : '' }
+            </div>
+        </div>
         }  
         </>
     );

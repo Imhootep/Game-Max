@@ -181,9 +181,14 @@ const Trends = ({posts,userData,usersData}) => {
           <div className="trending-container">
         {/* {console.log("trendlist2 avant d'etre use: ")}
         {console.log(trendList2)} */}
+        {/* {console.log("trendList2.length:::"+trendList2.length)}
+        {console.log("trendList2:::")}
+        {console.log(trendList2)} */}
         
-            {/* {trendList2.length &&
+            {trendList2 !== undefined && trendList2[0] !== null && trendList2 !== isEmpty && trendList2.length !== undefined ?
               trendList2.map((val) => {
+                // console.log("val:::")
+                // console.log(val)
                 let postImagePath = process.env.REACT_APP_API_URL+val.picture;
                 return (
                 
@@ -218,7 +223,7 @@ const Trends = ({posts,userData,usersData}) => {
                   </div>
                   
                 );
-              })} */}
+              }):''}
         
           
       </div>
@@ -230,7 +235,7 @@ const Trends = ({posts,userData,usersData}) => {
                   {/* {trendPost} */}
                   {/* {console.log("trendList")}
                   {console.log(trendList)} */}
-                 {/* {trendList2 && trendList2[0] !== undefined && (
+                 {trendList2 && trendList2[0] !== undefined && trendList2[0] !== null && (
                  trendList2.map((popupPost) => {
                    if(popupPost._id === trendPost){
                     return (
@@ -248,7 +253,7 @@ const Trends = ({posts,userData,usersData}) => {
                      )
                    }
                  }))
-                 } */}
+                 }
           </Modal>
       </div>
           <>

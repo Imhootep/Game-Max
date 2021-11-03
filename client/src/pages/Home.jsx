@@ -80,10 +80,10 @@ const Home = () => {
         {/* <img src={loading} alt="loading" title="Loading" className="loading" onLoad={() => ticTac()}/> */}
         <img src={logo} className="loading" alt="logo"  onLoad={() => ticTac()}/>
         <div class='pac-man'/>
-        <div>
-            {oust === true ? <Redirect to='/'  /> : '' }
+          <div>
+              {oust === true ? <Redirect to='/'  /> : '' }
+          </div>
         </div>
-      </div>
       //
       }   
       </>
