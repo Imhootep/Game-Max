@@ -15,26 +15,26 @@ const Thread = ({posts,userData}) => {
     // const userData = useSelector((state) => state.userReducer);
     
 
-    useEffect(() => {
-        dispatch(getUsers())
-      }, []);
+    // useEffect(() => {
+    //     dispatch(getUsers())
+    //   }, []);
 
-    const loadMore = () =>{
-        if (window.innerHeight + document.documentElement.scrollTop +1 > document.scrollingElement.scrollHeight) {
-            setLoadPost(true)
-        }
-    }
+    // const loadMore = () =>{
+    //     if (window.innerHeight + document.documentElement.scrollTop +1 > document.scrollingElement.scrollHeight) {
+    //         setLoadPost(true)
+    //     }
+    // }
 
-    useEffect(()=>{
-        if(loadPost) {
-            dispatch(getPosts(count));
-            setLoadPost(false)
-            setCount(count + 5);
-        }
+    // useEffect(()=>{
+    //     if(loadPost) {
+    //         dispatch(getPosts(count));
+    //         setLoadPost(false)
+    //         setCount(count + 5);
+    //     }
 
-        window.addEventListener('scroll', loadMore);
-        return ()=> window.removeEventListener('scroll', loadMore)
-    }, [loadPost, dispatch, count])
+    //     window.addEventListener('scroll', loadMore);
+    //     return ()=> window.removeEventListener('scroll', loadMore)
+    // }, [loadPost, dispatch, count])
 
     return (
         <div className="thread-container">
