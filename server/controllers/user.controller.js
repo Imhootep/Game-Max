@@ -307,21 +307,16 @@ module.exports.changePassword = async (req, res) => {
 module.exports.favoritesPosts = async (req,res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
-    var arrayPosts = []
-    await UserModel.findById(req.params.id, async (err, docs) => {
-      if (!err) {
-        for(const like of docs.likes) {
-          await PostModel.findById(like, async (err, docs) => {
-          if (!err) {
-            arrayPosts.push(docs)
-          }
-          else console.log("ID unknown : " + err);
-        })
-      }      
-    }
-      else console.log("ID unknown : " + err);
-      res.send(arrayPosts)
-    }).select("likes");
+    try{
+      const user = await UserModel.findById(req.params.id, 'likes').exec();
+      let arrayPost = [];
+        for await(const like of user.likes){
+          arrayPost = [...arrayPost, await PostModel.findById(like).exec()]
+        }
+        res.send(arrayPost);
+      }catch(err){
+        res.status(400).send("Erreur : ", err)
+      }
 };
 
 // ------------------------------------------------------------------------------------

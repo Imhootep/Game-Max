@@ -57,9 +57,9 @@ const Card = ({ post, postId,usersData, userData }) => {
             <div className="card-header">
               <div className="pseudo">
                 <h3>
-                  {" "}
+                  
                   {usersData.map((user) => {
-                    if (user._id === post.posterId) return user.pseudo;
+                    if (user._id === post.posterId) return user.pseudo + " " + "/" + " " + user.company;
                     else return null;
                   })}
                 </h3>
@@ -68,11 +68,9 @@ const Card = ({ post, postId,usersData, userData }) => {
                 )}
               </div>
               {post.isEvent && ( <div className={"event-info" + post.eventType }>Event : {post.eventType}</div>)}
-              <span>{dateParser2(post.createdAt)}</span>
+              <span>créé le {dateParser2(post.createdAt)}</span>
             </div>
-            {post.title && ( <h2 className={"card-title" + post.eventType} >{post.title} </h2> )}
-
-            {post.date && ( <p>{dateParser(post.date)}</p> )}
+            
              
             {post.picture && (
               <img src={postImagePath} alt="card-pic" className="card-pic" />
@@ -88,6 +86,11 @@ const Card = ({ post, postId,usersData, userData }) => {
                 title={post._id}
               ></iframe>
             )}
+<br />
+              <div className="postTitleAndPost">
+            {post.title && ( <h2 className={"card-title" + post.eventType} >{post.title} </h2> )}
+            {post.date && ( <p> Le {dateParser(post.date)}</p> )}
+            </div>
             {isUpdated === false &&  <p>{post.message}</p>} 
             {isUpdated && (
               <div className="update-post">

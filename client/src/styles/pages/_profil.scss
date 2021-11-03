@@ -315,10 +315,6 @@ body{
       }
       .passwordModify{
         cursor: pointer;
-        
-         &:hover{
-          
-         }
       }
 
 
@@ -385,7 +381,7 @@ body{
       }
 
       p {
-        color: red;
+        color: $color-1;
         font-family: $font-3;
         margin-top: 6px;
       }
