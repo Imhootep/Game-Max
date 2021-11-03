@@ -106,23 +106,11 @@ module.exports.deletePost = async (req, res) => {
 
     PostModel.findByIdAndRemove(req.params.id, (err, docs) => {
       if (!err) {
-    // if(docs.picture !== ''){
-    // fs.unlinkSync(
-    //   `${docs.picture}`
-    //   ) 
-    // }
-
-    // for(let like in docs.likes) {
-    //   for(let like of docs.likes) {
-    //   const query = { likes: like };
-    //   console.log("find un user avec le like : ",like)
-    //   const user = UserModel.findOneAndUpdate(query, {
-    //     $pull: { likes: like },
-    //   },)
-    //   console.log("le user a un like et je l'ai modif : ",user)
-    //   }
-    // }
-
+    if(docs.picture !== ''){
+    fs.unlinkSync(
+      `${docs.picture}`
+      ) 
+    }
     res.send(docs);
     }
     else console.log("Delete error : " + err);
