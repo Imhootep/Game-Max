@@ -206,7 +206,7 @@ const Trends = ({posts,userData,usersData}) => {
                           title={val._id}
                         ></iframe>
                       )}
-                      {isEmpty(val.picture) && isEmpty(val.video) && (
+                      {/* {isEmpty(val.picture) && isEmpty(val.video) && (
                           <img src={usersData !== isEmpty && usersData.map((user)=>{
                               if(user._id === val.posterId) {
                                   return user.picture;
@@ -214,7 +214,7 @@ const Trends = ({posts,userData,usersData}) => {
                           })
                           .join("")
                         } alt="post-pic" />
-                      )}
+                      )} */}
                     </div>
                     <div className="trend-content">
                         <p>{val.message}</p>

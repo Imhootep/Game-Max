@@ -353,12 +353,12 @@ const Administration = () => {
                             {modifying === val._id ?
                                 <img src={check} alt="valider" title="Valider la modification" className="adminIconEvent" onClick={() => setModify(val._id)}/>
                                 :
-                                <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent" onClick={() => modify(val._id,val.role,val.adresse)}/>
+                                <img src={pen} alt="crayon" title="Modifier" className="adminIconEvent" onClick={() => modify(val._id,val.role,val.adresse,val.company)}/>
                             }
                             
                         </div>
-                        <div className="adminSection"><div>{val.pseudo}</div></div>
-                        <div className="adminSection"><div>{val.email}</div></div>
+                        <div className="adminSection disable"><div>{val.pseudo}</div></div>
+                        <div className="adminSection disable"><div>{val.email}</div></div>
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>
@@ -368,10 +368,12 @@ const Administration = () => {
                             </select>    
                         </div>
                         <div className="adminSection">
-                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }/> 
+                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
                         </div>
-                        <div className="adminSection"><div>{val.company}</div></div>
-                        <div className="adminSection"><div>{val.membres}</div></div>
+                        <div className="adminSection">
+                            <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/>
+                        </div>
+                        <div className="adminSection disable"><div>{val.membres}</div></div>
                     </div>
                     : ''}
                     </>

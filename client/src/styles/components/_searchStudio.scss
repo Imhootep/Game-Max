@@ -95,7 +95,7 @@
     border: 2px solid purple;
     border-radius: 20px;
     min-height: 200px;
-    width: 90%;
+    // width: 90%;
     // margin: 0px 20px 20px 75px;
     padding:0 20px 20px 20px;
     // width: 80%;
@@ -202,9 +202,10 @@
       max-width: 50px;
       max-height:50px;
 
-      svg{
-        max-width: 50px;
-        max-height:50px;
+      svg, img{
+        max-width: 35px;
+        max-height:35px;
+        margin:0 5px 0 0;
       }
     }
 
@@ -405,6 +406,7 @@
   width:100%;
   text-align: right;
   padding: 0 20px 0 0;
+  margin: 20px 0;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
@@ -514,6 +516,12 @@
   }
 }
 
+
+.disabledLink{
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
 
 
 
