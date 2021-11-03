@@ -72,6 +72,7 @@ const Administration = () => {
     const [role,setRole] = useState("Studio"); //add user
     const [roleUser,setRoleUser] = useState("Studio"); //modify user
     const [adressUser,setAdressUser] = useState(""); //modify user adress
+    const [companyUser,setCompanyUser] = useState(""); //modify user company 
     const [modifying,setModifying] = useState('');
     
     
@@ -143,7 +144,7 @@ const Administration = () => {
     }
 
     // modifier le role d'un user
-    const modify = (id,role,adresse) => {
+    const modify = (id,role,adresse,company) => {
        if(modifying === ''){
         setModifying(id)
        }else{
@@ -152,6 +153,8 @@ const Administration = () => {
 
        handleRoleUser(role)
        setAdressUser(adresse)
+       setCompanyUser(company)
+
        setRefreshData(refreshData+1)
     }
 
@@ -163,7 +166,7 @@ const Administration = () => {
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` + id,
-            data: {role:roleUser,adresse:adressUser}
+            data: {role:roleUser,adresse:adressUser, company:companyUser}
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -174,9 +177,14 @@ const Administration = () => {
         setRoleUser(data);
     }
 
-    //quand adresse modifiée dans liste déroulante
+    //quand l'adresse est modifiée
     const handleAdressUser = (data) =>{
         setAdressUser(data);
+    }
+
+    //quand la company est modifiée
+    const handleCompanyUser = (data) =>{
+        setCompanyUser(data);
     }
     
 
