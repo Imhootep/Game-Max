@@ -142,7 +142,7 @@ module.exports.signIn = async (req, res) => {
   try {
     // const emailInsered = await UserModel.findOne(email);
     const user = await UserModel.login(email, password);
-    if(user.role == "" ) throw err
+    if(user.role == "" || user.isDisabled) throw err
     if(user.role != ""){
       const token = createToken(user._id);
       console.log("Token : ",token)
@@ -184,7 +184,6 @@ module.exports.forgottenPassword = async (req, res) => {
             Une fois identifié, vous pouvez vous rendre dans la section "Profil" afin de le remplacer par le mot de passe de votre choix.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.<br>
-            <img src="../uploads/profil/random-user.png" alt="Gamemax" />
             `
   }
   
