@@ -51,8 +51,8 @@ const confirmEmail = (pseudo, email, uniqueString) => {
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: 'gamemaxbotmailer@gmail.com',
-          pass: 'gamemaxmail'
+          user: process.env.MAIL_ADRESS,
+          pass: process.env.MAIL_PASS
       }
   })
 
@@ -169,8 +169,8 @@ module.exports.forgottenPassword = async (req, res) => {
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: 'gamemaxbotmailer@gmail.com',
-          pass: 'gamemaxmail'
+          user: process.env.MAIL_ADRESS,
+          pass: process.env.MAIL_PASS
       }
     })
 

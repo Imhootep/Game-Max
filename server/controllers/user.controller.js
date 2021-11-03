@@ -322,8 +322,8 @@ const roledEmail = (pseudo, email, role) => {
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: 'gamemaxbotmailer@gmail.com',
-          pass: 'gamemaxmail'
+          user: process.env.MAIL_ADRESS,
+          pass: process.env.MAIL_PASS
       }
   })
 
@@ -332,7 +332,7 @@ const roledEmail = (pseudo, email, role) => {
       to: email,
       subject: "<No-Reply>Vous avez un nouveau rôle !", 
       html: `Bonjour ${pseudo}, <br><br>
-            un administrateur vous à attribué le rôle de : ${role}.<br>   
+            un administrateur vous à attribué le rôle : ${role}.<br>   
             Vous pouvez dès à présent vous connecter en utilisant vos identifiants.<br><br>
             Bien amicalement,<br>
             l'équipe Game-Max.
