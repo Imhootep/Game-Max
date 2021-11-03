@@ -212,8 +212,17 @@
         }
       }
     }
+    div{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      // margin: 20px;
+      h2{
+        margin-bottom: 30px;
+        align-self: flex-start;
+      }
+    }
     p {
-      margin: 20px 0 9px;
+      // margin: 20px 0 9px;
       font-size: 1.1rem;
 
       @media screen and(max-width: 440px) {
