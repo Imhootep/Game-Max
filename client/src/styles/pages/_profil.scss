@@ -427,12 +427,31 @@ body{
 
   .modalBackground{
     position: absolute;
-    width: 60%;
-
-
-  .modal-container{
-    // position: relative;
     align-items: center;
+    width: 60%;
+    
+
+
+  .modal-container {
+    // position: relative
+    background-image:url("../../img/GameMax.jpg");
+    align-items: center;
+    position: absolute;
+    // background-color: #c3a9c7;
+    
+    width: 100%;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 15px;
+
+    form{
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      
+    }
   }
 }
 

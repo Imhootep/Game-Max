@@ -34,6 +34,7 @@ const UploadImg = () => {
 
 
       {/* <div className="previsPic"> */}
+      <p>cliquez sur la photo pour modifier votre image de profil!</p>
       
       <label For="file"><img src={file? URL.createObjectURL(file) : imagePath} alt={file? file.name : null}/></label>
       <input
@@ -49,13 +50,13 @@ const UploadImg = () => {
 
     <form action="" onSubmit={handlePicture} className="upload-pic">
       <button htmlFor="file">Valider modif </button>{" "}
-      <input
+      {/* <input
         type="file"
         id="file"
         name="file"
         accept=".jpg, .jpeg, .png"
         onChange={handlePictureModif}
-      />
+      /> */}
       
       {/* <button type="submit" value="Envoyer">
         Envoyer
