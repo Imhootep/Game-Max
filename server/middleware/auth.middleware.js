@@ -43,6 +43,6 @@ module.exports.requireAuth = (req, res, next) => {
       }
     });
   } else {
-    res.sendStatus(401).json('No token')
+    console.log("No token.")
   }
 };
