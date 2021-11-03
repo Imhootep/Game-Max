@@ -82,7 +82,7 @@
 .card-container {
   display: grid;
   grid-template-columns: 80px 1fr;
-  border: 3px solid $color-4;
+  border: 2px solid $color-4;
   
   padding: 16px;
   border-radius: 20px;
@@ -213,7 +213,7 @@
       }
     }
     p {
-      margin: 3px 0 9px;
+      margin: 20px 0 9px;
       font-size: 1.1rem;
 
       @media screen and(max-width: 440px) {
