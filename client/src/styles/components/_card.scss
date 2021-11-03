@@ -318,10 +318,11 @@
       }
     }
     .comment-container.client {
-      background: $color-1;
-      color: $white;
-      border: none;
+      background: $gray;
+      color: $color-1;
+      // border: none;
       border-radius: 20px 20px 6px 20px;
+      border: 1px solid $color-4;
     }
     .comment-container {
       display: grid;
@@ -458,13 +459,13 @@
 
 
       input::placeholder{
-        color: $white;
+        color: $color-1;
       }
 
       input[type="text"] {
         width: 100%;
-        background: $color-1;
-        color: $white;
+        background: $gray;
+        color: $color-1;
         border-radius: 20px 20px 6px 20px;
         padding: 20px;
         font-size: 1.4rem;
