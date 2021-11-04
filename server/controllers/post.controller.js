@@ -103,7 +103,6 @@ module.exports.deletePost = async (req, res) => {
       }
     }
 
-
     PostModel.findByIdAndRemove(req.params.id, (err, docs) => {
       if (!err) {
     if(docs.picture !== ''){
