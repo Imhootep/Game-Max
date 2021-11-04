@@ -6,36 +6,36 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
-
+// Affichage des posts
 module.exports.readPost = (req, res) => {
   PostModel.find((err, docs) => {
     if (!err) res.send(docs);
     else console.log("Error to get data : " + err);
   }).sort({ createdAt: -1 });
 };
-
+// Création d'un post ou event sur base des données reçues
 module.exports.createPost = async (req, res) => {
 
-  let fileName = Date.now()+"_"+req.body.posterId;
+  let fileName = Date.now()+"_"+req.body.posterId; // nom du fichier au format : "date" _ "id du posteur" pour les différencier et ne jamais avoir deux les mêmes
   let entiereFileName = "";
-  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;  
+  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;   
   
   if (req.file !== null) {
     try {
-      if (
+      if (// erreur si l'extension n'est pas parmis jpg/png/jpeg
         req.file.detectedMimeType != "image/jpg" &&
         req.file.detectedMimeType != "image/png" &&
         req.file.detectedMimeType != "image/jpeg"
       )
         throw Error("invalid file");
-
+      //limitation sur la taille : 500 ko
       if (req.file.size > 500000) throw Error("max size");
     } catch (err) {
       const errors = uploadErrors(err);
       return res.status(201).json({ errors });
     }
 
-    try {
+    try { // insertion de l'image dans le dossier uploads/posts
     await pipeline(
       req.file.stream,
       fs.createWriteStream(

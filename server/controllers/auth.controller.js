@@ -89,7 +89,6 @@ module.exports.validateUser = async (req, res) => {
     res.status(400).send("Ce compte a déja été validé. Si vous ne pouvez pas vous encore vous connecter, vous devez attendre qu'un administrateur vous octroie un rôle.")
   }
   else if(user && !user.isValid){
-    // await user.updateOne({$set: {isValid: true}}).then(res.redirect("/uploads/profil/61682de6172db0073a848390_fdsfd.png"));
     await user.updateOne({$set: {isValid: true}}).then(res.status(200).send("Compte validé. Un administrateur va prochainement vous octroyer un rôle. Dès lors, vous serez notifié par mail et vous pourrez ensuite vous connecter."));
   }
   else{
@@ -138,8 +137,7 @@ module.exports.signUp = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-//Identification sur le site à l'aide des identifiants
-
+//Identification sur le site à l'aide des identifiants (logique)
 module.exports.signIn = async (req, res) => {
   const { email, password } = req.body
 
