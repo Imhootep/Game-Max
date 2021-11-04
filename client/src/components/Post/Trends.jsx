@@ -112,7 +112,7 @@ const Trends = ({posts,userData,usersData}) => {
               {console.log(vals.picture)}
               {console.log("vals.video")}
               {console.log(vals.video)}
-              {vals.picture !== true && vals.video !== true && <img className={"favoriteEventBanner favoriteEventBanner" + vals.eventType } src={eventdefault}/>}
+              {vals.picture !== true || vals.video !== true && <img className={"favoriteEventBanner favoriteEventBanner" + vals.eventType } src={eventdefault}/>}
               <div className={"eventMess"}>{vals.message}</div>
             </div>
            : 
