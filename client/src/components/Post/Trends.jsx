@@ -46,7 +46,7 @@ const Trends = ({posts,userData,usersData}) => {
         setIncomingEventDate(posts[i].date)
       }else if(posts[i].isEvent === true && incomingEventDate !== undefined && incomingEventDate !== null && incomingEventDate !== null){
     
-        if(Date.parse(posts[i].date) > Date.parse(incomingEventDate)){
+        if(Date.parse(posts[i].date) < Date.parse(incomingEventDate)){
           setIncomingEvent(posts[i]._id)
           setIncomingEventDate(posts[i].date)
         }
