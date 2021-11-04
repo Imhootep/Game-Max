@@ -6,11 +6,8 @@ import FavoriteButton from "./FavoriteButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
-// import { getUsers } from "../../actions/users.actions";
-// import Parser from 'html-react-parser';
-// import { deletePostAdmin } from "../../actions/post.actions";
 
-const Card = ({ post, postId,usersData, userData }) => {
+const Card = ({ post, postId, usersData, userData }) => {
   //on appelle post en props
   // console.log(post);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,8 +15,6 @@ const Card = ({ post, postId,usersData, userData }) => {
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const dispatch = useDispatch();
-  
-  // const handleDelete = () => dispatch(deletePostAdmin(postId));
 
   const updateItem = () => {
     if (textUpdate) {
@@ -32,11 +27,13 @@ const Card = ({ post, postId,usersData, userData }) => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
 
-  
-  let postImagePath = process.env.REACT_APP_API_URL+post.picture;
+  let postImagePath = process.env.REACT_APP_API_URL + post.picture;
 
   return (
-    <li className= {"card-container card-container" + post.eventType} key={post._id}>
+    <li
+      className={"card-container card-container" + post.eventType}
+      key={post._id}
+    >
       {isLoading ? (
         <i className="fas fa-spinner fa-spin"></i>
       ) : (
@@ -45,7 +42,8 @@ const Card = ({ post, postId,usersData, userData }) => {
             <img
               src={usersData
                 .map((user) => {
-                  let userImagePath = process.env.REACT_APP_API_URL+user.picture;
+                  let userImagePath =
+                    process.env.REACT_APP_API_URL + user.picture;
                   if (user._id === post.posterId) return userImagePath;
                   else return null;
                 })
@@ -57,9 +55,9 @@ const Card = ({ post, postId,usersData, userData }) => {
             <div className="card-header">
               <div className="pseudo">
                 <h3>
-                  
                   {usersData.map((user) => {
-                    if (user._id === post.posterId) return user.pseudo + " " + "/" + " " + user.company;
+                    if (user._id === post.posterId)
+                      return user.pseudo + " " + "/" + " " + user.company;
                     else return null;
                   })}
                 </h3>
@@ -67,11 +65,14 @@ const Card = ({ post, postId,usersData, userData }) => {
                   <FollowHandler idToFollow={post.posterId} type={"card"} />
                 )}
               </div>
-              {post.isEvent && ( <div className={"event-info" + post.eventType }>Event : {post.eventType}</div>)}
+              {post.isEvent && (
+                <div className={"event-info" + post.eventType}>
+                  Event : {post.eventType}
+                </div>
+              )}
               <span>créé le {dateParser2(post.createdAt)}</span>
             </div>
-            
-             
+
             {post.picture && (
               <img src={postImagePath} alt="card-pic" className="card-pic" />
             )}
@@ -86,12 +87,14 @@ const Card = ({ post, postId,usersData, userData }) => {
                 title={post._id}
               ></iframe>
             )}
-<br />
-              <div className="postTitleAndPost">
-            {post.title && ( <h2 className={"card-title" + post.eventType} >{post.title} </h2> )}
-            {post.date && ( <p> Le {dateParser(post.date)}</p> )}
+            <br />
+            <div className="postTitleAndPost">
+              {post.title && (
+                <h2 className={"card-title" + post.eventType}>{post.title} </h2>
+              )}
+              {post.date && <p> Le {dateParser(post.date)}</p>}
             </div>
-            {isUpdated === false &&  <p>{post.message}</p>} 
+            {isUpdated === false && <p>{post.message}</p>}
             {isUpdated && (
               <div className="update-post">
                 <textarea
@@ -105,16 +108,21 @@ const Card = ({ post, postId,usersData, userData }) => {
                 </div>
               </div>
             )}
-            
+
             {/* Quand on veut éditer son propre post id du post = id du user  */}
             {userData._id === post.posterId || userData.isAdmin === true ? (
               <div className="button-container">
-                <div className={"modif-button" + post.eventType} onClick={() => setIsUpdated(!isUpdated)}>
+                <div
+                  className={"modif-button" + post.eventType}
+                  onClick={() => setIsUpdated(!isUpdated)}
+                >
                   <img src="./img/icons/edit.svg" alt="edit-btn" />
                 </div>
                 <DeleteCard id={post._id} />
               </div>
-            ) : "" }
+            ) : (
+              ""
+            )}
 
             <div className="card-footer">
               <div className="comment-icon">
@@ -127,32 +135,15 @@ const Card = ({ post, postId,usersData, userData }) => {
               </div>
               <FavoriteButton post={post} />
 
-              <div>
-                {/* Quand on veut supprimer un post et qu'on est Admin  */}
-                {/* {userData._id !== post.posterId && userData.isAdmin === true ?  (
-                  <div className="btn">
-                    <span
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            "Voulez-vous supprimer ce commentaire?"
-                          )
-                        ) {
-                          handleDelete();
-                        }
-                      }}
-                    >
-                      <img src="./img/icons/trash.svg" alt="delete" />
-                    </span>
-                  </div>
-                ) : (
-                  ""
-                )} */}
-              </div>
-
               <img src="./img/icons/share.svg" alt="share" />
             </div>
-            {showComments && <CardComments post={post} userData={userData} usersData={usersData} />}
+            {showComments && (
+              <CardComments
+                post={post}
+                userData={userData}
+                usersData={usersData}
+              />
+            )}
           </div>
         </>
       )}
