@@ -1,26 +1,55 @@
 .homeSearch2 {
   height: 50px;  
-  width: 83%;
+  width: 85%;
   border: 1px solid $color-1;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
+ 
 
   .prompt {
     padding: 10px;
+    font-size: 20px;
     width: 90%;
     height: 50px;
     border: none;
     background-color: transparent;
+    color: $color-4;
+
+    &::placeholder{
+        color: $color-4;
+    }
   }
-  .searchBar {
-      width:30px;
+  .searchBar2 {
+      width:70px;
+      height: 50px;
       margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+
+      &:hover{
+        background-color: $gray;
+        border-radius: 10px;
+        // width: 99%;
+        height: 99%;
+        border: 1px 1px 1px 0 solid $color-1;
+      }
+
+      &:focus{
+        background-color: $color-1;
+      }
+
     #searchIcon {
       height: 20px;
       width: 20px;
       cursor: pointer;
+      align-self: center;
+      align-items: center;
+      &:hover{
+        transform: scale(1.1);
+      }
     }
   }
 }

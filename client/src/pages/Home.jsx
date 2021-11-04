@@ -8,7 +8,7 @@ import Trends from "../components/Post/Trends";
 import NewPostForm from "../components/Post/NewPostForm";
 import { Redirect } from "react-router-dom";
 import logo from "../img/logo2.png";
-import searchIcon from "../img/searchIcon2.png";
+
 
 const Home = () => {
   const posts = useSelector((state) => state.postReducer);
@@ -41,18 +41,6 @@ const Home = () => {
             <div className="right-side">
               <div className="right-side-container">
                 <div className="wrapper">
-                  <div className="homeSearch">
-                    <div className="homeSearch2">
-                      <input
-                        type="text"
-                        className="prompt"
-                        placeholder="rechercher..."
-                      />
-                      <span className="searchBar">
-                        <img id="searchIcon" src={searchIcon} alt="" />
-                      </span>
-                    </div>
-                  </div>
                   <Trends
                     posts={posts}
                     userData={userData}

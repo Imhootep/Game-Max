@@ -2,41 +2,13 @@
     margin-top: 50px;
      
 }
-.homeSearch{
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    
-    input{
-        height: 40px;
-        padding-left: 50px ;
-        width: 90%;
-        border: solid 1px $color-mauve;
-    }
-    a{
-        position: absolute;
-        border: 1px solid;
-        border-radius: 20px;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-           
-        img{
-            width: 20px;
-            height: 20px;
-            align-self: center;    
-        }
-    }
-   
-}
+
 .trends{
     background-color: rgba(140, 77, 148, 0.3);
     border-radius: 20px;
     min-height:500px;
     max-width: 85%;
-    margin: 30px auto 40px auto;  
+    margin: 0px auto 40px auto;  
 }
 .eventBlock, .favoriteBlock{
     padding:10px 0 15px 0;

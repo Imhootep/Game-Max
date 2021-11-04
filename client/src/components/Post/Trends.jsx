@@ -13,6 +13,7 @@ import Modal from "../Modals";
 import { UidContext } from '../AppContext';
 import { deletePost } from "../../actions/post.actions";
 
+
 const Trends = ({posts,userData,usersData}) => {
 
   const uid = useContext(UidContext)
@@ -89,6 +90,8 @@ const Trends = ({posts,userData,usersData}) => {
         {/* version clean mais probleme de load avec la requete qui se refait quand on scroll */}
       {posts.map((vals) => {
            return (
+            
+            
             incomingEvent === vals._id && incomingEventDate === vals.date ?
               <div className="eventBlock">
               <b>Prochain évènement</b>
@@ -115,10 +118,12 @@ const Trends = ({posts,userData,usersData}) => {
               {vals.picture === "" && vals.video === "" ? <img className={"favoriteEventBanner favoriteEventBanner" + vals.eventType } src={eventdefault}/> : ''}
               <div className={"eventMess"}>{vals.message}</div>
             </div>
+          
            : 
            ''
-        )})}
-
+        )
+        
+        })}
           {incomingEvent === '' ?
             <div className="eventBlock">
               <b>Prochain évènement</b>
