@@ -58,7 +58,8 @@ const UpdateProfil = ({userData,usersData}) => {
           </h5> */}
           
             <span className="passwordModify" onClick={()=>showModal()}>
-              Modifier le mot de passe
+              <button>Modifier le mot de passe</button>
+              
             </span>
          
           </div>
