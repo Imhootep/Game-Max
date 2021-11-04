@@ -81,15 +81,16 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 // -----------------------------------------------------------------------
 //Confirmation de l'inscription une fois que le lien dans l'email de confirmation a été cliqué
 module.exports.validateUser = async (req, res) => {
-  console.log("J'entre dans validateUser avec comme uniqueString : " + uniqueString)
-  const user = await UserModel.updateOne(
-    {uniqueString: uniqueString}, {$set: {isValid: true}}
+  console.log("J'entre dans validateUser avec comme uniqueString : " + req.params.uniqueString)
+  const user = await UserModel.findOne(
+    {uniqueString: req.params.uniqueString}
   )
+  console.log(user)
   if(user){
-    res.status(201).send("Validation done.");
+    await user.updateOne({$set: {isValid: true}}).then(res.status(201).send("Validation effectuée."));
   }
   else{
-    res.status(404).send("User not found.");
+    res.status(404).send("Utilisateur introuvable.");
   }
 };
 
