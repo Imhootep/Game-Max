@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 // import star from "../img/star.png";
 // import exemple from "../../img/0125.png";
+import eventdefault from "../../img/eventdefault.jpg";
+
 import { getTrends, getFavorites } from "../../actions/post.actions";
 // import { NavLink } from "react-router-dom";
 import Modal from "../Modals";
@@ -106,6 +108,11 @@ const Trends = ({posts,userData,usersData}) => {
                 title={vals._id}
               ></iframe>
               )}
+              {console.log("vals.picture")}
+              {console.log(vals.picture)}
+              {console.log("vals.video")}
+              {console.log(vals.video)}
+              {vals.picture !== true && vals.video !== true && <img className={"favoriteEventBanner favoriteEventBanner" + vals.eventType } src={eventdefault}/>}
               <div className={"eventMess"}>{vals.message}</div>
             </div>
            : 
