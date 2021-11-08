@@ -49,7 +49,7 @@ const NewPostForm = () => {
       if (event === true) data.append("isEvent", true);
 
       await dispatch(addPost(data));
-      window.location.reload();
+      // window.location.reload();
       // dispatch(getPosts());
       cancelPost();
     } else {

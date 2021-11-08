@@ -15,6 +15,9 @@ const Thread = ({ posts, userData, data }) => {
   //si on le fait passer en props et qu'on recupere ici ça ne marche pas sans le getusers du useeffects en dessous...wtf?
   const usersData = useSelector((state) => state.usersReducer); 
 
+  const [filteredData, setFilteredData] = useState ([]);
+
+
   useEffect(() => {
     dispatch(getUsers());
   }, []);
@@ -39,6 +42,15 @@ const Thread = ({ posts, userData, data }) => {
     return () => window.removeEventListener("scroll", loadMore);
   }, [loadPost, dispatch, count]);
 
+  const handleFilter = (e) =>{
+     const searchWord = e.target.value
+     const newFilter = data.filter((value)=>{
+        return value.title.includes(searchWord) 
+     })
+     setFilteredData(newFilter);
+  } 
+
+
   return (
     <div className="thread-container">
 
@@ -48,20 +60,23 @@ const Thread = ({ posts, userData, data }) => {
           type="text"
           className="prompt"
           placeholder="Recherche de posts ..."
+          onChange={handleFilter}
         />
 
         <div className="searchIcon">
             <SearchIcon />
         </div>
+        {filteredData.length !== 0 && (
         <div className="dataResult">
-            {data.map((value, key)=>{
+            {filteredData.map((value, key)=>{
                 return <div>
                     <p>{value.title}</p>
                     </div>
             })}
         </div>
+        )}
       </div>
-      
+        
       <ul>
 
           {/*-------------- Fil d'actualité -------------------------------------- */}
