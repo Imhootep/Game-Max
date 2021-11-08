@@ -6,8 +6,6 @@ const nodemailer = require('nodemailer');
 
 //Déclaration de variables/constantes
 var uniqueString = "";
-var resetPass = "";
-var cryptedPass = "";
 const maxAge = 2 * 24 * 60 * 60 * 1000;
 const bcrypt = require('bcrypt');
 
@@ -162,7 +160,8 @@ module.exports.signIn = async (req, res) => {
 module.exports.forgottenPassword = async (req, res) => {
   console.log("J'entre dans forgottenPassword !")
   let email = req.body.email;
-  resetPass = randomResetString();
+  var resetPass = randomResetString();
+  var cryptedPass = "";
   const user = await UserModel.findOne({email: email});
   if(user){
     const salt = await bcrypt.genSalt();
