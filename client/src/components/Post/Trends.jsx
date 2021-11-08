@@ -109,12 +109,9 @@ const Trends = ({posts,userData,usersData}) => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title={vals._id}
+                width="100%"
               ></iframe>
               )}
-              {console.log("vals.picture")}
-              {console.log(vals.picture)}
-              {console.log("vals.video")}
-              {console.log(vals.video)}
               {vals.picture === "" && vals.video === "" ? <img className={"favoriteEventBanner favoriteEventBanner" + vals.eventType } src={eventdefault}/> : ''}
               <div className={"eventMess"}>{vals.message}</div>
             </div>
@@ -154,6 +151,8 @@ const Trends = ({posts,userData,usersData}) => {
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           title={val._id}
+                          width="150"
+                          height="80"
                         ></iframe>
                       )}
                       {/* {isEmpty(val.picture) && isEmpty(val.video) && (

@@ -25,9 +25,6 @@ const EditDeleteComment = ({ comment, postId }) => {
 
   const handleDelete = () => dispatch(deleteComment(postId, comment._id));
 
-  
-
-
   useEffect(() => {
     const checkAuthor = () => {
       if (uid === comment.commenterId) {

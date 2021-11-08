@@ -1,261 +1,73 @@
 .left-nav-container {
-    position: relative;
-    min-width: 70px; //gui
-    order:-2; //gui
-    margin: 25px 0 0 20px; //gui
+  position: relative;
+  min-width: 70px; //gui
+  order: -2; //gui
+  margin: 25px 0 0 20px; //gui
+  display: flex;
+  flex-direction: column;
+
+  @media screen and(max-width: 1007px) {
     display: flex;
-    flex-direction: column;
-
-    @media screen and(max-width: 750px) {
-
-      display: flex;
-      position: fixed;
-      flex-direction: row;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      margin: 0 0 0 0;
-      // margin-bottom: 20px;
-      background-color: $color-1;
-      // border-radius: 20px;
-      top: 50px;
-      z-index: 100;
-    }
-  
-    .icons {
-      position: fixed;
-      top: 80px;
-      z-index: 10;
-  
-      @media screen and(max-width: 750px) {
-        // margin: 10px 0 0 -9px;
-        display: flex;
-        flex-direction: row;
-        top: 60px;
-        margin: 0 0 20px 0;
-        .icons-bis{
-          display: flex;
-          flex-direction: row;
-          margin: 0 0 0 5px ;
-          
-          a{
-            padding-right: 10px;
-          }
-          
-        }
-      }
-  
-      .icons-bis {
-        // position: absolute; //gui
-        left: 10px;
-        top: 20px;
-  
-        a {
-          transition: 0.1s;
-          display: inline-block;
-          margin-top: 25px;
-  
-          &:before {
-            transition: .15s ease;
-            transform: scale(0);
-            transform-origin: center;
-            z-index: -10;
-            content: "";
-            height: 60px;
-            width: 60px;
-            position: absolute;
-            left: -8px;
-            top: -5px;
-            background: $color-5;
-            border-radius: 50px;
-          }
-  
-          &:hover {
-            transform: scale(1.02);
-          }
-          &:hover::before {
-            transform: scale(1);
-            @media screen and(max-width: 750px) {
-              background: $color-1;
-              height: 34px;
-              width: 34px;
-            }
-          }
-  
-          img {
-            @media screen and(max-width: 750px) {
-              height: 34px;
-              width: 34px;
-            }
-          }
-        }
-
-        // a:hover{
-        //   img{
-        //     width:35px;
-        //     margin:auto;
-        //     text-align: center;
-        //   }
-        // }
-  
-        .active-left-nav {
-          position: relative;
-  
-          &::after {
-            content: "";
-            height: 40px;
-            width: 5px;
-            position: absolute;
-            background: $color-1;
-            left: -7px;
-            bottom: 8px;
-            border-radius: 40px;
-            transform: scaleY(0);
-            animation: scale 1.5s ease forwards;
-  
-            @keyframes scale {
-              to {
-                transform: scaleY(1);
-              }
-            }
-            @media screen and(max-width: 750px) {
-              height: 33px;
-              left: -8px;
-            }
-          }
-        }
-  
-        #homeHover{
-          display: none;
-        }
-  
-        a:hover #homeHover{
-          display: block;
-          position: absolute;
-          margin: 5px 0 0 60px;
-          background-color:#CBC3E3;
-          width:100px;
-          height:40px;
-          text-align:center;
-          padding:10px 0 0 0;
-        }
-  
-        #studioHover{
-          display: none !important;
-        }
-  
-        #studioHoverParent:hover #studioHover{
-          display: block !important;
-          position: absolute;
-          margin: 5px 0 0 60px;
-          background-color:#CBC3E3;
-          width:100px;
-          height:40px;
-          text-align:center;
-          padding:10px 0 0 0;
-        }
-  
-        #profilHover{
-          display: none;
-        }
-  
-        #profilHoverParent:hover #profilHover{
-          display: block;
-          position: absolute;
-          margin: 5px 0 0 60px;
-          background-color:#CBC3E3;
-          width:100px;
-          height:40px;
-          text-align:center;
-          padding:10px 0 0 0;
-        }
-        
-        #adminHover{
-          display: none;
-        }
-  
-        #adminHoverParent:hover #adminHover{
-          display: block;
-          position: absolute;
-          margin: 5px 0 0 60px;
-          background-color:#CBC3E3;
-          width:100px;
-          height:40px;
-          text-align:center;
-          padding:10px 0 0 0;
-        }
-        
-        #discordHover{
-          display: none;
-        }
-  
-        #discordHoverParent:hover #discordHover{
-          display: block;
-          position: absolute;
-          margin: 5px 0 0 60px;
-          background-color:#CBC3E3;
-          width:100px;
-          height:40px;
-          text-align:center;
-          padding:10px 0 0 0;
-        }
-        
-      }
-    }
-  }
-  
-  .NavImg{
-    width:44px;
-  }
-  
-  .sm-link{
-
     position: fixed;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    // margin-bottom: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    margin: 0 0 0 0;
+    background-color: $color-4;
+    top: 80px;
+    z-index: 100;
+  }
 
-    @media screen and(max-width: 750px){
+  .icons {
+    position: fixed;
+    top: 80px;
+    z-index: 10;
+
+    @media screen and(max-width: 1007px) {
+      width: 100%;
+      display: flex;
       flex-direction: row;
-      height: 40px;
-      top: 60px;
-      right: 10px;
+      justify-content: space-around;
+      top: 70px;
+      margin: 0 0 20px 0;
 
-      a{
-        padding-left: 10px;
+      .icons-bis {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin: 0 0 0 5px;
       }
     }
 
-    @media screen and(max-width: 450px){
-      
-      a{
+    .icons-bis {
+      left: 10px;
+      top: 20px;
 
-        padding: 0;
-
-      img{
-        height: 20px;
-        width: 20px;
-        padding-right: 10px;
-      }
-    }
-    }
-
-    a {
+      a {
         transition: 0.1s;
         display: inline-block;
+        margin-top: 25px;
 
         &:before {
-          transition: .15s ease;
+          transition: 0.15s ease;
           transform: scale(0);
           transform-origin: center;
           z-index: -10;
           content: "";
-          height: 30px;
-          width: 30px;
+          height: 60px;
+          width: 60px;
           position: absolute;
+          left: -8px;
+          top: -5px;
           background: $color-5;
           border-radius: 50px;
+
+          @media screen and(max-width: 1007px) {
+          }
+          background-color: $white;
         }
 
         &:hover {
@@ -270,14 +82,178 @@
           }
         }
 
-        img{
-            width: 30px;
-            height: 30px;
+        img {
+          @media screen and(max-width: 750px) {
+            height: 34px;
+            width: 34px;
+          }
         }
-        .NavImgSite{
-          width: 60px;
+      }
+
+      // a:hover{
+      //   img{
+      //     width:35px;
+      //     margin:auto;
+      //     text-align: center;
+      //   }
+      // }
+
+      .active-left-nav {
+        position: relative;
+
+        &::after {
+          content: "";
+          height: 40px;
+          width: 5px;
+          position: absolute;
+          background: $color-1;
+          left: -7px;
+          bottom: 8px;
+          border-radius: 40px;
+          transform: scaleY(0);
+          animation: scale 1.5s ease forwards;
+
+          @keyframes scale {
+            to {
+              transform: scaleY(1);
+            }
+          }
+          @media screen and(max-width: 1007px) {
+            height: 33px;
+            left: -8px;
+            // background: $white;
+          }
         }
+      }
+
+      #homeHover {
+        display: none;
+      }
+
+      a:hover #homeHover {
+        display: block;
+        position: absolute;
+        margin: 5px 0 0 60px;
+        background-color: #cbc3e3;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        padding: 10px 0 0 0;
+      }
+
+      #studioHover {
+        display: none !important;
+      }
+
+      #studioHoverParent:hover #studioHover {
+        display: block !important;
+        position: absolute;
+        margin: 5px 0 0 60px;
+        background-color: #cbc3e3;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        padding: 10px 0 0 0;
+      }
+
+      #profilHover {
+        display: none;
+      }
+
+      #profilHoverParent:hover #profilHover {
+        display: block;
+        position: absolute;
+        margin: 5px 0 0 60px;
+        background-color: #cbc3e3;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        padding: 10px 0 0 0;
+      }
+
+      #adminHover {
+        display: none;
+      }
+
+      #adminHoverParent:hover #adminHover {
+        display: block;
+        position: absolute;
+        margin: 5px 0 0 60px;
+        background-color: #cbc3e3;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        padding: 10px 0 0 0;
+      }
+
+      #discordHover {
+        display: none;
+      }
+
+      #discordHoverParent:hover #discordHover {
+        display: block;
+        position: absolute;
+        margin: 5px 0 0 60px;
+        background-color: #cbc3e3;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        padding: 10px 0 0 0;
+      }
     }
   }
+}
 
-  
+.NavImg {
+  width: 44px;
+}
+
+.sm-link {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  // margin-bottom: 20px;
+
+  @media screen and (max-width: 1007px) {
+    display: none;
+  }
+
+  a {
+    transition: 0.1s;
+    display: inline-block;
+
+    &:before {
+      transition: 0.15s ease;
+      transform: scale(0);
+      transform-origin: center;
+      z-index: -10;
+      content: "";
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      background: $color-5;
+      border-radius: 50px;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
+    &:hover::before {
+      transform: scale(1);
+      @media screen and(max-width: 750px) {
+        background: $color-1;
+        height: 34px;
+        width: 34px;
+      }
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    .NavImgSite {
+      width: 60px;
+    }
+  }
+}
