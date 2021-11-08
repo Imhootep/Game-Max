@@ -54,9 +54,9 @@ function SearchHome(placeholder, data) {
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
-      <button>
+      {/* <button>
         <span>Vider</span>
-      </button>
+      </button> */}
     </div>
   );
 }
