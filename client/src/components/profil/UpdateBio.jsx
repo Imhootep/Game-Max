@@ -29,16 +29,41 @@ const UpdateBio = ({userData}) => {
 
   //fonction pour mise à jour de la bio
   const handleUpdate = () => {
-
-    console.log("serData.social.discord::")
-    console.log(userData.social.discord)
     
-    if(userData.social.discord.includes("http") === false){userData.social.discord = "https://"+userData.social.discord}
-    if(userData.social.twitter.includes("http") === false){userData.social.twitter = "https://"+userData.social.twitter}
-    if(userData.social.youtube.includes("http") === false){userData.social.youtube = "https://"+userData.social.youtube}
-    if(userData.social.facebook.includes("http") === false){userData.social.facebook = "https://"+userData.social.facebook}
-    if(userData.social.instagram.includes("http") === false){userData.social.instagram = "https://"+userData.social.instagram}
-    if(userData.social.twitch.includes("http") === false){userData.social.twitch = "https://"+userData.social.twitch}
+    //sécurisation des liens avant envoi by Guillaume Entreprise V2
+    //discord
+    if(userData.social.discord.toLowerCase().includes("discord.com") === true){
+      if(userData.social.discord.toLowerCase().includes("http") === false){userData.social.discord = "https://"+userData.social.discord}
+      // if(userData.social.discord.includes(".com") === false){userData.social.discord = userData.social.discord+".com"} //le .com n'est pas a la fin d'un lien...
+    }else{if(userData.social.discord !== ''){alert('Un lien vers un discord doit contenir "discord.com"');userData.social.discord = ''}}
+    //twitter
+    if(userData.social.twitter.toLowerCase().includes("twitter.com") === true){
+      if(userData.social.twitter.toLowerCase().includes("http") === false){userData.social.twitter = "https://"+userData.social.twitter}
+    }else{ if(userData.social.twitter !== ''){alert('Un lien vers un twitter doit contenir "twitter.com"'); userData.social.twitter = '';}}
+    //youtube
+    if(userData.social.youtube.toLowerCase().includes("youtube.com") === true){
+      if(userData.social.youtube.toLowerCase().includes("http") === false){userData.social.youtube = "https://"+userData.social.youtube}
+    }else{ if(userData.social.youtube !== ''){alert('Un lien vers un youtube doit contenir "youtube.com"'); userData.social.youtube = '';}}
+    //facebook
+    if(userData.social.facebook.toLowerCase().includes("facebook.com") === true){
+      if(userData.social.facebook.toLowerCase().includes("http") === false){userData.social.facebook = "https://"+userData.social.facebook}
+    }else{ if(userData.social.facebook !== ''){alert('Un lien vers un facebook doit contenir "facebook.com"'); userData.social.facebook = '';}}
+    //instagram
+    if(userData.social.instagram.toLowerCase().includes("instagram.com") === true){
+      if(userData.social.instagram.toLowerCase().includes("http") === false){userData.social.instagram = "https://"+userData.social.instagram}
+    }else{ if(userData.social.instagram !== ''){alert('Un lien vers un instagram doit contenir "instagram.com"'); userData.social.instagram = '';}}
+    //twitch
+    if(userData.social.twitch.toLowerCase().includes("twitch.tv") === true){
+      if(userData.social.twitch.toLowerCase().includes("http") === false){userData.social.twitch = "https://"+userData.social.twitch}
+    }else{ if(userData.social.twitch !== ''){alert('Un lien vers un twitch doit contenir "twitch.tv"'); userData.social.twitch = '';}}
+
+    //protection V1
+    // if(userData.social.discord.includes("http") === false && userData.social.discord !== ''){userData.social.discord = "https://"+userData.social.discord}
+    // if(userData.social.twitter.includes("http") === false && userData.social.twitter !== ''){userData.social.twitter = "https://"+userData.social.twitter}
+    // if(userData.social.youtube.includes("http") === false && userData.social.youtube !== ''){userData.social.youtube = "https://"+userData.social.youtube}
+    // if(userData.social.facebook.includes("http") === false && userData.social.facebook !== ''){userData.social.facebook = "https://"+userData.social.facebook}
+    // if(userData.social.instagram.includes("http") === false && userData.social.instagram !== ''){userData.social.instagram = "https://"+userData.social.instagram}
+    // if(userData.social.twitch.includes("http") === false && userData.social.twitch !== ''){userData.social.twitch = "https://"+userData.social.twitch}
 
     dispatch(
       updateBio(userData._id, {
