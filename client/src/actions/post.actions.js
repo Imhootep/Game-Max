@@ -206,12 +206,15 @@ export const getFavorites = (id) => {
   };
 };
 
-export const searchPost = (array) => {
+export const searchPost = (word) => {
   return (dispatch) => {
-    return axios
-      .get(`${process.env.REACT_APP_API_URL}/contains/`, { headers : { Authorization : "Bearer "+Cookies.get('jwt') } })
-      .then((res) => {
-        dispatch({ type: SEARCH_POSTS, payload: array });
+    return axios({
+      method : "get",
+      url:`${process.env.REACT_APP_API_URL}/contains/`,
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') }, 
+      data:{search:word},
+    }).then((res) => {
+        dispatch({ type: SEARCH_POSTS, payload: word });
       })
       .catch((err) => console.log(err));
   };

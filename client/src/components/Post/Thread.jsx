@@ -39,7 +39,7 @@ const Thread = ({posts,userData}) => {
 
     return (
         <div className="thread-container">
-            <SearchHome placeholder="Recherche ..."/>
+            {/* <SearchHome/> */}
             <ul>
                 {posts.map((post)=>{
                     return <Card post={post} key={post._id} usersData={usersData} userData={userData}/>
