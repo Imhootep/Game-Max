@@ -5,15 +5,11 @@ import { addPost } from "../../actions/post.actions";
 import { isEmpty } from "../Utils";
 import { timestampParser } from "../Utils";
 import { getRoledUsers } from "../../actions/users.actions";
-// import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.snow.css';
-// import Parser from 'html-react-parser';
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [title, setTitle] = useState("");
-  // const setQuillMessage = (e) => setMessage(e.target.value)
   const [event, setEvent] = useState(false);
   const [date, setDate] = useState("");
   const [typeEvent, setTypeEvent] = useState("");
@@ -23,7 +19,6 @@ const NewPostForm = () => {
   const userData = useSelector((state) => state.userReducer);
   const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
-  const [postRole, setPostRole] = useState("");
   let imagePath = process.env.REACT_APP_API_URL + userData.picture;
 
   const handlePicture = (e) => {
@@ -49,7 +44,7 @@ const NewPostForm = () => {
       if (event === true) data.append("isEvent", true);
 
       await dispatch(addPost(data));
-      // window.location.reload();
+      window.location.reload();
       // dispatch(getPosts());
       cancelPost();
     } else {
@@ -114,29 +109,6 @@ const NewPostForm = () => {
         <i className="fas fa-spinner fa-pulse"></i>
       ) : (
         <>
-          {/* <div className="data">
-            <p>
-              {" "}
-              <span>
-                {userData.following ? userData.following.length : 0}{" "}
-              </span>{" "}
-              Abonnement
-              {userData.following && userData.following.length > 1
-                ? "s"
-                : null}{" "}
-            </p>
-            <p>
-              {" "}
-              <span>
-                {userData.followers ? userData.followers.length : 0}{" "}
-              </span>{" "}
-              Abonné
-              {userData.followers && userData.followers.length > 1
-                ? "s"
-                : null}{" "}
-            </p>
-          </div> */}
-
           <div className="post-form">
             <div className="post-form1">
             <NavLink exact to="/profil">
