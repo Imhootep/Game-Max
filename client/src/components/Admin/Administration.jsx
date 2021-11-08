@@ -5,26 +5,14 @@ import { getUser} from "../../actions/user.actions";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { CSVLink} from "react-csv";
-// import  { Redirect } from 'react-router-dom';
 import { UidContext } from '../AppContext';
-// import Csv from './Csv';
-// import { setDisableUserFalse, setDisableUserTrue } from '../../../controllers/user.controller';
-
 import check from '../../img/check.svg';
 import disabledIco from '../../img/disabled.svg';
-// import bin from '../img/bin.svg';
 import pen from '../../img/pen.svg';
-// import cross from '../img/cross.svg';
 import cross2 from '../../img/cross2.svg'; //choisir
-// import thumb from '../img/thumb.svg';
-import info from '../../img/info.svg';
-// import skull from '../img/skull.svg';
-// import skull2 from '../img/skull2.svg';
 import skull3 from '../../img/skull3.svg';
-// import skull4 from '../img/skull4.svg';
 import heart from '../../img/heart.svg';
 import cursorPointer from '../../img/cursor-pointer.png';
-import { isEmpty } from '../Utils';
 
 const Administration = () => {
 
@@ -37,30 +25,7 @@ const Administration = () => {
     const user = useSelector((state) => state.userReducer);
     useEffect(()=>{
         dispatch(getUser())
-        // console.log("ce que user.isAdmin contient avant la condition du redirect: ")
-        // console.log(user.isAdmin)
-        // fonctionne MAIS si un admin tape l'url ca va le redirect
-        // if(user.isAdmin === undefined || user.isAdmin !== true){
-        //     console.log("premier passage")
-        //     window.location.href = "/"; //marche dans le useeffect
-        //     return <Redirect to='/'  /> // ne marche que en dehors du useeffect
-        // }
-
-        // if(user.isAdmin === undefined){
-        //     console.log("premier passage")
-        //     window.location.href = "/";
-        //     return <Redirect to='/'  />
-        // }
-        // if(user.isAdmin !== true){
-        //     console.log("deuxieme passage")
-        //     window.location.href = "/home";
-        //     return <Redirect to='/Home'  />
-        // }
     }, [])
-
-    // if(user.isAdmin === undefined || user.isAdmin !== true){
-    //     return <Redirect to='/Home'  />
-    // }
 
     //all users
     const users = useSelector((state) => state.usersReducer);
@@ -83,7 +48,7 @@ const Administration = () => {
       ];
     const [csvData,setCsvData] = useState([]); //"firstname", "lastname", "email"
     
-    // useeffect qui rempli bien les données, maintenant il faut le dl en csv MDR
+    // useeffect qui rempli bien les données, maintenant il faut le dl en csv
     useEffect(()=>{
         console.log("longueur")
         console.log(users.length)
@@ -98,21 +63,6 @@ const Administration = () => {
             console.log("CSV deja rempli !")
         }
     }, [users])
-
-    // const [theArray, setTheArray] = useState([]); //sans cette ligne et la const addEntryClick le useeffect du dessus ne mache pas...WTF???
-    // const addEntryClick = () => {
-    //     setTheArray(oldArray => [...oldArray, `Entry ${oldArray.length}`]);
-    //     console.log("theArray")
-    //     console.log(theArray)
-    // };
-    
-    // le csv de base comme dans le tuto
-    // const csvData = [
-    //             ["firstname", "lastname", "email"],
-    //             // [csvToSend[0], csvToSend[1], csvToSend[3]],
-    //             ["Raed", "Labes", "rl@smthing.co.com"],
-    //             ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-    //         ];
 
     // role d'un non validé
     const handleRole = (data) =>{
@@ -187,7 +137,6 @@ const Administration = () => {
         setCompanyUser(data);
     }
     
-
     //valider le role d'un nouveau user
     const validate = (id) => {
         return axios({
@@ -213,7 +162,6 @@ const Administration = () => {
         } 
     }
 
-    
     // bloc info admin
     const showHTD = () => { //a mettre en react 
         if(document.getElementById("howToDoContent").style.display === "none" || document.getElementById("howToDoContent").style.display === '' || document.getElementById("howToDoContent").style.display === null){
@@ -222,8 +170,6 @@ const Administration = () => {
             document.getElementById("howToDoContent").style.display = "none";
         }
     };
-
-
 
 
     return (

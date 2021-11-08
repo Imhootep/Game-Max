@@ -61,7 +61,7 @@ const confirmEmail = (pseudo, email, uniqueString) => {
       to: email,
       subject: "<No-Reply>Confirmation de votre adresse email",
       html: `Bonjour ${pseudo}, vous venez de vous enregistrer sur le site de Game-Max.<br>
-            Cliquez <a href=http://localhost:8000/api/user/validation/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
+            Cliquez <a href=${process.env.API_URL}/api/user/validation/${uniqueString}> sur ce lien </a> pour vérifier et confirmer votre adresse email.<br>
             Vous serez ensuite mis en attente jusqu'à ce qu'un administrateur vous attribue un rôle. Vous pourrez alors vous connecter avec vos identifiants.<br>
             Bien amicalement,<br>
             l'équipe Game-Max.
@@ -81,15 +81,18 @@ const confirmEmail = (pseudo, email, uniqueString) => {
 // -----------------------------------------------------------------------
 //Confirmation de l'inscription une fois que le lien dans l'email de confirmation a été cliqué
 module.exports.validateUser = async (req, res) => {
-  console.log("J'entre dans validateUser avec comme uniqueString : " + uniqueString)
-  const user = await UserModel.updateOne(
-    {uniqueString: uniqueString}, {$set: {isValid: true}}
+  console.log("J'entre dans validateUser avec comme uniqueString : " + req.params.uniqueString)
+  const user = await UserModel.findOne(
+    {uniqueString: req.params.uniqueString}
   )
-  if(user){
-    res.status(201).send("Validation done.");
+  if(user && user.isValid){
+    res.status(400).send("Ce compte a déja été validé. Si vous ne pouvez pas vous encore vous connecter, vous devez attendre qu'un administrateur vous octroie un rôle.")
+  }
+  else if(user && !user.isValid){
+    await user.updateOne({$set: {isValid: true}}).then(res.status(200).send("Compte validé. Un administrateur va prochainement vous octroyer un rôle. Dès lors, vous serez notifié par mail et vous pourrez ensuite vous connecter."));
   }
   else{
-    res.status(404).send("User not found.");
+    res.status(404).send("Utilisateur introuvable : validation impossible.");
   }
 };
 
@@ -134,8 +137,7 @@ module.exports.signUp = async (req, res) => {
 };
 
 // ------------------------------------------------------------------------------------
-//Identification sur le site à l'aide des identifiants
-
+//Identification sur le site à l'aide des identifiants (logique)
 module.exports.signIn = async (req, res) => {
   const { email, password } = req.body
 

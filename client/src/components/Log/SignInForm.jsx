@@ -9,7 +9,7 @@ const SignInForm = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [uid, setUid] = useState(null);
+    // const [uid, setUid] = useState(null);
     const [openModal, setOpenModal] = useState(false);
 
     const showModal = () => {

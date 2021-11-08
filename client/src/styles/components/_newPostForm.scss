@@ -10,6 +10,13 @@
   background: $color-2;
   border: solid 2px $color-1;
 
+  
+  @media screen and(max-width: 1007px) {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+
 
   i {
     font-size: 1.5rem;

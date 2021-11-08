@@ -6,36 +6,36 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
-
+// Affichage des posts
 module.exports.readPost = (req, res) => {
   PostModel.find((err, docs) => {
     if (!err) res.send(docs);
     else console.log("Error to get data : " + err);
   }).sort({ createdAt: -1 });
 };
-
+// Création d'un post ou event sur base des données reçues
 module.exports.createPost = async (req, res) => {
 
-  let fileName = Date.now()+"_"+req.body.posterId;
+  let fileName = Date.now()+"_"+req.body.posterId; // nom du fichier au format : "date" _ "id du posteur" pour les différencier et ne jamais avoir deux les mêmes
   let entiereFileName = "";
-  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;  
+  if(req.file !== null) entiereFileName = fileName+req.file.detectedFileExtension;   
   
   if (req.file !== null) {
     try {
-      if (
+      if (// erreur si l'extension n'est pas parmis jpg/png/jpeg
         req.file.detectedMimeType != "image/jpg" &&
         req.file.detectedMimeType != "image/png" &&
         req.file.detectedMimeType != "image/jpeg"
       )
         throw Error("invalid file");
-
+      //limitation sur la taille : 500 ko
       if (req.file.size > 500000) throw Error("max size");
     } catch (err) {
       const errors = uploadErrors(err);
       return res.status(201).json({ errors });
     }
 
-    try {
+    try { // insertion de l'image dans le dossier uploads/posts
     await pipeline(
       req.file.stream,
       fs.createWriteStream(
@@ -68,6 +68,7 @@ module.exports.createPost = async (req, res) => {
   }
 };
 
+// Mise a jour du message d'un post sur base de son id
 module.exports.updatePost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -88,35 +89,34 @@ module.exports.updatePost = (req, res) => {
   );
 };
 
+// SUppression d'un post sur base de son id 
 module.exports.deletePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
-
-    const users = await UserModel.find();
-    for(let i = 0; i < users.length; i++){
-      for(let j = 0; j < users[i].likes.length; j++){
-        if(users[i].likes[j] === req.params.id){
-          users[i].likes.splice(j, 1);
-          await UserModel.updateOne({ _id: users[i]._id }, { $set: { likes: users[i].likes } });      
+    PostModel.findByIdAndRemove(req.params.id, async (err, docs) => { // suppression du post
+    if (!err) {
+      if(docs.picture !== ''){
+      fs.unlinkSync( // Suppression de l'image stockée si il y en a une 
+        `${docs.picture}`
+        ) 
+      }
+      const users = await UserModel.find();
+      for(let i = 0; i < users.length; i++){ // on boucle sur tous les utilisateurs
+        for(let j = 0; j < users[i].likes.length; j++){ // on boucle sur tous les likes de l'utilisateur en question
+          if(users[i].likes[j] === req.params.id){ // on vérifie si cet utilisateur a "liké" le post supprimé 
+            users[i].likes.splice(j, 1); // on enlève le like à l'utilisateur
+            await UserModel.updateOne({ _id: users[i]._id }, { $set: { likes: users[i].likes } });  // on met à jour en db sa liste de like (sans le post supprimé)    
+          }
         }
       }
-    }
-
-
-    PostModel.findByIdAndRemove(req.params.id, (err, docs) => {
-      if (!err) {
-    if(docs.picture !== ''){
-    fs.unlinkSync(
-      `${docs.picture}`
-      ) 
-    }
-    res.send(docs);
+      res.send(docs);
     }
     else console.log("Delete error : " + err);
   });
 };
 
+// Like d'un post sur base de l'id du post
 module.exports.likePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -125,17 +125,17 @@ module.exports.likePost = async (req, res) => {
     await PostModel.findByIdAndUpdate(
       req.params.id,
       {
-        $addToSet: { likers: req.body.id },
+        $addToSet: { likers: req.body.id }, // on ajoute au post l'id de la personne qui a like
       },
       { new: true },
       (err, docs) => {
         if (err) return res.status(400).send(err);
       }
     );
-    await UserModel.findByIdAndUpdate(
+    await UserModel.findByIdAndUpdate( 
       req.body.id,
       {
-        $addToSet: { likes: req.params.id },
+        $addToSet: { likes: req.params.id }, // on ajoute à l'utilisateur l'id du post qui a été like
       },
       { new: true },
       (err, docs) => {
@@ -148,6 +148,7 @@ module.exports.likePost = async (req, res) => {
   }
 };
 
+// Suppression d'un like d'un post sur base de l'id du post
 module.exports.unlikePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -156,7 +157,7 @@ module.exports.unlikePost = async (req, res) => {
     await PostModel.findByIdAndUpdate(
       req.params.id,
       {
-        $pull: { likers: req.body.id },
+        $pull: { likers: req.body.id }, // on enlève l'id de l'utilisateur qui avait liké (dans le post)
       },
       { new: true },
       (err, docs) => {
@@ -166,7 +167,7 @@ module.exports.unlikePost = async (req, res) => {
     await UserModel.findByIdAndUpdate(
       req.body.id,
       {
-        $pull: { likes: req.params.id },
+        $pull: { likes: req.params.id }, // on enlève l'id du post dans les likes de l'utilisateur
       },
       { new: true },
       (err, docs) => {
@@ -179,12 +180,13 @@ module.exports.unlikePost = async (req, res) => {
   }
 };
 
+// Ajout d'un commentaire sur un post  
 module.exports.commentPost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    return PostModel.findByIdAndUpdate(
+    return PostModel.findByIdAndUpdate( // ajout d'une array "commentaire" dans le post avec l'id et le pseudo du user qui commente, le texte et la date précise de l'envoi du commentaire
       req.params.id,
       {
         $push: {

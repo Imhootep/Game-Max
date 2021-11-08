@@ -213,6 +213,7 @@ const NewPostForm = () => {
                 <input
                   className="date-happening"
                   type="date"
+                  placeholder="date"
                   onChange={(e) => setDate(e.target.value)}
                   value={date}
                 />

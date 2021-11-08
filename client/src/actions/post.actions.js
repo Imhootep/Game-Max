@@ -19,6 +19,8 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 export const GET_TRENDS = "GET_TRENDS";
 export const GET_FAVORITES = "GET_FAVORITES";
 
+export const SEARCH_POSTS = "SEARCH_POSTS"
+
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
 export const getPosts = (num) => {
@@ -201,6 +203,20 @@ export const getFavorites = (id) => {
     const array = res.data //.data.slice(0, 1);
     dispatch({ type: GET_FAVORITES, payload: array });
   }).catch((err) => console.log(err));
+  };
+};
+
+export const searchPost = (word) => {
+  return (dispatch) => {
+    return axios({
+      method : "get",
+      url:`${process.env.REACT_APP_API_URL}/contains/`,
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') }, 
+      data:{search:word},
+    }).then((res) => {
+        dispatch({ type: SEARCH_POSTS, payload: word });
+      })
+      .catch((err) => console.log(err));
   };
 };
 
