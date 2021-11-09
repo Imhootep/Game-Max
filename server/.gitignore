@@ -2,3 +2,4 @@
 /config/.env
 /config/db_test.js
 globalConfig.json
+/uploads
