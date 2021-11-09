@@ -361,6 +361,37 @@ const Administration = () => {
                     )          
                 })}
             </div>
+
+            <div className="adminBigBlock">
+                <div className="adminSubTitle">
+                    <b>Utilisateurs non prévalidés:</b>
+                </div>
+                <div className="adminBlock">
+                    <div className="adminSectionActionsTitle">
+                        Actions
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Nom
+                    </div>
+                </div>
+                {users.map((val)=>{
+                return(
+                    <>
+                    {val.isValid === false && val.role === '' ?
+                    <div key={val._id} className="adminBlock disable">
+                        <div className="adminActions">
+                            <img src={heart} alt="poubelle" title="Ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
+                            <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"  onClick={() => deleteUser(val._id)}/>
+                        </div>
+                        <div className="adminSection">{val.pseudo}</div>
+                    </div>
+
+                     : ''
+                     }
+                    </>
+                    )          
+                })}
+            </div>
             
             {/* <Csv /> */}
            

@@ -21,7 +21,7 @@ const Navbar = () => {
     let imagePath = process.env.REACT_APP_API_URL+userData.picture;
 
     users.map((val)=>{
-        if(acceptUser === false && val.role === ''){
+        if(acceptUser === false && val.role === '' && val.isValid === true){
             setAcceptUser(true)
         }
     })
