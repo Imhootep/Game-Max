@@ -132,9 +132,19 @@
   //     display: none;
   //   }
   
-    // .right-side-container {
-    //   position: fixed;
-    // }
+    .right-side-container {
+      p{
+        align-items: center;
+        align-self: center;
+        padding-bottom: 20px;
+        font-size: 1fr;
+
+        @media screen and (max-width:1007px) {
+         display: none;
+        }
+
+      }
+    }
     @media screen and (max-width:1007px) {
       order: 1;
       max-width: 100%;

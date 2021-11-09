@@ -14,9 +14,8 @@ const Thread = ({ posts, userData, data }) => {
   const dispatch = useDispatch();
   //si on le fait passer en props et qu'on recupere ici ça ne marche pas sans le getusers du useeffects en dessous...wtf?
   const usersData = useSelector((state) => state.usersReducer); 
-
   const [filteredData, setFilteredData] = useState ([]);
-
+  // const [refreshData,setRefreshData] = useState(0);
 
   useEffect(() => {
     dispatch(getUsers());
