@@ -83,23 +83,24 @@
   display: grid;
   grid-template-columns: 80px 1fr;
   border: 2px solid $color-4;
-  
   padding: 16px;
   border-radius: 20px;
   margin: 20px auto;
   position: relative;
   min-height: 80px;
+  width: 100%;
 
-  @media screen and(max-width: 750px) {
+  @media screen and(max-width: 1007px) {
     grid-template-columns: 1fr;
+    border-radius: 0;
   }
-  @media screen and(max-width: 515px) {
-    width:90%;
-    margin: 2px;
-  }
-  @media screen and(max-width: 440px) {
-    padding-top: 26px;
-  }
+  // @media screen and(max-width: 515px) {
+  //   width:90%;
+  //   margin: 2px;
+  // }
+  // @media screen and(max-width: 440px) {
+  //   padding-top: 26px;
+  // }
 
   .fa-spinner {
     position: absolute;
@@ -136,12 +137,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    // align-items: center;
 
-    @media screen and(max-width: 750px) {
+    @media screen and(max-width: 1007px) {
       margin-left: 18px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       
     }
 
@@ -151,12 +154,15 @@
     }
     .card-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       margin: 2px 0 4px;
       min-height: 35px;
 
-      @media screen and(max-width: 750px) {
+      @media screen and(max-width: 1007px) {
         margin: 12px 0 14px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
       }
 
       @media screen and(max-width: 440px) {
@@ -216,6 +222,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       // margin: 20px;
+      @media screen and(max-width: 1007px) {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
       h2{
         margin-bottom: 30px;
         align-self: flex-start;
@@ -238,6 +249,8 @@
         border-radius: 20px 20px 6px 20px;
       }
       .button-container {
+
+        
         
         .btn {
           background: $color-2;
@@ -264,6 +277,11 @@
       min-height: 330px;
       border-radius: 6px;
       box-shadow: 0 0 3px rgba(51, 51, 51, 0.342);
+      align-items: center;
+
+      @media screen and(max-width: 1007px) {
+        align-items: center;
+      }
     }
     .button-container {
       justify-content: flex-end;
@@ -276,6 +294,12 @@
         border-radius: 50px;
         transition: 0.1s;
         cursor: pointer;
+
+        // @media screen and(max-width: 1007px) {
+        //   display: flex;
+        //   width: 100%;
+        //   justify-content: space-around;
+        // }
 
         &:hover {
           transform: scale(1.07);
@@ -295,6 +319,12 @@
       justify-content: center;
       justify-content: space-between;
       padding: 12px 0 4px;
+
+      @media screen and(max-width: 1007px) {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
 
       img {
         height: 22px;
@@ -318,6 +348,18 @@
         }
       }
     }
+
+    .comments-container{
+      
+      @media screen and(max-width: 1007px) {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        
+      }
+
+    }
+
     .comment-container.client {
       background: $gray;
       color: $color-1;
