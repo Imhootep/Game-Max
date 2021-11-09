@@ -32,6 +32,13 @@ const Administration = () => {
     useEffect(()=>{
         dispatch(getUsers())
     }, [refreshData])
+
+    
+    //permet de lancer la requete toutes les 30 secs pr mettre a jour l'admin
+    useEffect(()=>{
+        const intervalId = setInterval(()=>{ setRefreshData(refreshData+1) }, 30000)
+        return () => clearInterval(intervalId);
+    }, [])
     
 
     const [role,setRole] = useState("Studio"); //add user
@@ -50,8 +57,6 @@ const Administration = () => {
     
     // useeffect qui rempli bien les données, maintenant il faut le dl en csv
     useEffect(()=>{
-        console.log("longueur")
-        console.log(users.length)
         
 
         if(csvData.length === 0){
@@ -59,9 +64,11 @@ const Administration = () => {
                 // console.log(users[i].email)
                 setCsvData(oldArray => [...oldArray, [users[i].pseudo, users[i].email]]); 
             }
-        }else{
-            console.log("CSV deja rempli !")
         }
+
+        // else{
+        //     console.log("CSV deja rempli !")
+        // }
     }, [users])
 
     // role d'un non validé
@@ -353,6 +360,36 @@ const Administration = () => {
                         </div>
                         <div className="adminSection">{val.pseudo}</div>
                         <div className="adminSection">{val.role}</div>
+                    </div>
+
+                     : ''
+                     }
+                    </>
+                    )          
+                })}
+            </div>
+
+            <div className="adminBigBlock">
+                <div className="adminSubTitle">
+                    <b>Utilisateurs non prévalidés:</b>
+                </div>
+                <div className="adminBlock">
+                    <div className="adminSectionActionsTitle">
+                        Actions
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Nom
+                    </div>
+                </div>
+                {users.map((val)=>{
+                return(
+                    <>
+                    {val.isValid === false && val.role === '' ?
+                    <div key={val._id} className="adminBlock disable">
+                        <div className="adminActions">
+                            <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"  onClick={() => deleteUser(val._id)}/>
+                        </div>
+                        <div className="adminSection">{val.pseudo}</div>
                     </div>
 
                      : ''
