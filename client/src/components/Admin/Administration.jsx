@@ -380,7 +380,6 @@ const Administration = () => {
                     {val.isValid === false && val.role === '' ?
                     <div key={val._id} className="adminBlock disable">
                         <div className="adminActions">
-                            <img src={heart} alt="poubelle" title="Ré-activer" className="adminIconEvent"  onClick={() => enable(val._id)}/>
                             <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"  onClick={() => deleteUser(val._id)}/>
                         </div>
                         <div className="adminSection">{val.pseudo}</div>
