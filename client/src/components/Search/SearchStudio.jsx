@@ -25,8 +25,13 @@ const SearchStudio = () => {
     useEffect(()=>{
         dispatch(getRoledUsers())
     }, [])
-    const usersSorted = users.sort((a, b) => a.timeM > b.timeM ? 1:-1)
+    // const usersSorted = users.sort((a, b) => a.timeM > b.timeM ? 1:-1)
 
+    // const myData = [].concat(users)
+    // .sort((a, b) => a.itemM > b.itemM ? 1 : -1)
+    // .map((val, i) => 
+    //     <div key={i}> {item.matchID} {item.timeM}{item.description}</div>
+    // );
     
 
     const [profilActif, setProfilActif] = useState(); // pour afficher la page du profil actuel
@@ -35,30 +40,22 @@ const SearchStudio = () => {
    
 
     const newProfilActif =(data) => {
-        console.log("profil actif ici")
-        console.log(data)
         setProfilActif(data)
-    };
+    }
 
     const clearSearch = () => {
         setSearch("")
         document.getElementById('searchField').placeholder = 'Rechercher...';
         setSpecificSearch()
-    };
+    }
 
     const searchSpecific = (data) => {
-
-        console.log("specific search: ")
-        console.log(specificSearch)
-
         if(data === specificSearch){
             setSpecificSearch()
         }else{
             setSpecificSearch(data)
         }
-
-        
-    };
+    }
 
     const compareDate = (date) => {
         const date1 = date;
@@ -86,11 +83,14 @@ const SearchStudio = () => {
                     <button onClick={(e)=>clearSearch()}><span>Vider</span></button>
                 </div>
             </div>
-            {usersSorted.map((val)=>{
+
+           
+
+            {/* {usersSorted.map((val)=>{ */}
+            {[].concat(users).sort((a, b) => a.itemM > b.itemM ? 1 : -1).map((val,i)=>{
             let imagePath = process.env.REACT_APP_API_URL+val.picture;
             return(
-                <>
-                    
+                    <>
                         {(profilActif !== undefined && val._id === profilActif) ? 
                         //premier resultat
                         <div className={((val._id === user._id && profilActif === undefined) || val._id === profilActif) ? "firstBlock" : "profilsBlock" }>
@@ -276,7 +276,7 @@ const SearchStudio = () => {
                         ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase())))
                         ?
                         
-                        <div key={val._id} className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>
+                        <div key={i} className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>
                             <div className="infosProfil">
                             <div className={val.role !== undefined ? "roleTitle "+val.role.toLowerCase() : ''}>{val.role !== undefined ? val.role : 'Compte INVALIDE'}</div>
                                 {/* <div onClick={setProfilActif(val.id)}>ALLER</div> */}

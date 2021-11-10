@@ -5,6 +5,8 @@ import { addPost } from "../../actions/post.actions";
 import { isEmpty } from "../Utils";
 import { timestampParser } from "../Utils";
 import { getRoledUsers } from "../../actions/users.actions";
+// import Thread from "./Thread";
+// import ReactDOM from "react-dom";
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +48,9 @@ const NewPostForm = () => {
       await dispatch(addPost(data));
       window.location.reload();
       // dispatch(getPosts());
+      // ReactDOM.render(<Thread />, document.getElementById("root"));
+      // ReactDOM.render(<Thread />, document.getElementById("thread-container"));
+      // ReactDOM.render(<Thread />, document.getElementsByClassName("main"));
       cancelPost();
     } else {
       alert("Veuillez entrer un message");
