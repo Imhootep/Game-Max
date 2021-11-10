@@ -59,7 +59,8 @@ const Thread = ({ posts, userData, data }) => {
 
   const applySearch = () =>{
     dispatch(searchPost(searchWord2))
-    
+    // console.log("posts")
+    // console.log(posts)
   }
 
 

@@ -170,12 +170,6 @@ const SearchStudio = () => {
                                         </a> 
                                     </div>
                                 </div>
-                                {/* <div><a target="_blank" rel="noreferrer" href={val.social.facebook}>{val.social.facebook}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.twitter}>{val.social.twitter}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.youtube}>{val.social.youtube}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.discord}>{val.social.discord}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.instagram}>{val.social.instagram}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.twitch}>{val.social.twitch}</a></div> */}
                             </div>
                         </div> 
                         </div>
@@ -258,12 +252,6 @@ const SearchStudio = () => {
                                         </a> 
                                     </div>
                                 </div>
-                                {/* <div><a target="_blank" rel="noreferrer" href={val.social.facebook}>{val.social.facebook}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.twitter}>{val.social.twitter}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.youtube}>{val.social.youtube}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.discord}>{val.social.discord}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.instagram}>{val.social.instagram}</a></div>
-                                <div><a target="_blank" rel="noreferrer" href={val.social.twitch}>{val.social.twitch}</a></div> */}
                             </div>
                         </div>
                         </div>
@@ -273,7 +261,8 @@ const SearchStudio = () => {
                         (    (search === undefined && (specificSearch === undefined || specificSearch  === val.role.toLowerCase()))
                         ||   (search === '' && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
                         ||  (search !== undefined && val.pseudo.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
-                        ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase())))
+                        ||  (search !== undefined && val.email.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase()))
+                        ||  (search !== undefined && val.expert_role.toLowerCase().indexOf(search) !== -1 && (specificSearch === undefined || specificSearch === val.role.toLowerCase())))
                         ?
                         
                         <div key={i} className={val.role !== undefined ? "littleBlock border"+val.role.toLowerCase() : ''}>

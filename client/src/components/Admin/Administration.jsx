@@ -36,7 +36,7 @@ const Administration = () => {
     
     //permet de lancer la requete toutes les 30 secs pr mettre a jour l'admin
     useEffect(()=>{
-        const intervalId = setInterval(()=>{ setRefreshData(refreshData+1) }, 30000)
+        const intervalId = setInterval(()=>{ setRefreshData(refreshData+1) }, 30000) //ça ne pose pas soucis quand on modif une donne et que l'appel se refais
         return () => clearInterval(intervalId);
     }, [])
     
@@ -46,6 +46,7 @@ const Administration = () => {
     const [adressUser,setAdressUser] = useState(""); //modify user adress
     const [companyUser,setCompanyUser] = useState(""); //modify user company 
     const [modifying,setModifying] = useState('');
+    const [sousRole,setSousRole] = useState('');
     
     
 
@@ -123,7 +124,7 @@ const Administration = () => {
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` + id,
-            data: {role:roleUser,adresse:adressUser, company:companyUser}
+            data: {role:roleUser,expert:sousRole, adresse:adressUser, company:companyUser}
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -143,6 +144,12 @@ const Administration = () => {
     const handleCompanyUser = (data) =>{
         setCompanyUser(data);
     }
+
+    //quand le sous role est ajouté/modifié
+    const handleSousRole = (data) =>{
+        setSousRole(data);
+    }
+    
     
     //valider le role d'un nouveau user
     const validate = (id) => {
@@ -150,7 +157,7 @@ const Administration = () => {
             method:"patch",
             headers : { Authorization : "Bearer "+Cookies.get('jwt') },
             url: `${process.env.REACT_APP_API_URL}api/user/admin/update/` +id,
-            data: {role:role}
+            data: {role:role,expert:sousRole}
           }).then(response => {
             setRefreshData(refreshData+1)
           })
@@ -190,11 +197,6 @@ const Administration = () => {
                     <div id="howToDoContent">
                         <p><b>Aide pour admin</b></p>
                         <p>Cette section est divisée en trois parties:</p>
-                        {/* <ol className="ordonnedList">
-                            <li>Utilisateurs en attentes</li>
-                            <li>Utilisateurs validés</li>
-                            <li>Utilisateurs désactivés</li>
-                        </ol> */}
                         <p>
                             <b>1. Utilisateurs en attentes</b><br/>
                             - Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. <br/>
@@ -235,11 +237,14 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Nom
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    {/* <div className="adminSection adminSectionTitle">
                         Company
-                    </div>
+                    </div> */}
                     <div className="adminSection adminSectionTitle">
                         Rôle
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Sous-rôle
                     </div>
                 </div>
                 {users.map((val)=>{
@@ -252,7 +257,7 @@ const Administration = () => {
                             <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"  onClick={() => deleteUser(val._id)}/>
                         </div>
                         <div className="adminSection">{val.pseudo}</div>
-                        <div className="adminSection">{val.company}</div>
+                        {/* <div className="adminSection">{val.company}</div> */}
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRole(e.target.value)}>
                                 <option value="Studio" selected>Studio</option>
@@ -260,6 +265,9 @@ const Administration = () => {
                                 <option value="Sponsor">Sponsor</option>
                                 <option value="Partenaire">Partenaire</option>
                             </select>
+                        </div>
+                        <div className="adminSection">
+                            <input type="text" onChange={(e) => handleSousRole(e.target.value)}/> 
                         </div>
                     </div>
                      :
@@ -285,6 +293,9 @@ const Administration = () => {
                     </div>
                     <div className="adminSection adminSectionTitle">
                         Rôle
+                    </div>
+                    <div className="adminSection adminSectionTitle">
+                        Sous-rôle
                     </div>
                     <div className="adminSection adminSectionTitle">
                         Adresse
@@ -319,6 +330,9 @@ const Administration = () => {
                                 <option value="Sponsor" selected={val.role === "Sponsor" ? "selected" : ""}>Sponsor</option>
                                 <option value="Partenaire" selected={val.role === "Partenaire" ? "selected" : ""}>Partenaire</option>
                             </select>    
+                        </div>
+                        <div className="adminSection">
+                           <input type="text" defaultValue={val.expert_role} onChange={(e) => handleSousRole(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
                         </div>
                         <div className="adminSection">
                            <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
