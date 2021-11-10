@@ -16,7 +16,7 @@ const Thread = ({ posts, userData, data }) => {
   const usersData = useSelector((state) => state.usersReducer); 
   const [filteredData, setFilteredData] = useState ([]);
   // const [refreshData,setRefreshData] = useState(0);
-  const [searchPost2, setSearchPost] = useState("");
+  const [searchWord2, setSearchPost] = useState("");
 
   useEffect(() => {
     dispatch(getUsers());
@@ -58,8 +58,8 @@ const Thread = ({ posts, userData, data }) => {
   }
 
   const applySearch = () =>{
-    dispatch(searchPost(searchPost2))
-    console.log(posts)
+    dispatch(searchPost(searchWord2))
+    
   }
 
 
@@ -88,6 +88,7 @@ const Thread = ({ posts, userData, data }) => {
         </div>
         )}
       </div>
+      {/* guillaume */}
       <div className="homeSearch2">
         <input type="text" className="prompt" placeholder="Rechercher un post" onChange={(e) => handleSearch(e.target.value)}/>
         <button onClick={applySearch}>Chercher</button>
