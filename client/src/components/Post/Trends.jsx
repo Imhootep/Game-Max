@@ -173,7 +173,8 @@ const Trends = ({posts,userData,usersData}) => {
                   
                 );
               }):''}
-        
+
+          {trendList2 !== undefined && trendList2.length === 0 ? "Pas de favoris pour l'instant !" : ""}
           
       </div>
         </div>
