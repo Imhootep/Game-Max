@@ -217,22 +217,24 @@ export const getFavorites = (id) => {
 //   };
 // };
 
-export const searchPost = (oui) => {
-  return (dispatch) => {
-    return axios({
-      method : "get",
-      headers : { Authorization : "Bearer "+Cookies.get('jwt') },
-      url:`${process.env.REACT_APP_API_URL}api/post/contains/`, 
-      data : { word:oui }
-    }).then((res) => {
-      console.log("res")
-      console.log(res)
-      console.log("search")
-      console.log(oui)
-      const array = res.data 
-        dispatch({ type: SEARCH_POSTS, payload: array });
-      })
-      .catch((err) => console.log(err));
+export const searchPost = (wordToFind) => {
+  
+  return async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "get",
+        headers: { Authorization: "Bearer " + Cookies.get('jwt') },
+        url: `${process.env.REACT_APP_API_URL}api/post/contains`,
+        data: { wordToFind }
+      });
+      console.log("res : ", res);
+      console.log("word : ", wordToFind);
+      const array = res.data;
+      console.log("la res : ", res.data)
+      dispatch({ type: SEARCH_POSTS, payload: array });
+    } catch (err) {
+      return console.log(err);
+    }
   };
 };
 
