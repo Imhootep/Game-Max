@@ -14,9 +14,9 @@ const Thread = ({ posts, userData, data }) => {
   const dispatch = useDispatch();
   //si on le fait passer en props et qu'on recupere ici ça ne marche pas sans le getusers du useeffects en dessous...wtf?
   const usersData = useSelector((state) => state.usersReducer); 
-  const [filteredData, setFilteredData] = useState ([]);
+//   const [filteredData, setFilteredData] = useState ([]);
   // const [refreshData,setRefreshData] = useState(0);
-  const [searchWord2, setSearchPost] = useState("");
+  const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
     dispatch(getUsers());
@@ -42,33 +42,35 @@ const Thread = ({ posts, userData, data }) => {
     return () => window.removeEventListener("scroll", loadMore);
   }, [loadPost, dispatch, count]);
 
-  const handleFilter = (e) =>{
-     const searchWord = e.target.value
-     const newFilter = data.filter((value)=>{
-        return value.title.includes(searchWord) 
-     })
-     setFilteredData(newFilter);
-  } 
+//   const handleFilter = (e) =>{
+//      const searchWord = e.target.value
+//      const newFilter = data.filter((value)=>{
+//         return value.title.includes(searchWord) 
+//      })
+//      setFilteredData(newFilter);
+//   } 
 
+//guillaume
   const handleSearch = (searchData) =>{
-    //   e.prevendefault()
-      setSearchPost(searchData)
-    //   console.log(searchPost)
-
+    setSearchWord(searchData)
   }
 
   const applySearch = () =>{
-    dispatch(searchPost(searchWord2))
-    // console.log("posts")
-    // console.log(posts)
+    dispatch(searchPost(searchWord))
   }
 
 
   return (
     <div className="thread-container">
 
+       {/* guillaume */}
+       <div className="homeSearch2">
+        <input type="text" className="prompt" placeholder="Rechercher un post" onChange={(e) => handleSearch(e.target.value)}/>
+        <button onClick={applySearch}>Chercher</button>
+      </div>
+
         {/*-------------- Barre de recherche dans le back ----------------------- */}
-      <div className="homeSearch2">
+      {/* <div className="homeSearch2">
         <input
           type="text"
           className="prompt"
@@ -88,12 +90,8 @@ const Thread = ({ posts, userData, data }) => {
             })}
         </div>
         )}
-      </div>
-      {/* guillaume */}
-      <div className="homeSearch2">
-        <input type="text" className="prompt" placeholder="Rechercher un post" onChange={(e) => handleSearch(e.target.value)}/>
-        <button onClick={applySearch}>Chercher</button>
-      </div>
+      </div> */}
+     
       
         
       <ul>
