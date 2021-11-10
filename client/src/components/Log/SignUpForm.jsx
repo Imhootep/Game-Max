@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SignInForm from './SignInForm'
+import Modal from '../Modals';
+// import texture from '../../img/Game-Max_Texture.jpg'
 const SITE_KEY = "6LcVzugcAAAAADjUydojvUBjcZAJlV6unFMF9Pg2";
 
 const SignUpForm = () => {
@@ -13,6 +15,7 @@ const SignUpForm = () => {
     const [controlPassword, setControlPassword] = useState('')
     
   const [response, setResponse] = useState(null);
+  
     
     const handleRegister = async (e) =>{
         e.preventDefault();
@@ -116,7 +119,10 @@ const SignUpForm = () => {
                         <>
                         
                         <SignInForm/>
+
+                      <div className="modalSucces">
                         <h4 className="succes">Enregistrement réussi </h4>
+                        </div>
                         <span></span>
                         
                         </>

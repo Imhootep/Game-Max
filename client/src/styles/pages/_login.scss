@@ -2,15 +2,15 @@
 
 /* -----------------BASE----------------- */
 
-.App-header{
+.App-header {
   width: 100%;
   height: 100vh;
-  background-color:#8c4d94;
+  background-color: #8c4d94;
   display: flex;
   justify-content: center;
 }
 
-.div-header{
+.div-header {
   width: 100%;
   height: 90vh;
   margin: 50px;
@@ -21,19 +21,17 @@
   justify-content: space-between;
 }
 
-
-.loginForm-container{
+.loginForm-container {
   display: flex;
   flex-direction: column;
   width: 40%;
-  
+
   @media screen and(max-width: 1024px) {
     position: absolute;
     right: 50px;
   }
 }
-.ul-log{ 
-  // position: absolute;
+.ul-log {
   margin-top: 0;
   width: 100%;
   min-width: 250px;
@@ -44,33 +42,23 @@
   height: 60px;
 }
 
-.il-log{
+.il-log {
   width: 200px;
 }
 
-.SignUpTitle2{
+.SignUpTitle2 {
   margin-bottom: 20px;
   @media screen and(max-height: 890px) {
     margin: 0;
   }
 }
 
-
-/* .logoHeader {
- 
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
-
 /* --------------- DIV LOGO ---------------- */
 
-.div-logo{
+.div-logo {
   background-image: url("../../img/GameMax.jpg");
   background-position: center;
   border-radius: 20px;
-  // padding: 100px 200px 100px 150px;
   width: 60%;
   height: 100%;
   display: flex;
@@ -78,13 +66,11 @@
   align-items: center;
 
   @media screen and(max-width: 1024px) {
-    // background-image: none;
     width: 100%;
-    
-    .logoLog{
-      // background-color: transparent;
-      
-      img{
+
+    .logoLog {
+
+      img {
         position: absolute;
         right: 150px;
       }
@@ -92,20 +78,19 @@
   }
 }
 
-.logoLog{
+.logoLog {
   display: flex;
   padding: auto;
   background-color: rgba(250, 249, 250, 0.7);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px ;
+  border-radius: 20px;
   height: 90%;
   width: 90%;
-  
 }
 
-.App-logo{
+.App-logo {
   height: 25%;
   @media screen and(max-width: 1024px) {
     width: 30%;
@@ -118,18 +103,15 @@
 .App-controller {
   height: 50%;
   pointer-events: none;
-  // margin: auto;
-  // background-image:none
   @media screen and(max-width: 1024px) {
-    // width: 300px;
     display: none;
   }
 }
 
-.controller2{
+.controller2 {
   display: none;
 }
-.notRegistered{
+.notRegistered {
   padding-right: 20px;
   font-weight: bold;
   color: rgba(78, 39, 83, 0.8);
@@ -137,7 +119,7 @@
 
 /* --------------- DIV LOGIN ---------------- */
 
-.login{
+.login {
   width: 100%;
   height: 80%;
   display: flex;
@@ -148,40 +130,36 @@
   align-items: flex-start;
   margin-top: 7%;
 
-  
-
-    @media screen and (max-height: 1000px) {
+  @media screen and (max-height: 1000px) {
     margin: 0;
+  }
+  @media screen and (max-height: 900px) {
+    .loginTitle2 {
+      margin: 0 0 10px 0;
     }
-    @media screen and (max-height: 900px) {
-      .loginTitle2{
-        margin: 0 0 10px 0;
-      }
-      .signinTitle{
-        margin: 70px 0 0 0;
-        padding-bottom: 5px;
-      }
+    .signinTitle {
+      margin: 70px 0 0 0;
+      padding-bottom: 5px;
     }
+  }
 }
 
-.loginTitle{
+.loginTitle {
+  padding-top: 50px;
+  padding-right: 15%;
+  color: rgba(78, 39, 83, 0.8);
+  font-size: 30px;
+  margin-bottom: 10px;
 
-    padding-top: 50px;
-    padding-right: 15%;
-    color: rgba(78, 39, 83, 0.8);
-    font-size: 30px;
-    margin-bottom: 10px;
-
-    @media screen and(max-width: 1024px) {
-      position: absolute;
-      top: 350px;
-      left: -95%;
-      width: 300px;
-    }
+  @media screen and(max-width: 1024px) {
+    position: absolute;
+    top: 350px;
+    left: -95%;
+    width: 300px;
+  }
 }
 
-.loginTitle2{
-
+.loginTitle2 {
   margin-top: 0;
   padding-right: 15%;
   color: rgba(78, 39, 83, 0.8);
@@ -190,60 +168,50 @@
 
   @media screen and(max-width: 1024px) {
     position: absolute;
-      top: 450px;
-      left: -95%;
-      width: 300px;
+    top: 450px;
+    left: -95%;
+    width: 300px;
   }
-
 }
 
-.signinTitle{
-  padding-bottom:40px;
-  
+.signinTitle {
+  padding-bottom: 40px;
 }
 
-.form-group{
+.form-group {
   display: flex;
   flex-direction: column;
-  // justify-content: flex-start;
   height: 100px;
   width: 65%;
 
-  input{
+  input {
     width: 100%;
   }
-
 }
 
-.form-group2{
+.form-group2 {
   display: flex;
   flex-direction: column;
-  // justify-content: flex-start;
-  // height: 100px;
   width: 65%;
-  @media screen and(max-height: 890px) {
-    // height: 200px;
-    
-  }
 
-  input{
+  input {
     width: 100%;
     @media screen and(max-height: 890px) {
       height: 30px;
     }
   }
-  div{
+  div {
     @media screen and(max-height: 890px) {
       height: 20px;
     }
   }
 }
 
-.formLabel{
+.formLabel {
   padding: 15px;
 }
 
-.inputLogin{
+.inputLogin {
   margin-bottom: 20px;
   border: 1px solid #8c4d94;
   border-radius: 20px;
@@ -252,37 +220,38 @@
   height: 4vmin;
   font-weight: bold;
   background-color: rgba(250, 249, 250, 0.8);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  transition: border-radius 0.5s   linear ;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: border-radius 0.5s linear;
 }
 
 .inputLogin::placeholder {
   color: #8c4d94;
   font-weight: normal;
-  
 }
 
-.inputLogin:focus{
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  background-color:rgba(243, 239, 243, 0.8);
-  outline-offset: 0px ;
-  outline: none ;
+.inputLogin:focus {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: rgba(243, 239, 243, 0.8);
+  outline-offset: 0px;
+  outline: none;
   border-radius: 0;
-	transition: border-radius 0.5s   linear ;
-  }
-  
-.termsCond{
+  transition: border-radius 0.5s linear;
+}
+
+.termsCond {
   display: flex;
   flex-direction: row;
 
-  input{
+  input {
     width: 20px;
-    
   }
 }
 
-.loginBut{
-  position:relative;
+.loginBut {
+  position: relative;
   overflow: hidden;
   margin-top: 4.4rem;
   padding: 0.5rem;
@@ -294,30 +263,30 @@
   width: 65%;
   height: 55px;
   border-radius: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.signUpBut{
-  // margin-top: 350px;
+.signUpBut {
   @media screen and(max-height: 890px) {
     margin-top: auto;
   }
 }
 
-
-.forgotPassLink{
-  padding-top: 10px ;
+.forgotPassLink {
+  padding-top: 10px;
   cursor: pointer;
 }
 
-.forgotPassword{
+.forgotPassword {
   width: 100%;
 }
 
-.registerLink{
-  position:relative;
+.registerLink {
+  position: relative;
   overflow: hidden;
   text-decoration: none;
   text-align: center;
@@ -329,78 +298,87 @@
   align-self: center;
   font-weight: bold;
   padding: 0.5rem 2rem;
-  border-radius:10px;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  
+  border-radius: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.loginBut:focus, .registerLink:focus{
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 15px, rgba(0, 0, 0, 0.12) 0px -20px 40px, rgba(0, 0, 0, 0.12) 4px 8px 10px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.loginBut:focus,
+.registerLink:focus {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 15px,
+    rgba(0, 0, 0, 0.12) 0px -20px 40px, rgba(0, 0, 0, 0.12) 4px 8px 10px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   color: rgba(204, 201, 204, 0.8);
-  -webkit-transform:scale(1.10); 
-    -moz-transform:scale(1.10);
-    -ms-transform:scale(1.10);
-    -o-transform:scale(1.10); 
-     transform:scale(1.10);
-     background-color: rgba(93, 47, 99, 0.8);
-     /* border: solid 3px rgba(78, 39, 83, 0.8); */
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: rgba(93, 47, 99, 0.8);
 }
 
-.loginBut span, .registerLink span{
-  position:relative;
+.loginBut span,
+.registerLink span {
+  position: relative;
   z-index: 2;
 }
 
 .loginBut:after {
-  position:absolute;
-  content: '';
-  top:0;
-  left:0;
-  width:0;
-  height:100%;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   background-color: rgba(78, 39, 83, 1);
   border-radius: 20px;
   transition: all 0.35s;
 }
 .registerLink:after {
-  position:absolute;
-  content: '';
-  top:0;
-  left:0;
-  width:0;
-  height:100%;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   background-color: rgba(78, 39, 83, 1);
   border-radius: 10px;
   transition: all 0.35s;
 }
 
-.loginBut:hover, .registerLink:hover{
+.loginBut:hover,
+.registerLink:hover {
   z-index: 1000;
 }
 
-.loginBut:hover:after, .registerLink:hover:after{
-  width:100%;
+.loginBut:hover:after,
+.registerLink:hover:after {
+  width: 100%;
 }
 
-.registerLink{
-    /*display: inline-block;   ------> permet de pas avoir le bouton qui "bave sur la gauche */
-    position:relative;
-    overflow: hidden;
-    text-decoration: none;
-    text-align: center;
-    margin-top: 3rem;
-    color: rgba(250, 249, 250, 0.8);
-    background-color: #8c4d94;
-    width: 30%;
-    height: 30px;
-    align-self: center;
-    font-weight: bold;
-    padding: 0.5rem;
-    border-radius:10px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    
+.registerLink {
+  /*display: inline-block;   ------> permet de pas avoir le bouton qui "bave sur la gauche */
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 3rem;
+  color: rgba(250, 249, 250, 0.8);
+  background-color: #8c4d94;
+  width: 30%;
+  height: 30px;
+  align-self: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 /* --------------- ANIM CONTROLLER ---------------- */
@@ -410,7 +388,6 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     animation: App-logo-beat infinite 3s;
   }
 }
-
 
 @keyframes App-logo-beat {
   0% {
@@ -433,8 +410,44 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
   }
 }
 
-/* --------------VERSION ECRAN 800-1480-------- */
+/* --------------confirmation d'enregistrement-------- */
+.modalSucces {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 350px;
+  top: 200px;
+  height: 600px;
+  width: 600px;
+  border-radius: 50px;
+  background-color: whitesmoke;
+  -webkit-animation: fadeinout 4s linear forwards;
+  animation: fadeinout 4s linear forwards;
 
+  .succes {
+    align-items: center;
+    background-color: whitesmoke;
+    font-size: 40px;
+  }
+}
 
+@-webkit-keyframes fadeinout {
+  100% {
+    opacity: 0;
+  }
+  0%,
+  50% {
+    opacity: 1;
+  }
+}
 
-
+@keyframes fadeinout {
+  100% {
+    opacity: 0;
+  }
+  0%,
+  50% {
+    opacity: 1;
+  }
+}
