@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../actions/post.actions";
+import { getPosts,searchPost } from "../../actions/post.actions";
 import Card from "./Card";
 import { getUsers } from "../../actions/users.actions";
 // import CloseIcon from '@material-ui/icons/Close';
@@ -16,6 +16,7 @@ const Thread = ({ posts, userData, data }) => {
   const usersData = useSelector((state) => state.usersReducer); 
   const [filteredData, setFilteredData] = useState ([]);
   // const [refreshData,setRefreshData] = useState(0);
+  const [searchPost2, setSearchPost] = useState("");
 
   useEffect(() => {
     dispatch(getUsers());
@@ -49,6 +50,18 @@ const Thread = ({ posts, userData, data }) => {
      setFilteredData(newFilter);
   } 
 
+  const handleSearch = (searchData) =>{
+    //   e.prevendefault()
+      setSearchPost(searchData)
+    //   console.log(searchPost)
+
+  }
+
+  const applySearch = () =>{
+    dispatch(searchPost(searchPost2))
+    console.log(posts)
+  }
+
 
   return (
     <div className="thread-container">
@@ -75,6 +88,11 @@ const Thread = ({ posts, userData, data }) => {
         </div>
         )}
       </div>
+      <div className="homeSearch2">
+        <input type="text" className="prompt" placeholder="Rechercher un post" onChange={(e) => handleSearch(e.target.value)}/>
+        <button onClick={applySearch}>Chercher</button>
+      </div>
+      
         
       <ul>
 

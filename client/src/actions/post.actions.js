@@ -198,23 +198,39 @@ export const getFavorites = (id) => {
     headers : { Authorization : "Bearer "+Cookies.get('jwt') },
     url: `${process.env.REACT_APP_API_URL}api/user/favorites-posts/` + id,
   }).then((res) => {
-    console.log("res::: ")
-    console.log(res)
     const array = res.data //.data.slice(0, 1);
     dispatch({ type: GET_FAVORITES, payload: array });
   }).catch((err) => console.log(err));
   };
 };
 
-export const searchPost = (word) => {
+// export const searchPost = (word) => {
+//   return (dispatch) => {
+//     return axios({
+//       method : "get",
+//       url:`${process.env.REACT_APP_API_URL}/contains/`, 
+//       data:{search:word},
+//     }).then((res) => {
+//         dispatch({ type: SEARCH_POSTS, payload: word });
+//       })
+//       .catch((err) => console.log(err));
+//   };
+// };
+
+export const searchPost = (oui) => {
   return (dispatch) => {
     return axios({
       method : "get",
-      url:`${process.env.REACT_APP_API_URL}/contains/`,
-      headers : { Authorization : "Bearer "+Cookies.get('jwt') }, 
-      data:{search:word},
+      headers : { Authorization : "Bearer "+Cookies.get('jwt') },
+      url:`${process.env.REACT_APP_API_URL}api/post/contains/`, 
+      data : { word:oui }
     }).then((res) => {
-        dispatch({ type: SEARCH_POSTS, payload: word });
+      console.log("res")
+      console.log(res)
+      console.log("search")
+      console.log(oui)
+      const array = res.data 
+        dispatch({ type: SEARCH_POSTS, payload: array });
       })
       .catch((err) => console.log(err));
   };

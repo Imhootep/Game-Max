@@ -259,8 +259,11 @@ module.exports.deleteCommentPost = (req, res) => {
 
 module.exports.findPostByWord = async (req, res) => {
 
+  console.log("req")
+  console.log(req.file)
+  console.log("mot : "+req.body.word)
   try{
-    let posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.search + '.*', $options : 'i' } }, { title: { $regex: '.*' + req.body.search + '.*', $options : 'i' } } ]}).sort({ createdAt : 1 }).exec();
+    let posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.word + '.*', $options : 'i' } }, { title: { $regex: '.*' + req.body.word + '.*', $options : 'i' } } ]}).sort({ createdAt : 1 }).exec();
     res.status(200).send(posts);
   } catch(err) {
     res.status(400).send(err)
