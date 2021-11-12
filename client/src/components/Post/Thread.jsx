@@ -4,18 +4,17 @@ import { getPosts,searchPost } from "../../actions/post.actions";
 import Card from "./Card";
 import { getUsers } from "../../actions/users.actions";
 // import CloseIcon from '@material-ui/icons/Close';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 
 
 const Thread = ({ posts, userData, data }) => {
 
   const [loadPost, setLoadPost] = useState(true);
+  // const [stopScroll, setStopScroll] = useState(false)
   const [count, setCount] = useState(10);
   const dispatch = useDispatch();
   //si on le fait passer en props et qu'on recupere ici ça ne marche pas sans le getusers du useeffects en dessous...wtf?
   const usersData = useSelector((state) => state.usersReducer); 
-//   const [filteredData, setFilteredData] = useState ([]);
-  // const [refreshData,setRefreshData] = useState(0);
   const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Thread = ({ posts, userData, data }) => {
       document.scrollingElement.scrollHeight
     ) {
       setLoadPost(true);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -36,19 +35,10 @@ const Thread = ({ posts, userData, data }) => {
       dispatch(getPosts(count));
       setLoadPost(false);
       setCount(count + 10);
-    }
-
+    } 
     window.addEventListener("scroll", loadMore);
     return () => window.removeEventListener("scroll", loadMore);
   }, [loadPost, dispatch, count]);
-
-//   const handleFilter = (e) =>{
-//      const searchWord = e.target.value
-//      const newFilter = data.filter((value)=>{
-//         return value.title.includes(searchWord) 
-//      })
-//      setFilteredData(newFilter);
-//   } 
 
 //guillaume
   const handleSearch = (searchData) =>{
@@ -57,43 +47,19 @@ const Thread = ({ posts, userData, data }) => {
 
   const applySearch = () =>{
     dispatch(searchPost(searchWord))
+    // setStopScroll(true)
   }
 
 
   return (
     <div className="thread-container">
 
-       {/* guillaume */}
+       {/* Barre de recherche dans le Back */}
        <div className="homeSearch2">
-        <input type="text" className="prompt" placeholder="Rechercher un post" onChange={(e) => handleSearch(e.target.value)}/>
+        <input type="text" className="prompt" placeholder="Rechercher un posts ..." onChange={(e) => handleSearch(e.target.value)}/>
         <button onClick={applySearch}>Chercher</button>
       </div>
-
-        {/*-------------- Barre de recherche dans le back ----------------------- */}
-      {/* <div className="homeSearch2">
-        <input
-          type="text"
-          className="prompt"
-          placeholder="Recherche de posts ..."
-          onChange={handleFilter}
-        />
-
-        <div className="searchIcon">
-            <SearchIcon />
-        </div>
-        {filteredData.length !== 0 && (
-        <div className="dataResult">
-            {filteredData.map((value, key)=>{
-                return <div>
-                    <p>{value.title}</p>
-                    </div>
-            })}
-        </div>
-        )}
-      </div> */}
-     
-      
-        
+    
       <ul>
 
           {/*-------------- Fil d'actualité -------------------------------------- */}

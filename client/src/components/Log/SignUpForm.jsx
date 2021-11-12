@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SignInForm from './SignInForm'
-import Modal from '../Modals';
+// import Modal from '../Modals';
 // import texture from '../../img/Game-Max_Texture.jpg'
 const SITE_KEY = "6LcVzugcAAAAADjUydojvUBjcZAJlV6unFMF9Pg2";
 
