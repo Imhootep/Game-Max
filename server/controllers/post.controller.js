@@ -258,7 +258,7 @@ module.exports.deleteCommentPost = (req, res) => {
 };
 
 module.exports.findPostByWord = async (req, res) => {
-
+  
   console.log("req : ", req.body)
   console.log("wordToFind : ", req.body.wordToFind)
   try{
