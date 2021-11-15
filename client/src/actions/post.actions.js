@@ -217,20 +217,17 @@ export const getFavorites = (id) => {
 //   };
 // };
 
-export const searchPost = (wordToFind) => {
+export const searchPost = (word) => {
   
   return async (dispatch) => {
     try {
       const res = await axios({
-        method: "get",
+        method: "post",
         headers: { Authorization: "Bearer " + Cookies.get('jwt') },
         url: `${process.env.REACT_APP_API_URL}api/post/contains`,
-        data: { wordToFind }
+        data: { word }
       });
-      console.log("res : ", res);
-      console.log("word : ", wordToFind);
       const array = res.data;
-      console.log("la res : ", res.data)
       dispatch({ type: SEARCH_POSTS, payload: array });
     } catch (err) {
       return console.log(err);

@@ -5,8 +5,7 @@ const multer = require("multer");
 const upload = multer();
 
 router.get('/', requireAuth, postController.readPost);
-router.get('/contains', requireAuth, postController.findPostByWord)
-router.get('/event', requireAuth, postController.findPostByType)
+router.post('/contains', requireAuth, postController.findPostByWord)
 router.post('/', requireAuth, upload.single("file"), postController.createPost);
 router.put('/:id', requireAuth, postController.updatePost);
 router.patch('/like-post/:id', requireAuth, postController.likePost);

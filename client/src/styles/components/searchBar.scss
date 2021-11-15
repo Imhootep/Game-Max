@@ -7,6 +7,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  button{
+    border-radius: 20px 7px 7px 20px;
+  }
  
 
   .prompt {
@@ -21,6 +25,8 @@
     &::placeholder{
         color: $color-4;
     }
+
+    
   }
   .searchIcon{
     display: flex;

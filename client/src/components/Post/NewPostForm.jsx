@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { addPost } from "../../actions/post.actions";
 import { isEmpty } from "../Utils";
 import { timestampParser } from "../Utils";
-import { getRoledUsers } from "../../actions/users.actions";
+// import { getRoledUsers } from "../../actions/users.actions";
 // import Thread from "./Thread";
 // import ReactDOM from "react-dom";
 
@@ -46,7 +46,8 @@ const NewPostForm = () => {
       if (event === true) data.append("isEvent", true);
 
       await dispatch(addPost(data));
-      window.location.reload();
+      window.location.reload(false);
+
       // dispatch(getPosts());
       // ReactDOM.render(<Thread />, document.getElementById("root"));
       // ReactDOM.render(<Thread />, document.getElementById("thread-container"));
@@ -84,18 +85,6 @@ const NewPostForm = () => {
       }
     }
   };
-
-  // const rolePost = (data) => {
-  //   setEvent(true);
-  //   setDate(true);
-
-  //   if(data === postRole) {
-  //     setPostRole()
-  //   } else {
-  //     setPostRole(data)
-  //   }
-
-  // }
 
   useEffect(() => {
     if (!isEmpty(userData)) setIsLoading(false);
@@ -207,7 +196,7 @@ const NewPostForm = () => {
                       <option className="choice" value="choice">
                         Choisir un Event
                       </option>
-                      <option className={"GameCafe" + "blueframe"} value="Game">
+                      <option className={"GameCafe + blueframe"} value="Game">
                         Game Dev Café
                       </option>
                       <option className="Formation" value="Formation">

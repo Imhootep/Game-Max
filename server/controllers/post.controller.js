@@ -272,8 +272,7 @@ module.exports.findPostByWord = async (req, res) => {
 module.exports.findPostByType = async (req, res) => {
 
   try{
-    console.log(req.body.eventType)
-    let posts = await PostModel.find({ eventType : req.body.eventType }).sort({ createdAt : 1 }).exec();
+    let posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.word + '.*', $options : 'i' } }, { title: { $regex: '.*' + req.body.word + '.*', $options : 'i' } }, { eventType: { $regex: '.*' + req.body.word + '.*', $options : 'i' } }]}).sort({ createdAt : -1 }).exec();
     res.status(200).send(posts);
   } catch(err) {
     res.status(400).send(err)

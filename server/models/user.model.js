@@ -61,11 +61,12 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      max: 1024
+      max: 1024,
     },
     expert_role: {
       type: String,
-      max: 1024
+      max: 1024,
+      default: ""
     },
     isAdmin: {
       type: Boolean
