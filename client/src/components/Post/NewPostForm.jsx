@@ -49,7 +49,6 @@ const NewPostForm = () => {
       dispatch(getPosts());
       // window.location.reload(false);
 
-      // dispatch(getPosts());
       // ReactDOM.render(<Thread />, document.getElementById("root"));
       // ReactDOM.render(<Thread />, document.getElementById("thread-container"));
       // ReactDOM.render(<Thread />, document.getElementsByClassName("main"));
