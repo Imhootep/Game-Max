@@ -60,7 +60,7 @@ const Thread = ({ posts, userData, data }) => {
         <button onClick={applySearch}>Chercher</button>
       </div>
     
-      <ul>
+      <ul className="width100">
 
           {/*-------------- Fil d'actualité -------------------------------------- */}
         {posts.map((post) => {
