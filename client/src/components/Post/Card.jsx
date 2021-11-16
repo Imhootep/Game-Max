@@ -31,8 +31,8 @@ const Card = ({ post, postId, usersData, userData }) => {
 
   return (
     <li
-      className={"card-container card-container" + (post.eventType !== undefined ? post.eventType : "") }
-      key={post._id}
+    className={"card-container card-container" + (post.eventType !== undefined ? post.eventType : "") }
+    key={post._id}
     >
       {isLoading ? (
         <i className="fas fa-spinner fa-spin"></i>
