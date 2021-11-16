@@ -262,6 +262,7 @@ body{
       text-align: center;
       margin-left: 70px;
       display: flex;
+      background-color: transparent;
       
       flex-direction: row;
       div{
@@ -430,7 +431,9 @@ body{
 
   .modal-container {
     // position: relative
-    background-image:url("../../img/GameMax.jpg");
+    background-image:url("../../img/Game-Max-Texture.jpg");
+    background-position: center;
+    
     align-items: center;
     position: absolute;
     // background-color: #c3a9c7;
@@ -446,6 +449,7 @@ body{
       padding: 30px;
       display: flex;
       flex-direction: column;
+      
       
     }
   }
