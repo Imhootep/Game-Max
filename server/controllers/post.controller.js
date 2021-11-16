@@ -214,7 +214,14 @@ module.exports.editCommentPost = (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    return PostModel.findById(req.params.id, (err, docs) => {
+    return PostModel.findByIdAndUpdate(
+      req.params.id,
+      { $set: { 
+          comments: {
+            _id: req.body.commentId, text: req.body.text,
+          }
+      }},
+      (err, docs) => {
       const theComment = docs.comments.find((comment) =>
         comment._id.equals(req.body.commentId)
       );
