@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { addPost, getPosts } from "../../actions/post.actions";
+import { addPost,getPosts } from "../../actions/post.actions";
 import { isEmpty } from "../Utils";
 import { timestampParser } from "../Utils";
 // import { getRoledUsers } from "../../actions/users.actions";
@@ -46,10 +46,9 @@ const NewPostForm = () => {
       if (event === true) data.append("isEvent", true);
 
       await dispatch(addPost(data));
-      // window.location.reload(false);
-      
-
       dispatch(getPosts());
+      // window.location.reload(false);
+
       // ReactDOM.render(<Thread />, document.getElementById("root"));
       // ReactDOM.render(<Thread />, document.getElementById("thread-container"));
       // ReactDOM.render(<Thread />, document.getElementsByClassName("main"));
