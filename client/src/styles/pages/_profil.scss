@@ -460,6 +460,51 @@ body{
     margin-left: 80px;
     display: flex;
     flex-direction: column;
+
+    @media screen and(max-width: 550px) {
+      width: 100%;
+      // max-width: 550px;
+      // padding: 0;
+      margin: 100px 0 0 0;
+      display: flex;
+      flex-direction: column;
+
+      .update-container{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+
+        .left-part{
+          display: flex;
+          margin: 0;
+          // flex-direction: column;
+        }
+
+        .right-part{
+          margin: 0;
+          padding: 10px 0 0 0;
+
+          .profil-update-box{
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+
+            .profil-update-box1{
+              flex-direction: column;
+            }
+            .profil-update-box2{
+              flex-direction: column;
+              width: 100%;
+
+              div{
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .popup-profil-container {
