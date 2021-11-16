@@ -1,3 +1,7 @@
+
+.profil-page{
+  width: 100%;
+}
 nav {
   position: fixed;
   width: 100%;
@@ -14,6 +18,12 @@ nav {
     border-radius: 0;
   }
 
+  @media screen and(max-width: 550px) {
+    width: 100%;
+    // max-width: 550px;
+    padding: 0;
+  }
+
   .nav-container {
     display: flex;
     width: 100%;
@@ -23,6 +33,21 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: $color-4;
+
+    @media screen and(max-width: 550px) {
+      width: 100%;
+      // max-width: 550px;
+      padding: 0;
+      justify-content: flex-start;
+
+      .welcome{
+        a{
+          display: flex;
+          flex-direction: column;
+        }
+        // display: none;
+      }
+    }
 
     @media screen and(max-width: 1007px) {
       height: 80px;

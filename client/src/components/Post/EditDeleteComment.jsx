@@ -59,9 +59,9 @@ const EditDeleteComment = ({ comment, postId }) => {
       )}
       {isAuthor && edit && (
         <form action="" onSubmit={handleEdit} className="edit-comment-form">
-          <label htmlFor="edit" onClick={() => setEdit(!edit)}>
+          {/* <label htmlFor="edit" onClick={() => setEdit(!edit)}>
             Editer
-          </label>
+          </label> */}
           <br />
           <input
             type="text"
