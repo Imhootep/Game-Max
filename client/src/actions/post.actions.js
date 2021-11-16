@@ -217,7 +217,7 @@ export const getFavorites = (id) => {
 //   };
 // };
 
-export const searchPost = (word) => {
+export const searchPost = (wordToFind) => {
   
   return async (dispatch) => {
     try {
@@ -225,7 +225,7 @@ export const searchPost = (word) => {
         method: "post",
         headers: { Authorization: "Bearer " + Cookies.get('jwt') },
         url: `${process.env.REACT_APP_API_URL}api/post/contains`,
-        data: { word }
+        data: { wordToFind }
       });
       const array = res.data;
       dispatch({ type: SEARCH_POSTS, payload: array });
