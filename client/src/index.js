@@ -8,6 +8,17 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 // import { getUsers } from "./actions/users.actions";
 
+
+//----- Credits -----//
+//** Front-end developers **//
+// - Guillaume FRANCOIS
+// - Francois BRAIBANT
+//** Back-end developers **//
+// - Florian CAMMARATA
+// - Alan LOUIS
+
+
+
 // dev tools
 import { composeWithDevTools } from "redux-devtools-extension";
 // import { getPosts } from "./actions/post.actions";
