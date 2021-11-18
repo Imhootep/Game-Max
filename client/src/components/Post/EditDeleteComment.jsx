@@ -1,28 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteComment, editComment } from "../../actions/post.actions";
+import { deleteComment, editComment,getPosts } from "../../actions/post.actions";
 import { UidContext } from "../AppContext";
 
-const EditDeleteComment = ({ comment, postId }) => {
+const EditDeleteComment = ({ comment, postId }) => { //updatePage
   const [isAuthor, setIsAuthor] = useState(false);
   // const [isAdmin, setIsAdmin]= useState(false);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState("");
+  const [newComment, setComment] = useState(comment);
   const uid = useContext(UidContext);
   const dispatch = useDispatch();
   const userData = useSelector((state)=>state.userReducer)
+  // const [refreshData,setRefreshData] = useState(0);
   
-
+  const title = 'Current Article Title';
   const handleEdit = (e) => {
     e.preventDefault();
     if (text) {
-      dispatch(editComment(postId, comment._id, text));
       setText("");
       setEdit(false);
-      window.location.reload();
+      dispatch(editComment(postId, comment._id, text));
+      
+      // updatePage(title)
+      // setComment(text)
+      // comment(text)
+      // dispatch(getPosts());
+      // window.location.reload();
     }
-  };
+  }
 
+  // const handleEdit = () => dispatch(editComment(postId, comment._id, text));
   const handleDelete = () => dispatch(deleteComment(postId, comment._id));
 
   useEffect(() => {
@@ -58,17 +66,12 @@ const EditDeleteComment = ({ comment, postId }) => {
         </span>
       )}
       {isAuthor && edit && (
-        <form action="" onSubmit={handleEdit} className="edit-comment-form">
+        <form action="" className="edit-comment-form">
           <label htmlFor="edit" onClick={() => setEdit(!edit)}>
             Editer
           </label>
           <br />
-          <input
-            type="text"
-            name="text"
-            onChange={(e) => setText(e.target.value)}
-            defaultValue={comment.text}
-          />
+          <input type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
           <br />
           <div className="btn">
             <span
@@ -81,7 +84,7 @@ const EditDeleteComment = ({ comment, postId }) => {
               <img src="./img/icons/trash.svg" alt="delete" />
             </span>
 
-            <input type="submit" value="Valider modification"/>
+            <input type="submit" value="Valider modification"  onClick={handleEdit}/>
           </div>
         </form>
       )}
