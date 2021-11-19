@@ -9,6 +9,7 @@ import {
   EDIT_COMMENT_ADMIN,
   DELETE_COMMENT,
   SEARCH_POSTS,
+  SEARCH_ALL_POSTS,
 } from "../actions/post.actions";
 
 const initialState = [];
@@ -91,6 +92,8 @@ export default function postReducer(state = initialState, action) {
         } else return post;
       });
       case SEARCH_POSTS:
+      return action.payload;
+      case SEARCH_ALL_POSTS:
       return action.payload;
 
     default:

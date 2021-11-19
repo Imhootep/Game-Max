@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts,searchPost } from "../../actions/post.actions";
 import Card from "./Card";
 import { getUsers } from "../../actions/users.actions";
-// import CloseIcon from '@material-ui/icons/Close';
-// import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
+import SearchIcon from '@material-ui/icons/Search';
 
 
 const Thread = ({ posts, userData, data }) => {
@@ -13,6 +13,7 @@ const Thread = ({ posts, userData, data }) => {
   // const [stopScroll, setStopScroll] = useState(false)
   const [count, setCount] = useState(10);
   const dispatch = useDispatch();
+  
   //si on le fait passer en props et qu'on recupere ici ça ne marche pas sans le getusers du useeffects en dessous...wtf?
   const usersData = useSelector((state) => state.usersReducer); 
   const [searchWord, setSearchWord] = useState("");
@@ -32,10 +33,11 @@ const Thread = ({ posts, userData, data }) => {
 
   useEffect(() => {
     if (loadPost) {
-      dispatch(getPosts(count));
+      dispatch(searchPost(searchWord,count));
       setLoadPost(false);
       setCount(count + 10);
     } 
+
     window.addEventListener("scroll", loadMore);
     return () => window.removeEventListener("scroll", loadMore);
   }, [loadPost, dispatch, count]);
@@ -46,8 +48,12 @@ const Thread = ({ posts, userData, data }) => {
   }
 
   const applySearch = () =>{
-    dispatch(searchPost(searchWord))
+    // setSearchWord(searchData)
+    dispatch(searchPost(searchWord, count))
     // setStopScroll(true)
+  }
+  const resetSearch = () =>{
+    setSearchWord('');
   }
 
 
@@ -56,9 +62,14 @@ const Thread = ({ posts, userData, data }) => {
 
        {/* Barre de recherche dans le Back */}
        <div className="homeSearch2">
-        <input type="text" className="prompt" placeholder="Rechercher un posts ..." onChange={(e) => handleSearch(e.target.value)}/>
-        <button onClick={applySearch}>Chercher</button>
+       
+        <input type="text" value={searchWord} className="prompt" placeholder="Rechercher un post ..." onChange={(e) => handleSearch(e.target.value)}/>
+        {searchWord !== '' ? <button onClick={resetSearch}><CloseIcon/></button> : null}
+        <button onClick={applySearch}><SearchIcon/></button>
+        
+
       </div>
+      
     
       <ul className="width100">
 
