@@ -71,7 +71,7 @@
                 overflow: hidden;
                 white-space: nowrap;
                 // max-height:50px;
-                // padding:5px 0 0 0;
+                padding:0 0 0 10px;
 
                 input, select{
                     font-family: "font-2", serif;
@@ -89,7 +89,7 @@
             }
 
             .adminSectionTitle{
-                padding:5px 0 0 5px;
+                padding:5px 0 0 10px;
                 font-weight: bold;
             }
 
@@ -101,6 +101,13 @@
                 width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
  
             }
+
+            .adminSectionRoleTitle{
+                padding:5px 0 0 10px;
+                margin: 0 0 10px 0;
+                font-weight: bold;
+                min-width: 90px;
+            }
             
         }
 
@@ -109,6 +116,14 @@
             max-width:80px !important; 
             min-width: 65px;
         }
+
+        .adminRoles{
+            width:100%; //pour qu'il prenne toute la place disponible et est condensé par les max et min width
+            max-width:90px !important; 
+            min-width: 90px;
+            // width:90px !important;
+        }
+
 
         .adminBlock:nth-child(2n+1){
             background-color:rgba(140, 77, 148, 0.1);
@@ -124,6 +139,7 @@
 
         .adminBlock input, .adminBlock select{
             cursor:pointer;
+            // background-color: #fdfdfd !important;
         }
 
         .disable{
@@ -136,7 +152,7 @@
             border:1px solid rgba(140, 77, 148, 0.2);
             padding:0 5px 0 5px;
             margin:0 20px 0 0 !important;
-            width:90% !important;
+            width:100% !important;
         }
 
         .noRole{
@@ -164,4 +180,15 @@
     }
   }
 
+  @media screen and(max-width: 750px) {
+    .disapear-tab{
+        display:none;
+    }
+  }
+
+  @media screen and(max-width: 500px) {
+    .disapear-smart{
+        display:none;
+    }
+  }
 

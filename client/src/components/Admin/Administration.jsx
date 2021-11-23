@@ -291,21 +291,21 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Email
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    <div className="adminSectionRoleTitle">
                         Rôle
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    <div className="adminSection adminSectionTitle disapear-smart">
                         Sous-rôle
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    <div className="adminSection adminSectionTitle disapear-tab">
                         Adresse
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    <div className="adminSection adminSectionTitle disapear-smart">
                         Company
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    {/* <div className="adminSection adminSectionTitle">
                         Membres
-                    </div>
+                    </div> */}
                 </div>
                 {users.map((val)=>{
                 return(
@@ -323,7 +323,7 @@ const Administration = () => {
                         </div>
                         <div className="adminSection disable"><div>{val.pseudo}</div></div>
                         <div className="adminSection disable"><div>{val.email}</div></div>
-                        <div className="adminSection">
+                        <div className="adminSection adminRoles">
                             <select className="adminRoleSelect" onChange={(e) => handleRoleUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' }>
                                 <option value="Studio" selected={val.role === "Studio" ? "selected" : ""}>Studio</option>
                                 <option value="Expert" selected={val.role === "Expert" ? "selected" : ""}>Expert</option>
@@ -331,16 +331,16 @@ const Administration = () => {
                                 <option value="Partenaire" selected={val.role === "Partenaire" ? "selected" : ""}>Partenaire</option>
                             </select>    
                         </div>
-                        <div className="adminSection">
+                        <div className="adminSection disapear-smart">
                            <input type="text" defaultValue={val.expert_role} onChange={(e) => handleSousRole(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
                         </div>
-                        <div className="adminSection">
+                        <div className="adminSection disapear-tab">
                            <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
                         </div>
-                        <div className="adminSection">
+                        <div className="adminSection disapear-smart">
                             <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/>
                         </div>
-                        <div className="adminSection disable"><div>{val.membres}</div></div>
+                        {/* <div className="adminSection disable"><div>{val.membres}</div></div> */}
                     </div>
                     : ''}
                     </>
