@@ -13,15 +13,25 @@ const Card = ({ post, postId, usersData, userData }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
+  const [titleUpdate, setTitleUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const dispatch = useDispatch();
 
   const updateItem = () => {
-    if (textUpdate) {
-      dispatch(updatePost(post._id, textUpdate));
+    if (textUpdate || titleUpdate) {
+      dispatch(updatePost(post._id, textUpdate, titleUpdate));
     }
     setIsUpdated(false);
+    // window.Location.reload();
   };
+
+  const preUpdateItem = (title,message) => {
+    setIsUpdated(!isUpdated)
+    setTextUpdate(message)
+    setTitleUpdate(title)
+    window.location.reload();
+  };
+  
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -88,12 +98,32 @@ const Card = ({ post, postId, usersData, userData }) => {
               ></iframe>
             )}
             <br />
+            {/* <div className="postTitleAndPost">
+              {post.title && (
+                <h2 className={"card-title" + post.eventType}>{post.title} </h2>
+              )}
+              {post.date && <p> Le {dateParser(post.date)}</p>}
+            </div> */}
+
+            {isUpdated === false &&
             <div className="postTitleAndPost">
               {post.title && (
                 <h2 className={"card-title" + post.eventType}>{post.title} </h2>
               )}
               {post.date && <p> Le {dateParser(post.date)}</p>}
             </div>
+            }
+
+            {isUpdated && (
+              <div className="update-post">
+                <textarea
+                  defaultValue={post.title}
+                  onChange={(e) => setTitleUpdate(e.target.value)}
+                />
+              </div>
+            )}
+
+
             {isUpdated === false && <p>{post.message}</p>}
             {isUpdated && (
               <div className="update-post">
@@ -114,7 +144,7 @@ const Card = ({ post, postId, usersData, userData }) => {
               <div className="button-container">
                 <div
                   className={"modif-button" + post.eventType}
-                  onClick={() => setIsUpdated(!isUpdated)}
+                  onClick={() => preUpdateItem(post.title,post.message)}
                 >
                   <img src="./img/icons/edit.svg" alt="edit-btn" />
                 </div>
