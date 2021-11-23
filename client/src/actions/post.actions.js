@@ -20,6 +20,7 @@ export const GET_TRENDS = "GET_TRENDS";
 export const GET_FAVORITES = "GET_FAVORITES";
 
 export const SEARCH_POSTS = "SEARCH_POSTS"
+export const SEARCH_ALL_POSTS = "SEARCH_ALL_POSTS"
 
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
@@ -33,6 +34,26 @@ export const getPosts = (num) => {
         dispatch({ type: GET_ALL_POSTS, payload: res.data });
       })
       .catch((err) => console.log(err));
+  };
+};
+
+export const searchPost = (wordToFind, num) => {
+  
+  return async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "post",
+        headers: { Authorization: "Bearer " + Cookies.get('jwt') },
+        url: `${process.env.REACT_APP_API_URL}api/post/contains`,
+        data: { wordToFind }
+      });
+      const array = res.data.slice(0, num);
+        dispatch({ type: SEARCH_POSTS, payload: array });
+        dispatch({ type: SEARCH_ALL_POSTS, payload: res.data });
+      
+    } catch (err) {
+      return console.log(err);
+    }
   };
 };
 
@@ -217,22 +238,22 @@ export const getFavorites = (id) => {
 //   };
 // };
 
-export const searchPost = (wordToFind) => {
+// export const searchPost = (wordToFind) => {
   
-  return async (dispatch) => {
-    try {
-      const res = await axios({
-        method: "post",
-        headers: { Authorization: "Bearer " + Cookies.get('jwt') },
-        url: `${process.env.REACT_APP_API_URL}api/post/contains`,
-        data: { wordToFind }
-      });
-      const array = res.data;
-      dispatch({ type: SEARCH_POSTS, payload: array });
-    } catch (err) {
-      return console.log(err);
-    }
-  };
-};
+//   return async (dispatch) => {
+//     try {
+//       const res = await axios({
+//         method: "post",
+//         headers: { Authorization: "Bearer " + Cookies.get('jwt') },
+//         url: `${process.env.REACT_APP_API_URL}api/post/contains`,
+//         data: { wordToFind }
+//       });
+//       const array = res.data;
+//       dispatch({ type: SEARCH_POSTS, payload: array });
+//     } catch (err) {
+//       return console.log(err);
+//     }
+//   };
+// };
 
 

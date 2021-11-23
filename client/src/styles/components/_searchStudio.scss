@@ -77,15 +77,18 @@
     justify-content: space-evenly;
     // margin: 75px 0 14px 75px;
     margin:auto;
-    max-width: 80%;
-    // @media screen and(max-width: 818px){
-    //   display: flex;
+    max-width: 80%; 
+}
 
-    //   .profilsBlock{
-    //     padding-left: 10px;
-    //   }
-    // }
+@media screen and(max-width: 850px){
+  .profilsContainer{
+  margin-top: 200px;
+  }
+//   display: flex;
 
+//   .profilsBlock{
+//     padding-left: 10px;
+//   }
 }
 
   .bigBlock{

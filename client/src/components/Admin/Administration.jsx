@@ -237,9 +237,9 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Nom
                     </div>
-                    {/* <div className="adminSection adminSectionTitle">
+                    <div className="adminSection adminSectionTitle">
                         Company
-                    </div> */}
+                    </div>
                     <div className="adminSection adminSectionTitle">
                         Rôle
                     </div>
@@ -257,7 +257,7 @@ const Administration = () => {
                             <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"  onClick={() => deleteUser(val._id)}/>
                         </div>
                         <div className="adminSection">{val.pseudo}</div>
-                        {/* <div className="adminSection">{val.company}</div> */}
+                        <div className="adminSection">{val.company}</div>
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRole(e.target.value)}>
                                 <option value="Studio" selected>Studio</option>
