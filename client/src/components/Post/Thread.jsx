@@ -54,6 +54,7 @@ const Thread = ({ posts, userData, data }) => {
   }
   const resetSearch = () =>{
     setSearchWord('');
+    window.location.reload();
   }
 
 

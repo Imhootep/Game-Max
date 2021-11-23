@@ -237,9 +237,9 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Nom
                     </div>
-                    {/* <div className="adminSection adminSectionTitle">
+                    <div className="adminSection adminSectionTitle">
                         Company
-                    </div> */}
+                    </div>
                     <div className="adminSection adminSectionTitle">
                         Rôle
                     </div>
@@ -257,7 +257,7 @@ const Administration = () => {
                             <img className="adminIconEvent" src={cross2} alt="delete" title="Supprimer la demande"  onClick={() => deleteUser(val._id)}/>
                         </div>
                         <div className="adminSection">{val.pseudo}</div>
-                        {/* <div className="adminSection">{val.company}</div> */}
+                        <div className="adminSection">{val.company}</div>
                         <div className="adminSection">
                             <select className="adminRoleSelect" onChange={(e) => handleRole(e.target.value)}>
                                 <option value="Studio" selected>Studio</option>
@@ -303,9 +303,9 @@ const Administration = () => {
                     <div className="adminSection adminSectionTitle">
                         Company
                     </div>
-                    <div className="adminSection adminSectionTitle">
+                    {/* <div className="adminSection adminSectionTitle">
                         Membres
-                    </div>
+                    </div> */}
                 </div>
                 {users.map((val)=>{
                 return(
@@ -340,7 +340,7 @@ const Administration = () => {
                         <div className="adminSection">
                             <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/>
                         </div>
-                        <div className="adminSection disable"><div>{val.membres}</div></div>
+                        {/* <div className="adminSection disable"><div>{val.membres}</div></div> */}
                     </div>
                     : ''}
                     </>

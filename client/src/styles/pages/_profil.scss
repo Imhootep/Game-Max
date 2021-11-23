@@ -173,16 +173,16 @@ body{
           @media screen and(max-width: 550px) {
             margin-bottom: 30px;
 
-            &:after {
-              content: "";
-              position: absolute;
-              bottom: -10px;
-              left: 50%;
-              transform: translateX(-50%);
-              width: 80%;
-              height: 1px;
-              background: $color-2;
-            }
+            // &:after {
+            //   content: "";
+            //   position: absolute;
+            //   bottom: -10px;
+            //   left: 50%;
+            //   transform: translateX(-50%);
+            //   width: 80%;
+            //   height: 1px;
+            //   background: $color-2;
+            // }
           }
         }
       }
@@ -460,6 +460,23 @@ body{
     margin-left: 80px;
     display: flex;
     flex-direction: column;
+
+    @media screen and(max-width: 850px){
+      margin-top: 150px !important;
+      margin: 0;
+      align-items: center;
+
+      .update-container{
+        margin: 0;
+      }
+
+      .left-part{
+        margin: 0;
+      }
+      .right-part{
+        margin: 0;
+      }
+    }
 
     @media screen and(max-width: 550px) {
       width: 100%;
