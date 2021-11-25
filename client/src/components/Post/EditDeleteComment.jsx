@@ -18,6 +18,20 @@ const EditDeleteComment = ({ comment, postId }) => { //updatePage
   const handleEdit = (e) => {
     e.preventDefault();
     if (text) {
+      // console.log("postId")
+      // console.log(postId)
+
+      // console.log("comment._id")
+      // console.log(comment._id)
+
+      // console.log("text")
+      // console.log(text)
+
+      // console.log("comment.commenterId")
+      // console.log(comment.commenterId)
+
+      // console.log("comment.commenterPseudo")
+      // console.log(comment.commenterPseudo)
       dispatch(editComment(postId, comment._id, text, comment.commenterId, comment.commenterPseudo));
       setText("");
       setEdit(false);
@@ -27,7 +41,7 @@ const EditDeleteComment = ({ comment, postId }) => { //updatePage
       // setComment(text);
       // comment(text);
       // dispatch(getPosts());
-      window.location.reload();
+      // window.location.reload();
     }
   }
 
