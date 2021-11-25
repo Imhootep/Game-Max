@@ -71,8 +71,9 @@
           border-radius: 50px;
 
           @media screen and(max-width: 1007px) {
+            background-color: $white;
           }
-          background-color: $white;
+          
         }
 
         &:hover {
