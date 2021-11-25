@@ -1,5 +1,4 @@
 //const db = require('../config/db')
-const { signUpErrors, signInErrors } = require('../utils/errors.utils')
 const UserModel = require('../models/user.model')
 const mongoose = require("mongoose");
 mongoose
@@ -42,7 +41,7 @@ describe('Tests group for auth.controller.js', function() {
       await UserModel.create({pseudo, email, password, role, isAdmin, isDisabled, uniqueString, social});
     }
     catch(err){
-      const errors = signUpErrors(err);
+      throw err;
     }
 
     const testUser = await UserModel.findOne(
