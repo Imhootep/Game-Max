@@ -18,9 +18,8 @@ const Card = ({ post, postId, usersData, userData }) => {
   const dispatch = useDispatch();
 
   const updateItem = () => {
-    if (textUpdate || titleUpdate) {
-      dispatch(updatePost(post._id, textUpdate, titleUpdate));
-    }
+
+    dispatch(updatePost(post._id, textUpdate, titleUpdate));
     setIsUpdated(false);
     // window.location.reload();
   };
@@ -29,7 +28,7 @@ const Card = ({ post, postId, usersData, userData }) => {
     setIsUpdated(!isUpdated)
     setTextUpdate(message)
     setTitleUpdate(title)
-    
+    // window.location.reload();
   };
   
 
