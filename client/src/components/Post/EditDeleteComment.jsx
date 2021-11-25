@@ -18,16 +18,16 @@ const EditDeleteComment = ({ comment, postId }) => { //updatePage
   const handleEdit = (e) => {
     e.preventDefault();
     if (text) {
-      dispatch(editComment(postId, comment._id, text));
+      dispatch(editComment(postId, comment._id, text, comment.commenterId, comment.commenterPseudo));
       setText("");
       setEdit(false);
       
       
-      // updatePage(title)
-      // setComment(text)
-      // comment(text)
+      // updatePage(title);
+      // setComment(text);
+      // comment(text);
       // dispatch(getPosts());
-      // window.location.reload();
+      window.location.reload();
     }
   }
 
