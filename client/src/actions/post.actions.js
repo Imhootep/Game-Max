@@ -159,16 +159,16 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
   };
 };
 
-export const editComment = (postId, commentId, text) => {
+export const editComment = (postId, commentId, text, commenterId, commenterPseudo) => {
   return (dispatch) => {
     return axios({
       method: "patch",
       headers : { Authorization : "Bearer "+Cookies.get('jwt') } ,
       url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
-      data: { commentId, text },
+      data: { commentId, text, commenterId, commenterPseudo },
     })
       .then((res) => {
-        dispatch({ type: EDIT_COMMENT, payload: { postId, commentId, text } });
+        dispatch({ type: EDIT_COMMENT, payload: { postId, commentId, text, commenterId, commenterPseudo } });
       })
       .catch((err) => console.log(err));
   };

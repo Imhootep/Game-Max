@@ -44,6 +44,7 @@ export default function postReducer(state = initialState, action) {
           return {
             ...post,
             message: action.payload.message,
+            title:action.payload.title,
           };
         } else return post;
       });

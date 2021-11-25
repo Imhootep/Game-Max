@@ -219,7 +219,11 @@ module.exports.editCommentPost = (req, res) => {
       req.params.id,
       { $set: { 
           comments: {
-            _id: req.body.commentId, text: req.body.text,
+            _id: req.body.commentId, 
+            text: req.body.text,
+            commenterId: req.body.commenterId,
+            commenterPseudo: req.body.commenterPseudo,
+            timestamp: new Date().getTime(),
           }
       }},
       (err, docs) => {
