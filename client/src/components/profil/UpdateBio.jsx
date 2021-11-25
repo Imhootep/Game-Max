@@ -141,7 +141,7 @@ const UpdateBio = ({userData}) => {
                       <p>{userData.social !== undefined ? userData.social.discord : ''}</p>
                     </div>
                     <div>
-                      <img src={twit} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <img className="img40" src={twit} alt="" onClick={() => setUpdateForm(!updateForm)} />
                       <p>{userData.social !== undefined ? userData.social.twitter: ''}</p>
                     </div>
                   </div>
