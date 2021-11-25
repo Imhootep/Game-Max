@@ -37,26 +37,6 @@ export const getPosts = (num) => {
   };
 };
 
-export const searchPost = (wordToFind, num) => {
-  
-  return async (dispatch) => {
-    try {
-      const res = await axios({
-        method: "post",
-        headers: { Authorization: "Bearer " + Cookies.get('jwt') },
-        url: `${process.env.REACT_APP_API_URL}api/post/contains`,
-        data: { wordToFind }
-      });
-      const array = res.data.slice(0, num);
-        dispatch({ type: SEARCH_POSTS, payload: array });
-        dispatch({ type: SEARCH_ALL_POSTS, payload: res.data });
-      
-    } catch (err) {
-      return console.log(err);
-    }
-  };
-};
-
 export const addPost = (data) => {
   return (dispatch) => {
     return axios
@@ -225,35 +205,25 @@ export const getFavorites = (id) => {
   };
 };
 
-// export const searchPost = (word) => {
-//   return (dispatch) => {
-//     return axios({
-//       method : "get",
-//       url:`${process.env.REACT_APP_API_URL}/contains/`, 
-//       data:{search:word},
-//     }).then((res) => {
-//         dispatch({ type: SEARCH_POSTS, payload: word });
-//       })
-//       .catch((err) => console.log(err));
-//   };
-// };
-
-// export const searchPost = (wordToFind) => {
+export const searchPost = (wordToFind, num) => {
   
-//   return async (dispatch) => {
-//     try {
-//       const res = await axios({
-//         method: "post",
-//         headers: { Authorization: "Bearer " + Cookies.get('jwt') },
-//         url: `${process.env.REACT_APP_API_URL}api/post/contains`,
-//         data: { wordToFind }
-//       });
-//       const array = res.data;
-//       dispatch({ type: SEARCH_POSTS, payload: array });
-//     } catch (err) {
-//       return console.log(err);
-//     }
-//   };
-// };
+  return async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "post",
+        headers: { Authorization: "Bearer " + Cookies.get('jwt') },
+        url: `${process.env.REACT_APP_API_URL}api/post/contains`,
+        data: { wordToFind }
+      });
+      const array = res.data.slice(0, num);
+        dispatch({ type: SEARCH_POSTS, payload: array });
+        dispatch({ type: SEARCH_ALL_POSTS, payload: res.data });
+      
+    } catch (err) {
+      return console.log(err);
+    }
+  };
+};
+
 
 
