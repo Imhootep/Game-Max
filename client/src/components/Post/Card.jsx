@@ -21,7 +21,7 @@ const Card = ({ post, postId, usersData, userData }) => {
 
     dispatch(updatePost(post._id, textUpdate, titleUpdate));
     setIsUpdated(false);
-    // window.Location.reload();
+    window.location.reload();
   };
 
   const preUpdateItem = (title,message) => {
@@ -112,20 +112,13 @@ const Card = ({ post, postId, usersData, userData }) => {
               {post.date && <p> Le {dateParser(post.date)}</p>}
             </div>
             }
-
-            {isUpdated && (
-              <div className="update-post">
-                <textarea
-                  defaultValue={post.title}
-                  onChange={(e) => setTitleUpdate(e.target.value)}
-                />
-              </div>
-            )}
-
-
             {isUpdated === false && <p>{post.message}</p>}
             {isUpdated && (
               <div className="update-post">
+                 <textarea
+                  defaultValue={post.title}
+                  onChange={(e) => setTitleUpdate(e.target.value)}
+                />
                 <textarea
                   defaultValue={post.message}
                   onChange={(e) => setTextUpdate(e.target.value)}
