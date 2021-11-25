@@ -106,23 +106,23 @@ const SearchStudio = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <img src={user2} alt="utilisateur" className="profilIcon"/>
+                                    <img src={user2} alt="utilisateur" className="profilIcon"  title="User"/>
                                     créé le {dateParser(val.createdAt)}
                                 </div>
                                 <div>
-                                    <img src={mail} alt="mail" className="profilIcon"/>
+                                    <img src={mail} alt="mail" className="profilIcon" title="Mail"/>
                                     {val.email }
                                 </div>
-                                <div>
+                                {/* <div>
                                     <img src={phone} alt="téléphone" className="profilIcon"/>
-                                    {val.phone }</div>
+                                    {val.phone }
+                                </div> */}
                                 <div>
-                                    <img src={home2} alt="home2" className="profilIcon"/>
+                                    <img src={home2} alt="home2" className="profilIcon" title="Adresse"/>
                                     {val.adresse}
-                                    
                                 </div>
                                 <div>
-                                    <img src={description} alt="description" className="profilIcon"/>
+                                    <img src={description} alt="description" className="profilIcon" title="Biographie et texte supplémentaire"/>
                                     {val.bio}
                                 </div>
                             </div>
@@ -189,23 +189,23 @@ const SearchStudio = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <img src={user2} alt="utilisateur" className="profilIcon"/>
+                                    <img src={user2} alt="utilisateur" className="profilIcon"  title="User"/>
                                     créé le {dateParser(val.createdAt)}
                                 </div>
                                 <div>
-                                    <img src={mail} alt="mail" className="profilIcon"/>
+                                    <img src={mail} alt="mail" className="profilIcon" title="Mail"/>
                                     {val.email }
                                 </div>
-                                <div>
+                                {/* <div>
                                     <img src={phone} alt="téléphone" className="profilIcon"/>
-                                    {val.phone }</div>
+                                    {val.phone }
+                                </div> */}
                                 <div>
-                                    <img src={home2} alt="home2" className="profilIcon"/>
+                                    <img src={home2} alt="home2" className="profilIcon" title="Adresse"/>
                                     {val.adresse}
-                                    
                                 </div>
                                 <div>
-                                    <img src={description} alt="description" className="profilIcon"/>
+                                    <img src={description} alt="description" className="profilIcon" title="Biographie et texte supplémentaire"/>
                                     {val.bio}
                                 </div>
                             </div>
@@ -280,7 +280,7 @@ const SearchStudio = () => {
                                     <div>VOIR<img className="arrowup" src={arrowup} alt="arrow up"/></div>
                                 </div>
                                 <div className="goProfilEmail">{val.email }</div>
-                                <div className="goProfilPhone">{val.phone }</div>
+                                {/* <div className="goProfilPhone">{val.phone }</div> */}
                                 <div className="goProfilAdress">{val.adresse }</div>
                                 {/* <div><a href={"https://"+val.website}>{val.website}</a></div> */}
                             </div>

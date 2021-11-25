@@ -82,10 +82,10 @@ const EditDeleteComment = ({ comment, postId }) => { //updatePage
       )}
       {isAuthor && edit && (
         <form action="" onSubmit={handleEdit} className="edit-comment-form">
-          <label htmlFor="edit" onClick={() => setEdit(!edit)}>
+          {/* <label htmlFor="edit" onClick={() => setEdit(!edit)}>
             Editer
           </label>
-          <br />
+          <br /> */}
           <input type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
           <br />
           <div className="btn">
