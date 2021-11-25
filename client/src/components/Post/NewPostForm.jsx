@@ -48,7 +48,7 @@ const NewPostForm = () => {
       await dispatch(addPost(data));
       dispatch(getPosts());
       // window.location.reload(false);
-
+      
       // ReactDOM.render(<Thread />, document.getElementById("root"));
       // ReactDOM.render(<Thread />, document.getElementById("thread-container"));
       // ReactDOM.render(<Thread />, document.getElementsByClassName("main"));
@@ -174,7 +174,7 @@ const NewPostForm = () => {
                 )}
               </div>
               <div className="event-form">
-                <input type="checkbox" onChange={() => handleEvent(event)} />
+                <input type="checkbox" checked={event} onChange={() => handleEvent(event)} />
                 <p>Event</p>
                 <input
                   className="date-happening"
@@ -213,7 +213,7 @@ const NewPostForm = () => {
                       </option>
                     </select>
                   </div>
-                )}
+                  )} 
               </div>
               {video && (
                 <button onClick={() => setVideo("")}>Supprimer la Vidéo</button>
