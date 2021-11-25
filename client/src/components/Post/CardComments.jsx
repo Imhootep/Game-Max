@@ -1,12 +1,9 @@
-import React, { useState,useEffect } from "react"; //useEffect pour test refresh
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addComment, getPosts } from "../../actions/post.actions";
 import FollowHandler from "../profil/FollowHandler";
 import { isEmpty, timestampParser } from "../Utils";
 import EditDeleteComment from "./EditDeleteComment";
-// import ReactDOM from "react-dom"; //test refresh
-// import { Provider } from "react-redux"; // test refresh
-// import Card from "./Card"; //test refresh
 
 const CardComments = ({ post,userData,usersData }) => {
   const [text, setText] = useState("");
@@ -23,30 +20,10 @@ const CardComments = ({ post,userData,usersData }) => {
       .then(()=>setText(''))
     }
   };
-
-  //---- refresh
-
-  // const [currentPage, setCurrentPage] = useState('');
-  // const updatePage = (title) => {
-     
-  //   //  dispatch(getPosts())
-  //   //  setCurrentPage(title)
-  //   //  window.location.reload()
-  //   // ReactDOM.render( <Provider>< CardComments /> </Provider>, document.getElementById("refreshCommentContainer"));
-  //   //  console.log("on passe pas ici?")
-  // }
-
-
-  // useEffect(() => {
-  //   console.log("USEEFFECT !")
-  // }, [post]);
-  
-
-  //---- refresh
   
 
   return (
-    <div className="comments-container" id="refreshCommentContainer">
+    <div className="comments-container">
       {post.comments.map((comment) => {
         return (
           <div
@@ -86,17 +63,16 @@ const CardComments = ({ post,userData,usersData }) => {
                 <span>{timestampParser(comment.timestamp)}</span>
               </div>
               <p>{comment.text}</p>
-              <EditDeleteComment comment={comment} postId={post._id} /> 
-              {/* updatePage={updatePage} */}
+              <EditDeleteComment comment={comment} postId={post._id}/> 
             </div>
           </div>
         );
       })}
       {userData._id && (
-        <form action=""  className="comment-form">
+        <form action="" onSubmit={handleComment} className="comment-form">
           <input type="text" name="text" onChange={(e)=>setText(e.target.value)} value={text} placeholder="Laisser un Commentaire" />
           <br/>
-          <input type="submit" value="Envoyer" onClick={handleComment}/>
+          <input type="submit" value="Envoyer"/>
         </form>
       )}
     </div>
