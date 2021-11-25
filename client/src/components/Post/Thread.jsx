@@ -64,7 +64,7 @@ const Thread = ({ posts, userData, data }) => {
        {/* Barre de recherche dans le Back */}
        <div className="homeSearch2">
        
-        <input type="text" value={searchWord} className="prompt" placeholder="Rechercher un post ..." onChange={(e) => handleSearch(e.target.value)}/>
+        <input type="text" value={searchWord} className="prompt" placeholder="Rechercher un post (Event, Titre, Message) ..." onChange={(e) => handleSearch(e.target.value)}/>
         {searchWord !== '' ? <button onClick={resetSearch}><CloseIcon/></button> : null}
         <button onClick={applySearch}><SearchIcon/></button>
         
