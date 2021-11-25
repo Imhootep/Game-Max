@@ -61,7 +61,7 @@ const Navbar = () => {
                         <li className="welcome">
                             <NavLink exact to="/profil">
                                 <img src={imagePath} alt="profil Pic"/>
-                                <h5>Bienvenue {userData.pseudo} </h5>
+                                <h5>{userData.pseudo} </h5>
                             </NavLink>
                         </li>
                         <Logout/>
