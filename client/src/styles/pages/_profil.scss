@@ -705,8 +705,8 @@ body{
 }
 
 .smallInput{
-  height:32px !important;
-  overflow: hidden;
+  min-height:32px !important;
+  // overflow: hidden;
 }
 
 .bigInput{
