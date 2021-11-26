@@ -123,7 +123,6 @@ module.exports.signUp = async (req, res) => {
       uniqueString,
     });
     //Envoi de l'email de confirmation une fois que l'inscription est terminée
-    console.log("J'envoie le mail")
     confirmEmail(pseudo, email, uniqueString);
     res.status(201).json({ user: user._id });
   } catch (err) {
