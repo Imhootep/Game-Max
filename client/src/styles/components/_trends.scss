@@ -130,7 +130,8 @@
 }
 
 .modal-container {
-  background-image: url("../../img/Game-Max-Texture.jpg");
+  // background-image: url("../../img/Game-Max-Texture.jpg");
+  background-color: $color-4;
   // background-color: $color-7;
   width: 100%;
   min-height: 500px;
