@@ -46,8 +46,8 @@ const UpdateProfil = ({userData,usersData}) => {
           
           <p>{error.maxSize}</p>
           <p>{error.format}</p>
-          
           <div>
+          <div className="memberGif">
          
           <h4> Membre depuis le: {dateParser(userData.createdAt)} </h4>
           {/* <h5 onClick={() => setFollowingPopup(true)}>
@@ -56,7 +56,7 @@ const UpdateProfil = ({userData,usersData}) => {
           <h5 onClick={() => setFollowersPopup(true)}>
             Abonnés: {userData.followers ? userData.followers.length : ""}
           </h5> */}
-          
+          </div>
             <span className="passwordModify" onClick={()=>showModal()}>
               <button>Modifier le mot de passe</button>
               

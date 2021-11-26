@@ -121,12 +121,29 @@
 // ----------------------- Popup des postes favoris --------------------------//
 
 .modalBackground {
-  width: 50%;
+  // width: 50%;
   position: absolute; //pq marche po?
-  left: 25%;
-  // right:0;
+  left: 20%;
   top: 200px;
-  min-width: 700px;
+  width: 100%;
+  @media screen and(max-width: 600px) {
+    left: 5%;
+    width: 80%;
+    position: absolute;
+    height: 150px; 
+    margin:10px;
+    .modal-container{
+      height: 600px;
+    .modal-header{
+      height: 80px;
+    }
+    .modal-body{
+      img{
+        height: 100px;
+      }
+    } 
+  }      
+  }
 }
 
 .modal-container {
@@ -134,7 +151,7 @@
   background-color: $color-4;
   // background-color: $color-7;
   width: 100%;
-  min-height: 500px;
+  // min-height: 500px;
 
   // max-height: 400px;
   position: relative;
@@ -144,6 +161,16 @@
   flex-direction: column;
   border-radius: 15px;
   // padding:20px;
+  z-index: 10000;
+
+  @media screen and(max-width: 600px) {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 150px; 
+    margin:10px;       
+  }
 }
 
 .modal-header {
