@@ -208,6 +208,8 @@
 .App-controller {
   height: 50%;
   pointer-events: none;
+  animation: App-logo-beat infinite 3s;
+
   @media screen and(max-width: 1024px) {
     display: none;
   }
@@ -387,7 +389,7 @@
   font-weight: bold;
   font-size: 18px;
   width: 65%;
-  height: 55px;
+  height: 47px;
   border-radius: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -412,7 +414,7 @@
     font-weight: bold;
     font-size: 18px;
     width: 65%;
-    height: 55px;
+    height: 47px;
     border-radius: 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
