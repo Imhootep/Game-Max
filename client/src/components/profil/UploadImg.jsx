@@ -49,7 +49,7 @@ const UploadImg = () => {
     
 
     <form action="" onSubmit={handlePicture} className="upload-pic">
-      <button htmlFor="file">Valider modif </button>{" "}
+      <button htmlFor="file">Valider modification </button>{" "}
       {/* <input
         type="file"
         id="file"

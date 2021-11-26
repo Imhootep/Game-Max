@@ -57,14 +57,6 @@ const UpdateBio = ({userData}) => {
       if(userData.social.twitch.toLowerCase().includes("http") === false){userData.social.twitch = "https://"+userData.social.twitch}
     }else{ if(userData.social.twitch !== ''){alert('Un lien vers un twitch doit contenir "twitch.tv"'); userData.social.twitch = '';}}
 
-    //protection V1
-    // if(userData.social.discord.includes("http") === false && userData.social.discord !== ''){userData.social.discord = "https://"+userData.social.discord}
-    // if(userData.social.twitter.includes("http") === false && userData.social.twitter !== ''){userData.social.twitter = "https://"+userData.social.twitter}
-    // if(userData.social.youtube.includes("http") === false && userData.social.youtube !== ''){userData.social.youtube = "https://"+userData.social.youtube}
-    // if(userData.social.facebook.includes("http") === false && userData.social.facebook !== ''){userData.social.facebook = "https://"+userData.social.facebook}
-    // if(userData.social.instagram.includes("http") === false && userData.social.instagram !== ''){userData.social.instagram = "https://"+userData.social.instagram}
-    // if(userData.social.twitch.includes("http") === false && userData.social.twitch !== ''){userData.social.twitch = "https://"+userData.social.twitch}
-
     dispatch(
       updateBio(userData._id, {
         pseudo: userData.pseudo,
@@ -91,7 +83,7 @@ const UpdateBio = ({userData}) => {
   return (
     <div>
       <div className="bio-update">
-        <h2> Profil </h2>
+        {/* <h2> Profil </h2> */}
         {updateForm === false && (
           <>
             <div className="profil-update-box">
@@ -137,46 +129,36 @@ const UpdateBio = ({userData}) => {
                   </p>
                 </div>
                 </div>
-                <div className="profil-update-box2">
-                
                 <h3>Réseaux Sociaux</h3>
-                
+                <div className="profil-update-box2">
                   <div>
-                  <p>
-                  <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social !== undefined ? userData.social.facebook : ''}
-                    {/* {userData.social.facebook} */}
-                  </p>
-                  <p>
-                  <img src={discord} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social !== undefined ? userData.social.discord : ''}
-                    {/* {userData.social.discord} */}
-                  </p>
-                  <p>
-                  <img src={twit} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                    {userData.social !== undefined ? userData.social.twitter: ''}
-                    {/* {userData.social.twitter} */}
-                  </p>
+                    <div>
+                      <img src={fb} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <p>{userData.social !== undefined ? userData.social.facebook : ''}</p>
+                    </div>
+                    <div>
+                      <img src={discord} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <p>{userData.social !== undefined ? userData.social.discord : ''}</p>
+                    </div>
+                    <div>
+                      <img className="img40" src={twit} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <p>{userData.social !== undefined ? userData.social.twitter: ''}</p>
+                    </div>
                   </div>
                   <div>
-                  <p>
-                  <img src={youtube} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                  {userData.social !== undefined ? userData.social.youtube: ''}
-                  {/* {userData.social.youtube} */}
-                  </p>
-                  <p>
-                  <img src={instagram} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                  {userData.social !== undefined ? userData.social.instagram: ''}
-                  {/* {userData.social.instagram} */}
-                  </p> 
-                  <p>
-                  <img src={twitch} alt="" onClick={() => setUpdateForm(!updateForm)} />
-                  {userData.social !== undefined ? userData.social.twitch: ''}
-                  {/* {userData.social.twitch} */}
-                  </p>
+                    <div>
+                      <img src={youtube} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <p>{userData.social !== undefined ? userData.social.youtube: ''}</p>
+                    </div>
+                    <div>
+                      <img src={instagram} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <p>{userData.social !== undefined ? userData.social.instagram: ''}</p>
+                    </div>
+                    <div>
+                      <img src={twitch} alt="" onClick={() => setUpdateForm(!updateForm)} />
+                      <p>{userData.social !== undefined ? userData.social.twitch: ''}</p>
+                    </div>
                   </div>
-                
-               
               </div>
 
               <button onClick={() => setUpdateForm(!updateForm)}>
@@ -189,31 +171,31 @@ const UpdateBio = ({userData}) => {
           <>
             <div className="web-info">
             <div>
-            <h3>Pseudo</h3>
-            <textarea
-                type="text"
-                className="updateForm"
-                defaultValue={userData.pseudo}
-                placeholder="Pseudo"
-                onChange={(e) => (userData.pseudo = e.target.value)}
-              ></textarea>
-            <h3>Company</h3>
-            <textarea
-                type="text"
-                className="updateForm"
-                defaultValue={userData.company}
-                placeholder="Company"
-                onChange={(e) => (userData.company = e.target.value)}
-              ></textarea>
+              <h3>Pseudo</h3>
+              <textarea
+                  type="text"
+                  className="updateForm smallInput"
+                  defaultValue={userData.pseudo}
+                  placeholder="Pseudo"
+                  onChange={(e) => (userData.pseudo = e.target.value)}
+                ></textarea>
+              <h3>Company</h3>
+              <textarea
+                  type="text"
+                  className="updateForm smallInput"
+                  defaultValue={userData.company}
+                  placeholder="Company"
+                  onChange={(e) => (userData.company = e.target.value)}
+                ></textarea>
               </div>
               <div>
-            <h3>Email</h3>
+            <h3>Email (non modifiable)</h3>
             <p> {userData.email} </p>
             
               <h3>Bio</h3>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm bigInput"
                 defaultValue={userData.bio}
                 placeholder="Bio"
                 onChange={(e) => (userData.bio = e.target.value)}
@@ -223,7 +205,7 @@ const UpdateBio = ({userData}) => {
               <h3>Adresse</h3>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.adresse}
                 placeholder="Adresse"
                 onChange={(e) => (userData.adresse = e.target.value)}
@@ -233,7 +215,7 @@ const UpdateBio = ({userData}) => {
               <h3>Membres</h3>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.membres}
                 placeholder="Membres"
                 onChange={(e) => (userData.membres = e.target.value)}
@@ -243,7 +225,7 @@ const UpdateBio = ({userData}) => {
               <h3>Jeux</h3>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.jeux}
                 placeholder="Jeux"
                 onChange={(e) => (userData.jeux = e.target.value)}
@@ -256,17 +238,17 @@ const UpdateBio = ({userData}) => {
               <h5>Facebook</h5>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.social.facebook}
-                placeholder="Réseaux Sociaux"
+                placeholder="Facebook de l'entreprise"
                 onChange={(e) => (userData.social.facebook = e.target.value)}
               ></textarea>
               <h5>Discord</h5>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.social.discord}
-                placeholder="Réseaux Sociaux"
+                placeholder="Discord de l'entreprise"
                 onChange={(e) => (userData.social.discord = e.target.value)}
               ></textarea>
               </div>
@@ -274,17 +256,17 @@ const UpdateBio = ({userData}) => {
               <h5>Twitter</h5>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.social.twitter}
-                placeholder="Réseaux Sociaux"
+                placeholder="Twitter de l'entreprise"
                 onChange={(e) => (userData.social.twitter = e.target.value)}
               ></textarea>
               <h5>Youtube</h5>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.social.youtube}
-                placeholder="Réseaux Sociaux"
+                placeholder="Youtube de l'entreprise"
                 onChange={(e) => (userData.social.youtube = e.target.value)}
               ></textarea>
               </div>
@@ -292,24 +274,25 @@ const UpdateBio = ({userData}) => {
               <h5>Instagram</h5>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.social.instagram}
-                placeholder="Réseaux Sociaux"
+                placeholder="Instagram de l'entreprise"
                 onChange={(e) => (userData.social.instagram = e.target.value)}
               ></textarea>
               <h5>Twitch</h5>
               <textarea
                 type="text"
-                className="updateForm"
+                className="updateForm smallInput"
                 defaultValue={userData.social.twitch}
-                placeholder="Réseaux Sociaux"
+                placeholder="Twitch de l'entreprise"
                 onChange={(e) => (userData.social.twitch = e.target.value)}
               ></textarea>
               </div>
+              <button onClick={handleUpdate}>Valider modification </button>
             </div>
             
 
-            <button onClick={handleUpdate}>Valider modification </button>
+            
           </>
         )}
       </div>

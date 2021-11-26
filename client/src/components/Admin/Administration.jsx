@@ -215,6 +215,11 @@ const Administration = () => {
                             - Pour ré-activer un utilisateur, appuyez sur <img src={heart} alt="poubelle" title="Ré-activer" className="adminIconEvent"/>.<br/>
                             - Pour supprimer définitivement un utilisateur, appuyez sur  <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"/>.<br/><br/>
                         </p>
+                        <p>
+                            <b>3. Utilisateurs non prévalidés</b><br/>
+                            - Ici sont répertoriés les utilisateurs qui se sont inscrit mais n'ont pas encore cliqué sur le lien de validation.<br/>
+                            - Pour supprimer définitivement un utilisateur non prévalidé, appuyez sur  <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"/>.<br/><br/>
+                        </p>
                     </div>
                     <div className="howToDo">
                         <div onClick={() => showHTD()}>

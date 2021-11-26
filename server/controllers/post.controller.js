@@ -210,35 +210,15 @@ module.exports.commentPost = (req, res) => {
   }
 };
 
-module.exports.editCommentPost = (req, res) => {
+module.exports.editCommentPost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
-
   try {
-    return PostModel.findByIdAndUpdate(
-      req.params.id,
-      { $set: { 
-          comments: {
-            _id: req.body.commentId, 
-            text: req.body.text,
-            commenterId: req.body.commenterId,
-            commenterPseudo: req.body.commenterPseudo,
-            timestamp: new Date().getTime(),
-          }
-      }},
-      (err, docs) => {
-      const theComment = docs.comments.find((comment) =>
-        comment._id.equals(req.body.commentId)
+    await PostModel.findOneAndUpdate(
+      { _id: req.params.id , comments: {$elemMatch: {_id: req.body.commentId}}},
+      { $set: {'comments.$.text': req.body.text, 'comments.$.commenterId': req.body.commenterId, 'comments.$.commenterPseudo': req.body.commenterPseudo, 'comments.$.timestamp': new Date().getTime()}},
+      { "new": true }
       );
-
-      if (!theComment) return res.status(404).send("Comment not found");
-      theComment.text = req.body.text;
-
-      return docs.save((err) => {
-        if (!err) return res.status(200).send(docs);
-        return res.status(500).send(err);
-      });
-    });
   } catch (err) {
     return res.status(400).send(err);
   }
@@ -282,11 +262,27 @@ module.exports.findPostByWord = async (req, res) => {
 };
 
 module.exports.findPostByType = async (req, res) => {
-  console.log("req : ", req.body)
-  console.log("wordToFind : ", req.body.wordToFind)
+  console.log("req : ", req.body);
+  console.log("wordToFind : ", req.body.wordToFind);
+  let posts;
   try{
-    let posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } }, { title: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } }, { eventType: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } }]}).sort({ createdAt : -1 }).exec();
+    let user = await UserModel.findOne({pseudo: req.body.wordToFind});
+    if(user){
+      console.log(user);
+      posts = await PostModel.find({ $or : [
+        { posterId: { $regex: '.*' + user._id + '.*', $options : 'i' } },
+       ]})
+        .sort({ createdAt : -1 }).exec();
+    }
+    else{
+      posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } }, 
+        { title: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } },  
+        { eventType: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } }]})
+        .sort({ createdAt : -1 }).exec();
+    }
+    
     res.status(200).send(posts);
+    console.log(user._id);
   } catch(err) {
     res.status(400).send(err)
   }
