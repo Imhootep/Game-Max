@@ -102,7 +102,7 @@ const SearchStudio = () => {
                                         <b>{val.pseudo}</b>
                                     </div>
                                     <div className={"Role "+val.role.toLowerCase()}>
-                                        {val.role}
+                                        {val.role}{val.expert_role ? '/'+val.expert_role : ''}
                                     </div>
                                 </div>
                                 <div>
@@ -187,7 +187,7 @@ const SearchStudio = () => {
                                         <b>{val.pseudo}</b>
                                     </div>
                                     <div className={"Role "+val.role.toLowerCase()}>
-                                        {val.role}
+                                        {val.role}{val.expert_role ? '/'+val.expert_role : ''}
                                     </div>
                                 </div>
                                 <div>
