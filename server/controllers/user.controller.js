@@ -42,7 +42,6 @@ module.exports.userInfo = (req, res) => {
 // ------------------------------------------------------------------------------------
 // Modification des données de l'utilisateur via le formulaire
 module.exports.updateUser = async (req, res) => {
-  console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -81,7 +80,6 @@ module.exports.updateUser = async (req, res) => {
 // ------------------------------------------------------------------------------------
 // Disable : l'utilisateur est désactivé (variable isDisabled remise à"true")
 module.exports.setDisableUserTrue = async (req, res) => {
-  console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -107,7 +105,6 @@ module.exports.setDisableUserTrue = async (req, res) => {
 // ------------------------------------------------------------------------------------
 // Annulation du disable : l'utilisateur est réactivé (variable isDisabled remise à "false")
 module.exports.setDisableUserFalse = async (req, res) => {
-  console.log(req.body)
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -133,7 +130,6 @@ module.exports.setDisableUserFalse = async (req, res) => {
 // ------------------------------------------------------------------------------------
 // Modification du role ou de l'adresse d'un utilisateur (par l'admin)
 module.exports.updateUserFromAdmin = async (req, res) => {
-  console.log(req.body);
   var role = "vide";
   var pseudo = "";
   var email = "";
@@ -275,16 +271,12 @@ module.exports.changePassword = async (req, res) => {
   try{
     if(user){
       if(await bcrypt.compare(ancienPass, user.password)){
-        console.log("L'ancien mot de passe est correct");
         if(newPass == confirmNewPass){
-          console.log("L'ancien mot de passe est : " + ancienPass);
-          console.log("Le nouveau mot de passe est : " + newPass);
           const salt = await bcrypt.genSalt();
           newPass = await bcrypt.hash(newPass, salt);
           const updatedUser = await UserModel.updateOne(
             { _id: req.params.id }, { $set: {password: newPass} }
           );
-          console.log("Le mot de passe a bien été modifié");
           }
           else{
             throw Error("passwords have no match");
@@ -323,7 +315,6 @@ module.exports.favoritesPosts = async (req,res) => {
 // ------------------------------------------------------------------------------------
 //Envoie un mail au user une fois qu'il reçoit un rôle
 const roledEmail = (pseudo, email, role) => {
-  console.log("J'envoie le mail pour le rôle");
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {

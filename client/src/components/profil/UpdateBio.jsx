@@ -102,7 +102,7 @@ const UpdateBio = ({userData}) => {
 
               <div className="profil-update-box1">
                 <div>
-                  <h3>Société</h3>
+                  <h3>Entreprise</h3>
                   <p className="smallInput" onClick={() => setUpdateForm(!updateForm)}>
                     {userData.company}
                   </p>
