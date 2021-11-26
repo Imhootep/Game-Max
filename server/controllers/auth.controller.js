@@ -123,7 +123,6 @@ module.exports.signUp = async (req, res) => {
       uniqueString,
     });
     //Envoi de l'email de confirmation une fois que l'inscription est terminée
-    console.log("J'envoie le mail")
     confirmEmail(pseudo, email, uniqueString);
     res.status(201).json({ user: user._id });
   } catch (err) {
@@ -144,8 +143,6 @@ module.exports.signIn = async (req, res) => {
     if(user.role == "" || user.isDisabled) throw err
     if(user.role != ""){
       const token = createToken(user._id);
-      console.log("Token : ",token)
-      console.log("User : ",user._id)
       res.status(200).json({ jwt: token, id: user._id, user: user})
     }
   } catch (err){
@@ -157,7 +154,6 @@ module.exports.signIn = async (req, res) => {
 // ------------------------------------------------------------------------------------
 //Envoi de mail avec le nouveau mot de passe généré aléatoirement en cas d'oubli de mot de passe
 module.exports.forgottenPassword = async (req, res) => {
-  console.log("J'entre dans forgottenPassword !")
   let email = req.body.email;
   var resetPass = randomResetString();
   var cryptedPass = "";

@@ -196,7 +196,7 @@ const Administration = () => {
                 <div className="howToDoContainer">
                     <div id="howToDoContent">
                         <p><b>Aide pour admin</b></p>
-                        <p>Cette section est divisée en trois parties:</p>
+                        <p>Cette section est divisée en quatre parties:</p>
                         <p>
                             <b>1. Utilisateurs en attentes</b><br/>
                             - Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. <br/>
@@ -216,7 +216,7 @@ const Administration = () => {
                             - Pour supprimer définitivement un utilisateur, appuyez sur  <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"/>.<br/><br/>
                         </p>
                         <p>
-                            <b>3. Utilisateurs non prévalidés</b><br/>
+                            <b>4. Utilisateurs non prévalidés</b><br/>
                             - Ici sont répertoriés les utilisateurs qui se sont inscrit mais n'ont pas encore cliqué sur le lien de validation.<br/>
                             - Pour supprimer définitivement un utilisateur non prévalidé, appuyez sur  <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"/>.<br/><br/>
                         </p>
@@ -337,13 +337,13 @@ const Administration = () => {
                             </select>    
                         </div>
                         <div className="adminSection disapear-smart">
-                           <input type="text" defaultValue={val.expert_role} onChange={(e) => handleSousRole(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
+                           <input type="text" defaultValue={val.expert_role} onChange={(e) => handleSousRole(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : 'notmodifying'}/> 
                         </div>
                         <div className="adminSection disapear-tab">
-                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
+                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : 'notmodifying'}/> 
                         </div>
                         <div className="adminSection disapear-smart">
-                            <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/>
+                            <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : 'notmodifying'}/>
                         </div>
                         {/* <div className="adminSection disable"><div>{val.membres}</div></div> */}
                     </div>
