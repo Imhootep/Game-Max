@@ -250,9 +250,6 @@ module.exports.deleteCommentPost = (req, res) => {
 };
 
 module.exports.findPostByWord = async (req, res) => {
-  
-  console.log("req : ", req.body)
-  console.log("wordToFind : ", req.body.wordToFind)
   try{
     let posts = await PostModel.find({ $or : [ { message: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } }, { title: { $regex: '.*' + req.body.wordToFind + '.*', $options : 'i' } } ]}).sort({ createdAt : -1 }).exec();
     res.status(200).send(posts);
@@ -262,13 +259,10 @@ module.exports.findPostByWord = async (req, res) => {
 };
 
 module.exports.findPostByType = async (req, res) => {
-  console.log("req : ", req.body);
-  console.log("wordToFind : ", req.body.wordToFind);
   let posts;
   try{
     let user = await UserModel.findOne({pseudo: req.body.wordToFind});
     if(user){
-      console.log(user);
       posts = await PostModel.find({ $or : [
         { posterId: { $regex: '.*' + user._id + '.*', $options : 'i' } },
        ]})
@@ -282,7 +276,6 @@ module.exports.findPostByType = async (req, res) => {
     }
     
     res.status(200).send(posts);
-    console.log(user._id);
   } catch(err) {
     res.status(400).send(err)
   }
