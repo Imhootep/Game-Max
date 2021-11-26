@@ -243,7 +243,7 @@ const Administration = () => {
                         Nom
                     </div>
                     <div className="adminSection adminSectionTitle">
-                        Company
+                        Entreprises
                     </div>
                     <div className="adminSection adminSectionTitle">
                         Rôle
@@ -306,7 +306,7 @@ const Administration = () => {
                         Adresse
                     </div>
                     <div className="adminSection adminSectionTitle disapear-smart">
-                        Company
+                        Entreprises
                     </div>
                     {/* <div className="adminSection adminSectionTitle">
                         Membres

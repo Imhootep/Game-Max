@@ -102,7 +102,7 @@ const UpdateBio = ({userData}) => {
 
               <div className="profil-update-box1">
                 <div>
-                  <h3>Société</h3>
+                  <h3>Entreprise</h3>
                   <p onClick={() => setUpdateForm(!updateForm)}>
                     {userData.company}
                   </p>
@@ -179,12 +179,12 @@ const UpdateBio = ({userData}) => {
                   placeholder="Pseudo"
                   onChange={(e) => (userData.pseudo = e.target.value)}
                 ></textarea>
-              <h3>Company</h3>
+              <h3>Entreprise</h3>
               <textarea
                   type="text"
                   className="updateForm smallInput"
                   defaultValue={userData.company}
-                  placeholder="Company"
+                  placeholder="Entreprise"
                   onChange={(e) => (userData.company = e.target.value)}
                 ></textarea>
               </div>
