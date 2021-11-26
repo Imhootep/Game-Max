@@ -31,18 +31,11 @@ body{
       flex-direction: row;
       // justify-content: space-between;
       // border: solid 1px $color-1;
-      .bio-profil{
-        p{
-          // height:100%;
-        }
-      }
+     
       div {
         width: 100%;
         justify-content: flex-start;
 
-        p{
-          // height: 30px;
-        }
       } 
     }
     .profil-update-box2{
@@ -705,8 +698,8 @@ body{
 }
 
 .smallInput{
-  height:32px !important;
-  overflow: hidden;
+  min-height:32px !important;
+  // overflow: hidden;
 }
 
 .bigInput{

@@ -96,20 +96,20 @@ const UpdateBio = ({userData}) => {
                 </div>
                 <div className="bio-profil">
                   <h3>Bio</h3>
-                  <p> {userData.bio} </p>
+                  <p className="smallInput"> {userData.bio} </p>
                 </div>
               </div>
 
               <div className="profil-update-box1">
                 <div>
-                  <h3>Entreprise</h3>
-                  <p onClick={() => setUpdateForm(!updateForm)}>
+                  <h3>Société</h3>
+                  <p className="smallInput" onClick={() => setUpdateForm(!updateForm)}>
                     {userData.company}
                   </p>
                 </div>
                 <div>
                   <h3>Adresse</h3>
-                  <p onClick={() => setUpdateForm(!updateForm)}>
+                  <p className="smallInput" onClick={() => setUpdateForm(!updateForm)}>
                     {userData.adresse}
                   </p>
                 </div>
@@ -118,13 +118,13 @@ const UpdateBio = ({userData}) => {
               <div className="profil-update-box1">
                 <div>
                   <h3>Membres</h3>
-                  <p onClick={() => setUpdateForm(!updateForm)}>
+                  <p className="smallInput" onClick={() => setUpdateForm(!updateForm)}>
                     {userData.membres}
                   </p>
                 </div>
                 <div>
                   <h3>Jeux</h3>
-                  <p onClick={() => setUpdateForm(!updateForm)}>
+                  <p className="smallInput" onClick={() => setUpdateForm(!updateForm)}>
                     {userData.jeux}
                   </p>
                 </div>
