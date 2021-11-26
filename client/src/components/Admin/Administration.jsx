@@ -337,13 +337,13 @@ const Administration = () => {
                             </select>    
                         </div>
                         <div className="adminSection disapear-smart">
-                           <input type="text" defaultValue={val.expert_role} onChange={(e) => handleSousRole(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
+                           <input type="text" defaultValue={val.expert_role} onChange={(e) => handleSousRole(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : 'notmodifying'}/> 
                         </div>
                         <div className="adminSection disapear-tab">
-                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/> 
+                           <input type="text" defaultValue={val.adresse} onChange={(e) => handleAdressUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : 'notmodifying'}/> 
                         </div>
                         <div className="adminSection disapear-smart">
-                            <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : ''}/>
+                            <input type="text" defaultValue={val.company} onChange={(e) => handleCompanyUser(e.target.value)} disabled={modifying !== '' && modifying === val._id ? '' : 'disabled' } className={modifying !== '' && modifying === val._id ? 'modifying' : 'notmodifying'}/>
                         </div>
                         {/* <div className="adminSection disable"><div>{val.membres}</div></div> */}
                     </div>
