@@ -174,9 +174,17 @@
         }
 }
 
+@media screen and(max-width: 1024px) {
+    
+  }
+
 @media screen and(max-width: 1007px) {
     .administrationContainer{
         margin: 75px 0 14px 0;
+    }
+
+    .admin-container{
+        margin:160px 0 0 0;
     }
   }
 
