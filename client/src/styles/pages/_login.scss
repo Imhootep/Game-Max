@@ -235,8 +235,8 @@
   align-items: flex-start;
   margin-top: 7%;
 
-  @media screen and(max-height: 800px) {
-    margin: 10px;
+  @media screen and(max-height: 900px) {
+    margin-top: 10px;
   }
 
   @media screen and (max-width: 1024px) {
@@ -277,10 +277,17 @@
   @media screen and(max-width: 1024px) {
     display: none;
     }
+    @media screen and(max-height: 900px) {
+      margin-bottom: 20px !important;
+      }
 }
 
 .signinTitle {
   padding-bottom: 40px;
+
+  @media screen and(max-height: 900px) {
+    padding-bottom: 10px;
+  }
 }
 
 .form-group {
@@ -425,9 +432,7 @@
   cursor: pointer;
 }
 
-.forgotPassword {
-  width: 100%;
-}
+
 
 .registerLink {
   position: relative;
@@ -569,6 +574,7 @@
   -webkit-animation: fadeinout 4s linear forwards;
   animation: fadeinout 4s linear forwards;
 
+
   .succes {
     align-items: center;
     background-color: whitesmoke;
@@ -596,6 +602,8 @@
   }
 }
 }
+
+@media screen and(max-height: 800px) {}
 
 @media screen and(max-width: 800px) {
   .signUpBut{
