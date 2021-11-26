@@ -196,7 +196,7 @@ const Administration = () => {
                 <div className="howToDoContainer">
                     <div id="howToDoContent">
                         <p><b>Aide pour admin</b></p>
-                        <p>Cette section est divisée en trois parties:</p>
+                        <p>Cette section est divisée en quatre parties:</p>
                         <p>
                             <b>1. Utilisateurs en attentes</b><br/>
                             - Ici sont répertoriés les utilisateurs qui ont créé un compte mais n'ont pas encore accès au site. <br/>
