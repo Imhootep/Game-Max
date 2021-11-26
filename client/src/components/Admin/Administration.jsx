@@ -365,6 +365,9 @@ const Administration = () => {
                         Nom
                     </div>
                     <div className="adminSection adminSectionTitle">
+                        Email
+                    </div>
+                    <div className="adminSection adminSectionTitle">
                         Rôle
                     </div>
                 </div>
@@ -378,6 +381,7 @@ const Administration = () => {
                             <img className="adminIconEvent" src={skull3} alt="delete" title="Supprimer l'utilisateur DEFINITIVEMENT"  onClick={() => deleteUser(val._id)}/>
                         </div>
                         <div className="adminSection">{val.pseudo}</div>
+                        <div className="adminSection">{val.email}</div>
                         <div className="adminSection">{val.role}</div>
                     </div>
 
