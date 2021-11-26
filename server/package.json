@@ -8,7 +8,7 @@
   },
   "name": "mern-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "APP réalisée par François Braibant, Guillaume François, Alan Louis et Florian Cammarata",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server",
