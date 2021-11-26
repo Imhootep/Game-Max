@@ -31,18 +31,11 @@ body{
       flex-direction: row;
       // justify-content: space-between;
       // border: solid 1px $color-1;
-      .bio-profil{
-        p{
-          // height:100%;
-        }
-      }
+     
       div {
         width: 100%;
         justify-content: flex-start;
 
-        p{
-          // height: 30px;
-        }
       } 
     }
     .profil-update-box2{
@@ -466,7 +459,8 @@ body{
 
   .modal-container {
     // position: relative
-    background-image:url("../../img/Game-Max-Texture.jpg");
+    // background-image:url("../../img/Game-Max-Texture.jpg");
+    background-color: $color-4;;
     background-position: center;
     
     align-items: center;
@@ -704,8 +698,8 @@ body{
 }
 
 .smallInput{
-  height:32px !important;
-  overflow: hidden;
+  min-height:32px !important;
+  // overflow: hidden;
 }
 
 .bigInput{

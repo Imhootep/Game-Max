@@ -15,7 +15,7 @@ const LeftNav = () => {
                 <div className="icons-bis">
                     <NavLink to='/home' exact activeClassName="active-left-nav" id="homeHoverParent">
                         <div id="homeHover">
-                        Home
+                        Accueil
                         </div>
                         <img src="./img/icons/home.svg" alt="home"/>
                     </NavLink>
