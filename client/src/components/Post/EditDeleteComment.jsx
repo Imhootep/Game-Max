@@ -41,7 +41,7 @@ const EditDeleteComment = ({ comment, postId }) => { //updatePage
       // setComment(text);
       // comment(text);
       // dispatch(getPosts());
-      // window.location.reload();
+       window.location.reload();
     }
   }
 
